@@ -30,18 +30,42 @@ const App: React.FC = () => {
     if (!text.trim()) return;
 
     const userMessage: Message = { id: Date.now().toString(), text, sender: 'user' };
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setIsLoading(true);
 
     try {
-      const chatHistory = [...messages, userMessage];
-      const { chatResponse, careerPlan } = await getCareerGuidance(chatHistory);
+      console.log('Sending chat history with', newMessages.length, 'messages');
+      const { chatResponse, careerPlan } = await getCareerGuidance(newMessages);
+      
+      console.log('Received response:', { 
+        responseLength: chatResponse.length, 
+        hasPlan: !!careerPlan.programName,
+        requiredClassesCount: careerPlan.requiredClasses?.length || 0
+      });
+      
+      // Validate careerPlan structure
+      if (careerPlan && careerPlan.requiredClasses) {
+        console.log('First course:', careerPlan.requiredClasses[0]);
+        // Check for non-ASCII in course names
+        careerPlan.requiredClasses.forEach((course, idx) => {
+          if (!/^[\x00-\x7F]*$/.test(course.name)) {
+            console.error(`Course ${idx} has non-ASCII characters:`, course.name);
+          }
+        });
+      }
       
       const botMessage: Message = { id: (Date.now() + 1).toString(), text: chatResponse, sender: 'bot' };
       setMessages(prev => [...prev, botMessage]);
-      setCareerData(careerPlan);
+      
+      if (careerPlan) {
+        console.log('Setting career data...');
+        setCareerData(careerPlan);
+        console.log('Career data set successfully');
+      }
     } catch (error) {
-      console.error("Error communicating with Gemini API:", error);
+      console.error("Error communicating with backend:", error);
+      console.error("Error details:", error instanceof Error ? error.message : String(error));
       const errorMessage: Message = { 
         id: (Date.now() + 1).toString(), 
         text: "Sorry, I'm having trouble connecting right now. Please try again in a moment.", 

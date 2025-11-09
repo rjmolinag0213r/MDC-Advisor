@@ -30,15 +30,21 @@ export const CareerJourneyPanel: React.FC<CareerJourneyPanelProps> = ({
   const totalClasses = careerData?.requiredClasses?.length ?? 0;
 
   const filteredUniversities = useMemo(() => {
-    return careerData?.transferUniversities.filter(uni => 
+    if (!careerData?.transferUniversities || !Array.isArray(careerData.transferUniversities)) {
+      return [];
+    }
+    return careerData.transferUniversities.filter(uni => 
+      uni && uni.name && typeof uni.name === 'string' && 
       uni.name.toLowerCase().includes(universityFilter.toLowerCase())
-    ) ?? [];
+    );
   }, [careerData?.transferUniversities, universityFilter]);
 
   const sortedSelectedUniversities = useMemo(() => {
-    if (selectedUniversities.length === 0) return [];
+    if (selectedUniversities.length === 0 || !careerData?.transferUniversities) return [];
 
-    const selectedData = careerData?.transferUniversities.filter(uni => selectedUniversities.includes(uni.name)) ?? [];
+    const selectedData = careerData.transferUniversities.filter(uni => 
+      uni && uni.name && selectedUniversities.includes(uni.name)
+    );
     
     return [...selectedData].sort((a, b) => {
       const aVal = parseFloat(a[sortConfig.key] as string);
@@ -73,8 +79,8 @@ export const CareerJourneyPanel: React.FC<CareerJourneyPanelProps> = ({
         <>
           <h3 className="text-lg font-semibold text-slate-700 mt-2 mb-3">Required MDC Classes</h3>
           <ul className="bg-white border border-slate-200 rounded-lg divide-y divide-slate-200">
-            {careerData.requiredClasses.length > 0 ? careerData.requiredClasses.map((cls) => (
-              <li key={cls.name} className={`px-3 py-2 flex justify-between items-center text-slate-700 text-sm transition-colors ${statusStyles[cls.status]}`}>
+            {careerData.requiredClasses.length > 0 ? careerData.requiredClasses.map((cls, index) => (
+              <li key={`${cls.name}-${index}`} className={`px-3 py-2 flex justify-between items-center text-slate-700 text-sm transition-colors ${statusStyles[cls.status]}`}>
                 <span className="flex-1">{cls.name}</span>
                  {cls.status === 'completed' && <div className="mr-2"><CheckIcon /></div>}
                 <select 
@@ -100,8 +106,8 @@ export const CareerJourneyPanel: React.FC<CareerJourneyPanelProps> = ({
             className="w-full p-2 mb-3 border border-slate-300 rounded-md text-sm"
           />
           <div className="max-h-60 overflow-y-auto border border-slate-200 rounded-lg p-2 space-y-2 bg-white">
-            {filteredUniversities.length > 0 ? filteredUniversities.map((uni) => (
-              <label key={uni.name} className="flex items-center p-2 rounded-md hover:bg-slate-100 cursor-pointer">
+            {filteredUniversities.length > 0 ? filteredUniversities.map((uni, index) => (
+              <label key={`${uni.name}-${index}`} className="flex items-center p-2 rounded-md hover:bg-slate-100 cursor-pointer">
                 <input 
                   type="checkbox" 
                   checked={selectedUniversities.includes(uni.name)}
@@ -136,8 +142,8 @@ export const CareerJourneyPanel: React.FC<CareerJourneyPanelProps> = ({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200">
-                    {sortedSelectedUniversities.map(uni => (
-                      <tr key={uni.name}>
+                    {sortedSelectedUniversities.map((uni, index) => (
+                      <tr key={`${uni.name}-${index}`}>
                         <td className="px-4 py-3 font-medium text-blue-700">{uni.name}</td>
                         <td className="px-4 py-3 text-slate-700">{uni.gpa}</td>
                         <td className="px-4 py-3 text-slate-600">{uni.prereqs}</td>
