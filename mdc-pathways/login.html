@@ -29,17 +29,15 @@
     --berry: 137, 40, 88; --crimson: 157, 30, 67; --ember: 179, 73, 61; --sand: 224, 145, 92;
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; min-height: 100%; background: var(--dusk); color: var(--fg); }
+  /* only the page root gets a color, so the fixed background picture shows behind everything */
+  html { min-height: 100%; background: #1a1f5c; color: var(--fg); }
+  body { margin: 0; min-height: 100%; background: transparent; color: var(--fg); }
   body { font-family: var(--f-body); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased;
     padding: 0 max(16px, env(safe-area-inset-right, 0px)) 3rem max(16px, env(safe-area-inset-left, 0px)); }
 
-  /* same pixel sky as the hub, with the hub's sunset band over it */
   .sky { position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background:
-      radial-gradient(45% 30% at 85% 12%, rgba(var(--sand), .18), transparent 70%),
-      linear-gradient(180deg, rgba(var(--berry), .8), rgba(var(--crimson), .8) 55%, rgba(var(--ember), .8)),
-      url("images/sky-clouds.jpg") center / cover no-repeat var(--dusk);
-    image-rendering: pixelated; }
+    /* tech circuit background for the account pages */
+    background: url("images/account-bg.jpg") center / cover no-repeat #1a1f5c; }
 
   :is(a, button, input, label):focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
   a { color: var(--fg); }
