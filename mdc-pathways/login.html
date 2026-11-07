@@ -224,7 +224,6 @@
     btn.setAttribute("aria-busy", "true");
     btn.textContent = "Logging in…";
     setTimeout(() => {
-      try { sessionStorage.setItem("mock-signed-in", "1"); } catch (e) {}
       location.href = backTo;
     }, 700);
   }

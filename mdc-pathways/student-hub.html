@@ -910,15 +910,15 @@ document.querySelectorAll(".tab").forEach((t) => {
     const nt = document.getElementById("tab-" + VIEWS[j]); nt.focus(); show(VIEWS[j]);
   });
 });
-// UI mockup of sign-in: until the backend has accounts, "signed in" is just a flag that account.html
-// sets for this tab. Later, ask the backend instead (GET /api/me) and only send signed-out students there.
-function mockSignedIn() { try { return sessionStorage.getItem("mock-signed-in") === "1"; } catch (e) { return false; } }
+// UI only, two separate doors: "Ask the AI advisor" always opens the create-account page and
+// "See my progress" always opens the log-in page. Each page sends the student back here with
+// ?go=ai or ?go=progress. Later, once the backend has accounts, skip the page for signed-in
+// students (check GET /api/me first).
+const ACCOUNT_PAGE = { ai: "account.html?next=ai", progress: "login.html?next=progress" };
 document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", (e) => {
   e.preventDefault();
   const v = a.dataset.go;
-  // AI advisor -> sign up first; See my progress -> log in (returning students)
-  if (v === "ai" && !mockSignedIn()) { location.href = "account.html?next=ai"; return; }
-  if (v === "progress" && !mockSignedIn()) { location.href = "login.html?next=progress"; return; }
+  if (ACCOUNT_PAGE[v]) { location.href = ACCOUNT_PAGE[v]; return; }
   goHub(v);
 }));
 // Coming back from account.html (?go=ai): open that tab and scroll to the hub, then tidy the address.

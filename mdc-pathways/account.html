@@ -8,9 +8,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Jost:wght@300;400;500&display=swap">
 <style>
-  /* UI ONLY: no accounts are created yet. The form checks what's typed, then sends the student
+  /* Create account page for the hub's "Ask the AI advisor" button (logging in is login.html).
+     UI ONLY: no accounts are created yet. The form checks what's typed, then sends the student
      back to the hub. When the Flask backend is ready, replace fakeSubmit() in the script with
-     calls to /api/signup and /api/login. Same look as the hub's square "lux" boxes. */
+     a call to /api/signup. Same look as the hub's square "lux" boxes. */
   :root {
     color-scheme: dark;
     --dusk: #241040;
@@ -139,13 +140,8 @@
 </header>
 
 <main class="card">
-  <div class="switch" role="tablist" aria-label="Account">
-    <button type="button" role="tab" id="tab-signup" aria-controls="view-signup" aria-selected="true">Create account</button>
-    <button type="button" role="tab" id="tab-login" aria-controls="view-login" aria-selected="false" tabindex="-1">Log in</button>
-  </div>
-
-  <!-- ===== Create account ===== -->
-  <section id="view-signup" role="tabpanel" aria-labelledby="tab-signup">
+  <!-- ===== Create account (logging in has its own page: login.html) ===== -->
+  <section id="view-signup">
     <h1>Create your account</h1>
     <p class="why" id="why-signup">Save your plan and pick up where you left off.</p>
 
@@ -190,43 +186,7 @@
       <button class="btn" type="submit">Create account</button>
     </form>
 
-    <p class="alt">Already have an account? <button type="button" class="linkish" data-switch="login">Log in</button></p>
-  </section>
-
-  <!-- ===== Log in ===== -->
-  <section id="view-login" role="tabpanel" aria-labelledby="tab-login" hidden>
-    <h1>Welcome back</h1>
-    <p class="why" id="why-login">Log in to pick up where you left off.</p>
-
-    <form id="login" novalidate>
-      <p class="form-status" role="alert" id="login-status"></p>
-
-      <div class="field">
-        <label for="li-email">MDC email</label>
-        <input type="email" id="li-email" name="email" autocomplete="username" inputmode="email" required
-          placeholder="you@mymdc.net" aria-describedby="li-email-err">
-        <p class="error" id="li-email-err"></p>
-      </div>
-
-      <div class="field">
-        <label for="li-pw">Password</label>
-        <div class="input-wrap has-toggle">
-          <input type="password" id="li-pw" name="password" autocomplete="current-password" required aria-describedby="li-pw-err">
-          <button type="button" class="show-pw" aria-controls="li-pw" aria-pressed="false">Show</button>
-        </div>
-        <p class="error" id="li-pw-err"></p>
-      </div>
-
-      <div class="row">
-        <label class="check"><input type="checkbox" name="remember"> Keep me logged in</label>
-        <!-- TODO: point at a reset page once the backend can send reset emails -->
-        <a href="#" id="forgot">Forgot password?</a>
-      </div>
-
-      <button class="btn" type="submit">Log in</button>
-    </form>
-
-    <p class="alt">New here? <button type="button" class="linkish" data-switch="signup">Create an account</button></p>
+    <p class="alt">Already have an account? <a id="to-login" href="login.html" style="font-weight:600">Log in</a></p>
   </section>
 </main>
 
@@ -241,40 +201,12 @@
   document.getElementById("back").href = "student-hub.html";
 
   const WHY = {
-    ai: ["Create an account to ask the AI advisor.", "Log in to ask the AI advisor."],
-    progress: ["Create an account to see your progress.", "Log in to see your progress."],
+    ai: "Create an account to ask the AI advisor.",
+    progress: "Create an account to see your progress.",
   };
-  if (WHY[NEXT]) {
-    document.getElementById("why-signup").textContent = WHY[NEXT][0];
-    document.getElementById("why-login").textContent = WHY[NEXT][1];
-  }
-
-  /* ---------- Create account / Log in switch ---------- */
-  const tabs = { signup: document.getElementById("tab-signup"), login: document.getElementById("tab-login") };
-  const views = { signup: document.getElementById("view-signup"), login: document.getElementById("view-login") };
-  function showMode(mode, focus) {
-    Object.keys(tabs).forEach((k) => {
-      const on = k === mode;
-      tabs[k].setAttribute("aria-selected", String(on));
-      tabs[k].tabIndex = on ? 0 : -1;
-      views[k].hidden = !on;
-    });
-    document.title = (mode === "login" ? "Log in" : "Create your account") + " · MDC Student Hub";
-    const p = new URLSearchParams(location.search);
-    p.set("mode", mode);
-    try { history.replaceState(null, "", "?" + p.toString()); } catch (e) {}
-    if (focus) views[mode].querySelector("input").focus();
-  }
-  tabs.signup.addEventListener("click", () => showMode("signup"));
-  tabs.login.addEventListener("click", () => showMode("login"));
-  Object.values(tabs).forEach((t) => t.addEventListener("keydown", (e) => {
-    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-    const next = t === tabs.signup ? "login" : "signup";
-    showMode(next); tabs[next].focus();
-  }));
-  document.querySelectorAll("[data-switch]").forEach((b) =>
-    b.addEventListener("click", () => showMode(b.dataset.switch, true)));
-  showMode(params.get("mode") === "login" ? "login" : "signup");
+  if (WHY[NEXT]) document.getElementById("why-signup").textContent = WHY[NEXT];
+  // "Already have an account? Log in" goes to the separate log-in page, keeping where to return to
+  document.getElementById("to-login").href = "login.html" + (NEXT ? "?next=" + NEXT : "");
 
   /* ---------- show / hide password ---------- */
   document.querySelectorAll(".show-pw").forEach((b) => b.addEventListener("click", () => {
@@ -321,8 +253,6 @@
       if (!v) return setError("su-pw2", "Type your password again.");
       return setError("su-pw2", v === suPw.value ? "" : "Passwords don't match.");
     },
-    "li-email": () => checkEmail("li-email"),
-    "li-pw": () => setError("li-pw", document.getElementById("li-pw").value ? "" : "Enter your password."),
   };
   // Check a field when you leave it, and re-check as you fix it, so errors don't shout while you type.
   Object.keys(checks).forEach((id) => {
@@ -339,14 +269,13 @@
   }
 
   /* ---------- submit (UI only) ---------- */
-  // Stand-in for the backend. Later: fetch("/api/signup" or "/api/login", { method: "POST", ... }),
+  // Stand-in for the backend. Later: fetch("/api/signup", { method: "POST", ... }),
   // show the server's error in the form's status line, and only redirect on success.
   function fakeSubmit(form, label) {
     const btn = form.querySelector(".btn");
     btn.setAttribute("aria-busy", "true");
     btn.textContent = label;
     setTimeout(() => {
-      try { sessionStorage.setItem("mock-signed-in", "1"); } catch (e) {}
       location.href = backTo;
     }, 700);
   }
@@ -354,14 +283,6 @@
   document.getElementById("signup").addEventListener("submit", (e) => {
     e.preventDefault();
     if (validate(["su-name", "su-email", "su-pw", "su-pw2"])) fakeSubmit(e.target, "Creating account…");
-  });
-  document.getElementById("login").addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (validate(["li-email", "li-pw"])) fakeSubmit(e.target, "Logging in…");
-  });
-  document.getElementById("forgot").addEventListener("click", (e) => {
-    e.preventDefault();
-    document.getElementById("login-status").textContent = "Password reset isn't set up yet. Ask your advisor for help.";
   });
 })();
 </script>
