@@ -1,0 +1,4092 @@
+{
+  "note": "SYNTHETIC DATA for development and testing. Not Miami Dade College's catalog.",
+  "seed": 2026,
+  "generated_by": "data/synthetic/generate_catalog.py",
+  "edge_cases": {
+    "hidden_prerequisite": "Some electives borrowed from other programs need prerequisites the program does not require (e.g. ZDA 3600 for Applied AI needs ZDA 3400). Each program's Electives group lists them under electives_with_outside_prerequisites.",
+    "cross_listed": "ZAI 3200 (also listed as ZDA 3200) is required by both Applied AI and Data Analytics.",
+    "alternative_prerequisites": "ZMA 2311 accepts ZMA 1105 or ZMA 1140; ZAI 3200 accepts either AI or Data Analytics prerequisites.",
+    "corequisite_lab": "ZEE 2100 and ZEE 2100L must be taken together; lab sections carry linked_crn.",
+    "single_term_courses": "Many electives and some core courses (e.g. ZEE 4200 Fall only, ZAI 4100 Spring only) run in one term.",
+    "credit_minimums": "Capstones need 90 completed credits; internships need 60 and instructor permission.",
+    "inactive_course": "ZEE 4570 is inactive and never scheduled.",
+    "unused_course": "ZMA 1140 is not required by any program.",
+    "time_conflict_pair": "In Spring 2027, the only sections of ZAI 3300 and ZAI 4200 overlap on TR.",
+    "all_sections_full": "Every Fall 2026 section of ZSE 2400 is closed with a waitlist.",
+    "cancelled": "One Spring 2027 ZHU 1020 section is cancelled."
+  },
+  "courses": [
+    {
+      "code": "ZAH 2020",
+      "title": "American History and Civic Literacy",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZAH",
+      "description": "American History and Civic Literacy. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZAI 1010",
+      "title": "Foundations of Artificial Intelligence",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Foundations of Artificial Intelligence. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 2050",
+      "title": "Python for AI",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Python for AI. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZAI 3100",
+      "title": "Linear Algebra for Machine Learning",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Linear Algebra for Machine Learning. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 2311"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 3150",
+      "title": "Probability for AI",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Probability for AI. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZST 2023"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 3200",
+      "title": "Machine Learning Foundations",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Machine Learning Foundations. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 2050",
+          "ZDA 3100"
+        ],
+        [
+          "ZAI 3100",
+          "ZDA 3150"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [
+        "ZDA 3200"
+      ],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZAI 3300",
+      "title": "Deep Learning",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Deep Learning. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 3400",
+      "title": "Natural Language Processing",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Natural Language Processing. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 3500",
+      "title": "Computer Vision",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Computer Vision. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 4100",
+      "title": "Reinforcement Learning",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Reinforcement Learning. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3200"
+        ],
+        [
+          "ZAI 3150"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 4200",
+      "title": "AI Ethics and Policy",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "AI Ethics and Policy. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 1010"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZAI 4300",
+      "title": "MLOps and Model Deployment",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "MLOps and Model Deployment. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3200"
+        ],
+        [
+          "ZDB 2300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 4400",
+      "title": "Generative AI Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZAI",
+      "description": "Generative AI Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 4510",
+      "title": "Speech Recognition",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZAI",
+      "description": "Speech Recognition. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3400"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 4520",
+      "title": "Robotics and Perception",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZAI",
+      "description": "Robotics and Perception. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3500"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZAI 4530",
+      "title": "Recommender Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZAI",
+      "description": "Recommender Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZAI 4540",
+      "title": "AI for Healthcare",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZAI",
+      "description": "AI for Healthcare. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 4550",
+      "title": "Time Series Forecasting",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZAI",
+      "description": "Time Series Forecasting. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZAI 4560",
+      "title": "Edge AI",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZAI",
+      "description": "Edge AI. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 4940",
+      "title": "Applied AI Internship",
+      "credits": 3,
+      "level": "upper",
+      "category": "internship",
+      "prefix": "ZAI",
+      "description": "Applied AI Internship. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 60,
+      "instructor_permission": true,
+      "terms_offered": [
+        "Summer",
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAI 4950",
+      "title": "Applied AI Capstone Project",
+      "credits": 3,
+      "level": "upper",
+      "category": "capstone",
+      "prefix": "ZAI",
+      "description": "Applied AI Capstone Project. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3300"
+        ],
+        [
+          "ZAI 4300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 90,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI"
+      ]
+    },
+    {
+      "code": "ZAR 1000",
+      "title": "Art and Visual Culture",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZAR",
+      "description": "Art and Visual Culture. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZCP 1000",
+      "title": "Introduction to Programming",
+      "credits": 3,
+      "level": "lower",
+      "category": "common_core",
+      "prefix": "ZCP",
+      "description": "Introduction to Programming. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZCP 2006",
+      "title": "Object-Oriented Programming",
+      "credits": 3,
+      "level": "lower",
+      "category": "common_core",
+      "prefix": "ZCP",
+      "description": "Object-Oriented Programming. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZCS 1100",
+      "title": "Computer Systems Concepts",
+      "credits": 3,
+      "level": "lower",
+      "category": "common_core",
+      "prefix": "ZCS",
+      "description": "Computer Systems Concepts. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZCY 1300",
+      "title": "Cybersecurity Fundamentals",
+      "credits": 3,
+      "level": "lower",
+      "category": "common_core",
+      "prefix": "ZCY",
+      "description": "Cybersecurity Fundamentals. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCS 1100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZCY 1400",
+      "title": "Operating Systems Security",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Operating Systems Security. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCS 1100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 2200",
+      "title": "Linux Administration",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Linux Administration. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCS 1100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 3100",
+      "title": "Network Security",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Network Security. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 1110"
+        ],
+        [
+          "ZCY 1300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 3200",
+      "title": "Cryptography",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Cryptography. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 2100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 3300",
+      "title": "Ethical Hacking",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Ethical Hacking. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 3400",
+      "title": "Digital Forensics",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Digital Forensics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 1400"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 3500",
+      "title": "Security Operations and Incident Response",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Security Operations and Incident Response. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 3600",
+      "title": "Secure Software Development",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Secure Software Development. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 2006"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER",
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZCY 4100",
+      "title": "Cloud Security",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Cloud Security. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER",
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZCY 4200",
+      "title": "Governance, Risk and Compliance",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Governance, Risk and Compliance. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 1300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4300",
+      "title": "Penetration Testing",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Penetration Testing. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4400",
+      "title": "Malware Analysis",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZCY",
+      "description": "Malware Analysis. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3400"
+        ],
+        [
+          "ZCP 2006"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4510",
+      "title": "AI in Cybersecurity",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZCY",
+      "description": "AI in Cybersecurity. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3100"
+        ],
+        [
+          "ZAI 3200",
+          "ZST 2023"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4520",
+      "title": "Wireless Security",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZCY",
+      "description": "Wireless Security. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER",
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZCY 4530",
+      "title": "Industrial Control Systems Security",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZCY",
+      "description": "Industrial Control Systems Security. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4540",
+      "title": "Threat Intelligence",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZCY",
+      "description": "Threat Intelligence. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3500"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4550",
+      "title": "Mobile Device Security",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZCY",
+      "description": "Mobile Device Security. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 1400"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4560",
+      "title": "Cyber Law and Ethics",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZCY",
+      "description": "Cyber Law and Ethics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 4200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4940",
+      "title": "Cybersecurity Internship",
+      "credits": 3,
+      "level": "upper",
+      "category": "internship",
+      "prefix": "ZCY",
+      "description": "Cybersecurity Internship. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 60,
+      "instructor_permission": true,
+      "terms_offered": [
+        "Summer",
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZCY 4950",
+      "title": "Cybersecurity Capstone Project",
+      "credits": 3,
+      "level": "upper",
+      "category": "capstone",
+      "prefix": "ZCY",
+      "description": "Cybersecurity Capstone Project. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCY 3500"
+        ],
+        [
+          "ZCY 4300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 90,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER"
+      ]
+    },
+    {
+      "code": "ZDA 1010",
+      "title": "Introduction to Data Analytics",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Introduction to Data Analytics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 2100",
+      "title": "Spreadsheet Modeling",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Spreadsheet Modeling. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 1105"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 3100",
+      "title": "Data Wrangling with Python",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Data Wrangling with Python. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 1010"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 3150",
+      "title": "Applied Regression",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Applied Regression. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZST 2023"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 3300",
+      "title": "Data Visualization",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Data Visualization. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 3400",
+      "title": "Advanced SQL and Data Warehousing",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Advanced SQL and Data Warehousing. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDB 2300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 3500",
+      "title": "Business Intelligence",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Business Intelligence. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 3600",
+      "title": "Big Data Technologies",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Big Data Technologies. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3400"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4100",
+      "title": "Experimental Design and A/B Testing",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Experimental Design and A/B Testing. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3150"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4200",
+      "title": "Data Ethics and Privacy",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Data Ethics and Privacy. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 1010"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4300",
+      "title": "Predictive Analytics",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZDA",
+      "description": "Predictive Analytics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZAI 3200"
+        ],
+        [
+          "ZDA 3150"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4510",
+      "title": "Sports Analytics",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZDA",
+      "description": "Sports Analytics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3150"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4520",
+      "title": "Marketing Analytics",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZDA",
+      "description": "Marketing Analytics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4530",
+      "title": "Financial Data Analysis",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZDA",
+      "description": "Financial Data Analysis. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3150"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4540",
+      "title": "Healthcare Analytics",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZDA",
+      "description": "Healthcare Analytics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4550",
+      "title": "Geospatial Analytics",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZDA",
+      "description": "Geospatial Analytics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4560",
+      "title": "Text Analytics",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZDA",
+      "description": "Text Analytics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4940",
+      "title": "Data Analytics Internship",
+      "credits": 3,
+      "level": "upper",
+      "category": "internship",
+      "prefix": "ZDA",
+      "description": "Data Analytics Internship. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 60,
+      "instructor_permission": true,
+      "terms_offered": [
+        "Summer",
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDA 4950",
+      "title": "Data Analytics Capstone Project",
+      "credits": 3,
+      "level": "upper",
+      "category": "capstone",
+      "prefix": "ZDA",
+      "description": "Data Analytics Capstone Project. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZDA 3500"
+        ],
+        [
+          "ZDA 4300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 90,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-DATA"
+      ]
+    },
+    {
+      "code": "ZDB 2300",
+      "title": "Database Fundamentals",
+      "credits": 3,
+      "level": "lower",
+      "category": "common_core",
+      "prefix": "ZDB",
+      "description": "Database Fundamentals. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEC 2013",
+      "title": "Principles of Economics",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZEC",
+      "description": "Principles of Economics. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 1000",
+      "title": "Introduction to Engineering",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Introduction to Engineering. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 1105"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 2100",
+      "title": "Circuit Analysis I",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Circuit Analysis I. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 2311"
+        ],
+        [
+          "ZPH 2048"
+        ]
+      ],
+      "corequisites": [
+        "ZEE 2100L"
+      ],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 2100L",
+      "title": "Circuit Analysis I Lab",
+      "credits": 1,
+      "level": "lower",
+      "category": "lab",
+      "prefix": "ZEE",
+      "description": "Circuit Analysis I Lab. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [
+        "ZEE 2100"
+      ],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 3010",
+      "title": "Engineering Seminar",
+      "credits": 2,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Engineering Seminar. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 3100",
+      "title": "Circuit Analysis II",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Circuit Analysis II. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 2100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 3200",
+      "title": "Digital Logic Design",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Digital Logic Design. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 3300",
+      "title": "Electronics I",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Electronics I. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 3400",
+      "title": "Signals and Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Signals and Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3100"
+        ],
+        [
+          "ZMA 2311"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 3500",
+      "title": "Microcontrollers and Embedded Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Microcontrollers and Embedded Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3200"
+        ],
+        [
+          "ZCP 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 3600",
+      "title": "Computer Architecture",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Computer Architecture. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4100",
+      "title": "Control Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Control Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3400"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4200",
+      "title": "Power Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "Power Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4300",
+      "title": "PCB Design and Fabrication",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZEE",
+      "description": "PCB Design and Fabrication. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4510",
+      "title": "Robotics Engineering",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZEE",
+      "description": "Robotics Engineering. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3500"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4520",
+      "title": "VLSI Design",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZEE",
+      "description": "VLSI Design. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3600"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4530",
+      "title": "Renewable Energy Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZEE",
+      "description": "Renewable Energy Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 4200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4540",
+      "title": "Communication Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZEE",
+      "description": "Communication Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3400"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4550",
+      "title": "Electronics II",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZEE",
+      "description": "Electronics II. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4560",
+      "title": "Sensors and Instrumentation",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZEE",
+      "description": "Sensors and Instrumentation. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4570",
+      "title": "Vacuum Tube Electronics",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZEE",
+      "description": "Vacuum Tube Electronics. Inactive course kept for testing; no sections are scheduled.",
+      "prerequisites": [
+        [
+          "ZEE 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "inactive",
+      "synthetic": true,
+      "used_by_programs": []
+    },
+    {
+      "code": "ZEE 4940",
+      "title": "Electrical & Computer Engineering Internship",
+      "credits": 3,
+      "level": "upper",
+      "category": "internship",
+      "prefix": "ZEE",
+      "description": "Electrical & Computer Engineering Internship. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 60,
+      "instructor_permission": true,
+      "terms_offered": [
+        "Summer",
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEE 4950",
+      "title": "Electrical & Computer Engineering Capstone Project",
+      "credits": 3,
+      "level": "upper",
+      "category": "capstone",
+      "prefix": "ZEE",
+      "description": "Electrical & Computer Engineering Capstone Project. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEE 3500"
+        ],
+        [
+          "ZEE 4300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 90,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEN 1101",
+      "title": "Composition I",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZEN",
+      "description": "Composition I. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZEN 1102",
+      "title": "Composition II",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZEN",
+      "description": "Composition II. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZEN 1101"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZHU 1020",
+      "title": "Humanities and Culture",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZHU",
+      "description": "Humanities and Culture. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZMA 1105",
+      "title": "College Algebra",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZMA",
+      "description": "College Algebra. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZMA 1140",
+      "title": "Precalculus",
+      "credits": 3,
+      "level": "lower",
+      "category": "support",
+      "prefix": "ZMA",
+      "description": "Precalculus. Optional preparation course; not required by any program.",
+      "prerequisites": [
+        [
+          "ZMA 1105"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": []
+    },
+    {
+      "code": "ZMA 2100",
+      "title": "Discrete Mathematics",
+      "credits": 3,
+      "level": "lower",
+      "category": "common_core",
+      "prefix": "ZMA",
+      "description": "Discrete Mathematics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 1105"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZMA 2311",
+      "title": "Calculus I",
+      "credits": 3,
+      "level": "lower",
+      "category": "common_core",
+      "prefix": "ZMA",
+      "description": "Calculus I. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 1105",
+          "ZMA 1140"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZNT 1110",
+      "title": "Networking Fundamentals",
+      "credits": 3,
+      "level": "lower",
+      "category": "common_core",
+      "prefix": "ZNT",
+      "description": "Networking Fundamentals. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCS 1100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZNT 1200",
+      "title": "Network Cabling and Infrastructure",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Network Cabling and Infrastructure. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 2100",
+      "title": "Routing and Switching I",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Routing and Switching I. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 1110"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 3100",
+      "title": "Routing and Switching II",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Routing and Switching II. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 2100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 3200",
+      "title": "Network Operating Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Network Operating Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCS 1100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 3300",
+      "title": "Wireless Networking",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Wireless Networking. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 2100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 3400",
+      "title": "Cloud Infrastructure",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Cloud Infrastructure. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 2100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 3500",
+      "title": "Network Automation",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Network Automation. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 2100"
+        ],
+        [
+          "ZCP 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-CYBER",
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 3600",
+      "title": "Virtualization and Data Centers",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Virtualization and Data Centers. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4100",
+      "title": "Enterprise Network Design",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Enterprise Network Design. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4200",
+      "title": "Network Security Operations",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Network Security Operations. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3100"
+        ],
+        [
+          "ZCY 1300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4300",
+      "title": "Voice and Unified Communications",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Voice and Unified Communications. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4400",
+      "title": "Network Troubleshooting",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZNT",
+      "description": "Network Troubleshooting. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4510",
+      "title": "Software-Defined Networking",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZNT",
+      "description": "Software-Defined Networking. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4520",
+      "title": "IPv6 Deployment",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZNT",
+      "description": "IPv6 Deployment. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4530",
+      "title": "Network Monitoring and Analytics",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZNT",
+      "description": "Network Monitoring and Analytics. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4540",
+      "title": "Internet of Things Networks",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZNT",
+      "description": "Internet of Things Networks. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4550",
+      "title": "Satellite and Undersea Communications",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZNT",
+      "description": "Satellite and Undersea Communications. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4560",
+      "title": "Service Provider Networks",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZNT",
+      "description": "Service Provider Networks. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 4100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4940",
+      "title": "Networking Internship",
+      "credits": 3,
+      "level": "upper",
+      "category": "internship",
+      "prefix": "ZNT",
+      "description": "Networking Internship. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 60,
+      "instructor_permission": true,
+      "terms_offered": [
+        "Summer",
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZNT 4950",
+      "title": "Networking Capstone Project",
+      "credits": 3,
+      "level": "upper",
+      "category": "capstone",
+      "prefix": "ZNT",
+      "description": "Networking Capstone Project. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZNT 4100"
+        ],
+        [
+          "ZNT 4400"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 90,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-NET"
+      ]
+    },
+    {
+      "code": "ZPH 2048",
+      "title": "General Physics I",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZPH",
+      "description": "General Physics I. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 1105"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZPS 2012",
+      "title": "General Psychology",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZPS",
+      "description": "General Psychology. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZSC 1005",
+      "title": "Environmental Science",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZSC",
+      "description": "Environmental Science. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZSE 1500",
+      "title": "Web Development Fundamentals",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Web Development Fundamentals. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 1000"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 2400",
+      "title": "Data Structures",
+      "credits": 3,
+      "level": "lower",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Data Structures. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 2006"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 3100",
+      "title": "Algorithms",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Algorithms. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 2400"
+        ],
+        [
+          "ZMA 2100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 3200",
+      "title": "Software Engineering Principles",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Software Engineering Principles. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 2006"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 3300",
+      "title": "Full-Stack Web Development",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Full-Stack Web Development. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 1500"
+        ],
+        [
+          "ZDB 2300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 3400",
+      "title": "Mobile App Development",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Mobile App Development. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZCP 2006"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 3500",
+      "title": "Software Testing and Quality",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Software Testing and Quality. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 3600",
+      "title": "Operating Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Operating Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 2400"
+        ],
+        [
+          "ZCS 1100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4100",
+      "title": "Software Architecture",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Software Architecture. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4200",
+      "title": "DevOps and CI/CD",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "DevOps and CI/CD. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4300",
+      "title": "Human-Computer Interaction",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Human-Computer Interaction. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 1500"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4400",
+      "title": "Cloud-Native Applications",
+      "credits": 3,
+      "level": "upper",
+      "category": "program_core",
+      "prefix": "ZSE",
+      "description": "Cloud-Native Applications. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 3300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4510",
+      "title": "Game Development",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZSE",
+      "description": "Game Development. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 2400"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4520",
+      "title": "Compilers",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZSE",
+      "description": "Compilers. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 3100"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4530",
+      "title": "Distributed Systems",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZSE",
+      "description": "Distributed Systems. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 3600"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4540",
+      "title": "Open Source Development",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZSE",
+      "description": "Open Source Development. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 3200"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4550",
+      "title": "Embedded Software",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZSE",
+      "description": "Embedded Software. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 3600"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZSE 4560",
+      "title": "UX Prototyping",
+      "credits": 3,
+      "level": "upper",
+      "category": "elective",
+      "prefix": "ZSE",
+      "description": "UX Prototyping. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 4300"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4940",
+      "title": "Software Engineering Internship",
+      "credits": 3,
+      "level": "upper",
+      "category": "internship",
+      "prefix": "ZSE",
+      "description": "Software Engineering Internship. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 60,
+      "instructor_permission": true,
+      "terms_offered": [
+        "Summer",
+        "Fall"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSE 4950",
+      "title": "Software Engineering Capstone Project",
+      "credits": 3,
+      "level": "upper",
+      "category": "capstone",
+      "prefix": "ZSE",
+      "description": "Software Engineering Capstone Project. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZSE 4100"
+        ],
+        [
+          "ZSE 3500"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": 90,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-SWE"
+      ]
+    },
+    {
+      "code": "ZSP 2600",
+      "title": "Public Speaking",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZSP",
+      "description": "Public Speaking. Synthetic placeholder description.",
+      "prerequisites": [],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    },
+    {
+      "code": "ZST 2023",
+      "title": "Statistical Methods",
+      "credits": 3,
+      "level": "lower",
+      "category": "gen_ed",
+      "prefix": "ZST",
+      "description": "Statistical Methods. Synthetic placeholder description.",
+      "prerequisites": [
+        [
+          "ZMA 1105"
+        ]
+      ],
+      "corequisites": [],
+      "min_grade": "C",
+      "min_credits_completed": null,
+      "instructor_permission": false,
+      "terms_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "cross_listed_as": [],
+      "status": "active",
+      "synthetic": true,
+      "used_by_programs": [
+        "SYN-AI",
+        "SYN-DATA",
+        "SYN-CYBER",
+        "SYN-SWE",
+        "SYN-NET",
+        "SYN-ECE"
+      ]
+    }
+  ]
+}

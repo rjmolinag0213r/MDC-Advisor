@@ -1,7 +1,12 @@
-Flask==3.0.0
-flask-cors==4.0.0
-python-dotenv==1.0.0
-requests==2.31.0
-PyPDF2==3.0.1
-openai==1.54.3
-huggingface-hub==0.20.3
+Flask>=3.0,<4
+flask-cors>=4.0
+python-dotenv>=1.0
+requests>=2.31
+openai>=1.54
+pypdf>=4.0
+waitress>=3.0
+psycopg[binary]>=3.2      # TigerData / Postgres (only used when DATABASE_URL is set)
+PyJWT[crypto]>=2.9        # Auth0 token verification
+# dev / tests
+pytest>=8.0
+pillow>=10.0              # only for data/samples/make_sample_transcript.py

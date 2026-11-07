@@ -1,0 +1,634 @@
+{
+  "note": "SYNTHETIC DATA for development and testing. Not Miami Dade College's catalog.",
+  "seed": 2026,
+  "generated_by": "data/synthetic/generate_catalog.py",
+  "programs": [
+    {
+      "id": "SYN-AI",
+      "app_program_code": "AI",
+      "name": "Applied Artificial Intelligence",
+      "degree": "Bachelor of Science (synthetic)",
+      "total_credits": 120,
+      "min_gpa": 2.0,
+      "min_grade_in_major": "C",
+      "requirement_groups": [
+        {
+          "group": "General Education",
+          "rule": "all",
+          "courses": [
+            "ZEN 1101",
+            "ZEN 1102",
+            "ZMA 1105",
+            "ZST 2023",
+            "ZAH 2020",
+            "ZHU 1020",
+            "ZSC 1005",
+            "ZSP 2600",
+            "ZPS 2012",
+            "ZEC 2013",
+            "ZPH 2048",
+            "ZAR 1000"
+          ],
+          "credits": 36
+        },
+        {
+          "group": "Common Technology Core",
+          "rule": "all",
+          "courses": [
+            "ZCP 1000",
+            "ZCP 2006",
+            "ZCS 1100",
+            "ZNT 1110",
+            "ZDB 2300",
+            "ZMA 2100",
+            "ZMA 2311",
+            "ZCY 1300"
+          ],
+          "credits": 24
+        },
+        {
+          "group": "Program Foundations",
+          "rule": "all",
+          "courses": [
+            "ZAI 1010",
+            "ZAI 2050"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Program Core",
+          "rule": "all",
+          "courses": [
+            "ZAI 3100",
+            "ZAI 3150",
+            "ZAI 3200",
+            "ZAI 3300",
+            "ZAI 3400",
+            "ZAI 3500",
+            "ZAI 4100",
+            "ZAI 4200",
+            "ZAI 4300",
+            "ZAI 4400"
+          ],
+          "credits": 30
+        },
+        {
+          "group": "Capstone and Internship",
+          "rule": "all",
+          "courses": [
+            "ZAI 4950",
+            "ZAI 4940"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Electives",
+          "rule": "choose_credits",
+          "credits": 18,
+          "courses": [
+            "ZAI 4510",
+            "ZAI 4520",
+            "ZAI 4530",
+            "ZAI 4540",
+            "ZAI 4550",
+            "ZAI 4560",
+            "ZDA 3600",
+            "ZCY 4510"
+          ],
+          "electives_with_outside_prerequisites": {
+            "ZDA 3600": [
+              [
+                "ZDA 3400"
+              ]
+            ],
+            "ZCY 4510": [
+              [
+                "ZCY 3100"
+              ]
+            ]
+          }
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SYN-DATA",
+      "app_program_code": "DATA",
+      "name": "Data Analytics",
+      "degree": "Bachelor of Science (synthetic)",
+      "total_credits": 120,
+      "min_gpa": 2.0,
+      "min_grade_in_major": "C",
+      "requirement_groups": [
+        {
+          "group": "General Education",
+          "rule": "all",
+          "courses": [
+            "ZEN 1101",
+            "ZEN 1102",
+            "ZMA 1105",
+            "ZST 2023",
+            "ZAH 2020",
+            "ZHU 1020",
+            "ZSC 1005",
+            "ZSP 2600",
+            "ZPS 2012",
+            "ZEC 2013",
+            "ZPH 2048",
+            "ZAR 1000"
+          ],
+          "credits": 36
+        },
+        {
+          "group": "Common Technology Core",
+          "rule": "all",
+          "courses": [
+            "ZCP 1000",
+            "ZCP 2006",
+            "ZCS 1100",
+            "ZNT 1110",
+            "ZDB 2300",
+            "ZMA 2100",
+            "ZMA 2311",
+            "ZCY 1300"
+          ],
+          "credits": 24
+        },
+        {
+          "group": "Program Foundations",
+          "rule": "all",
+          "courses": [
+            "ZDA 1010",
+            "ZDA 2100"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Program Core",
+          "rule": "all",
+          "courses": [
+            "ZDA 3100",
+            "ZDA 3150",
+            "ZAI 3200",
+            "ZDA 3300",
+            "ZDA 3400",
+            "ZDA 3500",
+            "ZDA 3600",
+            "ZDA 4100",
+            "ZDA 4200",
+            "ZDA 4300"
+          ],
+          "credits": 30
+        },
+        {
+          "group": "Capstone and Internship",
+          "rule": "all",
+          "courses": [
+            "ZDA 4950",
+            "ZDA 4940"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Electives",
+          "rule": "choose_credits",
+          "credits": 18,
+          "courses": [
+            "ZDA 4510",
+            "ZDA 4520",
+            "ZDA 4530",
+            "ZDA 4540",
+            "ZDA 4550",
+            "ZDA 4560",
+            "ZAI 4550",
+            "ZAI 4530"
+          ],
+          "electives_with_outside_prerequisites": {}
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SYN-CYBER",
+      "app_program_code": "CYBER",
+      "name": "Cybersecurity",
+      "degree": "Bachelor of Science (synthetic)",
+      "total_credits": 120,
+      "min_gpa": 2.0,
+      "min_grade_in_major": "C",
+      "requirement_groups": [
+        {
+          "group": "General Education",
+          "rule": "all",
+          "courses": [
+            "ZEN 1101",
+            "ZEN 1102",
+            "ZMA 1105",
+            "ZST 2023",
+            "ZAH 2020",
+            "ZHU 1020",
+            "ZSC 1005",
+            "ZSP 2600",
+            "ZPS 2012",
+            "ZEC 2013",
+            "ZPH 2048",
+            "ZAR 1000"
+          ],
+          "credits": 36
+        },
+        {
+          "group": "Common Technology Core",
+          "rule": "all",
+          "courses": [
+            "ZCP 1000",
+            "ZCP 2006",
+            "ZCS 1100",
+            "ZNT 1110",
+            "ZDB 2300",
+            "ZMA 2100",
+            "ZMA 2311",
+            "ZCY 1300"
+          ],
+          "credits": 24
+        },
+        {
+          "group": "Program Foundations",
+          "rule": "all",
+          "courses": [
+            "ZCY 1400",
+            "ZCY 2200"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Program Core",
+          "rule": "all",
+          "courses": [
+            "ZCY 3100",
+            "ZCY 3200",
+            "ZCY 3300",
+            "ZCY 3400",
+            "ZCY 3500",
+            "ZCY 3600",
+            "ZCY 4100",
+            "ZCY 4200",
+            "ZCY 4300",
+            "ZCY 4400"
+          ],
+          "credits": 30
+        },
+        {
+          "group": "Capstone and Internship",
+          "rule": "all",
+          "courses": [
+            "ZCY 4950",
+            "ZCY 4940"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Electives",
+          "rule": "choose_credits",
+          "credits": 18,
+          "courses": [
+            "ZCY 4510",
+            "ZCY 4520",
+            "ZCY 4530",
+            "ZCY 4540",
+            "ZCY 4550",
+            "ZCY 4560",
+            "ZNT 3500",
+            "ZAI 4200"
+          ],
+          "electives_with_outside_prerequisites": {
+            "ZNT 3500": [
+              [
+                "ZNT 2100"
+              ]
+            ],
+            "ZAI 4200": [
+              [
+                "ZAI 1010"
+              ]
+            ]
+          }
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SYN-SWE",
+      "app_program_code": "SWE",
+      "name": "Software Engineering",
+      "degree": "Bachelor of Science (synthetic)",
+      "total_credits": 120,
+      "min_gpa": 2.0,
+      "min_grade_in_major": "C",
+      "requirement_groups": [
+        {
+          "group": "General Education",
+          "rule": "all",
+          "courses": [
+            "ZEN 1101",
+            "ZEN 1102",
+            "ZMA 1105",
+            "ZST 2023",
+            "ZAH 2020",
+            "ZHU 1020",
+            "ZSC 1005",
+            "ZSP 2600",
+            "ZPS 2012",
+            "ZEC 2013",
+            "ZPH 2048",
+            "ZAR 1000"
+          ],
+          "credits": 36
+        },
+        {
+          "group": "Common Technology Core",
+          "rule": "all",
+          "courses": [
+            "ZCP 1000",
+            "ZCP 2006",
+            "ZCS 1100",
+            "ZNT 1110",
+            "ZDB 2300",
+            "ZMA 2100",
+            "ZMA 2311",
+            "ZCY 1300"
+          ],
+          "credits": 24
+        },
+        {
+          "group": "Program Foundations",
+          "rule": "all",
+          "courses": [
+            "ZSE 1500",
+            "ZSE 2400"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Program Core",
+          "rule": "all",
+          "courses": [
+            "ZSE 3100",
+            "ZSE 3200",
+            "ZSE 3300",
+            "ZSE 3400",
+            "ZSE 3500",
+            "ZSE 3600",
+            "ZSE 4100",
+            "ZSE 4200",
+            "ZSE 4300",
+            "ZSE 4400"
+          ],
+          "credits": 30
+        },
+        {
+          "group": "Capstone and Internship",
+          "rule": "all",
+          "courses": [
+            "ZSE 4950",
+            "ZSE 4940"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Electives",
+          "rule": "choose_credits",
+          "credits": 18,
+          "courses": [
+            "ZSE 4510",
+            "ZSE 4520",
+            "ZSE 4530",
+            "ZSE 4540",
+            "ZSE 4550",
+            "ZSE 4560",
+            "ZAI 2050",
+            "ZCY 3600"
+          ],
+          "electives_with_outside_prerequisites": {}
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SYN-NET",
+      "app_program_code": "NET",
+      "name": "Networking",
+      "degree": "Bachelor of Science (synthetic)",
+      "total_credits": 120,
+      "min_gpa": 2.0,
+      "min_grade_in_major": "C",
+      "requirement_groups": [
+        {
+          "group": "General Education",
+          "rule": "all",
+          "courses": [
+            "ZEN 1101",
+            "ZEN 1102",
+            "ZMA 1105",
+            "ZST 2023",
+            "ZAH 2020",
+            "ZHU 1020",
+            "ZSC 1005",
+            "ZSP 2600",
+            "ZPS 2012",
+            "ZEC 2013",
+            "ZPH 2048",
+            "ZAR 1000"
+          ],
+          "credits": 36
+        },
+        {
+          "group": "Common Technology Core",
+          "rule": "all",
+          "courses": [
+            "ZCP 1000",
+            "ZCP 2006",
+            "ZCS 1100",
+            "ZNT 1110",
+            "ZDB 2300",
+            "ZMA 2100",
+            "ZMA 2311",
+            "ZCY 1300"
+          ],
+          "credits": 24
+        },
+        {
+          "group": "Program Foundations",
+          "rule": "all",
+          "courses": [
+            "ZNT 1200",
+            "ZNT 2100"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Program Core",
+          "rule": "all",
+          "courses": [
+            "ZNT 3100",
+            "ZNT 3200",
+            "ZNT 3300",
+            "ZNT 3400",
+            "ZNT 3500",
+            "ZNT 3600",
+            "ZNT 4100",
+            "ZNT 4200",
+            "ZNT 4300",
+            "ZNT 4400"
+          ],
+          "credits": 30
+        },
+        {
+          "group": "Capstone and Internship",
+          "rule": "all",
+          "courses": [
+            "ZNT 4950",
+            "ZNT 4940"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Electives",
+          "rule": "choose_credits",
+          "credits": 18,
+          "courses": [
+            "ZNT 4510",
+            "ZNT 4520",
+            "ZNT 4530",
+            "ZNT 4540",
+            "ZNT 4550",
+            "ZNT 4560",
+            "ZCY 4100",
+            "ZCY 4520"
+          ],
+          "electives_with_outside_prerequisites": {
+            "ZCY 4100": [
+              [
+                "ZCY 3100"
+              ]
+            ],
+            "ZCY 4520": [
+              [
+                "ZCY 3100"
+              ]
+            ]
+          }
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SYN-ECE",
+      "app_program_code": "ECE",
+      "name": "Electrical & Computer Engineering",
+      "degree": "Bachelor of Science (synthetic)",
+      "total_credits": 120,
+      "min_gpa": 2.0,
+      "min_grade_in_major": "C",
+      "requirement_groups": [
+        {
+          "group": "General Education",
+          "rule": "all",
+          "courses": [
+            "ZEN 1101",
+            "ZEN 1102",
+            "ZMA 1105",
+            "ZST 2023",
+            "ZAH 2020",
+            "ZHU 1020",
+            "ZSC 1005",
+            "ZSP 2600",
+            "ZPS 2012",
+            "ZEC 2013",
+            "ZPH 2048",
+            "ZAR 1000"
+          ],
+          "credits": 36
+        },
+        {
+          "group": "Common Technology Core",
+          "rule": "all",
+          "courses": [
+            "ZCP 1000",
+            "ZCP 2006",
+            "ZCS 1100",
+            "ZNT 1110",
+            "ZDB 2300",
+            "ZMA 2100",
+            "ZMA 2311",
+            "ZCY 1300"
+          ],
+          "credits": 24
+        },
+        {
+          "group": "Program Foundations",
+          "rule": "all",
+          "courses": [
+            "ZEE 1000",
+            "ZEE 2100",
+            "ZEE 2100L"
+          ],
+          "credits": 7
+        },
+        {
+          "group": "Program Core",
+          "rule": "all",
+          "courses": [
+            "ZEE 3010",
+            "ZEE 3100",
+            "ZEE 3200",
+            "ZEE 3300",
+            "ZEE 3400",
+            "ZEE 3500",
+            "ZEE 3600",
+            "ZEE 4100",
+            "ZEE 4200",
+            "ZEE 4300"
+          ],
+          "credits": 29
+        },
+        {
+          "group": "Capstone and Internship",
+          "rule": "all",
+          "courses": [
+            "ZEE 4950",
+            "ZEE 4940"
+          ],
+          "credits": 6
+        },
+        {
+          "group": "Electives",
+          "rule": "choose_credits",
+          "credits": 18,
+          "courses": [
+            "ZEE 4510",
+            "ZEE 4520",
+            "ZEE 4530",
+            "ZEE 4540",
+            "ZEE 4550",
+            "ZEE 4560",
+            "ZAI 4520",
+            "ZSE 4550"
+          ],
+          "electives_with_outside_prerequisites": {
+            "ZAI 4520": [
+              [
+                "ZAI 3500"
+              ]
+            ],
+            "ZSE 4550": [
+              [
+                "ZSE 3600"
+              ]
+            ]
+          }
+        }
+      ],
+      "synthetic": true
+    }
+  ]
+}

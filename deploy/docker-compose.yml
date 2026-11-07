@@ -1,0 +1,26 @@
+# Production on a Vultr server: the app plus Caddy (automatic HTTPS for your GoDaddy domain).
+# On the server:  cd MDC-Advisor/deploy && DOMAIN=yourdomain.xyz docker compose up -d --build
+services:
+  app:
+    build: ..
+    env_file: ../backend/.env
+    environment:
+      HOST: 0.0.0.0
+      PORT: "5000"
+      AUTH_DEMO_MODE: "off"          # require real Auth0 logins in production
+    restart: unless-stopped
+    volumes:
+      - appdata:/app/backend/data    # SQLite fallback + nothing else; TigerData holds real data
+  caddy:
+    image: caddy:2-alpine
+    ports: ["80:80", "443:443"]
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN=yourdomain.xyz}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on: [app]
+    restart: unless-stopped
+volumes:
+  appdata:
+  caddy_data:

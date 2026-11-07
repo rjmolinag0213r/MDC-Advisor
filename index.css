@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #061528;
+  --color-navy-900: #0b2545;
+  --color-navy-800: #13315c;
+  --color-navy-700: #1d4170;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html, body, #root { height: 100%; }
+body { @apply bg-slate-50 text-slate-900 antialiased; }
+
+:focus-visible { outline: 2px solid var(--color-amber-500); outline-offset: 2px; }
+
+.scroll-thin { scrollbar-width: thin; scrollbar-color: var(--color-slate-300) transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
