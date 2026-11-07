@@ -1,8 +1,9 @@
-{$DOMAIN}, www.{$DOMAIN} {
+# DOMAIN=":80"                                      -> plain HTTP on the server IP (before you have a domain)
+# DOMAIN="nextstopmdc.xyz, www.nextstopmdc.xyz"     -> automatic HTTPS for your GoDaddy domain
+{$DOMAIN} {
 	encode gzip
 	reverse_proxy app:5000
 	header {
-		Strict-Transport-Security "max-age=31536000"
 		X-Content-Type-Options nosniff
 		Referrer-Policy strict-origin-when-cross-origin
 	}

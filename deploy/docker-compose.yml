@@ -7,7 +7,7 @@ services:
     environment:
       HOST: 0.0.0.0
       PORT: "5000"
-      AUTH_DEMO_MODE: "off"          # require real Auth0 logins in production
+      AUTH_DEMO_MODE: ${AUTH_DEMO_MODE:-on}   # set off once Auth0 is configured
     restart: unless-stopped
     volumes:
       - appdata:/app/backend/data    # SQLite fallback + nothing else; TigerData holds real data
@@ -15,7 +15,7 @@ services:
     image: caddy:2-alpine
     ports: ["80:80", "443:443"]
     environment:
-      DOMAIN: ${DOMAIN:?set DOMAIN=yourdomain.xyz}
+      DOMAIN: ${DOMAIN:-:80}            # ":80" = HTTP on the IP; "nextstopmdc.xyz, www.nextstopmdc.xyz" = HTTPS
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
