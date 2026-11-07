@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MDC Student Hub</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Jost:wght@300;400;500&display=swap">
+<style>
+  /* Layout: one fixed pixel-art sunset sky behind everything. Intro (logo photo, quote screen,
+     "Find the future you want" card) scrolls into the Student Hub: a sticky iOS-style segmented
+     control over three tabs. Two glass tiers: glossy "chrome" for controls, calmer tinted "cards"
+     for content, so text keeps 4.5:1 contrast on every part of the sky.
+     Single dark look by choice: the glass needs the sunset behind it. */
+  :root {
+    color-scheme: dark;
+    --dusk: #241040;          /* page ground, shows before the sky loads */
+    --fg: #ffffff;
+    --muted: #e0d7f3;
+    --mint: #5ef0cf;          /* on track / counts */
+    --coral: #ff9a76;         /* action, this term */
+    --amber: #ffd27a;         /* elective only */
+    --rose: #ff7d9f;          /* lost / not accepted */
+    --focus: #ffe45c;
+
+    /* Glass. Chrome = controls (glossier), card = content (more tint, easier to read) */
+    --chrome-hi: rgba(255, 255, 255, .26);
+    --chrome-lo: rgba(255, 255, 255, .08);
+    --card-hi: rgba(255, 255, 255, .15);
+    --card-lo: rgba(255, 255, 255, .04);
+    --card-tint: rgba(28, 10, 54, .40);
+    --blur: 28px;
+    /* Squarish corners: cards, then controls, then small inner pieces */
+    --r-card: 12px;
+    --r-ctl: 10px;
+    --r-sm: 7px;
+    /* Depth: a thin solid underside reads as thickness, then a near and a far shadow lift it off the sky */
+    --lift: 0 3px 0 rgba(14, 3, 34, .38), 0 6px 12px -2px rgba(12, 2, 30, .35), 0 28px 54px -18px rgba(12, 2, 30, .7);
+    --rim: inset 0 1px 0 rgba(255, 255, 255, .55), inset 0 -2px 0 rgba(10, 2, 26, .22),
+           inset 1px 0 0 rgba(255, 255, 255, .08), inset -1px 0 0 rgba(255, 255, 255, .08);
+    --spring: cubic-bezier(.32, 1.25, .45, 1);
+
+    --f-ui: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI Variable Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --f-quote: Georgia, "Times New Roman", serif;
+    --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+
+    /* Section palette, sampled from the sunset sky image (darkest to brightest) */
+    --midnight: 32, 11, 74;   /* #200b4a */
+    --indigo: 42, 16, 90;     /* #2a105a */
+    --plum: 86, 13, 90;       /* #560d5a */
+    --berry: 137, 40, 88;     /* #892858 */
+    --crimson: 157, 30, 67;   /* #9d1e43 */
+    --ember: 179, 73, 61;     /* #b3493d */
+    --sand: 224, 145, 92;     /* #e0915c, a brighter take on the clouds' sandy tips */
+    --electric: 66, 28, 168;  /* #421ca8, vivid indigo for the quote */
+    --violet: 128, 26, 150;   /* #801a96, vivid violet for the quote */
+    --glow-pink: 255, 92, 170;
+    --glow-blue: 92, 104, 255;
+    --band-alpha: .8;         /* lower = more of the pixel sky shows through */
+
+    /* Intro motion */
+    --rise-ms: 1100ms;
+    --rise-from: 40px;
+    --reveal-ms: 380ms;       /* fly-in length: quick, but still visible */
+    --reveal-from: 56px;      /* how far below its spot each piece starts */
+    --stagger: 45ms;          /* delay between siblings flying in */
+    --fly: cubic-bezier(.16, 1, .3, 1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { background: var(--dusk); color: var(--fg); }
+  body { font-family: var(--f-ui); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0; }
+
+  /* ---------- color bands: each section gets its own slice of the sunset ---------- */
+  .band { position: relative; }
+  .band--quote {
+    background:
+      radial-gradient(45% 50% at 50% 52%, rgba(var(--sand), .38), transparent 70%),
+      radial-gradient(40% 45% at 14% 30%, rgba(var(--glow-blue), .38), transparent 70%),
+      radial-gradient(42% 48% at 86% 72%, rgba(var(--glow-pink), .34), transparent 70%),
+      linear-gradient(180deg, transparent, rgba(var(--electric), .84) 28%, rgba(var(--violet), .84)); }
+  .band--future {
+    background:
+      radial-gradient(50% 60% at 15% 40%, rgba(var(--berry), .55), transparent 70%),
+      linear-gradient(180deg, rgba(var(--violet), .84), rgba(var(--berry), var(--band-alpha))); }
+  .band--hub {
+    margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))) calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0 4rem;
+    background:
+      radial-gradient(45% 30% at 85% 12%, rgba(var(--sand), .18), transparent 70%),
+      linear-gradient(180deg, rgba(var(--berry), var(--band-alpha)), rgba(var(--crimson), var(--band-alpha)) 45%,
+                      rgba(var(--ember), var(--band-alpha))); }
+
+  /* ---------- the sky behind every section ---------- */
+  .sky { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(180deg, rgba(16, 6, 38, .18), rgba(16, 6, 38, .42)),
+                url("images/sky-clouds.jpg") center / cover no-repeat var(--dusk);
+    image-rendering: pixelated; }
+
+  /* ---------- glass ---------- */
+  /* Blur only, no color boost. A saturate() boost made the glass lighter, but browsers drop the
+     whole backdrop effect while a card or its parent fades in, so cards flashed dark and then
+     lightened. Without the boost they keep the same deeper tone the whole time. */
+  .glass, .chrome { position: relative; isolation: isolate;
+    -webkit-backdrop-filter: blur(var(--blur));
+    backdrop-filter: blur(var(--blur));
+    box-shadow: var(--lift), var(--rim); }
+  .glass { border-radius: var(--r-card);
+    background: linear-gradient(160deg, var(--card-hi), var(--card-lo) 55%), var(--card-tint); }
+  .chrome { border-radius: var(--r-ctl);
+    background: linear-gradient(180deg, var(--chrome-hi), var(--chrome-lo)); }
+  /* light catching the edge: brighter top-left and bottom-right rim */
+  .glass::before, .chrome::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+    padding: 1px; pointer-events: none;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, .1) 30%,
+                rgba(255, 255, 255, .04) 70%, rgba(255, 255, 255, .4));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; }
+  /* soft specular sheen near the top */
+  .glass::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(120% 60% at 20% 0%, rgba(255, 255, 255, .14), transparent 60%); }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass, .chrome { background: rgba(36, 14, 68, .94); }
+  }
+  @media (prefers-reduced-transparency: reduce) {
+    .glass, .chrome { background: rgba(36, 14, 68, .96); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  }
+
+  :is(button, a, input, select, label):focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .wrap { width: min(72rem, 100%); margin: 0 auto; }
+
+  /* ---------- buttons ---------- */
+  .btn { font: inherit; font-weight: 600; color: var(--fg); text-decoration: none; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 48px; padding: .8rem 1.4rem; border: 0;
+    transition: transform .35s var(--spring), filter .2s; }
+  .btn:hover { transform: translateY(-1px) scale(1.02); filter: brightness(1.08); }
+  .btn:active { transform: scale(.97); }
+  .btn--go { background: linear-gradient(180deg, rgba(255, 170, 140, .62), rgba(255, 110, 80, .42)); }
+
+  /* ================= INTRO ================= */
+  .skip { position: fixed; z-index: 20; font-size: .9rem; min-height: 40px; padding: .5rem 1rem;
+    top: calc(.75rem + env(safe-area-inset-top, 0px)); right: max(.75rem, env(safe-area-inset-right, 0px));
+    opacity: 0; animation: fadeUp 600ms ease-out 500ms forwards; }
+  .skip.gone { opacity: 0 !important; pointer-events: none; transition: opacity .3s; }
+
+  .intro { text-align: center; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); }
+  .intro__banner { position: relative; width: 100%;
+    height: clamp(46svh, 53.9vw, 78svh);           /* 53.9vw = the photo's natural shape */
+    -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 80%, transparent 100%); }
+  .intro__banner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  @keyframes riseIn { to { opacity: 1; transform: none; } }
+  @keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+  /* ---------- sections ("scenes") ----------
+     Hand-off between sections, in three beats:
+       1. the current section's content fades out completely (with a slight drift up) as it rises
+          from the middle of the screen toward the top;
+       2. you scroll through a stretch of plain background with nothing on it;
+       3. the next section's content stays hidden until it nearly reaches the middle of the screen,
+          then flies in fast (see LATE in the script).
+     Each section's content sits in a .stage that does beat 1. */
+  .scene { position: relative; }
+  .stage { width: 100%; display: grid; justify-items: center; transform-origin: 50% 0;
+    opacity: calc(1 - var(--out, 0)); }      /* fallback: the script sets --out where CSS can't */
+  /* Modern browsers tie beat 1 straight to the scroll position, so it tracks the page exactly and
+     holds still when you stop. "contain 50% to 80%": fades while the content's top rises from about
+     the middle of the screen to near the top. The logo starts at the very top, so it fades as it leaves. */
+  @supports (animation-timeline: view()) {
+    .stage { opacity: 1; animation: handoff linear both; animation-timeline: view(); animation-range: contain 50% contain 80%; }
+    .scene--logo .stage { animation-range: exit 0% exit 55%; }
+    @keyframes handoff { to { transform: translateY(-50px) scale(.96); opacity: 0; } }
+  }
+
+  .intro__quote { margin: 0; min-height: 85svh; display: grid; place-items: center; padding: 3rem 1.5rem; }
+  .intro__quote blockquote { margin: 0; max-width: 22ch; text-wrap: balance;
+    font-family: var(--f-quote); font-style: italic; font-size: clamp(1.8rem, 5.4vw, 3.75rem); line-height: 1.15;
+    text-shadow: 0 2px 24px rgba(12, 2, 30, .55), 0 0 40px rgba(var(--glow-pink), .35); }
+  .intro__quote p { margin: 0; }
+
+  .band--future { min-height: 85svh; display: grid; place-items: center; padding-block: 3rem; }
+  .future { width: min(44rem, calc(100% - 32px)); margin: 0 auto; padding: 2.2rem 1.6rem; }
+  .future h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; font-weight: 700; letter-spacing: -.025em;
+    margin: 0 0 .75rem; text-wrap: balance; }
+  .future p { font-size: clamp(1.02rem, 2.4vw, 1.2rem); color: var(--muted); margin: 0 auto 1.6rem; max-width: 34ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+
+  /* scroll reveal: hidden only while the script runs, so no-JS shows everything */
+  /* fly in, every time: scrolling down, pieces fly up from below; scrolling back up, they fly
+     down from above (.from-above). Fast start, soft landing; siblings stagger via --i.
+     Keep the .is-in rules after the .from-above rules so they win. */
+  .js .reveal { opacity: 0; transform: translateY(var(--reveal-from)) scale(.96);
+    transition: opacity calc(var(--reveal-ms) * .7) ease-out, transform var(--reveal-ms) var(--fly);
+    transition-delay: calc(var(--i, 0) * var(--stagger)); }
+  .js .reveal.from-above { transform: translateY(calc(-1 * var(--reveal-from))) scale(.96); }
+  .js .reveal.is-in { opacity: 1; transform: none; }
+  /* the quote flies in word by word; its container itself stays put */
+  .js .reveal.words { opacity: 1; transform: none; }
+  .words .w { display: inline-block; }
+  .js .reveal.words .w { opacity: 0; transform: translateY(.8em) rotate(2deg);
+    transition: opacity calc(var(--reveal-ms) * .7) ease-out, transform var(--reveal-ms) var(--fly);
+    transition-delay: calc(var(--i, 0) * 35ms); }
+  .js .reveal.words.from-above .w { transform: translateY(-.8em) rotate(-2deg); }
+  .js .reveal.words.is-in .w { opacity: 1; transform: none; }
+
+  /* ================= STUDENT HUB ================= */
+  .hub { display: grid; gap: 1.25rem; scroll-margin-top: 0; }
+  .hub-top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; padding-top: .9rem; }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1.2rem; padding: .5rem .5rem .5rem 1.2rem; }
+  .brand { display: flex; align-items: center; gap: .6rem; margin-right: auto; min-width: 0; }
+  .brand b { font-weight: 700; font-size: 1.1rem; letter-spacing: -.01em; }
+  .brand span { color: var(--muted); font-size: .85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex: none;
+    background: radial-gradient(circle at 35% 35%, #fff, var(--mint) 45%, #1d8f7d); box-shadow: 0 0 14px var(--mint); }
+
+  /* iOS segmented control with a sliding glass thumb */
+  .seg { position: relative; display: flex; padding: 4px; border-radius: calc(var(--r-ctl) + 2px);
+    background: rgba(10, 2, 26, .28); box-shadow: inset 0 1px 3px rgba(0, 0, 0, .35); max-width: 100%; }
+  .seg__thumb { position: absolute; top: 4px; bottom: 4px; left: 0; width: 0; border-radius: var(--r-sm);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .42), rgba(255, 255, 255, .16));
+    box-shadow: 0 4px 14px rgba(12, 2, 30, .35), inset 0 1px 0 rgba(255, 255, 255, .7);
+    transition: transform .5s var(--spring), width .5s var(--spring); }
+  .tab { position: relative; z-index: 1; flex: 1; font: inherit; font-size: .92rem; font-weight: 600;
+    color: var(--muted); background: transparent; border: 0; border-radius: var(--r-ctl);
+    padding: .55rem 1rem; min-height: 44px; cursor: pointer; white-space: nowrap;
+    display: inline-flex; align-items: center; justify-content: center; gap: .45rem; transition: color .25s; }
+  .tab svg { width: 17px; height: 17px; flex: none; }
+  .tab:hover, .tab[aria-selected="true"] { color: var(--fg); }
+  @media (max-width: 640px) {
+    .bar { padding: .7rem; border-radius: var(--r-card); }
+    .brand { padding-left: .4rem; }
+    .seg { width: 100%; }
+    .tab { padding: .5rem .4rem; font-size: .84rem; gap: .3rem; }
+  }
+
+  .sample { font-size: .82rem; color: var(--muted); text-align: center; margin: 0; text-shadow: 0 1px 8px rgba(12, 2, 30, .6); }
+  .sample b { color: var(--amber); font-weight: 600; }
+
+  /* ---------- shared ---------- */
+  .panel { padding: clamp(1.15rem, 3vw, 1.7rem); min-width: 0; }
+  h2, h3, .h1 { margin: 0; text-wrap: balance; letter-spacing: -.02em; }
+  .h1 { font-size: clamp(1.8rem, 4.6vw, 2.7rem); line-height: 1.05; font-weight: 700; }
+  h2 { font-size: clamp(1.2rem, 2.6vw, 1.45rem); font-weight: 700; }
+  h3 { font-size: 1rem; font-weight: 650; }
+  .eyebrow { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 600; }
+  .lede { color: var(--muted); max-width: 62ch; margin: .5rem 0 0; }
+  .grid { display: grid; gap: 1.25rem; }
+  .g-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+  .stack { display: grid; gap: .9rem; align-content: start; }
+  .num { font-variant-numeric: tabular-nums; }
+  .code { font-family: var(--f-mono); font-size: .8rem; letter-spacing: .02em; color: var(--muted); }
+  .inset { background: rgba(10, 2, 26, .24); border-radius: var(--r-sm); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06); }
+
+  .pill { display: inline-flex; align-items: center; gap: .35rem; font-size: .76rem; font-weight: 600;
+    padding: .22rem .65rem; border-radius: var(--r-sm); background: rgba(10, 2, 26, .3); white-space: nowrap; }
+  .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+  .s-done, .t-full { color: var(--mint); }
+  .s-now { color: var(--coral); }
+  .s-next { color: var(--muted); }
+  .t-elective { color: var(--amber); }
+  .t-none { color: var(--rose); }
+
+  [role="tabpanel"] { display: grid; gap: 1.25rem; }
+  [role="tabpanel"][hidden] { display: none; }
+  [role="tabpanel"].enter { animation: panelIn var(--reveal-ms) var(--fly); }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(36px) scale(.98); } }
+
+  /* ---------- AI ---------- */
+  .chat { display: grid; grid-template-rows: auto 1fr auto; min-height: 30rem; padding: 0; overflow: hidden; }
+  .chat-head { padding: 1.1rem 1.3rem; border-bottom: 1px solid rgba(255, 255, 255, .14); display: flex; gap: .8rem; align-items: center; }
+  .orb { width: 40px; height: 40px; border-radius: 50%; flex: none;
+    background: conic-gradient(from 200deg, var(--mint), #8fb4ff, var(--coral), var(--mint));
+    box-shadow: 0 0 24px rgba(94, 240, 207, .5), inset 0 1px 2px rgba(255, 255, 255, .6); animation: spin 9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .log { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .7rem; overflow-y: auto; max-height: 30rem; }
+  .msg { max-width: min(36rem, 90%); padding: .7rem 1rem; border-radius: var(--r-ctl); min-width: 0;
+    animation: panelIn .4s var(--spring); }
+  .msg p { margin: 0 0 .4rem; } .msg p:last-child { margin: 0; }
+  .msg ul { margin: .3rem 0 0; padding-left: 1.1rem; }
+  .msg.bot { background: rgba(255, 255, 255, .14); box-shadow: var(--rim); border-bottom-left-radius: 3px; }
+  .msg.me { align-self: flex-end; border-bottom-right-radius: 3px;
+    background: linear-gradient(180deg, rgba(94, 240, 207, .4), rgba(40, 170, 150, .34)); box-shadow: var(--rim); }
+  .compose { display: flex; gap: .6rem; padding: .9rem 1rem; border-top: 1px solid rgba(255, 255, 255, .14); }
+  .compose input { flex: 1; min-width: 0; font: inherit; color: var(--fg); background: rgba(10, 2, 26, .3);
+    border: 0; border-radius: var(--r-ctl); padding: .75rem 1.1rem; box-shadow: inset 0 1px 3px rgba(0, 0, 0, .35); }
+  .compose input::placeholder { color: var(--muted); opacity: .8; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chip { font: inherit; font-size: .9rem; color: var(--fg); cursor: pointer; text-align: left; border: 0;
+    border-radius: var(--r-ctl); padding: .6rem 1rem; min-height: 44px; transition: transform .35s var(--spring); }
+  .chip:hover { transform: translateY(-1px); }
+  .chip:active { transform: scale(.97); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  /* ---------- Progress ---------- */
+  .hero-prog { display: grid; gap: 1.5rem; grid-template-columns: auto 1fr; align-items: center; }
+  @media (max-width: 560px) { .hero-prog { grid-template-columns: 1fr; justify-items: start; } }
+  .ring { position: relative; width: 168px; aspect-ratio: 1; max-width: 100%; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+  .ring .lbl { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+  .ring .lbl b { font-size: 2.3rem; line-height: 1; font-weight: 700; letter-spacing: -.03em; }
+  .ring .lbl span { font-size: .8rem; color: var(--muted); }
+  .stats { display: flex; flex-wrap: wrap; gap: .6rem 1.8rem; margin-top: 1rem; }
+  .stat b { display: block; font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; }
+  .stat span { font-size: .8rem; color: var(--muted); }
+  .req { display: grid; gap: .35rem; }
+  .req-top { display: flex; justify-content: space-between; gap: 1rem; font-size: .92rem; }
+  .track { height: 10px; border-radius: 99px; background: rgba(10, 2, 26, .35); overflow: hidden; display: flex;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .35); }
+  .track i { display: block; height: 100%; }
+  .track .a { background: var(--mint); } .track .b { background: var(--coral); }
+  .track .c { background: var(--amber); } .track .d { background: var(--rose); }
+  .legend { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .8rem; color: var(--muted); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: .35rem; vertical-align: -1px; }
+  .term-list { display: grid; gap: .45rem; }
+  .row { display: grid; grid-template-columns: 6.2rem 1fr auto auto; gap: .4rem .9rem; align-items: center; padding: .6rem .8rem; }
+  .row .t { min-width: 0; }
+  @media (max-width: 520px) { .row { grid-template-columns: 1fr auto; } .row .code:first-child { grid-column: 1 / -1; } }
+
+  /* ---------- Transfer ---------- */
+  .stepper { display: grid; grid-template-columns: repeat(5, 1fr); gap: .4rem; }
+  .step { display: grid; gap: .4rem; font-size: .78rem; color: var(--muted); min-width: 0; }
+  .step i { height: 6px; border-radius: 99px; background: rgba(255, 255, 255, .18); }
+  .step.done i { background: var(--mint); }
+  .step.here i { background: linear-gradient(90deg, var(--mint), var(--coral)); box-shadow: 0 0 10px rgba(255, 154, 118, .6); }
+  .step.here { color: var(--fg); font-weight: 600; }
+  @media (max-width: 520px) { .step span { font-size: .68rem; } }
+  .checklist { display: grid; gap: .45rem; margin: 0; padding: 0; list-style: none; }
+  .checklist label { display: flex; gap: .7rem; align-items: flex-start; padding: .65rem .8rem; cursor: pointer; }
+  .checklist input { width: 20px; height: 20px; margin-top: .1rem; accent-color: var(--mint); flex: none; }
+  .checklist small { display: block; color: var(--muted); }
+  .checklist .due { color: var(--fg); font-weight: 600; }
+  .dests { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); }
+  .dest { font: inherit; color: var(--fg); text-align: left; cursor: pointer; border: 0; border-radius: var(--r-ctl);
+    padding: .9rem 1rem; display: grid; gap: .2rem; transition: transform .35s var(--spring); }
+  .dest:hover { transform: translateY(-2px); }
+  .dest small { color: var(--muted); }
+  .dest[aria-pressed="true"] { background: linear-gradient(180deg, rgba(255, 170, 140, .5), rgba(255, 110, 80, .28)); }
+  .impact { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); }
+  .big b { display: block; font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.05; font-weight: 700; letter-spacing: -.03em; }
+  .big span { font-size: .82rem; color: var(--muted); }
+  .big.bad b { color: var(--rose); } .big.ok b { color: var(--mint); } .big.warn b { color: var(--amber); }
+  .controls { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; align-items: end; }
+  .controls label { display: grid; gap: .3rem; font-size: .82rem; color: var(--muted); }
+  .controls select, .controls input { font: inherit; color: var(--fg); background: rgba(10, 2, 26, .32); border: 0;
+    border-radius: var(--r-sm); padding: .55rem .8rem; min-height: 44px; width: 10rem; box-shadow: inset 0 1px 3px rgba(0, 0, 0, .35); }
+  .timeline { display: grid; gap: .55rem; }
+  .tl-row { display: grid; grid-template-columns: 9rem 1fr; gap: .8rem; align-items: center; font-size: .86rem; }
+  .tl-row .track { height: 14px; }
+  @media (max-width: 520px) { .tl-row { grid-template-columns: 1fr; gap: .3rem; } }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 34rem; }
+  th, td { text-align: left; padding: .6rem .6rem; border-bottom: 1px solid rgba(255, 255, 255, .12); vertical-align: top; }
+  th { font-size: .74rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600; }
+  td.why { color: var(--muted); }
+  .note { font-size: .88rem; color: var(--muted); padding: .85rem 1rem; margin: 0; border-left: 3px solid var(--amber); border-radius: 3px var(--r-sm) var(--r-sm) 3px; }
+  .note b { color: var(--fg); }
+
+  /* =====================================================================
+     LUXURY: "Find the future you want" + Student Hub only (.lux).
+     Square corners, solid surfaces, 1px hairlines, no glass, no shadows.
+     One clean sans family pair, one warm accent from the sunset.
+     The logo and quote sections above keep their own look.
+     ===================================================================== */
+  .lux {
+    --lx-ink: #1a0822;            /* text on light buttons */
+    --lx-panel: rgba(20, 6, 30, .52);   /* box fill: deep tint, the section color glows through */
+    --lx-bar: rgba(26, 8, 36, .92);     /* sticky hub bar: nearly solid so content can pass under */
+    --lx-raise: rgba(255, 255, 255, .07);
+    --lx-line: rgba(255, 255, 255, .16);
+    --lx-line-strong: rgba(255, 255, 255, .45);
+    --lx-paper: #ffffff;          /* solid buttons, my chat bubbles */
+    --lx-accent: #f0a874;         /* sunset sand: the only accent */
+    /* box edges: white at the top fading into the section color */
+    --lx-edge: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .4) 30%, rgba(255, 255, 255, 0) 100%);
+    --lx-glow: 0 -8px 30px -8px rgba(255, 255, 255, .38), 0 0 60px -12px rgba(255, 255, 255, .22);
+    --fg: #ffffff;
+    --muted: #ffffff;             /* secondary text is white too; size and weight carry the hierarchy */
+    --coral: var(--lx-accent);
+    --mint: #6fd3ab; --amber: #e8c170; --rose: #ef7b8a;
+    --r-card: 0; --r-ctl: 0; --r-sm: 0;
+    --f-lux-display: "Jost", "Futura", "Helvetica Neue", Arial, sans-serif;
+    --f-lux-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--f-lux-body); color: var(--fg);
+  }
+  /* section grounds keep their sunset gradients (see .band--future and .band--hub above) */
+  .lux { font-size: 17px; }
+
+  /* boxes: square, tinted, with a white edge and glow that fade down into the section color */
+  .lux .glass, .lux .chrome { -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; border-radius: 0; }
+  .lux .glass::after, .lux .chrome::before { display: none; }
+  .lux .glass { background: var(--lx-panel); box-shadow: var(--lx-glow); }
+  .lux .glass::before { background: var(--lx-edge); }
+  .lux .chrome { background: transparent; border: 1px solid var(--lx-line-strong); }
+
+  /* type */
+  .lux :is(h1, h2, h3, .h1, .big b, .stat b, .ring .lbl b, .brand b) { font-family: var(--f-lux-display); letter-spacing: -.01em; }
+  .lux :is(h1, .h1) { font-weight: 400; }
+  .lux :is(h2, h3) { font-weight: 500; }
+  .lux :is(.big b, .stat b, .ring .lbl b) { font-weight: 300; }
+  .lux .eyebrow, .lux th, .lux .tab, .lux .btn, .lux .pill, .lux .brand b {
+    font-family: var(--f-lux-display); text-transform: uppercase; letter-spacing: .18em; font-weight: 500; }
+  .lux .eyebrow, .lux th { font-size: .78rem; }
+  /* bigger words throughout */
+  .lux h2 { font-size: clamp(1.5rem, 3vw, 2.05rem); }
+  .lux h3 { font-size: 1.2rem; }
+  .lux .h1 { font-size: clamp(2.3rem, 5.6vw, 3.8rem); line-height: 1.02; }
+  .lux .lede { font-size: 1.12rem; }
+  .lux .big b { font-size: clamp(2.3rem, 5vw, 3.3rem); }
+  .lux .big span, .lux .stat span, .lux .legend, .lux .checklist small, .lux .ring .lbl span { font-size: .92rem; }
+  .lux .stat b { font-size: 2rem; }
+  .lux .ring { width: 190px; }
+  .lux .ring .lbl b { font-size: 2.8rem; }
+  .lux .req-top, .lux .tl-row, .lux table, .lux .note { font-size: 1rem; }
+  .lux .code { font-size: .88rem; }
+  .lux .brand span { font-size: .95rem; }
+  .lux .sample { font-size: .92rem; }
+  .lux .code { font-family: var(--f-lux-body); letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+  .lux .sample { text-shadow: none; }
+
+  /* the future card */
+  .lux .future { width: min(56rem, calc(100% - 32px)); padding: clamp(2.6rem, 6vw, 4.5rem) clamp(1.4rem, 5vw, 4rem); }
+  .lux .future h1 { font-size: clamp(2.9rem, 8vw, 5.6rem); line-height: 1; margin-bottom: 1.2rem; }
+  .lux .future p { max-width: 36ch; font-size: clamp(1.2rem, 2.6vw, 1.5rem); color: var(--fg); margin-bottom: 2.2rem; }
+
+  /* buttons: solid paper for the main action, hairline outline for the rest */
+  .lux .btn { font-size: .82rem; min-height: 54px; padding: 1rem 1.8rem; transition: background-color .25s, color .25s, border-color .25s; }
+  .lux .btn:hover, .lux .btn:active { transform: none; filter: none; }
+  .lux .btn.chrome:hover { background: var(--lx-paper); color: var(--lx-ink); border-color: var(--lx-paper); }
+  .lux .btn--go { background: var(--lx-paper); color: var(--lx-ink); border-color: var(--lx-paper); }
+  .lux .btn--go:hover { background: transparent; color: var(--lx-paper); }
+
+  /* hub header: solid bar, tabs as spaced capitals with a sliding accent underline */
+  .lux .bar { background: var(--lx-bar); padding: .4rem 0 .4rem 1.2rem; }
+  .lux .brand b { font-size: .9rem; }
+  .lux .dot { width: 8px; height: 8px; border-radius: 0; background: var(--lx-accent); box-shadow: none; }
+  .lux .seg { background: transparent; box-shadow: none; padding: 0; gap: .4rem; }
+  .lux .seg__thumb { top: auto; bottom: 0; height: 2px; border-radius: 0; background: var(--lx-accent); box-shadow: none; }
+  .lux .tab { font-size: .8rem; color: rgba(255, 255, 255, .72); padding: .8rem .9rem; min-height: 50px; }
+  .lux .tab:hover, .lux .tab[aria-selected="true"] { color: #fff; }
+  .lux .tab svg { width: 15px; height: 15px; }
+
+  /* chat */
+  .lux .chat-head, .lux .compose { border-color: var(--lx-line); }
+  .lux .orb { width: 36px; height: 36px; border-radius: 0; animation: none; box-shadow: none;
+    background: linear-gradient(135deg, var(--lx-accent), #b4436a); }
+  .lux .msg { box-shadow: none; }
+  .lux .msg.bot { background: var(--lx-raise); border: 1px solid var(--lx-line); }
+  .lux .msg.me { background: var(--lx-paper); color: var(--lx-ink); }
+  .lux .compose input, .lux .controls :is(select, input) { background: transparent; border: 1px solid var(--lx-line-strong); box-shadow: none; }
+  .lux .compose input:focus, .lux .controls :is(select, input):focus { border-color: var(--lx-paper); }
+  .lux .chip { background: transparent; font-size: .98rem; transition: border-color .2s, background-color .2s; }
+  .lux .chip:hover { transform: none; border-color: var(--lx-paper); background: var(--lx-raise); }
+
+  /* data pieces: thin, square, flat */
+  .lux .inset { background: transparent; box-shadow: none; border-bottom: 1px solid var(--lx-line); }
+  .lux .row { padding: .75rem .2rem; }
+  .lux .checklist label { padding: .8rem .2rem; }
+  .lux .track { height: 4px; border-radius: 0; background: rgba(255, 255, 255, .1); box-shadow: none; }
+  .lux .tl-row .track { height: 8px; }
+  .lux .step i { height: 2px; border-radius: 0; }
+  .lux .step.here i { background: var(--lx-accent); box-shadow: none; }
+  .lux .legend i { border-radius: 0; }
+  .lux .pill { font-size: .62rem; letter-spacing: .14em; padding: .25rem .55rem; background: transparent; border: 1px solid currentColor; }
+  .lux .pill::before { border-radius: 0; width: 5px; height: 5px; box-shadow: none; }
+  .lux .ring circle { stroke-width: 6; stroke-linecap: butt; filter: none !important; }
+  /* "If you transfer now" school buttons: all white with dark words; the picked one gets a sand outline */
+  .lux .dest { background: var(--lx-paper); color: var(--lx-ink); border-color: var(--lx-paper);
+    transition: box-shadow .25s, background-color .25s; }
+  .lux .dest small { color: #5a5262; }
+  .lux .dest:hover { transform: none; background: #f1ecf3; }
+  .lux .dest[aria-pressed="true"] { box-shadow: inset 0 0 0 3px var(--lx-accent); }
+  .lux .note { border-radius: 0; border-left: 2px solid var(--lx-accent); background: var(--lx-raise); }
+  .lux th, .lux td { border-bottom-color: var(--lx-line); }
+  .lux .checklist input { accent-color: var(--lx-accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .intro__banner, .skip, .stage, .js .reveal, .js .reveal.words .w { animation: none; transition: none; opacity: 1; transform: none; }
+    .orb, .msg, [role="tabpanel"].enter { animation: none; }
+    .seg__thumb, .btn, .chip, .dest { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" aria-hidden="true"></div>
+
+<a class="btn chrome skip" id="skip" href="#hub">Go to Student Hub</a>
+
+<!-- ================= INTRO ================= -->
+<header class="intro" aria-labelledby="future-title">
+  <!-- Section 1: logo -->
+  <section class="scene scene--logo" aria-label="Miami Dade College">
+    <div class="stage stage--fade">
+      <div class="intro__banner reveal">
+        <img src="images/mdc-hero.png" width="2762" height="1488"
+          alt="Miami Dade College logo over a pixel-art Miami skyline at sunset">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: quote -->
+  <figure class="scene intro__quote band band--quote">
+    <div class="stage stage--fade">
+      <blockquote class="reveal words"><p>“Creativity is intelligence having fun.”</p></blockquote>
+    </div>
+  </figure>
+
+  <!-- Section 3: find your future -->
+  <section class="scene band band--future lux" aria-labelledby="future-title">
+   <div class="stage">
+    <div class="future glass reveal">
+      <h1 id="future-title">Find the future you want.</h1>
+      <p>Tell us what you like. We'll show you careers, and a step-by-step plan that starts at MDC.</p>
+      <div class="actions">
+        <a class="btn btn--go chrome" href="#ai" data-go="ai">Ask the AI advisor</a>
+        <a class="btn chrome" href="#progress" data-go="progress">See my progress</a>
+      </div>
+    </div>
+   </div>
+  </section>
+</header>
+
+<!-- Section 4: Student Hub -->
+<div class="band band--hub lux">
+
+<!-- ================= STUDENT HUB ================= -->
+<main class="wrap hub" id="hub">
+  <div class="hub-top">
+    <div class="bar chrome">
+      <div class="brand"><span class="dot"></span><b>Student Hub</b><span id="who"></span></div>
+      <div class="seg" role="tablist" aria-label="Student Hub sections">
+        <span class="seg__thumb" id="thumb" aria-hidden="true"></span>
+        <button class="tab" role="tab" id="tab-ai" aria-controls="panel-ai" data-view="ai">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>AI advisor</button>
+        <button class="tab" role="tab" id="tab-progress" aria-controls="panel-progress" data-view="progress">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 20V12M12 20V5M19 20v-5"/></svg>Progress</button>
+        <button class="tab" role="tab" id="tab-transfer" aria-controls="panel-transfer" data-view="transfer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>Transfer</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="sample"><b>Sample student.</b> Courses, grades and transfer results are made-up examples for this mockup. Check real equivalencies with an MDC advisor and the school you're transferring to.</p>
+
+  <!-- AI -->
+  <section role="tabpanel" id="panel-ai" aria-labelledby="tab-ai">
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));">
+      <div class="glass chat">
+        <div class="chat-head">
+          <span class="orb" aria-hidden="true"></span>
+          <div><h2>Ask your advisor</h2><span class="code">Answers come from your record on this page</span></div>
+        </div>
+        <div class="log" id="log" aria-live="polite"></div>
+        <form class="compose" id="compose">
+          <label for="ask" class="sr">Ask a question</label>
+          <input id="ask" autocomplete="off" placeholder="What if I transfer to a private school?">
+          <button class="btn btn--go chrome" type="submit">Ask</button>
+        </form>
+      </div>
+      <div class="stack">
+        <div class="glass panel stack">
+          <span class="eyebrow">Try asking</span>
+          <div class="chips" id="chips"></div>
+        </div>
+        <div class="glass panel stack" id="ai-snap"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESS -->
+  <section role="tabpanel" id="panel-progress" aria-labelledby="tab-progress" hidden>
+    <div class="glass panel hero-prog">
+      <div class="ring" id="ring"></div>
+      <div>
+        <span class="eyebrow" id="prog-eyebrow"></span>
+        <h2 class="h1" id="prog-title"></h2>
+        <div class="stats" id="stats"></div>
+      </div>
+    </div>
+    <div class="grid g-2">
+      <div class="glass panel stack">
+        <h2>Degree requirements</h2>
+        <div class="legend"><span><i style="background:var(--mint)"></i>Completed</span><span><i style="background:var(--coral)"></i>This term</span><span><i style="background:rgba(10,2,26,.35)"></i>Still to take</span></div>
+        <div class="stack" id="reqs"></div>
+      </div>
+      <div class="glass panel stack">
+        <h2>Finish line</h2>
+        <div class="controls">
+          <label for="load">Credits per term<select id="load"><option value="9">9 (part time)</option><option value="12">12 (full time)</option><option value="15">15</option></select></label>
+        </div>
+        <div id="finish"></div>
+      </div>
+    </div>
+    <div class="glass panel stack">
+      <h2>Courses by term</h2>
+      <div class="stack" id="terms"></div>
+    </div>
+  </section>
+
+  <!-- TRANSFER -->
+  <section role="tabpanel" id="panel-transfer" aria-labelledby="tab-transfer" hidden>
+    <div class="glass panel stack">
+      <span class="eyebrow">Where you are</span>
+      <h2 class="h1" id="phase-title"></h2>
+      <p class="lede" id="phase-lede"></p>
+      <div class="stepper" id="stepper"></div>
+    </div>
+
+    <div class="grid g-2">
+      <div class="glass panel stack">
+        <h2>Transition checklist</h2>
+        <p class="lede" style="margin:0">Items unlock by credits earned. Your checks are saved in this browser.</p>
+        <ul class="checklist" id="checklist"></ul>
+      </div>
+      <div class="glass panel stack">
+        <h2>If you transfer now</h2>
+        <p class="lede" style="margin:0">Pick a type of school to see which of your <b id="earned-inline"></b> credits it would count, and how far that sets you back.</p>
+        <div class="dests" id="dests"></div>
+        <div class="controls">
+          <label for="rate">Cost per credit there ($)<input id="rate" type="number" min="0" step="10" inputmode="numeric"></label>
+          <label for="tload">Credits per term there<select id="tload"><option value="12">12</option><option value="15" selected>15</option></select></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass panel stack">
+      <h2 id="impact-title"></h2>
+      <div class="impact" id="impact"></div>
+      <div class="legend"><span><i style="background:var(--mint)"></i>Counts toward the degree</span><span><i style="background:var(--amber)"></i>Accepted as elective only</span><span><i style="background:var(--rose)"></i>Not accepted</span></div>
+      <div class="timeline" id="timeline"></div>
+      <p class="note inset" id="dest-note"></p>
+    </div>
+
+    <div class="glass panel stack">
+      <h2>Course by course</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Course</th><th>Credits</th><th>Result</th><th>Why</th></tr></thead>
+        <tbody id="ctable"></tbody>
+      </table></div>
+    </div>
+  </section>
+</main>
+</div>
+
+<script>
+/* ------------------------------------------------------------------
+   SAMPLE DATA: NOT VERIFIED. A made-up student for the mockup.
+   Transfer results per course: full = counts toward the new degree,
+   elective = credits accepted but don't count toward the major,
+   none = not accepted.
+   ------------------------------------------------------------------ */
+const STUDENT = {
+  name: "Alex Rivera", program: "Computer Programming and Analysis", credential: "A.S.",
+  required: 60, currentTerm: "Fall 2026", startTerm: "Fall 2024"
+};
+const GROUPS = [
+  { id: "gen", label: "General education", need: 18 },
+  { id: "core", label: "Programming core", need: 30 },
+  { id: "sup", label: "Support and electives", need: 12 }
+];
+const GRADE_PTS = { A: 4, "B+": 3.5, B: 3, "C+": 2.5, C: 2, D: 1, F: 0 };
+// t: [Florida public, private, out-of-state public]
+const COURSES = [
+  { code: "SLS 1106", title: "First-Year Experience", cr: 1, g: "sup", st: "done", term: "Fall 2024", grade: "A", t: ["elective", "none", "none"] },
+  { code: "ENC 1101", title: "English Composition I", cr: 3, g: "gen", st: "done", term: "Fall 2024", grade: "B+", t: ["full", "full", "full"] },
+  { code: "MAC 1105", title: "College Algebra", cr: 3, g: "gen", st: "done", term: "Fall 2024", grade: "B", t: ["full", "full", "full"] },
+  { code: "CGS 1060", title: "Introduction to Computer Technology", cr: 3, g: "sup", st: "done", term: "Fall 2024", grade: "A", t: ["elective", "none", "elective"] },
+  { code: "COP 1334", title: "Introduction to C++ Programming", cr: 4, g: "core", st: "done", term: "Spring 2025", grade: "A", t: ["full", "elective", "full"] },
+  { code: "ENC 1102", title: "English Composition II", cr: 3, g: "gen", st: "done", term: "Spring 2025", grade: "B", t: ["full", "full", "full"] },
+  { code: "MAC 2311", title: "Calculus I", cr: 4, g: "gen", st: "done", term: "Spring 2025", grade: "C+", t: ["full", "full", "full"] },
+  { code: "CTS 1131", title: "IT Hardware Fundamentals", cr: 3, g: "sup", st: "done", term: "Spring 2025", grade: "A", t: ["elective", "none", "none"] },
+  { code: "COP 2800", title: "Java Programming", cr: 4, g: "core", st: "done", term: "Fall 2025", grade: "B+", t: ["full", "full", "full"] },
+  { code: "PSY 2012", title: "General Psychology", cr: 3, g: "gen", st: "done", term: "Fall 2025", grade: "A", t: ["full", "full", "full"] },
+  { code: "CGS 1820", title: "Web Design with HTML and CSS", cr: 3, g: "core", st: "done", term: "Fall 2025", grade: "A", t: ["elective", "none", "elective"] },
+  { code: "COP 2360", title: "C# Programming", cr: 4, g: "core", st: "done", term: "Spring 2026", grade: "B", t: ["elective", "elective", "none"] },
+  { code: "SPC 1017", title: "Fundamentals of Speech", cr: 3, g: "gen", st: "done", term: "Spring 2026", grade: "A", t: ["full", "elective", "full"] },
+  { code: "CIS 2321", title: "Systems Analysis and Design", cr: 3, g: "core", st: "done", term: "Spring 2026", grade: "B+", t: ["full", "elective", "elective"] },
+  { code: "COP 2805", title: "Advanced Java Programming", cr: 4, g: "core", st: "now", term: "Fall 2026", t: ["full", "full", "elective"] },
+  { code: "COP 2700", title: "Database Programming with SQL", cr: 4, g: "core", st: "now", term: "Fall 2026", t: ["full", "elective", "full"] },
+  { code: "CTS 1650", title: "Networking Essentials", cr: 3, g: "sup", st: "now", term: "Fall 2026", t: ["elective", "none", "none"] },
+  { code: "COP 2830", title: "Web Application Programming", cr: 4, g: "core", st: "next", term: "" },
+  { code: "CEN 2943", title: "Software Development Capstone", cr: 3, g: "core", st: "next", term: "" },
+  { code: "CGS 2560", title: "Operating Systems Concepts", cr: 3, g: "sup", st: "next", term: "" },
+  { code: "AML 2010", title: "U.S. History to 1877", cr: 3, g: "gen", st: "next", term: "" }
+];
+const DESTS = [
+  { id: 0, name: "Florida public university", degree: "B.S. Computer Science", total: 120, rate: 210,
+    note: "<b>Why most credits move:</b> Florida public colleges and universities share one course numbering system, so a course with the same prefix and number usually transfers as the same course. Technical A.S. courses often arrive as electives because the university's computer science major has no matching course. Finishing an A.A. instead of an A.S. would also satisfy the university's general education requirement." },
+  { id: 1, name: "Private university", degree: "B.S. Computer Science", total: 120, rate: 1900,
+    note: "<b>Why more is lost:</b> each private school decides course by course, and many don't accept first-year seminars or technical courses at all. Ask for an unofficial credit evaluation before you apply, and get it in writing." },
+  { id: 2, name: "Out-of-state public university", degree: "B.S. Computer Science", total: 120, rate: 1100,
+    note: "<b>Why it varies:</b> there's no Florida articulation agreement across state lines. Most schools publish a transfer equivalency database; look up each course code there. Out-of-state tuition also makes every lost credit cost more to repeat." }
+];
+const REASONS = {
+  full: "Matches a required course",
+  elective: "Accepted, but no matching course in the major",
+  none: "No equivalent course; not accepted"
+};
+
+/* ---------------- derived numbers ---------------- */
+const sum = (a) => a.reduce((n, c) => n + c.cr, 0);
+const done = COURSES.filter((c) => c.st === "done");
+const now = COURSES.filter((c) => c.st === "now");
+const next = COURSES.filter((c) => c.st === "next");
+const earnedDone = sum(done), earnedNow = sum(now), remaining = STUDENT.required - earnedDone - earnedNow;
+const transferable = [...done, ...now];
+const gpa = (() => { let p = 0, h = 0; done.forEach((c) => { p += GRADE_PTS[c.grade] * c.cr; h += c.cr; }); return h ? p / h : 0; })();
+const pct = Math.round((earnedDone / STUDENT.required) * 100);
+const fmt$ = (n) => "$" + Math.round(n).toLocaleString("en-US");
+
+function termAfter(term, n) {           // Fall/Spring only
+  let [s, y] = term.split(" "); y = +y;
+  for (let i = 0; i < n; i++) { if (s === "Fall") { s = "Spring"; y++; } else { s = "Fall"; } }
+  return s + " " + y;
+}
+function finishTerm(load) {
+  const terms = Math.ceil(remaining / load);
+  return { terms, term: termAfter(STUDENT.currentTerm, terms) };
+}
+function transferImpact(destId) {
+  const d = DESTS[destId], out = { full: 0, elective: 0, none: 0 };
+  transferable.forEach((c) => { out[c.t[destId]] += c.cr; });
+  out.earned = earnedDone + earnedNow;
+  out.lost = out.elective + out.none;
+  out.dest = d;
+  return out;
+}
+function phase() {
+  const e = earnedDone;
+  const phases = [
+    { max: 15, name: "Getting started", lede: "Take your general education basics and try a few intro courses." },
+    { max: 30, name: "Building your base", lede: "Pick your target career and the bachelor's degree that leads there." },
+    { max: 45, name: "Preparing to transition", lede: "This is when to choose a transfer school and check which courses it accepts, before you register for your last terms." },
+    { max: 60, name: "Transitioning", lede: "Apply, send transcripts and apply for graduation. Every course you add now should count at your next school." },
+    { max: Infinity, name: "Ready to transfer", lede: "You've met your credit requirement. Finish your applications and graduate." }
+  ];
+  const i = phases.findIndex((p) => e < p.max);
+  return { i, ...phases[i], all: phases };
+}
+
+/* ---------------- intro: scroll reveal ---------------- */
+const root = document.documentElement;
+if ("IntersectionObserver" in window) {
+  root.classList.add("js");
+  // split the quote into words so each one can fly up in turn
+  document.querySelectorAll(".words p").forEach((p) => {
+    p.innerHTML = p.textContent.trim().split(/\s+/).map((w, i) => `<span class="w" style="--i:${i}">${w}</span>`).join(" ");
+  });
+  // the hub bar, the sample note and every hub card fly up too, staggered among their sibling cards
+  document.querySelectorAll("#hub .hub-top, #hub .sample, #hub .glass").forEach((el) => {
+    el.classList.add("reveal");
+    const sibs = [...el.parentElement.children].filter((c) => c.classList.contains("glass"));
+    el.style.setProperty("--i", Math.max(0, sibs.indexOf(el)));
+  });
+  // Fly in at the last moment, in either scroll direction: a piece waits until it reaches the
+  // middle band of the screen (past the outer LATE share at top and bottom), then flies in fast.
+  // It resets only once it's fully off screen, remembering which edge it left by, so next time it
+  // arrives from the side you're scrolling toward. root: document keeps the margin working when
+  // the page is embedded in a frame.
+  const LATE = "40%";   // content appears only once it reaches the middle 20% of the screen
+  const inIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("is-in"); });
+  }, { root: document, rootMargin: `-${LATE} 0px -${LATE} 0px`, threshold: 0 });
+  const outIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) return;
+      const el = e.target, top = e.rootBounds ? e.rootBounds.top : 0;
+      el.classList.remove("is-in");
+      el.classList.toggle("from-above", e.boundingClientRect.bottom <= top);
+    });
+  }, { root: document, threshold: 0 });
+  const io = { observe: (el) => { inIO.observe(el); outIO.observe(el); } };
+
+  // Hand-off fade for browsers that can't tie it to scrolling in CSS (see .stage): same timing, fade only.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches && !(window.CSS && CSS.supports("animation-timeline: view()"))) {
+    const stages = [...document.querySelectorAll(".stage")];
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const vh = innerHeight;
+        stages.forEach((s) => {
+          const r = s.getBoundingClientRect();
+          const room = Math.max(1, vh - r.height);
+          // logo: fade as it leaves the top; others: fade as their top rises from 50% to 80% of the way up
+          const out = s.closest(".scene--logo")
+            ? -r.top / (r.height * 0.55)
+            : ((1 - r.top / room) - 0.5) / 0.3;
+          s.style.setProperty("--out", Math.min(1, Math.max(0, out)).toFixed(3));
+        });
+      });
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    onScroll();
+  }
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  // hide the "Go to Student Hub" pill once the hub is on screen
+  const skip = document.getElementById("skip");
+  new IntersectionObserver(([e]) => skip.classList.toggle("gone", e.isIntersecting), { threshold: 0.05 })
+    .observe(document.getElementById("hub"));
+}
+
+
+/* ---------------- tabs ---------------- */
+const VIEWS = ["ai", "progress", "transfer"];
+let current = null;
+function moveThumb() {
+  const t = document.getElementById("tab-" + current), th = document.getElementById("thumb");
+  if (!t) return;
+  th.style.width = t.offsetWidth + "px";
+  th.style.transform = `translateX(${t.offsetLeft}px)`;
+}
+function show(view) {
+  if (!VIEWS.includes(view)) view = "ai";
+  if (view === current) return;
+  current = view;
+  document.querySelectorAll(".tab").forEach((t) => {
+    const on = t.dataset.view === view;
+    t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1;
+  });
+  VIEWS.forEach((v) => {
+    const p = document.getElementById("panel-" + v); p.hidden = v !== view;
+    p.classList.remove("enter"); if (v === view) { void p.offsetWidth; p.classList.add("enter"); }
+  });
+  moveThumb();
+  // The tab is no longer written into the address: the host page fed it back on load,
+  // which counted as a link and scrolled the page down to the hub.
+}
+function goHub(view) {
+  show(view);
+  document.getElementById("hub").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+}
+document.querySelectorAll(".tab").forEach((t) => {
+  t.addEventListener("click", () => show(t.dataset.view));
+  t.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const i = VIEWS.indexOf(t.dataset.view), j = (i + (e.key === "ArrowRight" ? 1 : VIEWS.length - 1)) % VIEWS.length;
+    const nt = document.getElementById("tab-" + VIEWS[j]); nt.focus(); show(VIEWS[j]);
+  });
+});
+document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); goHub(a.dataset.go); }));
+// A changed link only picks the tab; it never scrolls. Only the buttons scroll down to the hub.
+window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (VIEWS.includes(v)) show(v); });
+window.addEventListener("resize", moveThumb);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveThumb);
+
+/* ---------------- header ---------------- */
+document.getElementById("who").textContent = `${STUDENT.name} · ${STUDENT.credential} ${STUDENT.program}`;
+
+/* ---------------- progress tab ---------------- */
+function renderProgress() {
+  const r = 70, C = 2 * Math.PI * r, a = earnedDone / STUDENT.required, b = earnedNow / STUDENT.required;
+  document.getElementById("ring").innerHTML = `
+    <svg viewBox="0 0 168 168" role="img" aria-label="${earnedDone} of ${STUDENT.required} credits completed">
+      <circle cx="84" cy="84" r="${r}" fill="none" stroke="rgba(10,2,26,.35)" stroke-width="14"/>
+      <circle cx="84" cy="84" r="${r}" fill="none" stroke="var(--coral)" stroke-width="14" stroke-linecap="round"
+        stroke-dasharray="${C * (a + b)} ${C}"/>
+      <circle cx="84" cy="84" r="${r}" fill="none" stroke="var(--mint)" stroke-width="14" stroke-linecap="round"
+        stroke-dasharray="${C * a} ${C}" style="filter:drop-shadow(0 0 6px rgba(94,240,207,.6))"/>
+    </svg>
+    <div class="lbl"><b class="num">${pct}%</b><span>${earnedDone} of ${STUDENT.required} credits</span></div>`;
+  document.getElementById("prog-eyebrow").textContent = `${STUDENT.credential} ${STUDENT.program} · ${STUDENT.currentTerm}`;
+  document.getElementById("prog-title").textContent = earnedDone + earnedNow >= STUDENT.required * .75
+    ? "You're in the home stretch." : "You're building momentum.";
+  document.getElementById("stats").innerHTML = [
+    [gpa.toFixed(2), "GPA"], [earnedNow, "credits this term"], [remaining, "credits left after this term"], [done.length, "courses passed"]
+  ].map(([v, l]) => `<div class="stat"><b class="num">${v}</b><span>${l}</span></div>`).join("");
+
+  document.getElementById("reqs").innerHTML = GROUPS.map((g) => {
+    const d = sum(done.filter((c) => c.g === g.id)), n = sum(now.filter((c) => c.g === g.id));
+    const dd = Math.min(d, g.need), nn = Math.min(n, g.need - dd);
+    return `<div class="req"><div class="req-top"><span>${g.label}</span><span class="num">${d + n} / ${g.need}</span></div>
+      <div class="track"><i class="a" style="width:${dd / g.need * 100}%"></i><i class="b" style="width:${nn / g.need * 100}%"></i></div></div>`;
+  }).join("");
+
+  const load = +document.getElementById("load").value, f = finishTerm(load);
+  document.getElementById("finish").innerHTML = `
+    <div class="impact">
+      <div class="big ok"><b>${f.term}</b><span>projected graduation</span></div>
+      <div class="big"><b class="num">${f.terms}</b><span>more term${f.terms === 1 ? "" : "s"} after ${STUDENT.currentTerm}</span></div>
+    </div>
+    <p class="lede">Left to take: ${next.map((c) => `<span class="code">${c.code}</span>`).join(", ")}.</p>`;
+
+  const terms = [...new Set(COURSES.map((c) => c.term || "Still to take"))];
+  document.getElementById("terms").innerHTML = terms.map((t) => {
+    const cs = COURSES.filter((c) => (c.term || "Still to take") === t);
+    return `<div class="stack" style="gap:.5rem"><h3>${t} <span class="code">· ${sum(cs)} cr</span></h3><div class="term-list">${cs.map((c) => `
+      <div class="row inset"><span class="code">${c.code}</span><span class="t">${c.title}</span>
+        <span class="code num">${c.cr} cr${c.grade ? " · " + c.grade : ""}</span>
+        <span class="pill s-${c.st}">${{ done: "Completed", now: "In progress", next: "Planned" }[c.st]}</span></div>`).join("")}</div></div>`;
+  }).join("");
+}
+document.getElementById("load").value = "12";
+document.getElementById("load").addEventListener("change", renderProgress);
+
+/* ---------------- transfer tab ---------------- */
+let destId = 0;
+const rates = DESTS.map((d) => d.rate);
+function renderPhase() {
+  const p = phase();
+  document.getElementById("phase-title").textContent = p.name;
+  document.getElementById("phase-lede").textContent = `${earnedDone} credits earned, ${earnedNow} in progress. ${p.lede}`;
+  document.getElementById("stepper").innerHTML = p.all.map((s, i) => `
+    <div class="step ${i < p.i ? "done" : i === p.i ? "here" : ""}"><i></i><span>${s.name}</span></div>`).join("");
+  document.getElementById("earned-inline").textContent = earnedDone + earnedNow;
+}
+const CHECKS = [
+  { id: "advisor", at: 15, text: "Meet with an MDC advisor", sub: "Confirm your program plan." },
+  { id: "target", at: 30, text: "Choose your target school and major", sub: "Your choice decides which courses still count." },
+  { id: "equiv", at: 30, text: "Check each course against that school's transfer list", sub: "Use the table below as your starting point." },
+  { id: "fafsa", at: 40, text: "Submit the FAFSA for next year", sub: "List your new school's code too.", due: "Opens Oct 1" },
+  { id: "apply", at: 45, text: "Apply to your transfer school", sub: "Many fall deadlines land between March and May." },
+  { id: "grad", at: 45, text: "Apply for graduation at MDC", sub: "Finishing the credential first protects your credits." },
+  { id: "trans", at: 55, text: "Send your final MDC transcript", sub: "After your last grades post." }
+];
+let checked = {};
+try { checked = JSON.parse(localStorage.getItem("hub-checks") || "{}"); } catch (e) {}
+function renderChecklist() {
+  document.getElementById("checklist").innerHTML = CHECKS.map((c) => {
+    const locked = earnedDone < c.at;
+    return `<li><label class="inset" for="ck-${c.id}">
+      <input type="checkbox" id="ck-${c.id}" data-id="${c.id}" ${checked[c.id] ? "checked" : ""}>
+      <span>${c.text}<small>${locked ? `Unlocks at ${c.at} credits` : c.sub}${c.due && !locked ? ` · <span class="due">${c.due}</span>` : ""}</small></span></label></li>`;
+  }).join("");
+}
+document.getElementById("checklist").addEventListener("change", (e) => {
+  checked[e.target.dataset.id] = e.target.checked;
+  try { localStorage.setItem("hub-checks", JSON.stringify(checked)); } catch (err) {}
+});
+function renderDests() {
+  document.getElementById("dests").innerHTML = DESTS.map((d) => {
+    const im = transferImpact(d.id);
+    return `<button class="dest chrome" type="button" aria-pressed="${d.id === destId}" data-id="${d.id}">
+      <b>${d.name}</b><small class="num">${im.full} of ${im.earned} credits count</small></button>`;
+  }).join("");
+}
+document.getElementById("dests").addEventListener("click", (e) => {
+  const b = e.target.closest(".dest"); if (!b) return;
+  destId = +b.dataset.id; document.getElementById("rate").value = rates[destId]; renderTransfer();
+});
+document.getElementById("rate").addEventListener("input", (e) => { rates[destId] = Math.max(0, +e.target.value || 0); renderImpact(); });
+document.getElementById("tload").addEventListener("change", renderImpact);
+
+function renderImpact() {
+  const im = transferImpact(destId), d = im.dest, load = +document.getElementById("tload").value;
+  const backTerms = im.lost / load, cost = im.lost * rates[destId];
+  document.getElementById("impact-title").textContent = `Transferring to a ${d.name.toLowerCase()} after ${STUDENT.currentTerm}`;
+  document.getElementById("impact").innerHTML = `
+    <div class="big ok"><b class="num">${im.full}</b><span>credits count toward the ${d.degree}</span></div>
+    <div class="big bad"><b class="num">${im.lost}</b><span>credits that don't move you forward (${im.elective} elective, ${im.none} not accepted)</span></div>
+    <div class="big warn"><b class="num">${backTerms < .1 ? "0" : backTerms.toFixed(1)}</b><span>semesters set back at ${load} credits a term</span></div>
+    <div class="big bad"><b class="num">${fmt$(cost)}</b><span>to replace those credits at ${fmt$(rates[destId])} a credit</span></div>`;
+
+  const W = (n, of) => (n / of * 100).toFixed(2) + "%";
+  const mdcOf = STUDENT.required, bachOf = d.total;
+  document.getElementById("timeline").innerHTML = `
+    <div class="tl-row"><span>At MDC now</span><div class="track"><i class="a" style="width:${W(earnedDone, mdcOf)}"></i><i class="b" style="width:${W(earnedNow, mdcOf)}"></i></div></div>
+    <div class="tl-row"><span>Bachelor's, best case</span><div class="track"><i class="a" style="width:${W(im.earned, bachOf)}"></i></div></div>
+    <div class="tl-row"><span>Bachelor's, transferring now</span><div class="track"><i class="a" style="width:${W(im.full, bachOf)}"></i><i class="c" style="width:${W(im.elective, bachOf)}"></i><i class="d" style="width:${W(im.none, bachOf)}"></i></div></div>
+    <p class="code" style="margin:.2rem 0 0">Bars show credits out of ${bachOf} for the bachelor's. "Best case" assumes every credit you've earned counts.</p>`;
+  document.getElementById("dest-note").innerHTML = d.note;
+
+  const order = { none: 0, elective: 1, full: 2 };
+  document.getElementById("ctable").innerHTML = [...transferable].sort((a, b) => order[a.t[destId]] - order[b.t[destId]]).map((c) => {
+    const r = c.t[destId];
+    return `<tr><td><span class="code">${c.code}</span><br>${c.title}${c.st === "now" ? ' <span class="pill s-now">In progress</span>' : ""}</td>
+      <td class="num">${c.cr}</td>
+      <td><span class="pill t-${r}">${{ full: "Counts", elective: "Elective only", none: "Not accepted" }[r]}</span></td>
+      <td class="why">${REASONS[r]}</td></tr>`;
+  }).join("");
+}
+function renderTransfer() { renderDests(); renderImpact(); }
+
+/* ---------------- AI tab (rule-based preview) ---------------- */
+const log = document.getElementById("log");
+function say(html, who = "bot") {
+  const m = document.createElement("div"); m.className = "msg " + who; m.innerHTML = html;
+  log.appendChild(m); log.scrollTop = log.scrollHeight;
+}
+function answerTrack() {
+  const f = finishTerm(12);
+  return `<p>You've finished <b>${earnedDone} of ${STUDENT.required}</b> credits (${pct}%) with a <b>${gpa.toFixed(2)}</b> GPA, and you're taking ${earnedNow} more this term.</p>
+    <p>At 12 credits a term you'd graduate in <b>${f.term}</b>. Your general education is nearly done; most of what's left is programming core.</p>`;
+}
+function answerNext() {
+  let total = 0; const pick = [];
+  for (const c of next) { if (total + c.cr <= 14) { pick.push(c); total += c.cr; } }
+  return `<p>For ${termAfter(STUDENT.currentTerm, 1)}, here's a ${total}-credit plan from your remaining requirements:</p>
+    <ul>${pick.map((c) => `<li><span class="code">${c.code}</span> ${c.title} (${c.cr})</li>`).join("")}</ul>
+    <p>Before you register, check that each one counts at the school you plan to transfer to.</p>`;
+}
+function answerTransfer(id) {
+  if (id == null) {
+    return `<p>Here's how your ${earnedDone + earnedNow} credits would land if you transferred after this term:</p><ul>${DESTS.map((d) => {
+      const im = transferImpact(d.id);
+      return `<li><b>${d.name}</b>: ${im.full} count, ${im.lost} don't (about ${(im.lost / 15).toFixed(1)} semesters, ${fmt$(im.lost * d.rate)})</li>`;
+    }).join("")}</ul><p>The Transfer tab shows the course-by-course detail.</p>`;
+  }
+  const im = transferImpact(id), lostCourses = transferable.filter((c) => c.t[id] !== "full");
+  return `<p>At a <b>${im.dest.name.toLowerCase()}</b>, ${im.full} of your ${im.earned} credits would count toward the degree. <b>${im.lost} credits</b> wouldn't, which sets you back about <b>${(im.lost / 15).toFixed(1)} semesters</b> and roughly <b>${fmt$(im.lost * im.dest.rate)}</b>.</p>
+    <p>The ones that don't count: ${lostCourses.map((c) => `<span class="code">${c.code}</span>`).join(", ")}.</p>`;
+}
+function answerGpa() {
+  const best = [...done].sort((a, b) => GRADE_PTS[b.grade] - GRADE_PTS[a.grade])[0];
+  const low = [...done].sort((a, b) => GRADE_PTS[a.grade] - GRADE_PTS[b.grade])[0];
+  return `<p>Your GPA is <b>${gpa.toFixed(2)}</b> across ${earnedDone} graded credits. Your strongest grade was ${best.grade} in ${best.title}; your lowest was ${low.grade} in ${low.title}.</p>
+    <p>Many computer science programs look closely at math grades, so a strong grade in your next math course would help your application.</p>`;
+}
+function route(q) {
+  const s = q.toLowerCase();
+  if (/private/.test(s)) return answerTransfer(1);
+  if (/out[- ]of[- ]state|another state|other state/.test(s)) return answerTransfer(2);
+  if (/(florida|public|state) (school|univ)|fiu|ucf|usf|uf\b|fsu/.test(s)) return answerTransfer(0);
+  if (/transfer|another school|switch|lose|count|backtrack|credits? (go|move)/.test(s)) return answerTransfer(null);
+  if (/gpa|grade/.test(s)) return answerGpa();
+  if (/next|take|register|schedule|semester|term/.test(s)) return answerNext();
+  if (/track|graduat|finish|done|progress|how (am i|far)/.test(s)) return answerTrack();
+  return `<p>I can answer questions about your progress, your GPA, what to take next, and what happens to your credits if you transfer. Try one of the suggestions.</p>`;
+}
+function ask(q) {
+  if (!q.trim()) return;
+  say(q.replace(/[&<>]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch])), "me");
+  setTimeout(() => say(route(q)), 280);
+}
+const PROMPTS = ["Am I on track to graduate?", "What should I take next term?", "What happens to my credits if I transfer?",
+  "What if I go to a private school?", "What if I transfer out of state?", "How's my GPA?"];
+document.getElementById("chips").innerHTML = PROMPTS.map((p) => `<button class="chip chrome" type="button">${p}</button>`).join("");
+document.getElementById("chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (b) ask(b.textContent); });
+document.getElementById("compose").addEventListener("submit", (e) => {
+  e.preventDefault(); const i = document.getElementById("ask"); ask(i.value); i.value = "";
+});
+function renderAISnap() {
+  const p = phase(), worst = DESTS.map((d) => transferImpact(d.id)).sort((a, b) => b.lost - a.lost)[0];
+  document.getElementById("ai-snap").innerHTML = `
+    <span class="eyebrow">What your advisor sees</span>
+    <div class="impact">
+      <div class="big ok"><b class="num">${pct}%</b><span>of your ${STUDENT.credential} done</span></div>
+      <div class="big"><b>${p.name}</b><span>transition phase</span></div>
+    </div>
+    <p class="note inset"><b>Heads up:</b> transferring to a ${worst.dest.name.toLowerCase()} right now would leave ${worst.lost} of your credits behind. Ask about it before you register for next term.</p>`;
+}
+say(`<p>Hi ${STUDENT.name.split(" ")[0]}. I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term, or transferring.</p>`);
+
+/* ---------------- boot ---------------- */
+document.getElementById("rate").value = rates[destId];
+renderProgress(); renderPhase(); renderChecklist(); renderTransfer(); renderAISnap();
+// Always open at the top of the page, at the logo. A tab named in the link (#progress) is still
+// pre-selected, but the page doesn't jump down to it, and the browser doesn't restore an old scroll spot.
+try { history.scrollRestoration = "manual"; } catch (e) {}
+show(location.hash.slice(1));
+scrollTo({ top: 0, behavior: "instant" });
+// Belt and braces: if anything moves the page before the visitor touches it, put it back at the top.
+let touched = false;
+["wheel", "touchstart", "keydown", "pointerdown"].forEach((t) => addEventListener(t, () => { touched = true; }, { once: true, passive: true }));
+addEventListener("load", () => { if (!touched) scrollTo({ top: 0, behavior: "instant" }); });
+</script>
+</body>
+</html>

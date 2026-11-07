@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore career pathways · MDC Pathways</title>
+<style>
+  :root {
+    --bg: #12082b;
+    --ink: #ffffff;
+    --muted: #d6cbef;
+    --accent: #ff7a59;
+    --focus: #ffe45c;
+    --glass-bg: rgba(255, 255, 255, .08);
+    --glass-bg-hover: rgba(255, 255, 255, .14);
+    --glass-border: rgba(255, 255, 255, .22);
+    --glass-blur: 16px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body::before {
+    content: ""; position: fixed; inset: -10%; z-index: -1;
+    background: url("images/mdc-hero.png") center / cover no-repeat;
+    filter: blur(60px) saturate(130%) brightness(.45);
+  }
+
+  /* ---------- GLASS ---------- */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    box-shadow: 0 8px 32px rgba(8, 2, 24, .35), inset 0 1px 0 rgba(255, 255, 255, .15);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass { background: rgba(29, 16, 64, .92); }
+  }
+
+  a { color: #fff; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar { position: sticky; top: .75rem; z-index: 5;
+    width: min(64rem, calc(100% - 2rem)); margin: .75rem auto 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: .6rem .9rem; border-radius: 1rem; }
+  .topbar a { text-decoration: none; font-weight: 600; min-height: 44px;
+    display: inline-flex; align-items: center; padding: 0 .5rem; border-radius: .6rem; }
+  .topbar a:hover { background: var(--glass-bg-hover); }
+  .brand { font-weight: 800; letter-spacing: .01em; }
+
+  /* ---------- PAGE ---------- */
+  main { width: min(64rem, calc(100% - 2rem)); margin: 0 auto; padding: 2rem 0 4rem;
+    animation: pageIn 600ms ease-out both; }
+  @keyframes pageIn { from { opacity: 0; transform: translateY(12px); } }
+
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 0 0 .5rem; }
+  .lede { color: var(--muted); font-size: 1.1rem; margin: 0 0 1rem; max-width: 40rem; }
+
+  .notice { display: flex; gap: .6rem; align-items: flex-start;
+    padding: .8rem 1rem; border-radius: .9rem; margin: 0 0 1.5rem;
+    border-color: rgba(255, 228, 92, .5); font-size: .95rem; }
+  .notice strong { color: var(--focus); }
+
+  /* ---------- SEARCH ---------- */
+  .finder { padding: 1.5rem; border-radius: 1.5rem; margin-bottom: 1.5rem; }
+  .finder label { display: block; font-weight: 700; font-size: 1.15rem; margin-bottom: .6rem; }
+  .search-row { display: flex; gap: .6rem; }
+  .search-row input { flex: 1; min-width: 0; padding: .9rem 1rem; border-radius: .9rem;
+    color: #fff; font: inherit; font-size: 1.05rem; }
+  .search-row input::placeholder { color: var(--muted); }
+  .btn { font: inherit; font-weight: 600; color: #fff; cursor: pointer;
+    padding: .8rem 1.2rem; border-radius: .9rem; min-height: 44px;
+    transition: background-color .2s; }
+  .btn:hover { background: var(--glass-bg-hover); }
+
+  .chips-label { margin: 1.25rem 0 .6rem; font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0; list-style: none; }
+  .chip { font: inherit; color: #fff; cursor: pointer; padding: .55rem 1rem;
+    border-radius: 999px; min-height: 44px; transition: background-color .2s, border-color .2s; }
+  .chip:hover { background: var(--glass-bg-hover); }
+  .chip[aria-pressed="true"] { background: rgba(255, 122, 89, .35); border-color: rgba(255, 150, 120, .85); }
+  .chip[aria-pressed="true"]::before { content: "✓ "; }
+
+  /* ---------- RESULTS ---------- */
+  .status { font-weight: 600; margin: 0 0 1rem; min-height: 1.5em; }
+  .results { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+  .card { padding: 1.25rem; border-radius: 1.25rem; display: flex; flex-direction: column; gap: .6rem; }
+  .card h2 { font-size: 1.2rem; line-height: 1.25; margin: 0; }
+  .card p { margin: 0; color: var(--muted); }
+  .meta { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .badge { font-size: .8rem; font-weight: 700; padding: .2rem .6rem; border-radius: 999px;
+    border: 1px solid var(--glass-border); background: rgba(255, 255, 255, .1); }
+  .badge--cred { background: rgba(255, 122, 89, .3); border-color: rgba(255, 150, 120, .7); }
+  .badge--sample { color: var(--focus); border-color: rgba(255, 228, 92, .5); }
+  .careers { margin: 0; padding-left: 1.1rem; }
+  .careers li { margin: .1rem 0; }
+  .card__foot { margin-top: auto; padding-top: .6rem; border-top: 1px solid var(--glass-border);
+    font-size: .9rem; color: var(--muted); }
+
+  .empty { padding: 1.5rem; border-radius: 1.25rem; }
+  .empty h2 { margin: 0 0 .5rem; font-size: 1.25rem; }
+  .empty p { margin: 0 0 .75rem; color: var(--muted); }
+  .suggest { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 30rem) { .search-row { flex-direction: column; } }
+  @media (prefers-reduced-motion: reduce) {
+    main { animation: none; } .btn, .chip { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar glass" aria-label="Site">
+  <a class="brand" href="index.html">MDC Pathways</a>
+  <a href="index.html">← Back to home</a>
+</nav>
+
+<main id="main">
+  <h1>Explore career pathways</h1>
+  <p class="lede">Tell us what you're interested in, and we'll match you to MDC programs that lead there.</p>
+
+  <p class="notice glass" role="note">
+    <span aria-hidden="true">⚠</span>
+    <span><strong>Prototype.</strong> These programs are sample data and haven't been checked against
+    the official MDC catalog. Talk to an MDC advisor before making plans.</span>
+  </p>
+
+  <section class="finder glass" aria-label="Search programs">
+    <form role="search" id="search-form" autocomplete="off">
+      <label for="q">What are you interested in?</label>
+      <div class="search-row">
+        <input class="glass" id="q" name="q" type="search"
+          placeholder="Try “computers” or “nurse”" aria-describedby="status">
+        <button class="btn glass" type="submit">Search</button>
+      </div>
+    </form>
+
+    <p class="chips-label" id="chips-label">Or pick an interest:</p>
+    <ul class="chips" id="chips" aria-labelledby="chips-label"></ul>
+  </section>
+
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+  <ul class="results" id="results"></ul>
+</main>
+
+<script src="data/programs.js"></script>
+<script>
+(function () {
+  var DATA = window.MDC_SAMPLE_DATA;
+  var input = document.getElementById("q");
+  var form = document.getElementById("search-form");
+  var chipsEl = document.getElementById("chips");
+  var statusEl = document.getElementById("status");
+  var resultsEl = document.getElementById("results");
+
+  var state = { q: "", interest: "" };
+  var interestLabel = {};
+  DATA.interests.forEach(function (i) { interestLabel[i.id] = i.label; });
+
+  /* ---------- text helpers ---------- */
+  function norm(s) {
+    return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9\s]/g, " ");
+  }
+  function tokens(s) { return norm(s).split(/\s+/).filter(function (t) { return t.length > 1; }); }
+
+  // Small typo tolerance: "nurce" still finds "nurse".
+  function editDistance(a, b) {
+    if (Math.abs(a.length - b.length) > 2) return 3;
+    var prev = [], cur, i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      cur = [i];
+      for (j = 1; j <= b.length; j++) {
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      }
+      prev = cur;
+    }
+    return prev[b.length];
+  }
+
+  // Expand what the student typed with everyday-word synonyms.
+  function expandQuery(q) {
+    var out = [];
+    tokens(q).forEach(function (t) {
+      out.push(t);
+      (DATA.synonyms[t] || []).forEach(function (s) { out.push(s); });
+    });
+    return out;
+  }
+
+  // Pre-compute searchable words for each program, with a weight per field.
+  var index = DATA.programs.map(function (p) {
+    return {
+      p: p,
+      fields: [
+        { words: tokens(p.name.replace(/^Associate in Arts,?/i, "")), w: 5 },  // "Associate in Arts" would match every "art" search
+        { words: tokens(p.careers.join(" ")), w: 4 },
+        { words: tokens(p.keywords.join(" ") + " " + p.interests.map(function (i) { return interestLabel[i]; }).join(" ")), w: 3 },
+        { words: tokens(p.summary + " " + p.credential), w: 1 }
+      ]
+    };
+  });
+
+  function scoreProgram(entry, qTokens) {
+    var total = 0;
+    for (var k = 0; k < qTokens.length; k++) {
+      var t = qTokens[k], best = 0;
+      entry.fields.forEach(function (f) {
+        f.words.forEach(function (w) {
+          var s = 0;
+          if (w === t) s = f.w * 2;
+          else if (w.indexOf(t) === 0 && t.length >= 3) s = f.w * 1.5;   // "cyber" -> "cybersecurity"
+          else if (t.length >= 4 && editDistance(t, w) <= (t.length >= 8 ? 2 : 1)) s = f.w;  // typos
+          if (s > best) best = s;
+        });
+      });
+      total += best;
+    }
+    return total;
+  }
+
+  function search() {
+    var qTokens = expandQuery(state.q);
+    var list = index
+      .filter(function (e) { return !state.interest || e.p.interests.indexOf(state.interest) !== -1; })
+      .map(function (e) { return { p: e.p, score: qTokens.length ? scoreProgram(e, qTokens) : 1 }; })
+      .filter(function (r) { return r.score > 0; });
+    list.sort(function (a, b) { return b.score - a.score || a.p.name.localeCompare(b.p.name); });
+    // Drop weak matches: keep results scoring at least 40% of the best one.
+    if (qTokens.length && list.length) {
+      var cutoff = list[0].score * 0.4;
+      list = list.filter(function (r) { return r.score >= cutoff; });
+    }
+    return list.map(function (r) { return r.p; });
+  }
+
+  /* ---------- rendering ---------- */
+  function el(tag, attrs, text) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); });
+    if (text != null) n.textContent = text;   // textContent: never inject HTML
+    return n;
+  }
+
+  function renderChips() {
+    chipsEl.innerHTML = "";
+    DATA.interests.forEach(function (i) {
+      var li = el("li");
+      var b = el("button", { type: "button", "class": "chip glass", "aria-pressed": String(state.interest === i.id) }, i.label);
+      b.addEventListener("click", function () {
+        state.q = input.value;   // keep whatever is typed in the box
+        state.interest = state.interest === i.id ? "" : i.id;
+        update();
+      });
+      li.appendChild(b);
+      chipsEl.appendChild(li);
+    });
+  }
+
+  function renderResults(list) {
+    resultsEl.innerHTML = "";
+    var what = [];
+    if (state.q) what.push("“" + state.q.trim() + "”");
+    if (state.interest) what.push(interestLabel[state.interest]);
+
+    if (!list.length) {
+      statusEl.textContent = "No programs found" + (what.length ? " for " + what.join(" + ") : "") + ".";
+      var box = el("li", { "class": "empty glass" });
+      box.appendChild(el("h2", null, "Nothing matched yet"));
+      box.appendChild(el("p", null, "Try a broader word, or start from one of these:"));
+      var sug = el("div", { "class": "suggest" });
+      ["computers", "cooking", "buildings", "helping people", "art"].forEach(function (s) {
+        var b = el("button", { type: "button", "class": "chip glass" }, s);
+        b.addEventListener("click", function () { state.q = s; state.interest = ""; update(); input.focus(); });
+        sug.appendChild(b);
+      });
+      box.appendChild(sug);
+      resultsEl.appendChild(box);
+      return;
+    }
+
+    statusEl.textContent = list.length + (list.length === 1 ? " program" : " programs") +
+      (what.length ? " for " + what.join(" + ") : " to explore") + ".";
+
+    list.forEach(function (p) {
+      var li = el("li", { "class": "card glass" });
+      var meta = el("div", { "class": "meta" });
+      meta.appendChild(el("span", { "class": "badge badge--cred" }, p.credential));
+      meta.appendChild(el("span", { "class": "badge badge--sample" }, "Sample data"));
+      li.appendChild(meta);
+      li.appendChild(el("h2", null, p.name));
+      li.appendChild(el("p", null, p.summary));
+
+      li.appendChild(el("strong", null, "Can lead to:"));
+      var ul = el("ul", { "class": "careers" });
+      p.careers.forEach(function (c) { ul.appendChild(el("li", null, c)); });
+      li.appendChild(ul);
+
+      li.appendChild(el("p", { "class": "card__foot" },
+        "Required courses and transfer options: coming soon."));
+      resultsEl.appendChild(li);
+    });
+  }
+
+  /* ---------- state <-> URL, so results can be bookmarked or shared ---------- */
+  function syncUrl() {
+    var params = new URLSearchParams();
+    if (state.q.trim()) params.set("q", state.q.trim());
+    if (state.interest) params.set("interest", state.interest);
+    var qs = params.toString();
+    try { history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "")); } catch (e) {}
+  }
+
+  function update() {
+    input.value = state.q;
+    renderChips();
+    renderResults(search());
+    syncUrl();
+  }
+
+  var timer;
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { state.q = input.value; renderResults(search()); syncUrl(); }, 150);
+  });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); state.q = input.value; update();
+  });
+
+  // Start from whatever the home page sent: ?q=... or ?interest=...
+  var params = new URLSearchParams(location.search);
+  state.q = params.get("q") || "";
+  var start = params.get("interest") || "";
+  state.interest = interestLabel[start] ? start : "";
+  update();
+  if (!state.interest) input.focus();
+})();
+</script>
+</body>
+</html>
