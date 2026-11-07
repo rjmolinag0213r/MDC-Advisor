@@ -152,11 +152,37 @@
   .skip.gone { opacity: 0 !important; pointer-events: none; transition: opacity .3s; }
 
   .intro { text-align: center; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); }
-  .intro__banner { position: relative; width: 100%;
-    height: clamp(46svh, 53.9vw, 78svh);           /* 53.9vw = the photo's natural shape */
+  .intro__banner { position: relative; width: 100%; overflow: hidden;
+    --banner-h: clamp(46svh, 53.9vw, 78svh);       /* 53.9vw = the photo's natural shape */
+    height: var(--banner-h);
     -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 80%, transparent 100%); }
   .intro__banner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  /* Logo art: a box with the photo's exact shape, sized to cover the banner (like object-fit: cover),
+     so the logo and word layers can be placed in % of the photo and always line up. */
+  .logo-art { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    aspect-ratio: 2762 / 1488; width: max(100%, calc(var(--banner-h) * 2762 / 1488)); }
+  .intro__banner .logo-art__sky { object-fit: fill; }
+  .intro__banner .logo-piece { position: absolute; height: auto; object-fit: fill; }
+
+  /* The logo, then "Miami", "Dade", "College" appear one after another, same as the quote words:
+     each drops in from above-left while a soft mask uncovers it from top to bottom.
+     --logo-start = short pause after the page shows before the logo starts. */
+  .logo-art { --word-gap: 480ms; --word-ms: 1400ms; --logo-start: 200ms; }
+  .js .intro__banner .logo-piece { opacity: 0; transform: translate(-1.2%, -6%); filter: blur(3px);
+    -webkit-mask-image: linear-gradient(180deg, #000 34%, transparent 66%);
+    mask-image: linear-gradient(180deg, #000 34%, transparent 66%);
+    -webkit-mask-size: 100% 300%; mask-size: 100% 300%;
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    -webkit-mask-position: 0 100%; mask-position: 0 100%;
+    transition: opacity var(--word-ms) ease-out, transform var(--word-ms) cubic-bezier(.22, .61, .36, 1),
+      filter var(--word-ms) ease-out, -webkit-mask-position var(--word-ms) ease-out, mask-position var(--word-ms) ease-out;
+    transition-delay: calc(var(--logo-start) + var(--i, 0) * var(--word-gap)); }
+  /* off screen: hide instantly so it replays next time */
+  .js .intro__banner:not(.is-in) .logo-piece { transition: none; }
+  .js .intro__banner.is-in .logo-piece { opacity: 1; transform: none; filter: none;
+    -webkit-mask-position: 0 0; mask-position: 0 0; }
   @keyframes riseIn { to { opacity: 1; transform: none; } }
   @keyframes fadeUp { to { opacity: 1; transform: none; } }
 
@@ -204,6 +230,8 @@
   .js .reveal.is-in { opacity: 1; transform: none; }
   /* the quote flies in word by word; its container itself stays put */
   .js .reveal.words { opacity: 1; transform: none; }
+  /* the skyline stays still too: only the logo and the words "Miami Dade College" animate */
+  .js .intro__banner.reveal, .js .intro__banner.reveal.from-above { opacity: 1; transform: none; transition: none; }
   .words .w { display: inline-block; }
   .js .reveal.words .w { opacity: 0; transform: translateY(.8em) rotate(2deg);
     transition: opacity calc(var(--reveal-ms) * .7) ease-out, transform var(--reveal-ms) var(--fly);
@@ -443,9 +471,11 @@
   .lux .dot { width: 8px; height: 8px; border-radius: 0; background: var(--lx-accent); box-shadow: none; }
   .lux .seg { background: transparent; box-shadow: none; padding: 0; gap: .4rem; }
   .lux .seg__thumb { top: auto; bottom: 0; height: 2px; border-radius: 0; background: var(--lx-accent); box-shadow: none; }
-  .lux .tab { font-size: .8rem; color: rgba(255, 255, 255, .72); padding: .8rem .9rem; min-height: 50px; }
+  /* tab words are always white; only the icons dim on tabs that aren't picked */
+  .lux .tab { font-size: .8rem; color: #fff; padding: .8rem .9rem; min-height: 50px; }
   .lux .tab:hover, .lux .tab[aria-selected="true"] { color: #fff; }
-  .lux .tab svg { width: 15px; height: 15px; }
+  .lux .tab svg { width: 15px; height: 15px; color: rgba(255, 255, 255, .72); }
+  .lux .tab:hover svg, .lux .tab[aria-selected="true"] svg { color: #fff; }
 
   /* chat */
   .lux .chat-head, .lux .compose { border-color: var(--lx-line); }
@@ -484,6 +514,8 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .intro__banner, .skip, .stage, .js .reveal, .js .reveal.words .w { animation: none; transition: none; opacity: 1; transform: none; }
+    .js .intro__banner .logo-piece { transition: none; opacity: 1; transform: none; filter: none;
+      -webkit-mask-image: none; mask-image: none; }
     .orb, .msg, [role="tabpanel"].enter { animation: none; }
     .seg__thumb, .btn, .chip, .dest { transition: none; }
   }
@@ -501,8 +533,20 @@
   <section class="scene scene--logo" aria-label="Miami Dade College">
     <div class="stage stage--fade">
       <div class="intro__banner reveal">
-        <img src="images/mdc-hero.png" width="2762" height="1488"
-          alt="Miami Dade College logo over a pixel-art Miami skyline at sunset">
+        <!-- The skyline (with the logo cut out), then the logo and each word as their own layer
+             so they can appear one at a time, left to right and top to bottom. -->
+        <div class="logo-art">
+          <img class="logo-art__sky" src="images/mdc-hero-sky.png" width="2762" height="1488"
+            alt="Miami Dade College logo over a pixel-art Miami skyline at sunset">
+          <img class="logo-piece" src="images/mdc-logo-md.png" alt=""
+            style="--i:0; left:41.130%; top:26.277%; width:17.777%">
+          <img class="logo-piece" src="images/mdc-logo-miami.png" alt=""
+            style="--i:1; left:32.476%; top:49.328%; width:18.537%">
+          <img class="logo-piece" src="images/mdc-logo-dade.png" alt=""
+            style="--i:2; left:52.136%; top:49.328%; width:15.460%">
+          <img class="logo-piece" src="images/mdc-logo-college.png" alt=""
+            style="--i:3; left:39.066%; top:61.962%; width:22.085%">
+        </div>
       </div>
     </div>
   </section>
@@ -850,7 +894,23 @@ document.querySelectorAll(".tab").forEach((t) => {
     const nt = document.getElementById("tab-" + VIEWS[j]); nt.focus(); show(VIEWS[j]);
   });
 });
-document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); goHub(a.dataset.go); }));
+// UI mockup of sign-in: until the backend has accounts, "signed in" is just a flag that account.html
+// sets for this tab. Later, ask the backend instead (GET /api/me) and only send signed-out students there.
+function mockSignedIn() { try { return sessionStorage.getItem("mock-signed-in") === "1"; } catch (e) { return false; } }
+document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", (e) => {
+  e.preventDefault();
+  const v = a.dataset.go;
+  if ((v === "ai" || v === "progress") && !mockSignedIn()) { location.href = "account.html?next=" + v; return; }
+  goHub(v);
+}));
+// Coming back from account.html (?go=ai): open that tab and scroll to the hub, then tidy the address.
+{
+  const go = new URLSearchParams(location.search).get("go");
+  if (go && VIEWS.includes(go)) {
+    try { history.replaceState(null, "", location.pathname); } catch (e) {}
+    requestAnimationFrame(() => goHub(go));
+  }
+}
 // A changed link only picks the tab; it never scrolls. Only the buttons scroll down to the hub.
 window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (VIEWS.includes(v)) show(v); });
 window.addEventListener("resize", moveThumb);
