@@ -234,25 +234,21 @@
   .js .reveal.words { opacity: 1; transform: none; }
   /* the skyline stays still too: only the logo and the words "Miami Dade College" animate */
   .js .intro__banner.reveal, .js .intro__banner.reveal.from-above { opacity: 1; transform: none; transition: none; }
-  /* Words appear slowly, left to right, each one overlapping the last. Each word drops in from
-     above-left while a soft mask uncovers it from top to bottom.
-     Timing: --word-gap = time between words starting, --word-ms = how long each word takes. */
-  .words { --word-gap: 480ms; --word-ms: 1400ms; }
-  /* padding gives the glow room so the mask doesn't cut it off; the negative margin keeps spacing the same */
-  .words .w { display: inline-block; padding: .25em .3em; margin: -.25em -.3em; }
-  .js .reveal.words .w { opacity: 0; transform: translate(-.6em, -1.1em); filter: blur(3px);
-    -webkit-mask-image: linear-gradient(180deg, #000 34%, transparent 66%);
-    mask-image: linear-gradient(180deg, #000 34%, transparent 66%);
-    -webkit-mask-size: 100% 300%; mask-size: 100% 300%;
-    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-    -webkit-mask-position: 0 100%; mask-position: 0 100%;
-    transition: opacity var(--word-ms) ease-out, transform var(--word-ms) cubic-bezier(.22, .61, .36, 1),
-      filter var(--word-ms) ease-out, -webkit-mask-position var(--word-ms) ease-out, mask-position var(--word-ms) ease-out;
-    transition-delay: calc(var(--i, 0) * var(--word-gap)); }
+  /* The quote appears letter by letter, left to right. Each letter starts before the last one has
+     finished, so the line flows in smoothly: it fades up from a soft blur, settling from just above.
+     Timing: --letter-gap = time between letters starting, --letter-ms = how long each letter takes. */
+  .words { --letter-gap: 55ms; --letter-ms: 900ms; }
+  .words .word { display: inline-block; white-space: nowrap; }   /* keeps a word's letters on one line */
+  .words .w { display: inline-block; }
+  .words .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .js .reveal.words .w { opacity: 0; transform: translateY(-.35em); filter: blur(4px);
+    will-change: opacity, transform, filter;
+    transition: opacity var(--letter-ms) ease-out, transform var(--letter-ms) cubic-bezier(.22, .61, .36, 1),
+      filter var(--letter-ms) ease-out;
+    transition-delay: calc(var(--i, 0) * var(--letter-gap)); }
   /* leaving the screen: hide instantly so it can replay next time */
   .js .reveal.words:not(.is-in) .w { transition: none; }
-  .js .reveal.words.is-in .w { opacity: 1; transform: none; filter: none;
-    -webkit-mask-position: 0 0; mask-position: 0 0; }
+  .js .reveal.words.is-in .w { opacity: 1; transform: none; filter: none; }
 
   /* ================= STUDENT HUB ================= */
   .hub { display: grid; gap: 1.25rem; scroll-margin-top: 0; }
@@ -811,9 +807,14 @@ function phase() {
 const root = document.documentElement;
 if ("IntersectionObserver" in window) {
   root.classList.add("js");
-  // split the quote into words so each one can fly up in turn
+  // split the quote into letters so they appear one at a time; letters stay grouped by word so
+  // lines only break between words, and screen readers get the whole sentence once
   document.querySelectorAll(".words p").forEach((p) => {
-    p.innerHTML = p.textContent.trim().split(/\s+/).map((w, i) => `<span class="w" style="--i:${i}">${w}</span>`).join(" ");
+    const text = p.textContent.trim();
+    let n = 0;
+    const letters = text.split(/\s+/).map((w) =>
+      `<span class="word">${[...w].map((ch) => `<span class="w" style="--i:${n++}">${ch}</span>`).join("")}</span>`).join(" ");
+    p.innerHTML = `<span class="sr">${text}</span><span aria-hidden="true">${letters}</span>`;
   });
   // the hub bar, the sample note and every hub card fly up too, staggered among their sibling cards
   document.querySelectorAll("#hub .hub-top, #hub .sample, #hub .glass").forEach((el) => {
