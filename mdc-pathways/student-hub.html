@@ -209,7 +209,9 @@
   .intro__quote { margin: 0; min-height: 85svh; display: grid; place-items: center; padding: 3rem 1.5rem; }
   .intro__quote blockquote { margin: 0; max-width: 22ch; text-wrap: balance;
     font-family: var(--f-quote); font-style: italic; font-size: clamp(1.8rem, 5.4vw, 3.75rem); line-height: 1.15;
-    text-shadow: 0 2px 24px rgba(12, 2, 30, .55), 0 0 40px rgba(var(--glow-pink), .35); }
+    /* bright white and bold, like the "Find the future you want." headline */
+    color: #fff; font-weight: 700;
+    text-shadow: 0 0 18px rgba(255, 255, 255, .35), 0 2px 24px rgba(12, 2, 30, .5); }
   .intro__quote p { margin: 0; }
 
   .band--future { min-height: 85svh; display: grid; place-items: center; padding-block: 3rem; }
@@ -232,12 +234,25 @@
   .js .reveal.words { opacity: 1; transform: none; }
   /* the skyline stays still too: only the logo and the words "Miami Dade College" animate */
   .js .intro__banner.reveal, .js .intro__banner.reveal.from-above { opacity: 1; transform: none; transition: none; }
-  .words .w { display: inline-block; }
-  .js .reveal.words .w { opacity: 0; transform: translateY(.8em) rotate(2deg);
-    transition: opacity calc(var(--reveal-ms) * .7) ease-out, transform var(--reveal-ms) var(--fly);
-    transition-delay: calc(var(--i, 0) * 35ms); }
-  .js .reveal.words.from-above .w { transform: translateY(-.8em) rotate(-2deg); }
-  .js .reveal.words.is-in .w { opacity: 1; transform: none; }
+  /* Words appear slowly, left to right, each one overlapping the last. Each word drops in from
+     above-left while a soft mask uncovers it from top to bottom.
+     Timing: --word-gap = time between words starting, --word-ms = how long each word takes. */
+  .words { --word-gap: 480ms; --word-ms: 1400ms; }
+  /* padding gives the glow room so the mask doesn't cut it off; the negative margin keeps spacing the same */
+  .words .w { display: inline-block; padding: .25em .3em; margin: -.25em -.3em; }
+  .js .reveal.words .w { opacity: 0; transform: translate(-.6em, -1.1em); filter: blur(3px);
+    -webkit-mask-image: linear-gradient(180deg, #000 34%, transparent 66%);
+    mask-image: linear-gradient(180deg, #000 34%, transparent 66%);
+    -webkit-mask-size: 100% 300%; mask-size: 100% 300%;
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    -webkit-mask-position: 0 100%; mask-position: 0 100%;
+    transition: opacity var(--word-ms) ease-out, transform var(--word-ms) cubic-bezier(.22, .61, .36, 1),
+      filter var(--word-ms) ease-out, -webkit-mask-position var(--word-ms) ease-out, mask-position var(--word-ms) ease-out;
+    transition-delay: calc(var(--i, 0) * var(--word-gap)); }
+  /* leaving the screen: hide instantly so it can replay next time */
+  .js .reveal.words:not(.is-in) .w { transition: none; }
+  .js .reveal.words.is-in .w { opacity: 1; transform: none; filter: none;
+    -webkit-mask-position: 0 0; mask-position: 0 0; }
 
   /* ================= STUDENT HUB ================= */
   .hub { display: grid; gap: 1.25rem; scroll-margin-top: 0; }
@@ -514,6 +529,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .intro__banner, .skip, .stage, .js .reveal, .js .reveal.words .w { animation: none; transition: none; opacity: 1; transform: none; }
+    .js .reveal.words .w { filter: none; -webkit-mask-image: none; mask-image: none; }
     .js .intro__banner .logo-piece { transition: none; opacity: 1; transform: none; filter: none;
       -webkit-mask-image: none; mask-image: none; }
     .orb, .msg, [role="tabpanel"].enter { animation: none; }
