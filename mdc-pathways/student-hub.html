@@ -916,7 +916,9 @@ function mockSignedIn() { try { return sessionStorage.getItem("mock-signed-in") 
 document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", (e) => {
   e.preventDefault();
   const v = a.dataset.go;
-  if ((v === "ai" || v === "progress") && !mockSignedIn()) { location.href = "account.html?next=" + v; return; }
+  // AI advisor -> sign up first; See my progress -> log in (returning students)
+  if (v === "ai" && !mockSignedIn()) { location.href = "account.html?next=ai"; return; }
+  if (v === "progress" && !mockSignedIn()) { location.href = "login.html?next=progress"; return; }
   goHub(v);
 }));
 // Coming back from account.html (?go=ai): open that tab and scroll to the hub, then tidy the address.
