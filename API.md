@@ -142,7 +142,29 @@ The response has `completed` (course codes that count), `courses` (with grade, c
 | `DELETE /api/me/progress/{careerId}` | | |
 | `PUT /api/me/plans/{program}` | `{ "plan": <the /api/plan response> }` | |
 
-**Auth:** once Auth0 is configured (`GET /api/health` returns `"auth": "auth0"`), send `Authorization: Bearer <access token>` from `@auth0/auth0-react`'s `getAccessTokenSilently()`. Until then (`"auth": "demo"`), send `X-Demo-User: <any 3-64 letters/digits>`. Missing or bad credentials return `401` with `error` set to `auth_required`, `invalid_token` or `token_expired`.
+**Auth0 is live.** These values are public, so they're safe in frontend code:
+
+| Setting | Value |
+|---|---|
+| Domain | `dev-knpwtmv0ymv0quu4.us.auth0.com` |
+| Client ID (SPA "NextStop Web") | `w9gjfVbJ1j4WlH3LBBpmEh09zwxxiHXr` |
+| Audience | `https://api.nextstop` |
+| Allowed URLs | `http://localhost:5173`, `http://127.0.0.1:5173`, `http://localhost:3000`, `http://127.0.0.1:3000`, `http://127.0.0.1:5000`, `http://45.77.94.140` (ask Ricardo to add more) |
+
+```jsx
+// npm i @auth0/auth0-react
+import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
+<Auth0Provider domain="dev-knpwtmv0ymv0quu4.us.auth0.com" clientId="w9gjfVbJ1j4WlH3LBBpmEh09zwxxiHXr"
+  authorizationParams={{ redirect_uri: window.location.origin, audience: "https://api.nextstop" }}>
+  <App />
+</Auth0Provider>
+// inside a component:
+const { loginWithRedirect, logout, isAuthenticated, getAccessTokenSilently } = useAuth0();
+const token = await getAccessTokenSilently();
+await fetch(API + "/api/me", { headers: { Authorization: `Bearer ${token}` } });
+```
+
+Once Auth0 is configured (`GET /api/health` returns `"auth": "auth0"`), send `Authorization: Bearer <access token>` from `getAccessTokenSilently()`. Until then (`"auth": "demo"`), send `X-Demo-User: <any 3-64 letters/digits>`. Missing or bad credentials return `401` with `error` set to `auth_required`, `invalid_token` or `token_expired`.
 
 ## Sponsor data in responses
 
