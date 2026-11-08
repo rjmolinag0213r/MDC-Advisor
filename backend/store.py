@@ -58,6 +58,14 @@ def init() -> None:
             cur.execute(f"""CREATE TABLE IF NOT EXISTS saved_plans (
                 user_id TEXT NOT NULL, program TEXT NOT NULL, plan {js} NOT NULL,
                 updated_at {ts} NOT NULL, PRIMARY KEY (user_id, program))""")
+            serial = "BIGSERIAL" if IS_PG else "INTEGER"
+            pk = "PRIMARY KEY" + ("" if IS_PG else " AUTOINCREMENT")
+            cur.execute(f"""CREATE TABLE IF NOT EXISTS chat_messages (
+                id {serial} {pk}, user_id TEXT NOT NULL, sender TEXT NOT NULL,
+                text TEXT NOT NULL, created_at {ts} NOT NULL)""")
+            cur.execute("CREATE INDEX IF NOT EXISTS chat_messages_user ON chat_messages (user_id, id)")
+            cur.execute(f"""CREATE TABLE IF NOT EXISTS chat_memory (
+                user_id TEXT PRIMARY KEY, facts {js} NOT NULL, updated_at {ts} NOT NULL)""")
             cur.execute(f"""CREATE TABLE IF NOT EXISTS events (
                 time {ts} NOT NULL, kind TEXT NOT NULL, career_id TEXT, program TEXT,
                 engine TEXT, latency_ms INTEGER, language TEXT)""")
@@ -139,6 +147,71 @@ def save_plan(user_id: str, program: str, plan: dict) -> None:
     _run("""INSERT INTO saved_plans (user_id, program, plan, updated_at) VALUES (%s, %s, %s, %s)
             ON CONFLICT (user_id, program) DO UPDATE SET plan = excluded.plan, updated_at = excluded.updated_at""",
          (user_id, program, _dump(plan), _ts(_now())))
+
+
+# ---------- advisor memory: conversation + remembered facts ----------
+
+MEMORY_KEYS = ("interests", "goals", "subjects", "concerns", "programLeaning", "careerLeaning", "language", "grade")
+LIST_KEYS = ("interests", "goals", "subjects", "concerns")
+
+
+def append_chat(user_id: str, messages: list[dict]) -> None:
+    init()
+    conn = _connect()
+    try:
+        cur = conn.cursor()
+        cur.executemany(_q("INSERT INTO chat_messages (user_id, sender, text, created_at) VALUES (%s, %s, %s, %s)"),
+                        [(user_id, m["sender"], str(m["text"])[:4000], _ts(_now())) for m in messages])
+        # keep the last 200 messages per student
+        cur.execute(_q("""DELETE FROM chat_messages WHERE user_id = %s AND id NOT IN
+                          (SELECT id FROM chat_messages WHERE user_id = %s ORDER BY id DESC LIMIT 200)"""), (user_id, user_id))
+        if not IS_PG:
+            conn.commit()
+    finally:
+        conn.close()
+
+
+def get_chat(user_id: str, limit: int = 50) -> list[dict]:
+    rows = _run("SELECT sender, text, created_at FROM chat_messages WHERE user_id = %s ORDER BY id DESC LIMIT %s",
+                (user_id, int(limit)), fetch=True)
+    return [{"sender": r[0], "text": r[1], "at": str(r[2])} for r in reversed(rows)]
+
+
+def get_memory(user_id: str) -> dict:
+    rows = _run("SELECT facts FROM chat_memory WHERE user_id = %s", (user_id,), fetch=True)
+    return _load(rows[0][0]) if rows else {}
+
+
+def merge_memory(old: dict, update: dict | None) -> dict:
+    """Merge facts the model learned into what we already remember (dedupe, cap, drop junk)."""
+    out = {k: (list(old.get(k) or []) if k in LIST_KEYS else old.get(k)) for k in MEMORY_KEYS}
+    if not isinstance(update, dict):
+        return {k: v for k, v in out.items() if v}
+    for k in LIST_KEYS:
+        vals = update.get(k)
+        if isinstance(vals, str):
+            vals = [vals]
+        for v in vals or []:
+            v = str(v).strip()[:60]
+            if v and v.lower() not in {x.lower() for x in out[k]}:
+                out[k].append(v)
+        out[k] = out[k][-8:]
+    for k in ("programLeaning", "careerLeaning", "language", "grade"):
+        v = update.get(k)
+        if isinstance(v, (str, int)) and str(v).strip() and str(v).lower() not in ("null", "none", "unknown"):
+            out[k] = str(v).strip()[:60]
+    return {k: v for k, v in out.items() if v}
+
+
+def put_memory(user_id: str, facts: dict) -> None:
+    _run("""INSERT INTO chat_memory (user_id, facts, updated_at) VALUES (%s, %s, %s)
+            ON CONFLICT (user_id) DO UPDATE SET facts = excluded.facts, updated_at = excluded.updated_at""",
+         (user_id, _dump(facts), _ts(_now())))
+
+
+def forget_chat(user_id: str) -> None:
+    _run("DELETE FROM chat_messages WHERE user_id = %s", (user_id,))
+    _run("DELETE FROM chat_memory WHERE user_id = %s", (user_id,))
 
 
 # ---------- events (time series) ----------

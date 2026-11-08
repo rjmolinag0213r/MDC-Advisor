@@ -568,6 +568,12 @@
   .welcome p { margin: 0; color: rgba(255,255,255,.85); }
   .welcome[hidden] { display: none; }
   .saved-flag { color: var(--mint, #6fd3ab); font-size: .85rem; font-weight: 600; }
+  .mem-row { display: grid; gap: .3rem; }
+  .mem-row b { font-family: var(--f-lux-display, sans-serif); font-weight: 500; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
+  .mem-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .mem-tags span { font-size: .9rem; padding: .25rem .6rem; border: 1px solid rgba(255,255,255,.3); }
+  .msg.past { opacity: .72; }
+  .divider { align-self: center; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; opacity: .7; padding: .2rem 0; }
   .auth-btn { min-height: 44px !important; padding: .55rem 1.1rem !important; font-size: .72rem !important; }
   @media (max-width: 640px) {
     /* phones: Log in sits on the brand row, tabs get the full second row */
@@ -677,6 +683,7 @@
             <div><b id="acct-fullname"></b><small id="acct-email"></small></div></div>
           <div class="status" id="acct-status">Your plan is saved to your account.</div>
           <button type="button" role="menuitem" id="acct-transcript">Load a new transcript</button>
+          <button type="button" role="menuitem" id="acct-memory">What the advisor remembers</button>
           <a role="menuitem" href="explore.html">Explore careers</a>
           <button type="button" role="menuitem" id="acct-logout">Log out</button>
         </div>
@@ -712,6 +719,12 @@
           <div class="chips" id="chips"></div>
         </div>
         <div class="glass panel stack" id="ai-snap"></div>
+        <div class="glass panel stack" id="ai-memory" hidden>
+          <span class="eyebrow">What I remember about you</span>
+          <div id="memory-facts"></div>
+          <p class="code" style="margin:0">Saved to your account, so I pick up where we left off. Personal details are never stored.</p>
+          <button class="btn chrome" type="button" id="forget">Forget our conversations</button>
+        </div>
       </div>
     </div>
   </section>
@@ -1230,9 +1243,11 @@ async function ask(q) {
   const typing = document.createElement("div");
   typing.className = "msg bot typing"; typing.textContent = "Thinking…"; log.appendChild(typing); log.scrollTop = log.scrollHeight;
   try {
-    const r = await NS.api("/api/chat", { chatHistory: chatHistory.slice(-20) });
+    // signed-in: send credentials so the advisor remembers this conversation and what it learned about you
+    const r = await NS.api("/api/chat", { chatHistory: chatHistory.slice(-20) }, { auth: signedIn });
     typing.remove();
     chatHistory.push({ sender: "bot", text: r.chatResponse });
+    if (r.memory) renderMemory(r.memory);
     const paras = NS.esc(r.chatResponse).split(/\n{2,}/).map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
     const link = r.careerId ? `<a class="open-rm" href="explore.html?career=${encodeURIComponent(r.careerId)}">See the step-by-step plan →</a>` : "";
     say(paras + link + `<span class="engine">${NS.esc(NS.engineBadge(r.engine))}</span>`);
@@ -1260,9 +1275,75 @@ function renderAISnap() {
     </div>
     <p class="note inset"><b>Heads up:</b> transferring to a ${worst.dest.name.toLowerCase()} right now would leave ${worst.lost} of your credits behind. Ask about it before you register for next term.</p>`;
 }
+/* ---------------- advisor memory (signed-in students) ---------------- */
+const PROGRAM_LABEL = { AI: "Applied AI", DATA: "Data Analytics", CYBER: "Cybersecurity", SWE: "Software Engineering",
+  NET: "Networking", ECE: "Electrical & Computer Engineering" };
+const CAREER_LABEL = { "architect": "Architect", "mechanical-engineer": "Mechanical Engineer", "chef": "Chef",
+  "cybersecurity-specialist": "Cybersecurity Specialist", "it-consultant": "IT Consultant", "software-developer": "Software Developer",
+  "data-analyst": "Data Analyst", "ai-engineer": "AI / Machine Learning Engineer", "network-engineer": "Network & Cloud Engineer",
+  "electrical-engineer": "Electrical & Computer Engineer", "registered-nurse": "Registered Nurse" };
+const careerLabel = (id) => CAREER_LABEL[id] || String(id || "").replace(/^custom-/, "").replace(/-/g, " ");
+let memory = {}, pastMessages = [];
+function renderMemory(m) {
+  memory = m || {};
+  const box = document.getElementById("ai-memory");
+  const rows = [
+    ["Interests", memory.interests], ["Goals", memory.goals], ["Favorite subjects", memory.subjects], ["Worries", memory.concerns],
+    ["Leaning toward", [memory.programLeaning && (PROGRAM_LABEL[memory.programLeaning] || memory.programLeaning),
+                        memory.careerLeaning && careerLabel(memory.careerLeaning)].filter(Boolean)],
+    ["Grade", memory.grade ? [memory.grade] : []]
+  ].filter(([, v]) => v && v.length);
+  const sub = document.querySelector(".chat-head .code");
+  if (sub && signedIn) sub.textContent = "Remembers your record and our past conversations";
+  document.getElementById("memory-facts").innerHTML = rows.length
+    ? rows.map(([k, v]) => `<div class="mem-row"><b>${k}</b><div class="mem-tags">${v.map((x) => `<span>${NS.esc(x)}</span>`).join("")}</div></div>`).join("")
+    : `<p class="lede" style="margin:0">Nothing yet. Tell me what you enjoy and I'll remember it next time.</p>`;
+  box.hidden = !signedIn;
+}
+async function restoreChat() {
+  try {
+    const d = await NS.api("/api/me/chat?limit=30");
+    pastMessages = d.messages || [];
+    renderMemory(d.memory);
+  } catch (e) { pastMessages = []; renderMemory({}); }
+}
+function showPastChat() {
+  if (!pastMessages.length) return;
+  const intro = log.firstChild;   // keep the greeting on top
+  const frag = document.createDocumentFragment();
+  const div = document.createElement("div"); div.className = "divider"; div.textContent = "Earlier conversations";
+  frag.appendChild(div);
+  pastMessages.forEach((m) => {
+    const el = document.createElement("div");
+    el.className = "msg past " + (m.sender === "user" ? "me" : "bot");
+    el.innerHTML = NS.esc(m.text).split(/\n{2,}/).map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
+    frag.appendChild(el);
+    chatHistory.push({ sender: m.sender, text: m.text });
+  });
+  const now = document.createElement("div"); now.className = "divider"; now.textContent = "Today";
+  frag.appendChild(now);
+  if (intro && intro.nextSibling) log.insertBefore(frag, intro.nextSibling); else log.appendChild(frag);
+  log.scrollTop = log.scrollHeight;
+}
+document.getElementById("forget").addEventListener("click", async () => {
+  if (!confirm("Forget our past conversations and everything I remember about you?")) return;
+  try {
+    await NS.api("/api/me/chat", undefined, { method: "DELETE" });
+    pastMessages = []; chatHistory.length = 0; renderMemory({}); greet();
+  } catch (e) { alert("Couldn't clear the memory. Try again."); }
+});
+
 function greet() {
   log.innerHTML = "";
-  say(`<p>Hi ${NS.esc(STUDENT.name.split(" ")[0])}. I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term or transferring, or about any career you're curious about.</p>`);
+  chatHistory.length = 0;   // showPastChat() refills it from the saved conversation
+  const first = NS.esc(STUDENT.name.split(" ")[0]);
+  const lean = memory.careerLeaning ? `the ${careerLabel(memory.careerLeaning)} path`
+    : (memory.programLeaning && `the ${PROGRAM_LABEL[memory.programLeaning]} program`);
+  const back = signedIn && (pastMessages.length || lean)
+    ? `<p>Welcome back, ${first}.${lean ? ` Last time we were looking at <b>${NS.esc(lean)}</b>.` : ""}${memory.interests && memory.interests.length ? ` I remember you're into ${NS.esc(memory.interests.slice(-3).join(", "))}.` : ""}</p>`
+    : `<p>Hi ${first}.</p>`;
+  say(`${back}<p>I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term or transferring, or about any career you're curious about.</p>`);
+  showPastChat();
 }
 
 /* ---------------- live data: /api/hub, /api/transcript, /api/me ---------------- */
@@ -1350,6 +1431,10 @@ function showAccount(user) {
   document.addEventListener("click", (e) => { if (!menu.hidden && !menu.contains(e.target)) setOpen(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) { setOpen(false); btn.focus(); } });
   document.getElementById("acct-logout").addEventListener("click", () => NS.auth.logout());
+  document.getElementById("acct-memory").addEventListener("click", () => {
+    setOpen(false); show("ai");
+    document.getElementById("ai-memory").scrollIntoView({ behavior: "smooth", block: "center" });
+  });
   document.getElementById("acct-transcript").addEventListener("click", () => {
     setOpen(false); show("progress");
     document.getElementById("record").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1447,6 +1532,7 @@ initAuth().then(async (auth) => {
     document.body.classList.add("signed-in");
     const first = showAccount(auth.user);
     if (auth.saved && auth.saved.savedAt) lastSaved = new Date(auth.saved.savedAt);
+    await restoreChat();      // the advisor's memory: past messages + remembered facts
     await loadHub(rec);
     showWelcome(first, !!rec.isNew);
     renderAccountStatus();

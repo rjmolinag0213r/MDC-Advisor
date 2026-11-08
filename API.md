@@ -143,6 +143,20 @@ const r = await fetch(API + "/api/transcript", { method: "POST", body: form }); 
 ```
 The response has `completed` (course codes that count), `courses` (with grade, credits and term), `notCounted` (D, F or W grades, with a `reason`), `notInCatalog` and `engine` (`gemini` for images or scans, `parser` for text). When `program` is sent, it also includes `audit` and `plan`, the same shapes as `/api/audit` and `/api/plan`. The file is not stored, and names and IDs are never returned. Without a Gemini key, image uploads return `503 vision_unavailable`; pasted text still works.
 
+## Advisor memory (signed-in students)
+
+When `/api/chat` is called with credentials (`Authorization: Bearer …`, or `X-Demo-User` in demo mode), the advisor:
+- **remembers facts** the student shares (interests, goals, favorite subjects, worries, grade, the program and career they're leaning toward), extracted by the model and merged into a profile. Values go through the PII filter, and names, contact details and IDs are never stored;
+- **knows their saved record** (program and completed courses from `/api/me/plans`);
+- **saves the conversation** (last 200 messages) to TigerData.
+
+The chat response then includes `memory` (the current profile). Anonymous chat works as before, with no memory.
+
+| Route | Purpose |
+|---|---|
+| `GET /api/me/chat?limit=40` | `{ messages: [{sender, text, at}], memory: {interests[], goals[], subjects[], concerns[], programLeaning, careerLeaning, grade, language} }` |
+| `DELETE /api/me/chat` | Forget the conversation and everything remembered |
+
 ## Signed-in student data
 
 | Route | Body | Notes |

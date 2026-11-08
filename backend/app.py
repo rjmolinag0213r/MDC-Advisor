@@ -224,6 +224,10 @@ How to help:
 
 Return ONLY JSON:
 {"chatResponse": string, "recommendedProgram": "AI"|"DATA"|"CYBER"|"SWE"|"NET"|"ECE"|"OTHER"|null, "careerId": string|null, "language": "en"|"es"}
+Optional extra key "memoryUpdate": facts the student shared in THIS message that are worth remembering next time,
+shaped like {"interests": [..], "goals": [..], "subjects": [..], "concerns": [..], "programLeaning": "AI"|..., "careerLeaning": careerId, "grade": "11"}.
+Only include what the student actually said. Never store names, contact details, IDs or school names. Use null when nothing new.
+
 recommendedProgram rules:
 - Whenever your reply recommends or points to a program, set recommendedProgram to that code, even if you also ask a follow-up question.
 - When two programs fit, pick the one that matches the student's stated goal best and mention the other in the text.
@@ -285,10 +289,29 @@ def _parse_chat_json(content: str) -> dict | None:
     return None
 
 
-def _llm_chat(history: list[dict]) -> dict | None:
+def _memory_block(memory: dict | None, record: dict | None) -> str:
+    """What the advisor knows about a signed-in student, injected into the system prompt."""
+    parts = []
+    if memory:
+        labels = {"interests": "Interests", "goals": "Goals", "subjects": "Favorite subjects", "concerns": "Worries",
+                  "programLeaning": "Program they're leaning toward", "careerLeaning": "Career they're leaning toward",
+                  "grade": "Grade", "language": "Preferred language"}
+        for k, label in labels.items():
+            v = memory.get(k)
+            if v:
+                parts.append(f"- {label}: {', '.join(v) if isinstance(v, list) else v}")
+    if record:
+        parts.append(f"- Their MDC record: {record}")
+    if not parts:
+        return ""
+    return ("\n\nWhat you remember about this student from earlier conversations (use it naturally, don't recite it, "
+            "and don't re-ask things you already know):\n" + "\n".join(parts))
+
+
+def _llm_chat(history: list[dict], memory_text: str = "") -> dict | None:
     if not llm.available_providers():
         return None
-    system = SYSTEM_PROMPT + (f"\n\nCurriculum excerpts (reference only):\n{PDF_EXCERPT}" if PDF_EXCERPT else "")
+    system = SYSTEM_PROMPT + memory_text + (f"\n\nCurriculum excerpts (reference only):\n{PDF_EXCERPT}" if PDF_EXCERPT else "")
     last_user = next((m["content"] for m in reversed(history) if m["role"] == "user"), "")
     if offline.detect_language([last_user]) == "es":
         system += "\n\nThe student is writing in SPANISH. Write chatResponse entirely in Spanish and set language to \"es\"."
@@ -377,7 +400,7 @@ def _finalize(data: dict, user_turns: list[str]) -> dict:
     }
 
 
-def advise(raw_history) -> dict:
+def advise(raw_history, memory_text: str = "") -> dict:
     history = _history(raw_history)
     pii_found: list[str] = []
     for m in history:
@@ -394,8 +417,18 @@ def advise(raw_history) -> dict:
         data["engine"] = {"name": "guard", "detail": "Prompt-injection guard"}
         return _finalize(data, user_turns)
 
-    data = _llm_chat(history) or offline.reply(user_turns, injection=False, pii_found=pii_found, titles=titles)
-    return _finalize(data, user_turns)
+    data = _llm_chat(history, memory_text) or offline.reply(user_turns, injection=False, pii_found=pii_found, titles=titles)
+    out = _finalize(data, user_turns)
+    # facts to remember: what the model extracted, plus the program/career it recommended
+    mem = data.get("memoryUpdate") if isinstance(data.get("memoryUpdate"), dict) else {}
+    if out["recommendedProgram"] and out["recommendedProgram"] != "OTHER":
+        mem = {**mem, "programLeaning": out["recommendedProgram"]}
+    if out["careerId"]:
+        mem = {**mem, "careerLeaning": out["careerId"]}
+    if out["language"] == "es":
+        mem = {**mem, "language": "es"}
+    out["_memoryUpdate"] = {k: v for k, v in mem.items() if k in store.MEMORY_KEYS}
+    return out
 
 
 @app.get("/health")
@@ -462,12 +495,64 @@ def _elapsed_ms() -> int:
     return int((time.perf_counter() - g.get("t0", time.perf_counter())) * 1000)
 
 
+def _optional_user() -> dict | None:
+    """Signed-in student if credentials were sent; anonymous chat still works without them."""
+    if not (request.headers.get("Authorization") or request.headers.get("X-Demo-User")):
+        return None
+    try:
+        return auth.user_from_request(request.headers)
+    except auth.AuthError:
+        return None
+
+
+def _record_summary(user_id: str) -> str:
+    plans = store.get_plans(user_id)
+    if not plans:
+        return ""
+    latest = max(plans.values(), key=lambda p: str(p.get("updatedAt")))["plan"]
+    done = latest.get("completed") or []
+    return (f"{latest.get('program')} program; {len(done)} courses completed ({', '.join(done[:12])})"
+            + (f"; in progress: {', '.join((latest.get('inProgress') or [])[:6])}" if latest.get("inProgress") else ""))
+
+
+def _clean_memory_update(update: dict) -> dict:
+    """Memory never stores personal details: run every remembered value through the PII filter."""
+    out = {}
+    for k, v in (update or {}).items():
+        if isinstance(v, list):
+            out[k] = [x for x in (safety.redact_pii(str(i))[0] for i in v) if "[" not in x]
+        elif v is not None:
+            s = safety.redact_pii(str(v))[0]
+            if "[" not in s:
+                out[k] = s
+    return out
+
+
 @app.post("/api/chat")
 def chat():
     body = _json_body()
     history = _validate_history(body.get("chatHistory"))
     _rate_limit()
-    out = advise(history)
+    user = _optional_user()
+    memory, memory_text = {}, ""
+    if user:
+        try:
+            memory = store.get_memory(user["id"])
+            memory_text = _memory_block(memory, _record_summary(user["id"]))
+        except Exception as e:
+            print(f"[memory] load failed: {type(e).__name__}: {e}")
+    out = advise(history, memory_text)
+    update = out.pop("_memoryUpdate", {})
+    if user:
+        try:
+            last_user = next(m for m in reversed(history) if m["sender"] == "user")
+            store.append_chat(user["id"], [{"sender": "user", "text": safety.redact_pii(last_user["text"])[0]},
+                                           {"sender": "bot", "text": out["chatResponse"]}])
+            memory = store.merge_memory(memory, _clean_memory_update(update))
+            store.put_memory(user["id"], memory)
+            out["memory"] = memory
+        except Exception as e:
+            print(f"[memory] save failed: {type(e).__name__}: {e}")
     store.log_event("chat", career_id=out["careerId"], program=out["recommendedProgram"],
                     engine=out["engine"]["name"], latency_ms=_elapsed_ms(), language=out["language"])
     return jsonify(out)
@@ -534,6 +619,24 @@ def put_progress(career_id: str):
 def delete_progress(career_id: str):
     u = _user()
     store.delete_progress(u["id"], career_id)
+    return jsonify({"ok": True})
+
+
+@app.get("/api/me/chat")
+def my_chat():
+    """The advisor's memory of this student: recent conversation + remembered facts."""
+    u = _user()
+    try:
+        limit = max(1, min(int(request.args.get("limit", 40)), 200))
+    except ValueError:
+        raise ApiError(400, "invalid_request", "limit must be a number from 1 to 200.", field="limit")
+    return jsonify({"messages": store.get_chat(u["id"], limit), "memory": store.get_memory(u["id"])})
+
+
+@app.delete("/api/me/chat")
+def forget_my_chat():
+    u = _user()
+    store.forget_chat(u["id"])
     return jsonify({"ok": True})
 
 
