@@ -110,6 +110,15 @@
   backdrop.addEventListener("click", function (e) { if (e.target === backdrop || e.target.closest(".close")) closePanel(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !backdrop.hidden) closePanel(); });
 
+  // Agents write light markdown. Escape first, then allow only **bold**, headings and list dashes.
+  function md(text) {
+    return esc(text)
+      .replace(/^#{1,4}\s*(.+)$/gm, "<b>$1</b>")
+      .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+      .replace(/^\s*[-*]\s+/gm, "• ")
+      .replace(/\n{3,}/g, "\n\n");
+  }
+
   function stageHtml(s, n) {
     var body = "";
     if (s.items) body += '<ul class="tags">' + s.items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
@@ -140,7 +149,7 @@
     html += '<ol class="steps">' + rm.stages.map(function (s, i) { return stageHtml(s, i + 1); }).join("") + "</ol>";
     if (rm.agentSteps && rm.agentSteps.length) {
       html += '<details class="agents"><summary>How the AI agents built this (Swarms)</summary>' +
-        rm.agentSteps.map(function (a) { return '<div class="agent glass"><b>' + esc(a.agent) + "</b> · " + esc(a.role) + "<p>" + esc(a.summary) + "</p></div>"; }).join("") +
+        rm.agentSteps.map(function (a) { return '<div class="agent glass"><b>' + esc(a.agent) + "</b> · " + esc(a.role) + "<p>" + md(a.summary) + "</p></div>"; }).join("") +
         "</details>";
     }
     html += '<div class="cta-row"><a class="btn btn--primary glass" href="student-hub.html?go=ai">Ask the AI advisor about this</a>' +
