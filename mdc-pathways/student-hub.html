@@ -313,13 +313,19 @@
   @keyframes panelIn { from { opacity: 0; transform: translateY(36px) scale(.98); } }
 
   /* ---------- AI ---------- */
-  .chat { display: grid; grid-template-rows: auto 1fr auto; min-height: 30rem; padding: 0; overflow: hidden; }
+  /* The chat is a fixed-height window: messages scroll inside it and the Ask box always stays visible.
+     minmax(0, 1fr) columns stop long messages from widening it past the card on phones. On wide screens
+     it stays in view (below the sticky hub bar) while the plan column next to it scrolls. */
+  .chat { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto;
+          height: min(44rem, calc(100svh - 8rem)); min-height: 26rem; align-self: start; padding: 0; overflow: hidden;
+          position: sticky; top: 6.5rem; }
+  @media (max-width: 47.99rem) { .chat { position: static; height: min(36rem, 78svh); } }
   .chat-head { padding: 1.1rem 1.3rem; border-bottom: 1px solid rgba(255, 255, 255, .14); display: flex; gap: .8rem; align-items: center; }
   .orb { width: 40px; height: 40px; border-radius: 50%; flex: none;
     background: conic-gradient(from 200deg, var(--mint), #8fb4ff, var(--coral), var(--mint));
     box-shadow: 0 0 24px rgba(94, 240, 207, .5), inset 0 1px 2px rgba(255, 255, 255, .6); animation: spin 9s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .log { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .7rem; overflow-y: auto; max-height: 30rem; }
+  .log { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .7rem; overflow-y: auto; min-height: 0; overscroll-behavior: contain; }
   .msg { max-width: min(36rem, 90%); padding: .7rem 1rem; border-radius: var(--r-ctl); min-width: 0;
     animation: panelIn .4s var(--spring); }
   .msg p { margin: 0 0 .4rem; } .msg p:last-child { margin: 0; }
