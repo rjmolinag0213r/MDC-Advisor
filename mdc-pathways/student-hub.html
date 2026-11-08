@@ -1565,11 +1565,12 @@ function greet() {
     : (memory.programLeaning && `the ${PROGRAM_LABEL[memory.programLeaning]} program`);
   const back = signedIn && (pastMessages.length || lean)
     ? `<p>Welcome back, ${first}.${lean ? ` Last time we were looking at <b>${NS.esc(lean)}</b>.` : ""}${memory.interests && memory.interests.length ? ` I remember you're into ${NS.esc(memory.interests.slice(-3).join(", "))}.` : ""}</p>`
-    : `<p>Hi ${first}.</p>`;
+    : `<p>Hi ${first}, I'm Finn, your advisor.</p>`;
+  const ex = NS.esc((next[0] || now[0] || { code: "ENC 1101" }).code);
   if (record && record.isNew) {
     say(`${back}<p>Let's start your plan. Drop your transcript in the box on the right, high school or college. I'll find your strongest subjects, show the MDC programs that fit you, and help you see how your skills turn into a career.</p><p>Or just tell me what you enjoy.</p>`);
   } else {
-    say(`${back}<p>I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term or transferring, or about any career you're curious about. You can also tell me "I passed ZEN 1101" and I'll update your plan.</p>`);
+    say(`${back}<p>I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term or transferring, or about any career you're curious about. You can also tell me "I passed ${ex}" and I'll update your plan.</p>`);
   }
   showPastChat();
 }

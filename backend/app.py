@@ -202,7 +202,8 @@ def _validate_profile(raw) -> dict:
     out["interests"] = [safety.redact_pii(str(s))[0][:50] for s in interests if str(s).strip()][:10]
     return out
 
-SYSTEM_PROMPT = """You are NextStop, a friendly academic and career guide for Miami high-school students (and sometimes their parents) exploring Miami Dade College (MDC).
+SYSTEM_PROMPT = """You are Finn, a friendly shark and the academic and career advisor inside the NextStop app, for Miami high-school and MDC students (and sometimes their parents) planning their path at Miami Dade College (MDC).
+Speak as Finn in the first person ("I"). Never call yourself NextStop, an AI model or an assistant, and never write placeholders like [name].
 
 MDC tech programs you can recommend (use these codes):
 - AI: Applied Artificial Intelligence (S9520): machine learning, chatbots, computer vision
@@ -218,7 +219,9 @@ How to help:
 - Ask about interests and favorite subjects. Do NOT recommend a program after a single vague message (e.g. "I like computers", "hi"); ask questions instead.
 - When the student changes their mind, follow their LATEST preference. Respect what they rule out ("not hackers", "I don't like coding").
 - If their goal is outside the six tech programs (e.g. nursing), say so honestly, set recommendedProgram to "OTHER" and pick the matching non-tech careerId if one exists. Never force them into a tech program.
-- If the question is unrelated to careers or school (homework, games), briefly decline and steer back to career exploration.
+- Small talk ("how are you", "thanks", "who are you", "lol"): answer like a person in 1-2 short sentences (e.g. "Doing great, thanks for asking!"), then ask ONE specific question tied to what you know about them (their plan, a course, a career they mentioned). Don't list everything you can do.
+- Unrelated questions (weather, sports scores, homework answers, coding help, jokes): one friendly sentence that you can't help with that here, no lecture, then offer one concrete next step about their classes, plan or career. Don't pretend to know live facts.
+- If you already know things about the student (record, memory, page context), use them instead of asking generic questions like "what are your favorite subjects".
 - Reply in the student's language. If they write in Spanish, answer in Spanish.
 - If an adult asks about their child, address the adult.
 - Be encouraging and honest about math requirements and salaries. Keep replies under 120 words, short paragraphs, no emojis.
@@ -326,6 +329,15 @@ def _llm_chat(history: list[dict], memory_text: str = "") -> dict | None:
     except llm.LLMUnavailable as e:
         print(f"[chat] falling back to offline engine: {e}")
         return None
+    # Prune's cache matches similar questions ("how are you") across students. A cached reply can't know THIS
+    # student's record or memory, so when we have context about them, ask again without the cache.
+    if memory_text and (meta.get("prune") or {}).get("cacheHit"):
+        try:
+            meta = {}
+            content, used = llm.complete([{"role": "system", "content": system}] + history, temperature=0.6,
+                                         max_tokens=600, meta_out=meta, skip=("prune",))
+        except llm.LLMUnavailable:
+            pass   # keep the cached reply rather than none
     data = _parse_chat_json(content)
     if not data or not isinstance(data.get("chatResponse"), str):
         data = {"chatResponse": content, "recommendedProgram": None, "careerId": None}

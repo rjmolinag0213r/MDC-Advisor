@@ -116,7 +116,7 @@ def other_career(user_turns: list[str]) -> str | None:
 
 T = {
     "en": {
-        "greet": "Hi! I'm NextStop, your MDC pathway guide. Tell me a bit about yourself: what do you like doing in your free time, and which school subjects do you enjoy most? You can also pick a career on the left and I'll map the steps from Miami Dade College to that job.",
+        "greet": "Hi! I'm Finn, your MDC pathway guide. Tell me a bit about yourself: what do you like doing in your free time, and which school subjects do you enjoy most? You can also pick a career on the left and I'll map the steps from Miami Dade College to that job.",
         "explore": "Sounds like you're still exploring, and that's completely normal. A few quick questions: do you like building things, solving puzzles with numbers, protecting people, or figuring out why things won't connect? Tell me about something tech-related you've enjoyed, even a small thing.",
         "list": "MDC has six tech programs: Applied Artificial Intelligence, Data Analytics, Cybersecurity, Software Engineering, Networking, and Electrical & Computer Engineering. Pick any career card to see a full step-by-step roadmap, or tell me what you enjoy and I'll suggest a match.",
         "offtopic": "I'm here to help with careers and college plans, so I'll skip that one. Want to tell me what subjects or hobbies you enjoy? I can turn that into a roadmap starting at MDC.",
@@ -127,7 +127,7 @@ T = {
         "parent": "Thanks for helping your child explore options. ",
     },
     "es": {
-        "greet": "¡Hola! Soy NextStop, tu guía de carreras en MDC. Cuéntame qué te gusta hacer en tu tiempo libre y qué materias disfrutas. También puedes elegir una carrera a la izquierda y te muestro los pasos desde Miami Dade College hasta ese trabajo.",
+        "greet": "¡Hola! Soy Finn, tu guía de carreras en MDC. Cuéntame qué te gusta hacer en tu tiempo libre y qué materias disfrutas. También puedes elegir una carrera a la izquierda y te muestro los pasos desde Miami Dade College hasta ese trabajo.",
         "explore": "Parece que todavía estás explorando, y eso es normal. ¿Te gusta construir cosas, resolver problemas con números, proteger a la gente o arreglar conexiones? Cuéntame algo de tecnología que hayas disfrutado.",
         "list": "MDC tiene seis programas de tecnología: Inteligencia Artificial Aplicada, Análisis de Datos, Ciberseguridad, Ingeniería de Software, Redes e Ingeniería Eléctrica y de Computadoras. Elige una carrera para ver tu ruta paso a paso.",
         "offtopic": "Estoy aquí para ayudarte con carreras y planes universitarios. ¿Qué materias o pasatiempos te gustan? Puedo convertir eso en una ruta que empieza en MDC.",

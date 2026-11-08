@@ -73,3 +73,30 @@ def test_possible_paths_rank_by_credits_that_carry_over(client):
     carry = [p["creditsCarryOver"] for p in r["paths"]]
     assert carry == sorted(carry, reverse=True)
     assert all(p["estimate"] for p in r["paths"] if not p["official"])   # sample programs matched by title: estimates
+
+
+def test_advisor_name_is_not_redacted_from_replies():
+    import safety
+    assert safety.scrub_output("I'm Finn Shark, your advisor. Call (305) 237-8888.", []).startswith("I'm Finn Shark")
+    # student input still loses self-introduced names
+    assert "[name]" in safety.redact_pii("Hi, I'm Maria Lopez, from Hialeah")[0]
+
+
+def test_chat_retries_without_cache_when_it_knows_the_student(monkeypatch):
+    import app as appmod
+    import llm
+    calls = []
+
+    def fake(msgs, **k):
+        calls.append(k.get("skip", ()))
+        if not k.get("skip"):
+            k["meta_out"]["prune"] = {"cacheHit": True}
+            return '{"chatResponse": "I am NextStop, what subjects do you like?"}', "prune/x"
+        return '{"chatResponse": "Doing great! Ready for MAC 1105 next term?"}', "gemini/x"
+    monkeypatch.setattr(llm, "available_providers", lambda: ["prune", "gemini"])
+    monkeypatch.setattr(llm, "complete", fake)
+    out = appmod._llm_chat([{"role": "user", "content": "how are you"}], "\n\nWhat you remember: likes math")
+    assert calls == [(), ("prune",)] and "MAC 1105" in out["chatResponse"]
+    calls.clear()
+    appmod._llm_chat([{"role": "user", "content": "how are you"}], "")     # nothing personal: cache is fine
+    assert calls == [()]

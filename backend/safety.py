@@ -28,8 +28,9 @@ _INJECTION = [
 _INJECTION_RE = re.compile("|".join(_INJECTION), re.I)
 
 
-def redact_pii(text: str) -> tuple[str, list[str]]:
-    """Replace personal details with placeholders. Returns (clean_text, kinds_found)."""
+def redact_pii(text: str, names: bool = True) -> tuple[str, list[str]]:
+    """Replace personal details with placeholders. Returns (clean_text, kinds_found).
+    names=False skips the "I'm <Name>" rule: on the advisor's own replies it would hide Finn's name."""
     found: list[str] = []
 
     def sub(pattern: re.Pattern, label: str, s: str) -> str:
@@ -47,7 +48,8 @@ def redact_pii(text: str) -> tuple[str, list[str]]:
     def name_repl(m):
         found.append("name")
         return m.group(0).replace(m.group(1), "[name]")
-    out = _INTRO_NAME.sub(name_repl, out)
+    if names:
+        out = _INTRO_NAME.sub(name_repl, out)
     return out, sorted(set(found))
 
 
@@ -62,7 +64,7 @@ _MDC_TOKEN = "\u0000MDCPHONE\u0000"
 def scrub_output(text: str, forbidden: list[str]) -> str:
     """Remove PII and any forbidden fragments (system-prompt lines, canaries) from model output."""
     out = PUBLIC_NUMBERS.sub(_MDC_TOKEN, text)
-    out, _ = redact_pii(out)
+    out, _ = redact_pii(out, names=False)   # the model never sees student names (they're removed from input)
     out = out.replace(_MDC_TOKEN, "(305) 237-8888")
     for frag in forbidden:
         if frag and len(frag) >= 12 and frag.lower() in out.lower():
