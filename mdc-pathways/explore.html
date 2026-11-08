@@ -108,6 +108,56 @@
   .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden;
     clip: rect(0 0 0 0); white-space: nowrap; }
 
+  /* ---------- live data additions ---------- */
+  .salary { font-weight: 700; color: #8fe3c3; }
+  .card .btn { align-self: flex-start; }
+  .btn--primary { background: rgba(255, 122, 89, .32); border-color: rgba(255, 150, 120, .75); }
+  .btn--primary:hover { background: rgba(255, 122, 89, .45); }
+  .btn[disabled] { opacity: .6; cursor: progress; }
+  .ai-card { border-style: dashed; }
+
+  /* roadmap panel */
+  .rm-backdrop { position: fixed; inset: 0; z-index: 20; background: rgba(8, 2, 24, .6); display: grid;
+    place-items: start center; overflow-y: auto; padding: 2rem 1rem; }
+  .rm-backdrop[hidden] { display: none; }
+  .rm { width: min(52rem, 100%); border-radius: 1.5rem; padding: 1.75rem; position: relative;
+    background: rgba(29, 16, 64, .88); animation: pageIn 350ms ease-out both; }
+  .rm h2 { margin: 0 0 .25rem; font-size: clamp(1.6rem, 4vw, 2.2rem); }
+  .rm .close { position: absolute; top: 1rem; right: 1rem; }
+  .rm .sub { color: var(--muted); margin: 0 0 1rem; }
+  .rm .meta { margin-bottom: 1rem; }
+  .engine { display: inline-block; font-size: .8rem; font-weight: 700; padding: .25rem .7rem; border-radius: 999px;
+    background: rgba(143, 227, 195, .16); border: 1px solid rgba(143, 227, 195, .5); color: #c9f5e4; }
+  .steps { list-style: none; margin: 1.25rem 0 0; padding: 0 0 0 1.4rem; border-left: 2px solid var(--glass-border);
+    display: grid; gap: 1.25rem; }
+  .steps > li { position: relative; }
+  .steps > li::before { content: attr(data-n); position: absolute; left: -2.35rem; top: -.1rem; width: 1.8rem; height: 1.8rem;
+    border-radius: 50%; display: grid; place-items: center; font-size: .85rem; font-weight: 800;
+    background: var(--accent); color: #1a0822; }
+  .steps h3 { margin: 0 0 .4rem; font-size: 1.1rem; }
+  .steps p { margin: .2rem 0; color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: .4rem 0 0; padding: 0; list-style: none; }
+  .tags li { font-size: .88rem; padding: .3rem .7rem; border-radius: .6rem; background: rgba(255, 255, 255, .1);
+    border: 1px solid var(--glass-border); }
+  .opts { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); margin-top: .5rem; }
+  .opt { padding: .8rem 1rem; border-radius: .9rem; }
+  .opt b { display: block; }
+  .opt small { color: var(--muted); }
+  .tips { margin: 1.25rem 0 0; padding: 1rem 1.2rem; border-radius: 1rem; }
+  .tips h3 { margin: 0 0 .5rem; }
+  .tips ul { margin: 0; padding-left: 1.1rem; }
+  .agents { margin-top: 1rem; }
+  .agents summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+  .agent { padding: .8rem 1rem; border-radius: .9rem; margin-top: .5rem; }
+  .agent b { color: var(--accent); }
+  .agent p { margin: .3rem 0 0; color: var(--muted); font-size: .92rem; white-space: pre-wrap; }
+  .fineprint { margin: 1.25rem 0 0; font-size: .85rem; color: var(--muted); }
+  .loading { display: inline-flex; gap: .5rem; align-items: center; font-weight: 600; }
+  .loading::before { content: ""; width: .9rem; height: .9rem; border-radius: 50%; border: 2px solid #fff;
+    border-right-color: transparent; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .cta-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.25rem; }
+
   @media (max-width: 30rem) { .search-row { flex-direction: column; } }
   @media (prefers-reduced-motion: reduce) {
     main { animation: none; } .btn, .chip { transition: none; }
@@ -123,12 +173,12 @@
 
 <main id="main">
   <h1>Explore career pathways</h1>
-  <p class="lede">Tell us what you're interested in, and we'll match you to MDC programs that lead there.</p>
+  <p class="lede">Pick a career, or type any job. We'll build a step-by-step plan that starts at Miami Dade College.</p>
 
   <p class="notice glass" role="note">
-    <span aria-hidden="true">⚠</span>
-    <span><strong>Prototype.</strong> These programs are sample data and haven't been checked against
-    the official MDC catalog. Talk to an MDC advisor before making plans.</span>
+    <span aria-hidden="true">ⓘ</span>
+    <span><strong>Planning guide.</strong> Roadmaps come from a curated MDC career list and are personalized by AI.
+    Confirm courses and admission rules with an MDC advisor: (305) 237-8888.</span>
   </p>
 
   <section class="finder glass" aria-label="Search programs">
@@ -149,199 +199,11 @@
   <ul class="results" id="results"></ul>
 </main>
 
-<script src="data/programs.js"></script>
-<script>
-(function () {
-  var DATA = window.MDC_SAMPLE_DATA;
-  var input = document.getElementById("q");
-  var form = document.getElementById("search-form");
-  var chipsEl = document.getElementById("chips");
-  var statusEl = document.getElementById("status");
-  var resultsEl = document.getElementById("results");
+<div class="rm-backdrop" id="rm-backdrop" hidden>
+  <article class="rm glass" id="rm" role="dialog" aria-modal="true" aria-labelledby="rm-title" tabindex="-1"></article>
+</div>
 
-  var state = { q: "", interest: "" };
-  var interestLabel = {};
-  DATA.interests.forEach(function (i) { interestLabel[i.id] = i.label; });
-
-  /* ---------- text helpers ---------- */
-  function norm(s) {
-    return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
-      .replace(/[^a-z0-9\s]/g, " ");
-  }
-  function tokens(s) { return norm(s).split(/\s+/).filter(function (t) { return t.length > 1; }); }
-
-  // Small typo tolerance: "nurce" still finds "nurse".
-  function editDistance(a, b) {
-    if (Math.abs(a.length - b.length) > 2) return 3;
-    var prev = [], cur, i, j;
-    for (j = 0; j <= b.length; j++) prev[j] = j;
-    for (i = 1; i <= a.length; i++) {
-      cur = [i];
-      for (j = 1; j <= b.length; j++) {
-        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-      }
-      prev = cur;
-    }
-    return prev[b.length];
-  }
-
-  // Expand what the student typed with everyday-word synonyms.
-  function expandQuery(q) {
-    var out = [];
-    tokens(q).forEach(function (t) {
-      out.push(t);
-      (DATA.synonyms[t] || []).forEach(function (s) { out.push(s); });
-    });
-    return out;
-  }
-
-  // Pre-compute searchable words for each program, with a weight per field.
-  var index = DATA.programs.map(function (p) {
-    return {
-      p: p,
-      fields: [
-        { words: tokens(p.name.replace(/^Associate in Arts,?/i, "")), w: 5 },  // "Associate in Arts" would match every "art" search
-        { words: tokens(p.careers.join(" ")), w: 4 },
-        { words: tokens(p.keywords.join(" ") + " " + p.interests.map(function (i) { return interestLabel[i]; }).join(" ")), w: 3 },
-        { words: tokens(p.summary + " " + p.credential), w: 1 }
-      ]
-    };
-  });
-
-  function scoreProgram(entry, qTokens) {
-    var total = 0;
-    for (var k = 0; k < qTokens.length; k++) {
-      var t = qTokens[k], best = 0;
-      entry.fields.forEach(function (f) {
-        f.words.forEach(function (w) {
-          var s = 0;
-          if (w === t) s = f.w * 2;
-          else if (w.indexOf(t) === 0 && t.length >= 3) s = f.w * 1.5;   // "cyber" -> "cybersecurity"
-          else if (t.length >= 4 && editDistance(t, w) <= (t.length >= 8 ? 2 : 1)) s = f.w;  // typos
-          if (s > best) best = s;
-        });
-      });
-      total += best;
-    }
-    return total;
-  }
-
-  function search() {
-    var qTokens = expandQuery(state.q);
-    var list = index
-      .filter(function (e) { return !state.interest || e.p.interests.indexOf(state.interest) !== -1; })
-      .map(function (e) { return { p: e.p, score: qTokens.length ? scoreProgram(e, qTokens) : 1 }; })
-      .filter(function (r) { return r.score > 0; });
-    list.sort(function (a, b) { return b.score - a.score || a.p.name.localeCompare(b.p.name); });
-    // Drop weak matches: keep results scoring at least 40% of the best one.
-    if (qTokens.length && list.length) {
-      var cutoff = list[0].score * 0.4;
-      list = list.filter(function (r) { return r.score >= cutoff; });
-    }
-    return list.map(function (r) { return r.p; });
-  }
-
-  /* ---------- rendering ---------- */
-  function el(tag, attrs, text) {
-    var n = document.createElement(tag);
-    if (attrs) Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); });
-    if (text != null) n.textContent = text;   // textContent: never inject HTML
-    return n;
-  }
-
-  function renderChips() {
-    chipsEl.innerHTML = "";
-    DATA.interests.forEach(function (i) {
-      var li = el("li");
-      var b = el("button", { type: "button", "class": "chip glass", "aria-pressed": String(state.interest === i.id) }, i.label);
-      b.addEventListener("click", function () {
-        state.q = input.value;   // keep whatever is typed in the box
-        state.interest = state.interest === i.id ? "" : i.id;
-        update();
-      });
-      li.appendChild(b);
-      chipsEl.appendChild(li);
-    });
-  }
-
-  function renderResults(list) {
-    resultsEl.innerHTML = "";
-    var what = [];
-    if (state.q) what.push("“" + state.q.trim() + "”");
-    if (state.interest) what.push(interestLabel[state.interest]);
-
-    if (!list.length) {
-      statusEl.textContent = "No programs found" + (what.length ? " for " + what.join(" + ") : "") + ".";
-      var box = el("li", { "class": "empty glass" });
-      box.appendChild(el("h2", null, "Nothing matched yet"));
-      box.appendChild(el("p", null, "Try a broader word, or start from one of these:"));
-      var sug = el("div", { "class": "suggest" });
-      ["computers", "cooking", "buildings", "helping people", "art"].forEach(function (s) {
-        var b = el("button", { type: "button", "class": "chip glass" }, s);
-        b.addEventListener("click", function () { state.q = s; state.interest = ""; update(); input.focus(); });
-        sug.appendChild(b);
-      });
-      box.appendChild(sug);
-      resultsEl.appendChild(box);
-      return;
-    }
-
-    statusEl.textContent = list.length + (list.length === 1 ? " program" : " programs") +
-      (what.length ? " for " + what.join(" + ") : " to explore") + ".";
-
-    list.forEach(function (p) {
-      var li = el("li", { "class": "card glass" });
-      var meta = el("div", { "class": "meta" });
-      meta.appendChild(el("span", { "class": "badge badge--cred" }, p.credential));
-      meta.appendChild(el("span", { "class": "badge badge--sample" }, "Sample data"));
-      li.appendChild(meta);
-      li.appendChild(el("h2", null, p.name));
-      li.appendChild(el("p", null, p.summary));
-
-      li.appendChild(el("strong", null, "Can lead to:"));
-      var ul = el("ul", { "class": "careers" });
-      p.careers.forEach(function (c) { ul.appendChild(el("li", null, c)); });
-      li.appendChild(ul);
-
-      li.appendChild(el("p", { "class": "card__foot" },
-        "Required courses and transfer options: coming soon."));
-      resultsEl.appendChild(li);
-    });
-  }
-
-  /* ---------- state <-> URL, so results can be bookmarked or shared ---------- */
-  function syncUrl() {
-    var params = new URLSearchParams();
-    if (state.q.trim()) params.set("q", state.q.trim());
-    if (state.interest) params.set("interest", state.interest);
-    var qs = params.toString();
-    try { history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "")); } catch (e) {}
-  }
-
-  function update() {
-    input.value = state.q;
-    renderChips();
-    renderResults(search());
-    syncUrl();
-  }
-
-  var timer;
-  input.addEventListener("input", function () {
-    clearTimeout(timer);
-    timer = setTimeout(function () { state.q = input.value; renderResults(search()); syncUrl(); }, 150);
-  });
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); state.q = input.value; update();
-  });
-
-  // Start from whatever the home page sent: ?q=... or ?interest=...
-  var params = new URLSearchParams(location.search);
-  state.q = params.get("q") || "";
-  var start = params.get("interest") || "";
-  state.interest = interestLabel[start] ? start : "";
-  update();
-  if (!state.interest) input.focus();
-})();
-</script>
+<script src="js/nextstop.js"></script>
+<script src="js/explore.js"></script>
 </body>
 </html>

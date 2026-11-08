@@ -140,6 +140,7 @@
     transform: translateY(-2px); }
   .tile:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
   .tile b { display: block; font-size: 1.1rem; margin-bottom: .25rem; }
+  a.tile { display: block; text-decoration: none; }
 
   /* ---------- CAREER SEARCH ---------- */
   .search { margin-top: 2rem; }
@@ -180,7 +181,8 @@
     <p class="lede">Tell us what you like. We'll show you careers, and a step-by-step plan that starts at MDC.</p>
     <div class="actions">
       <a class="btn btn--primary glass" href="#explore">Show me what I might love</a>
-      <a class="btn glass" href="#search">I already know my career</a>
+      <a class="btn glass" href="explore.html">I already know my career</a>
+      <a class="btn glass" href="student-hub.html">Student Hub</a>
     </div>
   </div>
 </header>
@@ -188,18 +190,17 @@
 <main>
   <section class="explore glass" id="explore" aria-labelledby="explore-title">
     <h2 id="explore-title">What do you enjoy?</h2>
-    <!-- TODO: wire each tile to its career list / quiz once routes exist -->
     <div class="tiles">
-      <button class="tile glass" type="button"><b>Build things</b>Architect, mechanical engineer</button>
-      <button class="tile glass" type="button"><b>Solve puzzles</b>Cybersecurity specialist, IT consultant</button>
-      <button class="tile glass" type="button"><b>Create with your hands</b>Chef</button>
-      <button class="tile glass" type="button"><b>Not sure yet</b>Take the 3-minute quiz</button>
+      <a class="tile glass" href="explore.html?interest=build"><b>Build things</b>Architect, mechanical engineer</a>
+      <a class="tile glass" href="explore.html?interest=solve"><b>Solve puzzles</b>Cybersecurity specialist, IT consultant</a>
+      <a class="tile glass" href="explore.html?interest=create"><b>Create with your hands</b>Chef</a>
+      <a class="tile glass" href="student-hub.html?go=ai"><b>Not sure yet</b>Chat with the AI advisor</a>
     </div>
 
-    <div class="search" id="search">
+    <form class="search" id="search" action="explore.html" method="get" role="search">
       <label for="q">Or search a career:</label>
-      <input class="glass" id="q" type="search" placeholder="What do you want to be?" autocomplete="off">
-    </div>
+      <input class="glass" id="q" name="q" type="search" placeholder="What do you want to be?" autocomplete="off">
+    </form>
   </section>
 </main>
 

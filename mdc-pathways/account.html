@@ -145,43 +145,13 @@
 
     <form id="signup" novalidate>
       <p class="form-status" role="alert" id="signup-status"></p>
-
-      <div class="field">
-        <label for="su-name">Full name</label>
-        <input type="text" id="su-name" name="name" autocomplete="name" required aria-describedby="su-name-err">
-        <p class="error" id="su-name-err"></p>
-      </div>
-
-      <div class="field">
-        <label for="su-email">MDC email</label>
-        <input type="email" id="su-email" name="email" autocomplete="email" inputmode="email" required
-          placeholder="you@mymdc.net" aria-describedby="su-email-hint su-email-err">
-        <p class="hint" id="su-email-hint">Use your @mymdc.net student email.</p>
-        <p class="error" id="su-email-err"></p>
-      </div>
-
-      <div class="field">
-        <label for="su-pw">Password</label>
-        <div class="input-wrap has-toggle">
-          <input type="password" id="su-pw" name="password" autocomplete="new-password" required
-            aria-describedby="su-pw-rules su-pw-err">
-          <button type="button" class="show-pw" aria-controls="su-pw" aria-pressed="false">Show</button>
-        </div>
-        <ul class="rules" id="su-pw-rules" aria-label="Password needs">
-          <li data-rule="len">8+ characters</li>
-          <li data-rule="num">a number</li>
-          <li data-rule="letter">a letter</li>
-        </ul>
-        <p class="error" id="su-pw-err"></p>
-      </div>
-
-      <div class="field">
-        <label for="su-pw2">Confirm password</label>
-        <input type="password" id="su-pw2" name="password2" autocomplete="new-password" required aria-describedby="su-pw2-err">
-        <p class="error" id="su-pw2-err"></p>
-      </div>
-
-      <button class="btn" type="submit">Create account</button>
+      <ul class="rules" aria-label="What you get">
+        <li class="met">Your plan saved to your account</li>
+        <li class="met">Progress on any device</li>
+        <li class="met">Sign up with email or Google</li>
+      </ul>
+      <button class="btn" type="submit" id="go">Create account</button>
+      <p class="hint">You'll finish on our secure sign-in page (Auth0), then come right back here.</p>
     </form>
 
     <p class="alt">Already have an account? <a id="to-login" href="login.html" style="font-weight:600">Log in</a></p>
@@ -190,7 +160,30 @@
 
 <p class="fine">This app makes its own account. Never enter your MDC portal password here.</p>
 
+<script src="js/nextstop.js"></script>
 <script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const NEXT = ["ai", "progress", "transfer"].includes(params.get("next")) ? params.get("next") : "";
+  const backTo = "student-hub.html" + (NEXT ? "?go=" + NEXT : "");
+  const WHY = { ai: "Create an account to ask the AI advisor.", progress: "Create an account to see your progress." };
+  if (WHY[NEXT]) document.getElementById("why-signup").textContent = WHY[NEXT];
+  document.getElementById("to-login").href = "login.html" + (NEXT ? "?next=" + NEXT : "");
+  // already signed in? skip straight to the hub
+  NS.auth.isAuthenticated().then((ok) => { if (ok) location.replace(backTo); });
+  document.getElementById("signup").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const btn = document.getElementById("go");
+    btn.setAttribute("aria-busy", "true"); btn.textContent = "Opening secure sign-up…";
+    NS.auth.login({ signup: true, returnTo: backTo }).catch(() => {
+      btn.removeAttribute("aria-busy"); btn.textContent = "Create account";
+      document.getElementById("signup-status").textContent = "Couldn't open sign-up. Check your connection and try again.";
+    });
+  });
+})();
+</script>
+<script type="text/plain" id="original-ui-script">
+/* Cris's original form logic, kept for reference (not executed). */
 (() => {
   /* Where to go after: account.html?next=ai or ?next=progress, sent by the hub's buttons. */
   const params = new URLSearchParams(location.search);

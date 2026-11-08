@@ -142,30 +142,8 @@
 
   <form id="login" novalidate>
     <p class="form-status" role="alert" id="login-status"></p>
-
-    <div class="field">
-      <label for="li-email">MDC email</label>
-      <input type="email" id="li-email" name="email" autocomplete="username" inputmode="email" required
-        placeholder="you@mymdc.net" aria-describedby="li-email-err">
-      <p class="error" id="li-email-err"></p>
-    </div>
-
-    <div class="field">
-      <label for="li-pw">Password</label>
-      <div class="input-wrap has-toggle">
-        <input type="password" id="li-pw" name="password" autocomplete="current-password" required aria-describedby="li-pw-err">
-        <button type="button" class="show-pw" aria-controls="li-pw" aria-pressed="false">Show</button>
-      </div>
-      <p class="error" id="li-pw-err"></p>
-    </div>
-
-    <div class="row">
-      <label class="check"><input type="checkbox" name="remember"> Keep me logged in</label>
-      <!-- TODO: point at a reset page once the backend can send reset emails -->
-      <a href="#" id="forgot">Forgot password?</a>
-    </div>
-
-    <button class="btn" type="submit">Log in</button>
+    <button class="btn" type="submit" id="go">Log in</button>
+    <p class="hint">You'll sign in on our secure page (Auth0). Forgot your password? Reset it there.</p>
   </form>
 
   <p class="alt">New here? <a id="to-signup" href="account.html?next=progress" style="font-weight:600">Create an account</a></p>
@@ -173,7 +151,29 @@
 
 <p class="fine">This app makes its own account. Never enter your MDC portal password here.</p>
 
+<script src="js/nextstop.js"></script>
 <script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const NEXT = ["ai", "progress", "transfer"].includes(params.get("next")) ? params.get("next") : "progress";
+  const backTo = "student-hub.html?go=" + NEXT;
+  const WHY = { ai: "Log in to ask the AI advisor.", progress: "Log in to see your progress.", transfer: "Log in to see your transfer options." };
+  document.getElementById("why").textContent = WHY[NEXT];
+  document.getElementById("to-signup").href = "account.html?next=" + NEXT;
+  NS.auth.isAuthenticated().then((ok) => { if (ok) location.replace(backTo); });
+  document.getElementById("login").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const btn = document.getElementById("go");
+    btn.setAttribute("aria-busy", "true"); btn.textContent = "Opening secure log-in…";
+    NS.auth.login({ returnTo: backTo }).catch(() => {
+      btn.removeAttribute("aria-busy"); btn.textContent = "Log in";
+      document.getElementById("login-status").textContent = "Couldn't open log-in. Check your connection and try again.";
+    });
+  });
+})();
+</script>
+<script type="text/plain" id="original-ui-script">
+/* Cris's original form logic, kept for reference (not executed). */
 (() => {
   /* UI ONLY: nothing is checked against real accounts yet. When the Flask backend is ready,
      replace fakeLogin() with a POST to /api/login and only redirect on success.

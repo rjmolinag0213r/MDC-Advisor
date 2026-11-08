@@ -522,6 +522,13 @@
   .lux th, .lux td { border-bottom-color: var(--lx-line); }
   .lux .checklist input { accent-color: var(--lx-accent); }
 
+  /* live-data additions */
+  .auth-btn { min-height: 44px !important; padding: .55rem 1.1rem !important; font-size: .72rem !important; }
+  .lux .controls input[type="file"] { width: 16rem; padding: .45rem .6rem; }
+  .msg .engine { display: block; margin-top: .45rem; font-size: .72rem; letter-spacing: .06em; opacity: .75; }
+  .msg .open-rm { display: inline-block; margin-top: .5rem; color: var(--fg); font-weight: 600; }
+  .typing { opacity: .7; font-style: italic; }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .intro__banner, .skip, .stage, .js .reveal, .js .reveal.words .w { animation: none; transition: none; opacity: 1; transform: none; }
@@ -602,10 +609,11 @@
         <button class="tab" role="tab" id="tab-transfer" aria-controls="panel-transfer" data-view="transfer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>Transfer</button>
       </div>
+      <button class="btn chrome auth-btn" type="button" id="auth-btn">Log in</button>
     </div>
   </div>
 
-  <p class="sample"><b>Sample student.</b> Courses, grades and transfer results are made-up examples for this mockup. Check real equivalencies with an MDC advisor and the school you're transferring to.</p>
+  <p class="sample" id="sample"><b>Sample student.</b> Loading the sample record…</p>
 
   <!-- AI -->
   <section role="tabpanel" id="panel-ai" aria-labelledby="tab-ai">
@@ -634,6 +642,18 @@
 
   <!-- PROGRESS -->
   <section role="tabpanel" id="panel-progress" aria-labelledby="tab-progress" hidden>
+    <div class="glass panel stack" id="record">
+      <span class="eyebrow">Your record</span>
+      <h2>Load your transcript</h2>
+      <p class="lede" style="margin:0">Upload a photo or PDF of your unofficial transcript. Gemini reads the courses and grades, then we rebuild your progress, plan and transfer options. The file isn't stored.</p>
+      <div class="controls">
+        <label for="program">Program<select id="program"></select></label>
+        <label for="tfile">Transcript (PDF, PNG, JPG)<input id="tfile" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,application/pdf,image/*"></label>
+        <button class="btn btn--go chrome" type="button" id="tread">Read my transcript</button>
+        <button class="btn chrome" type="button" id="tsample">Use the sample transcript</button>
+      </div>
+      <p class="code" id="tstatus" role="status" aria-live="polite"></p>
+    </div>
     <div class="glass panel hero-prog">
       <div class="ring" id="ring"></div>
       <div>
@@ -707,25 +727,28 @@
 </main>
 </div>
 
+<script src="js/nextstop.js"></script>
 <script>
 /* ------------------------------------------------------------------
-   SAMPLE DATA: NOT VERIFIED. A made-up student for the mockup.
+   First-paint placeholder only: replaced by live data from /api/hub on load.
    Transfer results per course: full = counts toward the new degree,
    elective = credits accepted but don't count toward the major,
    none = not accepted.
    ------------------------------------------------------------------ */
-const STUDENT = {
+/* LIVE DATA: everything below is replaced by POST /api/hub (see loadHub() further down).
+   These values are only the first paint while the request is in flight. */
+let STUDENT = {
   name: "Alex Rivera", program: "Computer Programming and Analysis", credential: "A.S.",
   required: 60, currentTerm: "Fall 2026", startTerm: "Fall 2024"
 };
-const GROUPS = [
+let GROUPS = [
   { id: "gen", label: "General education", need: 18 },
   { id: "core", label: "Programming core", need: 30 },
   { id: "sup", label: "Support and electives", need: 12 }
 ];
-const GRADE_PTS = { A: 4, "B+": 3.5, B: 3, "C+": 2.5, C: 2, D: 1, F: 0 };
+const GRADE_PTS = { "A+": 4, A: 4, "A-": 3.7, "B+": 3.3, B: 3, "B-": 2.7, "C+": 2.3, C: 2, "C-": 1.7, "D+": 1.3, D: 1, "D-": .7, F: 0 };
 // t: [Florida public, private, out-of-state public]
-const COURSES = [
+let COURSES = [
   { code: "SLS 1106", title: "First-Year Experience", cr: 1, g: "sup", st: "done", term: "Fall 2024", grade: "A", t: ["elective", "none", "none"] },
   { code: "ENC 1101", title: "English Composition I", cr: 3, g: "gen", st: "done", term: "Fall 2024", grade: "B+", t: ["full", "full", "full"] },
   { code: "MAC 1105", title: "College Algebra", cr: 3, g: "gen", st: "done", term: "Fall 2024", grade: "B", t: ["full", "full", "full"] },
@@ -748,7 +771,7 @@ const COURSES = [
   { code: "CGS 2560", title: "Operating Systems Concepts", cr: 3, g: "sup", st: "next", term: "" },
   { code: "AML 2010", title: "U.S. History to 1877", cr: 3, g: "gen", st: "next", term: "" }
 ];
-const DESTS = [
+let DESTS = [
   { id: 0, name: "Florida public university", degree: "B.S. Computer Science", total: 120, rate: 210,
     note: "<b>Why most credits move:</b> Florida public colleges and universities share one course numbering system, so a course with the same prefix and number usually transfers as the same course. Technical A.S. courses often arrive as electives because the university's computer science major has no matching course. Finishing an A.A. instead of an A.S. would also satisfy the university's general education requirement." },
   { id: 1, name: "Private university", degree: "B.S. Computer Science", total: 120, rate: 1900,
@@ -756,7 +779,7 @@ const DESTS = [
   { id: 2, name: "Out-of-state public university", degree: "B.S. Computer Science", total: 120, rate: 1100,
     note: "<b>Why it varies:</b> there's no Florida articulation agreement across state lines. Most schools publish a transfer equivalency database; look up each course code there. Out-of-state tuition also makes every lost credit cost more to repeat." }
 ];
-const REASONS = {
+let REASONS = {
   full: "Matches a required course",
   elective: "Accepted, but no matching course in the major",
   none: "No equivalent course; not accepted"
@@ -764,13 +787,19 @@ const REASONS = {
 
 /* ---------------- derived numbers ---------------- */
 const sum = (a) => a.reduce((n, c) => n + c.cr, 0);
-const done = COURSES.filter((c) => c.st === "done");
-const now = COURSES.filter((c) => c.st === "now");
-const next = COURSES.filter((c) => c.st === "next");
-const earnedDone = sum(done), earnedNow = sum(now), remaining = STUDENT.required - earnedDone - earnedNow;
-const transferable = [...done, ...now];
-const gpa = (() => { let p = 0, h = 0; done.forEach((c) => { p += GRADE_PTS[c.grade] * c.cr; h += c.cr; }); return h ? p / h : 0; })();
-const pct = Math.round((earnedDone / STUDENT.required) * 100);
+let done, now, next, earnedDone, earnedNow, remaining, transferable, gpa, pct;
+function derive() {
+  done = COURSES.filter((c) => c.st === "done");
+  now = COURSES.filter((c) => c.st === "now");
+  next = COURSES.filter((c) => c.st === "next");
+  earnedDone = sum(done); earnedNow = sum(now); remaining = Math.max(0, STUDENT.required - earnedDone - earnedNow);
+  transferable = [...done, ...now];
+  gpa = (() => { let p = 0, h = 0; done.forEach((c) => { if (c.grade in GRADE_PTS) { p += GRADE_PTS[c.grade] * c.cr; h += c.cr; } }); return h ? p / h : 0; })();
+  pct = Math.round((earnedDone / STUDENT.required) * 100);
+}
+derive();
+// phases and checklist were written for a 60-credit A.S.; scale them to the program's length
+const scale = () => STUDENT.required / 60;
 const fmt$ = (n) => "$" + Math.round(n).toLocaleString("en-US");
 
 function termAfter(term, n) {           // Fall/Spring only
@@ -791,12 +820,12 @@ function transferImpact(destId) {
   return out;
 }
 function phase() {
-  const e = earnedDone;
+  const e = earnedDone, k = scale();
   const phases = [
-    { max: 15, name: "Getting started", lede: "Take your general education basics and try a few intro courses." },
-    { max: 30, name: "Building your base", lede: "Pick your target career and the bachelor's degree that leads there." },
-    { max: 45, name: "Preparing to transition", lede: "This is when to choose a transfer school and check which courses it accepts, before you register for your last terms." },
-    { max: 60, name: "Transitioning", lede: "Apply, send transcripts and apply for graduation. Every course you add now should count at your next school." },
+    { max: 15 * k, name: "Getting started", lede: "Take your general education basics and try a few intro courses." },
+    { max: 30 * k, name: "Building your base", lede: "Pick your target career and the bachelor's degree that leads there." },
+    { max: 45 * k, name: "Preparing to transition", lede: "This is when to choose a transfer school and check which courses it accepts, before you register for your last terms." },
+    { max: 60 * k, name: "Transitioning", lede: "Apply, send transcripts and apply for graduation. Every course you add now should count at your next school." },
     { max: Infinity, name: "Ready to transfer", lede: "You've met your credit requirement. Finish your applications and graduate." }
   ];
   const i = phases.findIndex((p) => e < p.max);
@@ -911,15 +940,14 @@ document.querySelectorAll(".tab").forEach((t) => {
     const nt = document.getElementById("tab-" + VIEWS[j]); nt.focus(); show(VIEWS[j]);
   });
 });
-// UI only, two separate doors: "Ask the AI advisor" always opens the create-account page and
-// "See my progress" always opens the log-in page. Each page sends the student back here with
-// ?go=ai or ?go=progress. Later, once the backend has accounts, skip the page for signed-in
-// students (check GET /api/me first).
+// Two doors: signed-in students go straight to the hub. Everyone else sees the create-account
+// page ("Ask the AI advisor") or the log-in page ("See my progress"), which hand off to Auth0
+// and come back here with ?go=ai or ?go=progress.
 const ACCOUNT_PAGE = { ai: "account.html?next=ai", progress: "login.html?next=progress" };
-document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", (e) => {
+document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", async (e) => {
   e.preventDefault();
   const v = a.dataset.go;
-  if (ACCOUNT_PAGE[v]) { location.href = ACCOUNT_PAGE[v]; return; }
+  if (ACCOUNT_PAGE[v] && !(await NS.auth.isAuthenticated())) { location.href = ACCOUNT_PAGE[v]; return; }
   goHub(v);
 }));
 // Coming back from account.html (?go=ai): open that tab and scroll to the hub, then tidy the address.
@@ -986,7 +1014,7 @@ document.getElementById("load").addEventListener("change", renderProgress);
 
 /* ---------------- transfer tab ---------------- */
 let destId = 0;
-const rates = DESTS.map((d) => d.rate);
+let rates = DESTS.map((d) => d.rate);
 function renderPhase() {
   const p = phase();
   document.getElementById("phase-title").textContent = p.name;
@@ -1008,15 +1036,16 @@ let checked = {};
 try { checked = JSON.parse(localStorage.getItem("hub-checks") || "{}"); } catch (e) {}
 function renderChecklist() {
   document.getElementById("checklist").innerHTML = CHECKS.map((c) => {
-    const locked = earnedDone < c.at;
+    const at = Math.round(c.at * scale()), locked = earnedDone < at;
     return `<li><label class="inset" for="ck-${c.id}">
       <input type="checkbox" id="ck-${c.id}" data-id="${c.id}" ${checked[c.id] ? "checked" : ""}>
-      <span>${c.text}<small>${locked ? `Unlocks at ${c.at} credits` : c.sub}${c.due && !locked ? ` · <span class="due">${c.due}</span>` : ""}</small></span></label></li>`;
+      <span>${c.text}<small>${locked ? `Unlocks at ${at} credits` : c.sub}${c.due && !locked ? ` · <span class="due">${c.due}</span>` : ""}</small></span></label></li>`;
   }).join("");
 }
 document.getElementById("checklist").addEventListener("change", (e) => {
   checked[e.target.dataset.id] = e.target.checked;
   try { localStorage.setItem("hub-checks", JSON.stringify(checked)); } catch (err) {}
+  saveRecord();   // signed-in students: checklist follows them across devices (TigerData)
 });
 function renderDests() {
   document.getElementById("dests").innerHTML = DESTS.map((d) => {
@@ -1057,7 +1086,7 @@ function renderImpact() {
     return `<tr><td><span class="code">${c.code}</span><br>${c.title}${c.st === "now" ? ' <span class="pill s-now">In progress</span>' : ""}</td>
       <td class="num">${c.cr}</td>
       <td><span class="pill t-${r}">${{ full: "Counts", elective: "Elective only", none: "Not accepted" }[r]}</span></td>
-      <td class="why">${REASONS[r]}</td></tr>`;
+      <td class="why">${REASONS[r]}${c.why ? `<br><small>${c.why}</small>` : ""}</td></tr>`;
   }).join("");
 }
 function renderTransfer() { renderDests(); renderImpact(); }
@@ -1106,15 +1135,35 @@ function route(q) {
   if (/gpa|grade/.test(s)) return answerGpa();
   if (/next|take|register|schedule|semester|term/.test(s)) return answerNext();
   if (/track|graduat|finish|done|progress|how (am i|far)/.test(s)) return answerTrack();
-  return `<p>I can answer questions about your progress, your GPA, what to take next, and what happens to your credits if you transfer. Try one of the suggestions.</p>`;
+  return null;   // anything else goes to the real AI advisor
 }
-function ask(q) {
+// Questions about YOUR record are answered instantly from the live data on this page.
+// Career and program questions go to the AI advisor (POST /api/chat: Prune -> Gemini, with safety guards).
+const chatHistory = [];
+async function ask(q) {
   if (!q.trim()) return;
-  say(q.replace(/[&<>]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch])), "me");
-  setTimeout(() => say(route(q)), 280);
+  say(NS.esc(q), "me");
+  const local = route(q);
+  if (local) { setTimeout(() => say(local + `<span class="engine">From your record</span>`), 200); return; }
+  chatHistory.push({ sender: "user", text: q.slice(0, 2000) });
+  const typing = document.createElement("div");
+  typing.className = "msg bot typing"; typing.textContent = "Thinking…"; log.appendChild(typing); log.scrollTop = log.scrollHeight;
+  try {
+    const r = await NS.api("/api/chat", { chatHistory: chatHistory.slice(-20) });
+    typing.remove();
+    chatHistory.push({ sender: "bot", text: r.chatResponse });
+    const paras = NS.esc(r.chatResponse).split(/\n{2,}/).map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
+    const link = r.careerId ? `<a class="open-rm" href="explore.html?career=${encodeURIComponent(r.careerId)}">See the step-by-step plan →</a>` : "";
+    say(paras + link + `<span class="engine">${NS.esc(NS.engineBadge(r.engine))}</span>`);
+  } catch (err) {
+    typing.remove();
+    chatHistory.pop();
+    say(`<p>${err.status === 429 ? "Lots of questions right now. Give me a minute and try again." : "I couldn't reach the advisor. Please try again."}</p>`);
+  }
 }
 const PROMPTS = ["Am I on track to graduate?", "What should I take next term?", "What happens to my credits if I transfer?",
-  "What if I go to a private school?", "What if I transfer out of state?", "How's my GPA?"];
+  "What if I go to a private school?", "How's my GPA?", "I like video games and math, what career fits me?",
+  "¿Qué programa es para ciberseguridad?"];
 document.getElementById("chips").innerHTML = PROMPTS.map((p) => `<button class="chip chrome" type="button">${p}</button>`).join("");
 document.getElementById("chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (b) ask(b.textContent); });
 document.getElementById("compose").addEventListener("submit", (e) => {
@@ -1130,11 +1179,113 @@ function renderAISnap() {
     </div>
     <p class="note inset"><b>Heads up:</b> transferring to a ${worst.dest.name.toLowerCase()} right now would leave ${worst.lost} of your credits behind. Ask about it before you register for next term.</p>`;
 }
-say(`<p>Hi ${STUDENT.name.split(" ")[0]}. I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term, or transferring.</p>`);
+function greet() {
+  log.innerHTML = "";
+  say(`<p>Hi ${NS.esc(STUDENT.name.split(" ")[0])}. I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term or transferring, or about any career you're curious about.</p>`);
+}
+
+/* ---------------- live data: /api/hub, /api/transcript, /api/me ---------------- */
+// The sample record matches backend/data/samples/sample_transcript.png (synthetic Z-prefixed courses).
+const SAMPLE = {
+  name: "Alex Rivera", program: "AI",
+  completed: ["ZEN 1101", "ZMA 1105", "ZCP 1000", "ZCS 1100", "ZSC 1005", "ZEN 1102", "ZCP 2006", "ZNT 1110"],
+  inProgress: ["ZAI 1010"],
+  grades: { "ZEN 1101": "A", "ZMA 1105": "B+", "ZCP 1000": "A-", "ZCS 1100": "B", "ZSC 1005": "C", "ZEN 1102": "B", "ZCP 2006": "A", "ZNT 1110": "B-" },
+  terms: { "ZEN 1101": "Fall 2026", "ZMA 1105": "Fall 2026", "ZCP 1000": "Fall 2026", "ZCS 1100": "Fall 2026", "ZSC 1005": "Fall 2026",
+           "ZEN 1102": "Spring 2027", "ZCP 2006": "Spring 2027", "ZNT 1110": "Spring 2027" },
+  currentTerm: "Summer 2027"
+};
+let record = null, signedIn = false;
+
+function applyHub(d) {
+  STUDENT = d.student; GROUPS = d.groups; COURSES = d.courses; DESTS = d.dests; REASONS = d.reasons;
+  rates = DESTS.map((x) => x.rate);
+  destId = Math.min(destId, DESTS.length - 1);
+  derive();
+  document.getElementById("who").textContent = `${STUDENT.name} · ${STUDENT.credential} ${STUDENT.program}`;
+  document.getElementById("rate").value = rates[destId];
+  renderProgress(); renderPhase(); renderChecklist(); renderTransfer(); renderAISnap(); greet();
+}
+
+async function loadHub(rec) {
+  const d = await NS.api("/api/hub", {
+    program: rec.program, completed: rec.completed, inProgress: rec.inProgress || [], grades: rec.grades || {},
+    terms: rec.terms || {}, name: rec.name, currentTerm: rec.currentTerm || "Fall 2026",
+    load: +document.getElementById("load").value || 15
+  });
+  record = rec;
+  applyHub(d);
+  const sample = document.getElementById("sample");
+  sample.innerHTML = rec.isSample
+    ? `<b>Sample student.</b> Synthetic courses (codes start with Z), graduating ${NS.esc(d.graduationTerm || "on the planned path")}. Load your own transcript in the Progress tab.`
+    : `<b>Your record.</b> Built from your transcript with sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
+}
+
+async function saveRecord() {
+  if (!signedIn || !record || record.isSample) return;
+  try { await NS.api(`/api/me/plans/${record.program}`, { plan: { ...record, checks: checked } }, { method: "PUT" }); }
+  catch (e) { console.warn("[hub] save failed", e.message); }
+}
+
+/* transcript upload (Gemini reads images/PDFs) */
+const tstatus = document.getElementById("tstatus");
+async function readTranscript(form) {
+  const program = document.getElementById("program").value;
+  form.append("program", program);
+  tstatus.textContent = "Reading your transcript…";
+  try {
+    const t = await NS.api("/api/transcript", form);
+    const grades = {}, terms = {};
+    t.courses.forEach((c) => { if (c.grade && c.grade !== "IP") grades[c.code] = c.grade; if (c.term) terms[c.code] = c.term; });
+    const inProgress = t.courses.filter((c) => c.grade === "IP").map((c) => c.code);
+    const user = await NS.auth.user();
+    await loadHub({ name: (user && (user.given_name || user.name)) || "You", program, completed: t.completed, inProgress, grades, terms,
+                    currentTerm: STUDENT.currentTerm, isSample: false });
+    tstatus.textContent = `Read ${t.courses.length + t.notCounted.length} courses with ${NS.engineBadge(t.engine)}. ` +
+      `${t.completed.length} count` + (t.notCounted.length ? `, ${t.notCounted.length} don't (${t.notCounted.map((c) => c.code + " " + (c.grade || "")).join(", ")})` : "") +
+      (t.notInCatalog.length ? `, ${t.notInCatalog.length} not in the catalog` : "") + "." + (signedIn ? " Saved to your account." : " Log in to save it.");
+    saveRecord();
+  } catch (err) {
+    tstatus.textContent = err.status === 503 ? "Reading images needs the Gemini key on the server. Try a text PDF." : (err.message || "Couldn't read that file.");
+  }
+}
+document.getElementById("tread").addEventListener("click", () => {
+  const f = document.getElementById("tfile").files[0];
+  if (!f) { tstatus.textContent = "Choose a PDF or photo of your transcript first."; return; }
+  const form = new FormData(); form.append("file", f); readTranscript(form);
+});
+document.getElementById("tsample").addEventListener("click", async () => {
+  tstatus.textContent = "Fetching the sample transcript…";
+  const blob = await fetch("/samples/sample_transcript.png").then((r) => r.blob());
+  const form = new FormData(); form.append("file", blob, "sample_transcript.png"); readTranscript(form);
+});
+document.getElementById("load").addEventListener("change", () => { if (record) loadHub(record).catch(() => {}); });
+
+/* sign-in state */
+async function initAuth() {
+  const btn = document.getElementById("auth-btn");
+  signedIn = await NS.auth.isAuthenticated();
+  btn.textContent = signedIn ? "Log out" : "Log in";
+  btn.onclick = () => signedIn ? NS.auth.logout() : NS.auth.login({ returnTo: "student-hub.html?go=progress" });
+  if (!signedIn) return null;
+  try {
+    const me = await NS.api("/api/me");
+    const plans = Object.values(me.plans || {}).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)));
+    const saved = plans[0] && plans[0].plan;
+    if (saved && saved.checks) { checked = saved.checks; }
+    return saved || null;
+  } catch (e) { return null; }
+}
 
 /* ---------------- boot ---------------- */
 document.getElementById("rate").value = rates[destId];
-renderProgress(); renderPhase(); renderChecklist(); renderTransfer(); renderAISnap();
+renderProgress(); renderPhase(); renderChecklist(); renderTransfer(); renderAISnap(); greet();
+NS.config().then((cfg) => {
+  document.getElementById("program").innerHTML = (cfg.programs || []).map((p) => `<option value="${p.code}">${NS.esc(p.name)}</option>`).join("");
+});
+initAuth().then((saved) => loadHub(saved ? { ...saved, isSample: false } : { ...SAMPLE, isSample: true }))
+  .then(() => { if (record && !record.isSample) document.getElementById("program").value = record.program; })
+  .catch(() => { document.getElementById("sample").innerHTML = "<b>Offline.</b> Can't reach the NextStop server, showing the built-in example."; });
 // Always open at the top of the page, at the logo. A tab named in the link (#progress) is still
 // pre-selected, but the page doesn't jump down to it, and the browser doesn't restore an old scroll spot.
 try { history.scrollRestoration = "manual"; } catch (e) {}

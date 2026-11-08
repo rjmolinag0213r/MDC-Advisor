@@ -499,3 +499,119 @@ def program_detail(code: str) -> dict:
                               for g in p["requirement_groups"]],
         "synthetic": True,
     }
+
+
+# ---------------- Student Hub dataset (feeds mdc-pathways/student-hub.html) ----------------
+
+# Transfer destinations shown on the hub's Transfer tab. Rates are rough per-credit tuition figures.
+DESTS = [
+    {"id": 0, "name": "Florida public university", "rate": 210,
+     "note": "<b>Why most credits move:</b> Florida public colleges and universities share one course numbering "
+             "system, so a course with the same prefix and number usually transfers as the same course. Specialized "
+             "program courses can arrive as electives when the new major has no matching course."},
+    {"id": 1, "name": "Private university", "rate": 1900,
+     "note": "<b>Why more is lost:</b> each private school decides course by course, and many don't accept "
+             "internships, labs or advanced technical courses. Ask for an unofficial credit evaluation before you "
+             "apply, and get it in writing."},
+    {"id": 2, "name": "Out-of-state public university", "rate": 1100,
+     "note": "<b>Why it varies:</b> there's no Florida articulation agreement across state lines. Most schools "
+             "publish a transfer equivalency database; look up each course code there. Out-of-state tuition also "
+             "makes every lost credit cost more to repeat."},
+]
+
+REASONS = {
+    "gen_ed": "General education transfers almost everywhere",
+    "common_core": "Standard intro technology course",
+    "lower": "Lower-level major course; outside Florida it often lands as an elective",
+    "upper": "Upper-level major course; schools outside Florida rarely match it",
+    "permission": "Internships and permission-only courses usually don't transfer",
+    "lab": "Labs follow their lecture course",
+}
+
+
+def transfer_rule(course: dict) -> tuple[list[str], str]:
+    """Rules-based estimate of how a course transfers to [FL public, private, out-of-state public]."""
+    cat, level = course.get("category"), course.get("level")
+    if course.get("instructor_permission") or (course.get("min_credits_completed") or 0) >= 60:
+        return ["elective", "none", "none"], REASONS["permission"]
+    if cat == "gen_ed":
+        return ["full", "full", "full"], REASONS["gen_ed"]
+    if cat == "common_core":
+        return ["full", "elective", "full"], REASONS["common_core"]
+    if cat == "lab":
+        return ["full", "none", "elective"], REASONS["lab"]
+    if level == "upper":
+        return ["full", "elective", "none"], REASONS["upper"]
+    return ["full", "elective", "elective"], REASONS["lower"]
+
+
+GROUP_IDS = {"General Education": "gen", "Common Technology Core": "common", "Program Foundations": "found",
+             "Program Core": "core", "Capstone and Internship": "cap", "Electives": "elect"}
+
+
+def hub(program_code: str, completed=None, in_progress=None, grades=None, terms=None, name: str | None = None,
+        current_term: str = "Fall 2026", load: int = 15) -> dict:
+    """Everything the Student Hub page renders, computed from the synthetic catalog."""
+    p = get_program(program_code)
+    done_set, unknown = _completed_set(completed)
+    now_set, unknown2 = _completed_set(in_progress)
+    now_set -= done_set
+    if grades is not None and not isinstance(grades, dict):
+        raise PlannerError("grades must be an object {courseCode: grade}.", "grades")
+    if terms is not None and not isinstance(terms, dict):
+        raise PlannerError("terms must be an object {courseCode: term}.", "terms")
+    grades = {canon(k): str(v).upper()[:3] for k, v in (grades or {}).items()}
+    terms = {canon(k): str(v)[:20] for k, v in (terms or {}).items()}
+    cs = catalog()["courses"]
+
+    # which requirement group each course counts toward
+    group_of: dict[str, str] = {}
+    groups = []
+    for g in p["requirement_groups"]:
+        gid = GROUP_IDS.get(g["group"], re.sub(r"[^a-z]", "", g["group"].lower())[:8])
+        groups.append({"id": gid, "label": g["group"], "need": g["credits"]})
+        for c in g["courses"]:
+            group_of.setdefault(canon(c), gid)
+    for c in list(group_of):
+        for co in cs.get(c, {}).get("corequisites") or []:
+            group_of.setdefault(canon(co), group_of[c])
+
+    # planned remaining courses, term by term, starting after the current term
+    m = re.fullmatch(r"(Fall|Spring|Summer)\s+(\d{4})", current_term)
+    nxt_season, nxt_year = (m.group(1), int(m.group(2))) if m else ("Fall", 2026)
+    nxt_season = SEASONS[(SEASONS.index(nxt_season) + 1) % 3]
+    if nxt_season == "Spring":
+        nxt_year += 1
+    if nxt_season == "Summer":
+        nxt_season, nxt_year = "Fall", nxt_year
+    the_plan = plan(p["app_program_code"], sorted(done_set | now_set), f"{nxt_season} {nxt_year}", load, 0, False)
+
+    courses = []
+
+    def add(code, st, term):
+        info = cs[code]
+        t, why = transfer_rule(info)
+        courses.append({"code": code, "title": info["title"], "cr": info["credits"], "g": group_of.get(code, "elect"),
+                        "st": st, "term": term, "grade": grades.get(code) if st == "done" else None, "t": t, "why": why})
+
+    for code in sorted(done_set, key=lambda c: (terms.get(c, "zz"), c)):
+        add(code, "done", terms.get(code, "Completed"))
+    for code in sorted(now_set):
+        add(code, "now", current_term)
+    for term in the_plan["terms"]:
+        for c in term["courses"]:
+            add(c["code"], "next", term["term"])
+
+    return {
+        "student": {"name": (name or "You")[:60], "program": p["name"], "credential": "B.S.",
+                    "programCode": p["app_program_code"], "required": p["total_credits"],
+                    "currentTerm": current_term, "startTerm": None},
+        "groups": groups,
+        "courses": courses,
+        "dests": [{**d, "degree": f"B.S. {p['name']}", "total": p["total_credits"]} for d in DESTS],
+        "reasons": {"full": "Matches a required course", "elective": "Accepted, but no matching course in the major",
+                    "none": "No equivalent course; not accepted"},
+        "graduationTerm": the_plan["graduationTerm"],
+        "unknownCourses": unknown + unknown2,
+        "synthetic": True,
+    }

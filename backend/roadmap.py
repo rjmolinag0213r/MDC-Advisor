@@ -32,7 +32,8 @@ SWARMS_URL = os.getenv("SWARMS_BASE_URL", "https://api.swarms.world") + "/v1/swa
 
 
 def career_cards() -> list[dict]:
-    return [{k: c[k] for k in ("id", "title", "icon", "cluster", "tagline", "program")} | {"salary": c["salary"]}
+    return [{k: c[k] for k in ("id", "title", "icon", "cluster", "tagline", "program", "keywords")}
+            | {"salary": c["salary"], "credential": c["mdc"]["credential"], "careers": c["career"]}
             for c in CATALOG["careers"]]
 
 

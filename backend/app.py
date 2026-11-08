@@ -621,6 +621,33 @@ def degree_plan():
     return jsonify(out)
 
 
+@app.post("/api/hub")
+def student_hub():
+    """Dataset for the Student Hub page: progress, plan by term, and transfer impact per course."""
+    _need_catalog()
+    body = _json_body()
+    load = body.get("load", 15)
+    if not isinstance(load, int) or not 6 <= load <= 18:
+        raise ApiError(400, "invalid_request", "load must be an integer from 6 to 18.", field="load")
+    out = planner.hub(body.get("program", ""), body.get("completed"), body.get("inProgress"), body.get("grades"),
+                      body.get("terms"), safety.redact_pii(str(body.get("name") or ""))[0] or None,
+                      str(body.get("currentTerm") or "Fall 2026"), load)
+    store.log_event("hub", program=out["student"]["programCode"], latency_ms=_elapsed_ms())
+    return jsonify(out)
+
+
+@app.get("/api/config")
+def public_config():
+    """Public, non-secret settings the frontend needs (Auth0 SPA values are public by design)."""
+    client_id = os.getenv("AUTH0_CLIENT_ID", "").strip()
+    return jsonify({
+        "auth0": ({"domain": auth.AUTH0_DOMAIN, "clientId": client_id, "audience": auth.AUTH0_AUDIENCE}
+                  if auth.configured() and client_id else None),
+        "demoAuth": not auth.configured() and auth.DEMO_MODE,
+        "programs": [{"code": p["code"], "name": p["name"]} for p in planner.program_summary()] if planner.available() else [],
+    })
+
+
 @app.post("/api/schedule")
 def build_schedule():
     _need_catalog()
@@ -628,8 +655,21 @@ def build_schedule():
     return jsonify(planner.schedule(body.get("courses"), str(body.get("term") or ""), body.get("preferences")))
 
 
-# Serve the built frontend (npm run build -> ../dist) so one process runs the whole app.
-DIST = (Path(__file__).parent.parent / "dist").resolve()
+# Serve the website so one process runs the whole app. Default: Cris's MDC Pathways design
+# (plain HTML in ../mdc-pathways). Set SITE_DIR to another folder (e.g. ../dist for the React build).
+_ROOT = Path(__file__).parent.parent
+DIST = Path(os.getenv("SITE_DIR", "")).resolve() if os.getenv("SITE_DIR") else (
+    (_ROOT / "mdc-pathways") if (_ROOT / "mdc-pathways" / "index.html").exists() else (_ROOT / "dist")).resolve()
+SAMPLES = (Path(__file__).parent / "data" / "samples").resolve()
+
+
+@app.get("/samples/<path:name>")
+def samples(name: str):
+    """Demo files (synthetic sample transcript)."""
+    target = (SAMPLES / name).resolve()
+    if SAMPLES not in target.parents or not target.is_file() or target.suffix.lower() not in (".png", ".jpg", ".pdf"):
+        raise ApiError(404, "not_found", "No such sample file.")
+    return send_from_directory(SAMPLES, name)
 
 
 @app.get("/")

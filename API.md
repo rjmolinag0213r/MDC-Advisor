@@ -121,6 +121,16 @@ The response has `terms: [{ term, credits, courses: [{ code, title, credits, not
 ```
 The response has `sections` (with `crn`, `meetings`, `instructor`, `seatsOpen`, `status`, `linked_crn`), `credits`, `conflicts`, `waitlisted`, `unscheduled` (each with a `reason`: `not_offered`, `cancelled`, `preferences` (includes `alternatives`), or `full`) and `ok`. Linked labs are added automatically, and cancelled sections are never picked.
 
+## Website (MDC Pathways design)
+
+Flask serves Cris's site from `mdc-pathways/` at `/`: `index.html`, `explore.html`, `student-hub.html`, `login.html` and `account.html`. Every page loads `js/nextstop.js`, which gives you `NS.api(path, body)` for API calls and `NS.auth.login()/logout()/isAuthenticated()` for Auth0. To serve a different frontend, set `SITE_DIR` (for example `../dist`).
+
+| Route | Purpose |
+|---|---|
+| `GET /api/config` | Public settings for the frontend: Auth0 domain, client ID and audience, plus the program list |
+| `POST /api/hub` | `{ program, completed[], inProgress[], grades{}, terms{}, name, currentTerm, load }` returns the Student Hub's data: `student`, `groups`, `courses[]` (`code, title, cr, g, st: done/now/next, term, grade, t: [FL public, private, out-of-state] = full/elective/none, why`), `dests` and `graduationTerm`. Transfer results come from rules based on course type (synthetic) |
+| `GET /samples/sample_transcript.png` | Demo transcript for the "Use the sample transcript" button |
+
 ## Transcript reading (Gemini multimodal)
 
 `POST /api/transcript` accepts either:
