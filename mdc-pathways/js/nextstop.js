@@ -109,7 +109,7 @@
     logout: function () {
       cachedUser = null;
       return client().then(function (c) {
-        try { localStorage.removeItem("ns-demo-in"); } catch (e) {}
+        try { localStorage.removeItem("ns-demo-in"); sessionStorage.removeItem("ns-sample"); } catch (e) {}
         if (c) return c.logout({ logoutParams: { returnTo: location.origin + "/index.html" } });
         location.href = "index.html";
       });

@@ -153,6 +153,7 @@
       <button class="btn" type="submit" id="go">Create account</button>
       <p class="hint">You'll finish on our secure sign-in page (Auth0), then come right back here.</p>
     </form>
+    <p class="alt"><button class="linkish" type="button" id="sample">Just looking? Explore with a sample student</button></p>
 
     <p class="alt">Already have an account? <a id="to-login" href="login.html" style="font-weight:600">Log in</a></p>
   </section>
@@ -171,6 +172,10 @@
   document.getElementById("to-login").href = "login.html" + (NEXT ? "?next=" + NEXT : "");
   // already signed in? skip straight to the hub
   NS.auth.isAuthenticated().then((ok) => { if (ok) location.replace(backTo); });
+  document.getElementById("sample").addEventListener("click", () => {
+    try { sessionStorage.setItem("ns-sample", "1"); } catch (e) {}
+    location.href = backTo || "student-hub.html?go=ai";
+  });
   document.getElementById("signup").addEventListener("submit", (e) => {
     e.preventDefault();
     const btn = document.getElementById("go");

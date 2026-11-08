@@ -523,6 +523,8 @@
   .lux .checklist input { accent-color: var(--lx-accent); }
 
   /* live-data additions */
+  /* hub is hidden until log in (or a sample session); the intro ends at "Find the future you want." */
+  .hub-locked .band--hub, .hub-locked #skip { display: none; }
   .auth-btn { min-height: 44px !important; padding: .55rem 1.1rem !important; font-size: .72rem !important; }
   @media (max-width: 640px) {
     /* phones: Log in sits on the brand row, tabs get the full second row */
@@ -551,7 +553,7 @@
   }
 </style>
 </head>
-<body>
+<body class="hub-locked">
 
 <div class="sky" aria-hidden="true"></div>
 
@@ -955,18 +957,23 @@ document.querySelectorAll(".tab").forEach((t) => {
 // page ("Ask the AI advisor") or the log-in page ("See my progress"), which hand off to Auth0
 // and come back here with ?go=ai or ?go=progress.
 const ACCOUNT_PAGE = { ai: "account.html?next=ai", progress: "login.html?next=progress" };
+// The hub stays hidden (body.hub-locked) until the student logs in, or picks "explore with a
+// sample student" on the log-in page (a session-only demo for judges).
+const sampleSession = () => { try { return sessionStorage.getItem("ns-sample") === "1"; } catch (e) { return false; } };
+const canEnter = async () => sampleSession() || (await NS.auth.isAuthenticated());
 document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", async (e) => {
   e.preventDefault();
   const v = a.dataset.go;
-  if (ACCOUNT_PAGE[v] && !(await NS.auth.isAuthenticated())) { location.href = ACCOUNT_PAGE[v]; return; }
+  if (ACCOUNT_PAGE[v] && !(await canEnter())) { location.href = ACCOUNT_PAGE[v]; return; }
   goHub(v);
 }));
-// Coming back from account.html (?go=ai): open that tab and scroll to the hub, then tidy the address.
+// Coming back from the log-in pages (?go=ai): remember the tab; boot opens it once the hub is unlocked.
+let pendingGo = null;
 {
   const go = new URLSearchParams(location.search).get("go");
   if (go && VIEWS.includes(go)) {
+    pendingGo = go;
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
-    requestAnimationFrame(() => goHub(go));
   }
 }
 // A changed link only picks the tab; it never scrolls. Only the buttons scroll down to the hub.
@@ -1272,31 +1279,63 @@ document.getElementById("tsample").addEventListener("click", async () => {
 });
 document.getElementById("load").addEventListener("change", () => { if (record) loadHub(record).catch(() => {}); });
 
-/* sign-in state */
+/* sign-in state: returns { user, saved } for a signed-in student, or null */
 async function initAuth() {
   const btn = document.getElementById("auth-btn");
   signedIn = await NS.auth.isAuthenticated();
   btn.textContent = signedIn ? "Log out" : "Log in";
-  btn.onclick = () => signedIn ? NS.auth.logout() : NS.auth.login({ returnTo: "student-hub.html?go=progress" });
+  btn.onclick = () => {
+    if (signedIn) return NS.auth.logout();
+    try { sessionStorage.removeItem("ns-sample"); } catch (e) {}
+    location.href = "login.html?next=progress";
+  };
   if (!signedIn) return null;
+  const user = await NS.auth.user();
   try {
     const me = await NS.api("/api/me");
     const plans = Object.values(me.plans || {}).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)));
     const saved = plans[0] && plans[0].plan;
     if (saved && saved.checks) { checked = saved.checks; }
-    return saved || null;
-  } catch (e) { return null; }
+    return { user, saved: saved || null };
+  } catch (e) { return { user, saved: null }; }
+}
+
+function unlock() {
+  document.body.classList.remove("hub-locked");
+  requestAnimationFrame(() => { moveThumb(); if (pendingGo) goHub(pendingGo); });
 }
 
 /* ---------------- boot ---------------- */
 document.getElementById("rate").value = rates[destId];
-renderProgress(); renderPhase(); renderChecklist(); renderTransfer(); renderAISnap(); greet();
 NS.config().then((cfg) => {
   document.getElementById("program").innerHTML = (cfg.programs || []).map((p) => `<option value="${p.code}">${NS.esc(p.name)}</option>`).join("");
 });
-initAuth().then((saved) => loadHub(saved ? { ...saved, isSample: false } : { ...SAMPLE, isSample: true }))
-  .then(() => { if (record && !record.isSample) document.getElementById("program").value = record.program; })
-  .catch(() => { document.getElementById("sample").innerHTML = "<b>Offline.</b> Can't reach the NextStop server, showing the built-in example."; });
+initAuth().then(async (auth) => {
+  if (auth) {
+    // Signed in: pull this student's saved record from TigerData, or start a fresh plan.
+    const firstName = (auth.user && (auth.user.given_name || auth.user.nickname || auth.user.name)) || "there";
+    const rec = auth.saved ? { ...auth.saved, isSample: false }
+      : { name: firstName, program: "AI", completed: [], inProgress: [], grades: {}, terms: {}, currentTerm: "Fall 2026", isSample: false, isNew: true };
+    await loadHub(rec);
+    if (rec.isNew) {
+      document.getElementById("sample").innerHTML = `<b>Welcome, ${NS.esc(firstName)}.</b> Your hub is empty: load your transcript in the Progress tab and we'll build your plan.`;
+      if (!pendingGo || pendingGo === "progress") pendingGo = "progress";
+    }
+    document.getElementById("program").value = rec.program;
+    unlock();
+  } else if (sampleSession()) {
+    await loadHub({ ...SAMPLE, isSample: true });
+    document.getElementById("sample").innerHTML += ` <a href="login.html?next=progress" style="color:inherit;font-weight:600">Log in to use your own record.</a>`;
+    unlock();
+  } else if (pendingGo) {
+    // Came here with ?go= but isn't signed in (expired session): send them to log in.
+    location.replace(ACCOUNT_PAGE[pendingGo] || "login.html?next=progress");
+  }
+  // otherwise: locked. The intro ends at "Find the future you want." and its two buttons lead to log in.
+}).catch(() => {
+  document.getElementById("sample").innerHTML = "<b>Offline.</b> Can't reach the NextStop server.";
+  unlock();
+});
 // Always open at the top of the page, at the logo. A tab named in the link (#progress) is still
 // pre-selected, but the page doesn't jump down to it, and the browser doesn't restore an old scroll spot.
 try { history.scrollRestoration = "manual"; } catch (e) {}

@@ -145,6 +145,7 @@
     <button class="btn" type="submit" id="go">Log in</button>
     <p class="hint">You'll sign in on our secure page (Auth0). Forgot your password? Reset it there.</p>
   </form>
+  <p class="alt"><button class="linkish" type="button" id="sample">Just looking? Explore with a sample student</button></p>
 
   <p class="alt">New here? <a id="to-signup" href="account.html?next=progress" style="font-weight:600">Create an account</a></p>
 </main>
@@ -161,6 +162,10 @@
   document.getElementById("why").textContent = WHY[NEXT];
   document.getElementById("to-signup").href = "account.html?next=" + NEXT;
   NS.auth.isAuthenticated().then((ok) => { if (ok) location.replace(backTo); });
+  document.getElementById("sample").addEventListener("click", () => {
+    try { sessionStorage.setItem("ns-sample", "1"); } catch (e) {}
+    location.href = backTo;
+  });
   document.getElementById("login").addEventListener("submit", (e) => {
     e.preventDefault();
     const btn = document.getElementById("go");
