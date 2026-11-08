@@ -801,7 +801,7 @@
             <img src="images/shark-head.png" alt="" width="56" height="56">
             <span class="shark-orb" hidden></span>
           </span>
-          <div><h2>Ask your advisor</h2><span class="code">Answers come from your record on this page</span></div>
+          <div><h2>Ask Finn, your advisor</h2><span class="code">Answers based on your record</span></div>
         </div>
         <div class="log" id="log" aria-live="polite"></div>
         <form class="compose" id="compose">
@@ -1518,7 +1518,7 @@ function renderMemory(m) {
     ["Grade", memory.grade ? [memory.grade] : []]
   ].filter(([, v]) => v && v.length);
   const sub = document.querySelector(".chat-head .code");
-  if (sub && signedIn) sub.textContent = "Remembers your record and our past conversations";
+  if (sub && signedIn) sub.textContent = "Knows your record and remembers your past chats";
   document.getElementById("memory-facts").innerHTML = rows.length
     ? rows.map(([k, v]) => `<div class="mem-row"><b>${k}</b><div class="mem-tags">${v.map((x) => `<span>${NS.esc(x)}</span>`).join("")}</div></div>`).join("")
     : `<p class="lede" style="margin:0">Nothing yet. Tell me what you enjoy and I'll remember it next time.</p>`;
