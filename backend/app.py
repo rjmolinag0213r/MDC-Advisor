@@ -400,6 +400,28 @@ def _finalize(data: dict, user_turns: list[str]) -> dict:
     }
 
 
+_GRADE_RE = re.compile(r"\b(9|10|11|12)(?:th)?\s*grade\b|\b(freshman|sophomore|junior|senior)\b|\b(?:grado|año)\s*(9|10|11|12)\b", re.I)
+_LIKE_RE = re.compile(r"\bi\s+(?:really\s+)?(?:love|like|enjoy|am into|'m into)\s+([^.,!?;]{3,60})", re.I)
+_WORRY_RE = re.compile(r"\b(?:worried|scared|nervous|bad)\s+(?:about|at)\s+([^.,!?;]{2,40})", re.I)
+
+
+def _heuristic_memory(text: str) -> dict:
+    """Backup for when the model skips memoryUpdate: grade, likes and worries straight from the message."""
+    out: dict = {}
+    m = _GRADE_RE.search(text or "")
+    if m:
+        word = {"freshman": "9", "sophomore": "10", "junior": "11", "senior": "12"}
+        out["grade"] = m.group(1) or word.get((m.group(2) or "").lower()) or m.group(3)
+    likes = [re.sub(r"\s+(?:and|but)\s+i\b.*$", "", x, flags=re.I).strip() for x in _LIKE_RE.findall(text or "")]
+    likes = [x for x in likes if x and not re.search(r"\b(you|your|to know|to ask)\b", x, re.I)]
+    if likes:
+        out["interests"] = likes[:3]
+    worries = _WORRY_RE.findall(text or "")
+    if worries:
+        out["concerns"] = [w.strip() for w in worries[:2]]
+    return out
+
+
 def advise(raw_history, memory_text: str = "") -> dict:
     history = _history(raw_history)
     pii_found: list[str] = []
@@ -421,6 +443,7 @@ def advise(raw_history, memory_text: str = "") -> dict:
     out = _finalize(data, user_turns)
     # facts to remember: what the model extracted, plus the program/career it recommended
     mem = data.get("memoryUpdate") if isinstance(data.get("memoryUpdate"), dict) else {}
+    mem = {**_heuristic_memory(user_turns[-1]), **{k: v for k, v in mem.items() if v}}
     if out["recommendedProgram"] and out["recommendedProgram"] != "OTHER":
         mem = {**mem, "programLeaning": out["recommendedProgram"]}
     if out["careerId"]:

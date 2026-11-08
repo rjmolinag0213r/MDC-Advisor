@@ -587,6 +587,10 @@
     .lux .bar { max-width: 100%; }
   }
   .lux .controls input[type="file"] { width: 16rem; padding: .45rem .6rem; }
+  /* native dropdown lists are drawn by the OS: give options a dark background so the white text shows */
+  select option { background: #2a0a3a; color: #fff; }
+  select { color-scheme: dark; }
+  #program { width: 17rem; max-width: 100%; }
   .msg .engine { display: block; margin-top: .45rem; font-size: .72rem; letter-spacing: .06em; opacity: .75; }
   .msg .open-rm { display: inline-block; margin-top: .5rem; color: var(--fg); font-weight: 600; }
   .typing { opacity: .7; font-style: italic; }
@@ -1222,11 +1226,15 @@ function answerGpa() {
 }
 function route(q) {
   const s = q.toLowerCase();
+  // Students telling us about themselves ("I love…", "I'm in 11th grade…") or asking about careers go to the AI,
+  // which also remembers what they say. Only short questions about their own record are answered locally.
+  if (/\b(i|i'm|im|i am)\s+(really\s+)?(love|like|enjoy|want|am into|'m into|interested)\b|\b\d{1,2}(th)?\s+grade\b|career|job|major|study|programa|carrera/.test(s)) return null;
+  if (s.length > 140) return null;
   if (/private/.test(s)) return answerTransfer(1);
   if (/out[- ]of[- ]state|another state|other state/.test(s)) return answerTransfer(2);
   if (/(florida|public|state) (school|univ)|fiu|ucf|usf|uf\b|fsu/.test(s)) return answerTransfer(0);
   if (/transfer|another school|switch|lose|count|backtrack|credits? (go|move)/.test(s)) return answerTransfer(null);
-  if (/gpa|grade/.test(s)) return answerGpa();
+  if (/\bgpa\b|\bmy grades?\b|how.?s my grade/.test(s)) return answerGpa();
   if (/next|take|register|schedule|semester|term/.test(s)) return answerNext();
   if (/track|graduat|finish|done|progress|how (am i|far)/.test(s)) return answerTrack();
   return null;   // anything else goes to the real AI advisor
@@ -1490,6 +1498,17 @@ document.getElementById("tsample").addEventListener("click", async () => {
   const form = new FormData(); form.append("file", blob, "sample_transcript.png"); readTranscript(form);
 });
 document.getElementById("load").addEventListener("change", () => { if (record) loadHub(record).catch(() => {}); });
+// switching program re-plans the same courses against the new degree (and saves it for signed-in students)
+document.getElementById("program").addEventListener("change", async (e) => {
+  if (!record) return;
+  const program = e.target.value;
+  tstatus.textContent = "Re-planning for " + e.target.selectedOptions[0].textContent + "…";
+  try {
+    await loadHub({ ...record, program, isSample: record.isSample });
+    tstatus.textContent = `Plan updated for ${STUDENT.program}: ${earnedDone} of ${STUDENT.required} credits count, finishing ${gradTerm || "on the planned path"}.`;
+    if (signedIn) { showWelcome(document.getElementById("acct-name").textContent || "there", !!record.isNew); saveRecord(); }
+  } catch (err) { tstatus.textContent = "Couldn't switch programs. Try again."; }
+});
 
 /* sign-in state: returns { user, saved } for a signed-in student, or null */
 async function initAuth() {
@@ -1514,6 +1533,7 @@ async function initAuth() {
 
 function unlock() {
   document.body.classList.remove("hub-locked");
+  if (pendingGo) show(pendingGo);   // pick the tab right away; only the scroll waits for layout
   requestAnimationFrame(() => { moveThumb(); if (pendingGo) goHub(pendingGo); });
 }
 

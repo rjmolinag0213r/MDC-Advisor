@@ -89,3 +89,18 @@ def test_merge_memory_dedupes_and_caps():
 def test_chat_history_requires_identity(client):
     assert client.get("/api/me/chat").status_code == 401
     assert client.get("/api/me/chat?limit=x", headers=A).status_code == 400
+
+
+def test_heuristic_memory_when_model_skips_it():
+    import app
+    m = app._heuristic_memory("I really love statistics and making charts about basketball, I'm in 11th grade. I'm worried about math")
+    assert m["grade"] == "11" and m["interests"] == ["statistics and making charts about basketball"] and m["concerns"] == ["math"]
+    assert app._heuristic_memory("I'm a junior")["grade"] == "11"
+    assert app._heuristic_memory("can you tell me about networking") == {}
+
+
+def test_offline_chat_still_remembers(client):
+    client.delete("/api/me/chat", headers=A)
+    r = say(client, "I like fixing wifi and routers, I'm a senior", A)   # offline engine: no memoryUpdate from a model
+    assert r["memory"]["grade"] == "12" and "fixing wifi and routers" in r["memory"]["interests"]
+    assert r["memory"]["programLeaning"] == "NET"
