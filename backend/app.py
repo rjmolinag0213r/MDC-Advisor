@@ -818,6 +818,15 @@ def school_lookup():
         raise ApiError(422, "school_unreadable", f"Couldn't reach that site ({type(e).__name__}).", field="url")
 
 
+@app.post("/api/paths")
+def other_paths():
+    """Programs closest to the student's approved plan (read-only), ranked by credits that carry over."""
+    _need_catalog()
+    body = _json_body()
+    _rate_limit()
+    return jsonify(advisor_tools.paths(body.get("program", ""), body.get("completed"), int(body.get("load") or 15)))
+
+
 @app.post("/api/whatif")
 def what_if():
     """Compare staying on the current path with switching to another program or career."""

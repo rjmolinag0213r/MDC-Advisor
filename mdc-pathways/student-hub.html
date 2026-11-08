@@ -623,6 +623,7 @@
   .bar-group { display: grid; gap: .3rem; padding: .4rem 0; }
   .bar-group > b { font-family: var(--f-lux-display, sans-serif); font-weight: 500; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
   #terms .row[data-code] { cursor: pointer; }
+  .msg .chip:disabled { opacity: .4; cursor: not-allowed; }
   #terms .row[data-code]:hover, #terms .row[data-code]:focus-visible { outline: 1px solid rgba(255,255,255,.6); }
   .school-card { padding: .9rem 1rem; display: grid; gap: .35rem; }
   .bar-row span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
@@ -783,6 +784,16 @@
         <div class="glass panel stack" id="plan-box">
           <div class="steps-mini" aria-hidden="true"><span data-s="1">1 · Transcript</span><span data-s="2">2 · Your strengths</span><span data-s="3">3 · Approve plan</span></div>
 
+          <!-- shown instead of steps 1-3 once a plan is approved: one locked plan, other programs only as possible paths -->
+          <div id="ps-locked" class="stack" hidden>
+            <span class="eyebrow" id="lk-state">Your approved plan · locked</span>
+            <h2 id="lk-title"></h2>
+            <p class="lede" style="margin:0" id="lk-sub"></p>
+            <span class="eyebrow" style="margin-top:.4rem">Other possible paths</span>
+            <div class="fit-list" id="lk-paths"><p class="code" style="margin:0">Finding programs close to yours…</p></div>
+            <p class="code" style="margin:0">Possible paths are for comparing only. Your approved plan stays locked; manage it in Progress or by telling me what you passed.</p>
+          </div>
+
           <div id="ps-drop" class="stack">
             <span class="eyebrow">Start here</span>
             <h2>Drop your transcript</h2>
@@ -844,9 +855,15 @@
         <div class="controls">
           <label for="program">Program<select id="program"></select></label>
           <button class="btn chrome" type="button" id="to-ai">Load a new transcript</button>
+          <button class="btn chrome" type="button" id="unlock" hidden style="opacity:.75">Change approved plan</button>
         </div>
       </div>
-      <p class="code" style="margin:0">Click any course to change it: planned → taking now → done. Or just tell the advisor, e.g. "I passed ZEN 1101" or "I'm taking ZMA 1105".</p>
+      <p class="code" style="margin:0" id="plan-help">Click any course to change it: planned → taking now → done. Or just tell the advisor, e.g. "I passed ENC 1101" or "I'm taking MAC 1105".</p>
+    </div>
+    <div class="glass panel stack" id="paths-box" hidden>
+      <span class="eyebrow">Other possible paths</span>
+      <p class="lede" style="margin:0">Programs close to your approved plan, ranked by how many of your credits would carry over. For comparing only.</p>
+      <div class="fit-list" id="paths"></div>
     </div>
     <div class="glass panel hero-prog">
       <div class="ring" id="ring"></div>
@@ -1550,7 +1567,8 @@ async function loadHub(rec) {
   record = rec;
   gradTerm = d.graduationTerm;
   applyHub(d);
-  renderPlanBar(); renderSchools();
+  renderPlanBar(); renderSchools(); renderLocked();
+  if (!isLocked() && $("ps-locked") && !$("ps-locked").hidden) setStep(1);
   const sample = document.getElementById("sample");
   hubOfficial = !!d.official;
   if (d.official) {   // real MDC program sheet: say so instead of the sample-catalog note
@@ -1615,7 +1633,9 @@ function showAccount(user) {
     document.getElementById("ai-memory").scrollIntoView({ behavior: "smooth", block: "center" });
   });
   document.getElementById("acct-transcript").addEventListener("click", () => {
-    setOpen(false); startOver(); show("ai");
+    setOpen(false);
+    if (isLocked()) { unlockPlan(); return; }
+    startOver(); show("ai");
     document.getElementById("plan-box").scrollIntoView({ behavior: "smooth", block: "center" });
     document.getElementById("tread").focus({ preventScroll: true });
   });
@@ -1637,7 +1657,12 @@ function showWelcome(first, isNew) {
 const tstatus = document.getElementById("tstatus");
 let draft = null, preview = null, leaning = null;
 const $ = (id) => document.getElementById(id);
+// One approved plan at a time. Once approved it's locked: no transcript box, no program switch.
+const isLocked = () => !!(record && record.approved && !record.isSample && !record.isNew);
 function setStep(n) {
+  if (isLocked()) n = 0;
+  $("ps-locked").hidden = n !== 0;
+  document.querySelector(".steps-mini").hidden = n === 0;
   $("ps-drop").hidden = n !== 1; $("ps-strengths").hidden = n !== 2; $("ps-preview").hidden = n !== 3;
   document.querySelectorAll(".steps-mini span").forEach((s) => {
     const k = +s.dataset.s; s.classList.toggle("on", k === n); s.classList.toggle("done", k < n);
@@ -1658,6 +1683,7 @@ function programFromText(s) {
 }
 
 async function readTranscript(form) {
+  if (isLocked()) { tstatus.textContent = "Your plan is approved and locked. Tell me what you passed to keep it up to date."; return; }
   tstatus.textContent = "Reading your transcript…";
   try {
     const t = await NS.api("/api/transcript", form);
@@ -1698,13 +1724,14 @@ function coachAfterTranscript(t) {
   const strong = (s.strong || []).slice(0, 2).map((x) => x.toLowerCase());
   const msg = `I read your ${t.level === "high_school" ? "high-school " : ""}transcript.` +
     (strong.length ? ` Your strongest subjects are <b>${NS.esc(strong.join(" and "))}</b>.` : "") +
-    (fits.length ? ` That points to <b>${NS.esc(fits.slice(0, 2).join("</b> or <b>"))}</b>.` : "");
+    (fits.length ? ` That points to ${fits.slice(0, 2).map((f) => `<b>${NS.esc(f)}</b>`).join(" or ")}.` : "");
   say(`<p>${msg}</p><p>What do you enjoy most in those classes: solving puzzles, building things, helping people, or working with data? Tell me and I'll show you how those skills turn into a career. When you're ready, pick a program on the right, or say "preview my plan".</p>`);
   chatHistory.push({ sender: "bot", text: msg.replace(/<[^>]+>/g, "") + " What do you enjoy most in those classes?" });
 }
 
 async function previewPlan(code) {
   if (!code) return;
+  if (isLocked()) { comparePath(code); return; }   // after approval, other programs are compared, not previewed for approval
   const base = draft || record || {};
   tstatus.textContent = `Building a preview for ${PROGRAM_LABEL[code] || code}…`;
   try {
@@ -1735,6 +1762,7 @@ function renderPreview(p) {
   setStep(3);
 }
 async function approvePlan() {
+  if (isLocked()) { say("<p>You already have an approved plan, and only one can be approved. The other programs show up as possible paths you can compare.</p>"); return; }
   if (!preview) { say("<p>Pick a program to preview first, then you can approve it.</p>"); return; }
   const base = draft || record || {};
   const user = signedIn ? await NS.auth.user() : null;
@@ -1754,8 +1782,12 @@ async function approvePlan() {
     const name = preview.program.name;
     draft = null; preview = null;
     setStep(1);
-    tstatus.textContent = `Approved: ${name}. ${signedIn ? "Saved to your account." : "Log in to keep it."} Manage it in Progress, or tell me "I passed …".`;
-    say(`<p>Done. Your <b>${NS.esc(name)}</b> plan is in Progress. Click any course there to mark it taking or done, or just tell me, like "I passed ZEN 1101".</p>`);
+    renderLocked();
+    // earlier "Approve" / "Preview" buttons in the chat are spent now: only one plan can be approved
+    log.querySelectorAll("[data-approve], [data-preview]").forEach((b) => { b.disabled = true; b.title = "Your plan is already approved"; });
+    tstatus.textContent = `Approved and locked: ${name}. ${signedIn ? "Saved to your account." : "Log in to keep it."} Manage it in Progress, or tell me "I passed …".`;
+    const ex = (next[0] && next[0].code) || "ENC 1101";
+    say(`<p>Done. Your <b>${NS.esc(name)}</b> plan is approved and locked in Progress. Click any course there to mark it taking or done, or just tell me, like "I passed ${NS.esc(ex)}".</p><p>I'll show programs close to yours as possible paths you can compare.</p>`);
     if (signedIn) showWelcome($("acct-name").textContent || "there", false);
     show("progress");
     $("hub").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1847,6 +1879,13 @@ function planCommand(q) {
     };
   }
   if (s.length < 90 && /\b(approve|looks good|lock it in)\b/i.test(s) && preview) return approvePlan;
+  if (isLocked() && s.length < 90 && /\b(preview|build|make|create|approve|new)\b.*\bplan\b|\b(other|possible|similar)\b.*\b(path|program|option)s?\b/i.test(low)) return async () => {
+    await loadPaths();
+    const list = (pathsData && pathsData.paths) || [];
+    say(`<p>Your <b>${NS.esc(STUDENT.credential + " " + STUDENT.program)}</b> plan is approved and locked, and only one plan can be approved.</p>` +
+      (list.length ? `<p>Closest other paths, for comparing:</p><ul>${list.map((x) => `<li><b>${NS.esc(x.name)}</b>: ${x.creditsCarryOver} credits would carry over, finish ${NS.esc(x.graduationTerm || "—")}</li>`).join("")}</ul>` : "") +
+      `<p>Tap one on the right to compare it in What if. To replace your plan, use "Change my approved plan" in your account menu.</p>`);
+  };
   if (s.length < 90 && /\b(preview|build|make|create|show)\b.*\bplan\b|^plan preview/i.test(low)) return () => {
     const code = programFromText(s) || leaning || (record && !record.isNew && record.program);
     if (!draft && (!record || record.isNew)) { say(`<p>Drop your transcript on the right first (high school or college), and I'll suggest the programs that fit you.</p>`); return; }
@@ -1864,10 +1903,65 @@ function renderPlanBar() {
     $("to-ai").textContent = "Start with my transcript";
   } else {
     state.textContent = record.isSample ? "Sample plan" : record.approved
-      ? `Approved plan${record.approvedAt ? " · " + new Date(record.approvedAt).toLocaleDateString() : ""}` : "Your plan";
+      ? `🔒 Approved plan · locked${record.approvedAt ? " · " + new Date(record.approvedAt).toLocaleDateString() : ""}` : "Your plan";
     name.textContent = `${STUDENT.credential} ${STUDENT.program}`;
     $("to-ai").textContent = "Load a new transcript";
   }
+  const locked = isLocked();
+  $("program").closest("label").hidden = locked;   // one approved plan: no switching it from a dropdown
+  $("to-ai").hidden = locked;
+  $("unlock").hidden = !locked;
+  $("paths-box").hidden = !locked;
+  const menu = $("acct-transcript");
+  if (menu) menu.textContent = locked ? "Change my approved plan" : "Load a new transcript";
+}
+
+/* locked plan: the approved program, plus other programs as possible paths (compare only) */
+let pathsKey = null, pathsData = null, pathsReq = null;
+function renderLocked() {
+  if (!isLocked()) { $("ps-locked").hidden = true; return; }
+  $("lk-title").textContent = `${STUDENT.credential} ${STUDENT.program}`;
+  $("lk-sub").textContent = `${earnedDone} of ${STUDENT.required} credits done (${pct}%), finishing around ${gradTerm || "on the planned path"}.`;
+  setStep(0);
+  loadPaths();
+}
+function pathCard(x) {
+  return `<button class="fit chrome inset" type="button" data-compare="${NS.esc(x.code)}" style="display:grid;gap:.2rem">
+    <b>${NS.esc(x.name)}</b>
+    <small>${x.creditsCarryOver} of your credits would carry over${x.estimate ? " (estimated)" : ""} · ${x.sharedCourses}% of the courses overlap · finish ${NS.esc(x.graduationTerm || "—")}</small>
+    ${x.career ? `<small>${NS.esc(x.career)}${x.medianSalary ? " · " + fmt$(x.medianSalary) + " median pay" : ""}</small>` : ""}
+    <span class="go">Compare in What if →</span></button>`;
+}
+async function loadPaths() {
+  if (!isLocked()) return;
+  const key = record.program + "|" + (record.completed || []).length;
+  if (key !== pathsKey) {          // one request per plan state; overlapping callers share it
+    pathsKey = key;
+    pathsReq = NS.api("/api/paths", { program: record.program, completed: record.completed || [], load: +$("load").value || 12 })
+      .catch(() => ({ paths: [] }));
+  }
+  pathsData = await pathsReq;
+  if (!isLocked()) return;
+  const html = pathsData.paths.length ? pathsData.paths.map(pathCard).join("")
+    : `<p class="code" style="margin:0">No close programs yet. Try any career in What if.</p>`;
+  $("lk-paths").innerHTML = html; $("paths").innerHTML = html;
+}
+function comparePath(code) {
+  const p = (pathsData && pathsData.paths.find((x) => x.code === code));
+  const name = p ? p.name.replace(/ ·.*$/, "") + (p.official ? (/A\.S\./.test(p.name) ? " A.S." : " B.S.") : "") : (PROGRAM_LABEL[code] || code);
+  show("whatif");
+  $("wi-target").value = name.replace(/ \((official|sample catalog)\)/g, "");
+  $("wi-form").requestSubmit();
+}
+document.addEventListener("click", (e) => { const b = e.target.closest("[data-compare]"); if (b) comparePath(b.dataset.compare); });
+$("unlock").addEventListener("click", () => unlockPlan());
+async function unlockPlan() {
+  if (!confirm("Your approved plan is locked. Unlock it to build a different one? Your courses stay saved, and you'll approve a new plan after.")) return;
+  await loadHub({ ...record, approved: false, approvedAt: null });
+  await saveRecord();
+  pathsKey = null; startOver(); show("ai");
+  $("plan-box").scrollIntoView({ behavior: "smooth", block: "center" });
+  tstatus.textContent = "Plan unlocked. Drop a transcript or pick a program, then approve your new plan.";
 }
 
 /* transfer: add a real school by its web page */
@@ -1985,7 +2079,16 @@ async function initAuth() {
   try {
     const me = await NS.api("/api/me");
     const plans = Object.values(me.plans || {}).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)));
-    const saved = plans[0] && plans[0].plan;
+    // Pick the newest plan whose program fits its courses: real MDC courses belong to an official program,
+    // Z courses to a sample one. (Older versions saved a copy per program when the dropdown changed.)
+    const cfg = await NS.config();
+    const real = {}; (cfg.programs || []).forEach((p) => { real[p.code] = p.synthetic === false; });
+    const fits = (x) => {
+      const c = (x.plan && x.plan.completed) || [], z = c.filter((k) => /^Z/.test(k)).length;
+      return !c.length || (real[x.plan.program] ? c.length - z >= z : z >= c.length - z);
+    };
+    const pick = plans.find((x) => x.plan && x.plan.approved && fits(x)) || plans.find(fits) || plans[0];
+    const saved = pick && pick.plan;
     if (saved && saved.checks) { checked = saved.checks; }
     return { user, saved: saved || null };
   } catch (e) { return { user, saved: null }; }

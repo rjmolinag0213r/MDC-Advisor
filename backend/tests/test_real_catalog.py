@@ -54,3 +54,22 @@ def test_tuition_rates_come_from_official_pages():
     assert unis["fiu"]["rate"] == 205.57 and unis["ucf"]["rate"] == 212.28
     assert all(u["tuitionSource"].startswith("https://") for u in unis.values())
     assert planner.mdc_rates()["lowerDivision"] == 118.22
+
+
+def test_real_courses_never_count_toward_a_sample_program():
+    """A real-MDC transcript planned against a Z program must not show credits it can't use (the 96% / 0-of-36 bug)."""
+    real = ["ENC 1101", "MAC 1105", "CAI 1001C", "COP 1047C", "CGS 1060C", "STA 2023"]
+    h = planner.hub("AI", real, [], {}, {}, "x", "Fall 2026", 15)
+    assert not [c for c in h["courses"] if c["st"] == "done"]
+    assert set(real) <= set(h["otherCatalogCourses"])
+
+
+def test_possible_paths_rank_by_credits_that_carry_over(client):
+    done = ["ENC 1101", "MAC 1105", "CAI 1001C", "COP 1047C", "CGS 1060C", "STA 2023", "PSY 2012", "CAI 2100C"]
+    r = client.post("/api/paths", json={"program": "AIBS", "completed": done}).get_json()
+    assert r["approved"]["code"] == "AIBS" and r["paths"]
+    codes = [p["code"] for p in r["paths"]]
+    assert "AIBS" not in codes and codes[0] == "AIAS"           # the A.S. stacks into the B.S.
+    carry = [p["creditsCarryOver"] for p in r["paths"]]
+    assert carry == sorted(carry, reverse=True)
+    assert all(p["estimate"] for p in r["paths"] if not p["official"])   # sample programs matched by title: estimates

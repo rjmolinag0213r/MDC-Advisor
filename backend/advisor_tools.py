@@ -218,6 +218,7 @@ def _gen_ed_credits(done: list[str]) -> int:
 def whatif(current: str, completed, target: str, load: int = 15) -> dict:
     cur = planner.get_program(current)
     done, _ = planner._completed_set(completed)
+    done = {c for c in done if planner.same_catalog(cur, c)}
     cur_plan = planner.plan(cur["app_program_code"], sorted(done), "Fall 2026", load, 6, True)
     earned = planner._credits(done)
     pct = round(100 * earned / cur["total_credits"])
@@ -297,3 +298,40 @@ def whatif(current: str, completed, target: str, load: int = 15) -> dict:
             "advice": safety.scrub_output(str(adv.get("advice") or ""), [])[:900],
             "nextSteps": [str(x)[:140] for x in (adv.get("nextSteps") or [])][:3],
             "engine": _engine(used, meta), "ratePerCredit": MDC_RATE, "synthetic": True}
+
+
+# ---------------------------------------------------------------- other possible paths (approved plan stays locked)
+
+def paths(current: str, completed, load: int = 15, limit: int = 3) -> dict:
+    """Programs closest to the approved one, ranked by how many of the student's credits would carry over.
+    Read-only: nothing here changes the approved plan."""
+    cur = planner.get_program(current)
+    done, _ = planner._completed_set(completed)
+    mine = planner.audit(cur["app_program_code"], sorted(done))["creditsEarned"]
+    out = []
+    for p in planner.catalog()["program_list"]:
+        code = p["app_program_code"]
+        if code == cur["app_program_code"]:
+            continue
+        # a sample-catalog twin of the approved program (same name) is the same path, not an alternative
+        if p["name"] == cur["name"] and p.get("synthetic", True) != cur.get("synthetic", True):
+            continue
+        same = planner.map_to_catalog(p, sorted(done))
+        estimated = p.get("synthetic", True) != cur.get("synthetic", True)   # matched across catalogs by title
+        a = planner.audit(code, same)
+        req = {planner.canon(c) for g in p["requirement_groups"] for c in g["courses"]}
+        cur_req = set(planner.map_to_catalog(p, [planner.canon(c) for g in cur["requirement_groups"] for c in g["courses"]]))
+        shared = len(req & cur_req) / max(len(req | cur_req), 1)     # how alike the two programs are
+        if a["creditsEarned"] == 0 and shared == 0:
+            continue
+        pl = planner.plan(code, same, "Fall 2026", load, 6, True)
+        car = roadmap.CAREERS.get(PROGRAM_CAREER.get(code, ""), {})
+        label = planner.program_label(p) + (" (sample catalog)" if p.get("synthetic", True) and not cur.get("synthetic", True) else "")
+        out.append({"code": code, "name": label, "official": not p.get("synthetic", True), "estimate": estimated,
+                    "creditsCarryOver": a["creditsEarned"], "creditsEarnedNow": mine,
+                    "percentDone": a["percentComplete"], "termsLeft": pl["termCount"], "graduationTerm": pl["graduationTerm"],
+                    "sharedCourses": round(100 * shared), "career": car.get("title"),
+                    "medianSalary": (car.get("salary") or {}).get("median")})
+    out.sort(key=lambda x: (-x["creditsCarryOver"], -x["sharedCourses"], x["termsLeft"]))
+    return {"approved": {"code": cur["app_program_code"], "name": planner.program_label(cur), "creditsEarned": mine},
+            "paths": out[:limit], "note": "Possible paths are for comparing only. Your approved plan stays locked."}

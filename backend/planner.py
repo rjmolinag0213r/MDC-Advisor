@@ -100,6 +100,53 @@ def _completed_set(completed) -> tuple[set[str], list[str]]:
     return done, unknown
 
 
+def same_catalog(program: dict, code: str) -> bool:
+    """True when the course belongs to the same catalog as the program (both real MDC, or both sample Z)."""
+    c = catalog()["courses"].get(code)
+    return bool(c) and c.get("synthetic", True) == program.get("synthetic", True)
+
+
+def _title_words(t: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z]+", (t or "").lower()) if len(w) > 2 and w not in {"and", "the", "introduction", "intro"}}
+
+
+@lru_cache(maxsize=1)
+def _cross_catalog() -> dict[str, str]:
+    """Real MDC course -> closest sample (Z) course: same number and similar title (ENC 1101 -> ZEN 1101)."""
+    cs = catalog()["courses"]
+    z = [c for c in cs.values() if c.get("synthetic", True)]
+    out = {}
+    for c in cs.values():
+        if c.get("synthetic", True):
+            continue
+        num, words = re.sub(r"\D", "", c["code"].split()[1]), _title_words(c["title"])
+        best, score = None, 0.0
+        for s in z:
+            sw = _title_words(s["title"])
+            sim = len(words & sw) / max(len(words | sw), 1) + (0.5 if re.sub(r"\D", "", s["code"].split()[1]) == num else 0)
+            if sim > score:
+                best, score = s["code"], sim
+        if best and score >= 0.75:
+            out[c["code"]] = best
+    return out
+
+
+def map_to_catalog(program: dict, codes) -> list[str]:
+    """Courses that count toward this program's catalog; real courses map to their closest sample course."""
+    cross, back = _cross_catalog(), {}
+    for real, zc in _cross_catalog().items():
+        back.setdefault(zc, real)
+    out = []
+    for c in codes:
+        if same_catalog(program, c):
+            out.append(c)
+        elif program.get("synthetic", True) and c in cross:
+            out.append(cross[c])
+        elif not program.get("synthetic", True) and c in back:
+            out.append(back[c])
+    return sorted(set(out))
+
+
 def _credits(codes) -> int:
     cs = catalog()["courses"]
     return sum(cs[c]["credits"] for c in codes if c in cs)
@@ -609,6 +656,10 @@ def hub(program_code: str, completed=None, in_progress=None, grades=None, terms=
     done_set, unknown = _completed_set(completed)
     now_set, unknown2 = _completed_set(in_progress)
     now_set -= done_set
+    # real MDC courses never count toward a sample (Z) program, and the other way round
+    other_catalog = sorted(c for c in done_set | now_set if not same_catalog(p, c))
+    done_set = {c for c in done_set if same_catalog(p, c)}
+    now_set = {c for c in now_set if same_catalog(p, c)}
     if grades is not None and not isinstance(grades, dict):
         raise PlannerError("grades must be an object {courseCode: grade}.", "grades")
     if terms is not None and not isinstance(terms, dict):
@@ -676,7 +727,7 @@ def hub(program_code: str, completed=None, in_progress=None, grades=None, terms=
         "reasons": {"full": "Matches a required course", "elective": "Accepted, but no matching course in the major",
                     "none": "No equivalent course; not accepted"},
         "graduationTerm": the_plan["graduationTerm"],
-        "unknownCourses": unknown + unknown2,
+        "unknownCourses": unknown + unknown2, "otherCatalogCourses": other_catalog,
         "official": not p.get("synthetic", True), "source": p.get("source"),
         "synthetic": p.get("synthetic", True),
     }
