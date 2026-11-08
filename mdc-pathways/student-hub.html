@@ -915,7 +915,8 @@ document.querySelectorAll(".tab").forEach((t) => {
 // "See my progress" always opens the log-in page. Each page sends the student back here with
 // ?go=ai or ?go=progress. Later, once the backend has accounts, skip the page for signed-in
 // students (check GET /api/me first).
-const ACCOUNT_PAGE = { ai: "account.html?next=ai", progress: "login.html?next=progress" };
+// "v" makes browsers fetch the current page instead of an old saved copy; bump it when these pages change.
+const ACCOUNT_PAGE = { ai: "account.html?next=ai&v=2", progress: "login.html?next=progress&v=2" };
 document.querySelectorAll("[data-go]").forEach((a) => a.addEventListener("click", (e) => {
   e.preventDefault();
   const v = a.dataset.go;
