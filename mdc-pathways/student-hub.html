@@ -229,6 +229,8 @@
     transition: opacity calc(var(--reveal-ms) * .7) ease-out, transform var(--reveal-ms) var(--fly);
     transition-delay: calc(var(--i, 0) * var(--stagger)); }
   .js .reveal.from-above { transform: translateY(calc(-1 * var(--reveal-from))) scale(.96); }
+  /* the Student Hub arrives as one piece: every card fades and rises together, no stagger, a little slower */
+  .js #hub .reveal { transition: opacity 650ms ease-out, transform 800ms var(--fly); transition-delay: 0s; }
   .js .reveal.is-in { opacity: 1; transform: none; }
   /* the quote flies in word by word; its container itself stays put */
   .js .reveal.words { opacity: 1; transform: none; }
@@ -524,7 +526,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .intro__banner, .skip, .stage, .js .reveal, .js .reveal.words .w { animation: none; transition: none; opacity: 1; transform: none; }
+    .intro__banner, .skip, .stage, .js .reveal, .js #hub .reveal, .js .reveal.words .w { animation: none; transition: none; opacity: 1; transform: none; }
     .js .reveal.words .w { filter: none; -webkit-mask-image: none; mask-image: none; }
     .js .intro__banner .logo-piece { transition: none; opacity: 1; transform: none; filter: none;
       -webkit-mask-image: none; mask-image: none; }
@@ -816,12 +818,8 @@ if ("IntersectionObserver" in window) {
       `<span class="word">${[...w].map((ch) => `<span class="w" style="--i:${n++}">${ch}</span>`).join("")}</span>`).join(" ");
     p.innerHTML = `<span class="sr">${text}</span><span aria-hidden="true">${letters}</span>`;
   });
-  // the hub bar, the sample note and every hub card fly up too, staggered among their sibling cards
-  document.querySelectorAll("#hub .hub-top, #hub .sample, #hub .glass").forEach((el) => {
-    el.classList.add("reveal");
-    const sibs = [...el.parentElement.children].filter((c) => c.classList.contains("glass"));
-    el.style.setProperty("--i", Math.max(0, sibs.indexOf(el)));
-  });
+  // the hub bar, the sample note and every hub card fly up too, all at the same moment
+  document.querySelectorAll("#hub .hub-top, #hub .sample, #hub .glass").forEach((el) => el.classList.add("reveal"));
   // Fly in at the last moment, in either scroll direction: a piece waits until it reaches the
   // middle band of the screen (past the outer LATE share at top and bottom), then flies in fast.
   // It resets only once it's fully off screen, remembering which edge it left by, so next time it
@@ -868,7 +866,7 @@ if ("IntersectionObserver" in window) {
   }
   document.querySelectorAll(".reveal").forEach((el) => { if (!el.closest("#hub")) io.observe(el); });
   // The Student Hub appears as one piece: as soon as any of it is on screen, every card in it
-  // (on all three tabs) flies in together, staggered. Each card used to wait until it reached the
+  // (on all three tabs) flies in together, at the same moment. Each card used to wait until it reached the
   // middle of the screen, so cards that landed low (like "What your advisor sees" after jumping to
   // the hub) stayed invisible until you switched tabs. The cards reset only once the whole hub is off screen.
   const hub = document.getElementById("hub");
