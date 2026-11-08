@@ -831,12 +831,6 @@ if ("IntersectionObserver" in window) {
   const inIO = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("is-in"); });
   }, { root: document, rootMargin: `-${LATE} 0px -${LATE} 0px`, threshold: 0 });
-  // Hub cards appear as soon as they're a little way onto the screen. With the middle-band rule,
-  // the last card ("What your advisor sees") sat below the middle when the page was scrolled to the
-  // bottom, so it never appeared until switching tabs shifted the layout.
-  const hubIO = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("is-in"); });
-  }, { root: document, rootMargin: "0px 0px -8% 0px", threshold: 0 });
   const outIO = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) return;
@@ -845,7 +839,7 @@ if ("IntersectionObserver" in window) {
       el.classList.toggle("from-above", e.boundingClientRect.bottom <= top);
     });
   }, { root: document, threshold: 0 });
-  const io = { observe: (el) => { (el.closest("#hub") ? hubIO : inIO).observe(el); outIO.observe(el); } };
+  const io = { observe: (el) => { inIO.observe(el); outIO.observe(el); } };
 
   // Hand-off fade for browsers that can't tie it to scrolling in CSS (see .stage): same timing, fade only.
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches && !(window.CSS && CSS.supports("animation-timeline: view()"))) {
@@ -872,7 +866,18 @@ if ("IntersectionObserver" in window) {
     addEventListener("resize", onScroll);
     onScroll();
   }
-  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  document.querySelectorAll(".reveal").forEach((el) => { if (!el.closest("#hub")) io.observe(el); });
+  // The Student Hub appears as one piece: as soon as any of it is on screen, every card in it
+  // (on all three tabs) flies in together, staggered. Each card used to wait until it reached the
+  // middle of the screen, so cards that landed low (like "What your advisor sees" after jumping to
+  // the hub) stayed invisible until you switched tabs. The cards reset only once the whole hub is off screen.
+  const hub = document.getElementById("hub");
+  const hubEls = [...hub.querySelectorAll(".reveal")];
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { hubEls.forEach((el) => el.classList.add("is-in")); return; }
+    const above = e.boundingClientRect.bottom <= (e.rootBounds ? e.rootBounds.top : 0);
+    hubEls.forEach((el) => { el.classList.remove("is-in"); el.classList.toggle("from-above", above); });
+  }, { root: document, threshold: 0 }).observe(hub);
   // hide the "Go to Student Hub" pill once the hub is on screen
   const skip = document.getElementById("skip");
   new IntersectionObserver(([e]) => skip.classList.toggle("gone", e.isIntersecting), { threshold: 0.05 })
