@@ -132,6 +132,12 @@ Flask serves Cris's site from `mdc-pathways/` at `/`: `index.html`, `explore.htm
 | `GET /samples/sample_transcript.png` | Demo college transcript (synthetic Z courses) |
 | `GET /samples/sample_hs_transcript.png` | Demo high-school transcript (fictional student) |
 
+## Real MDC programs and universities
+
+Program codes `AIBS` (Applied AI B.S., MDC sheet S9520) and `AIAS` (Applied AI A.S., sheet 25080) work everywhere a program code does (`/api/plan`, `/api/audit`, `/api/hub`, `/api/plan/preview`, `/api/whatif`). They use real MDC course numbers such as `CAI 1001C`; `/api/hub` returns `official: true` and `source` for them. `/api/programs` items now include `label`, `credential`, `synthetic` and `source`.
+
+`/api/hub` `dests` now has 7 entries: the 3 school types, then FIU, UM, UCF and USF (`real: true`, `rate` from each school's 2026-27 tuition page). Each course's `t` array has 7 results in the same order, and `whyAt` holds the reason for each of the 4 universities. Transcripts with real MDC codes return `realCourses` and put the official sheets first in `strengths.suggestedPrograms` (`official: true`). See `backend/data/real/README.md` for what is official and what is modeled.
+
 ## Plan preview, school lookup, what-if
 
 | Route | Body → response |

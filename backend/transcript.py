@@ -16,7 +16,7 @@ import planner
 ALLOWED = {"application/pdf": "pdf", "image/png": "image", "image/jpeg": "image", "image/webp": "image"}
 MAX_BYTES = 5 * 1024 * 1024
 PASSING = {"A+", "A", "A-", "B+", "B", "B-", "C+", "C", "P", "S", "T", "TR", "IP"}  # IP = in progress
-CODE_RE = re.compile(r"\b([A-Z]{3})\s?-?(\d{4}L?)\b")
+CODE_RE = re.compile(r"\b([A-Z]{3})\s?-?(\d{4}[CL]?)\b")   # C = combined lecture/lab at MDC (e.g. CAI 1001C)
 
 PROMPT = """You are reading a student's academic transcript: a HIGH SCHOOL transcript or a COLLEGE course history.
 Extract EVERY course row. Return ONLY JSON:
@@ -24,13 +24,15 @@ Extract EVERY course row. Return ONLY JSON:
  "courses": [{"code": "ABC 1234"|null, "title": "...", "grade": "A|B|C|D|F|W|IP|P|null", "credits": number|null, "term": "Fall 2026"|null,
               "subject": "math"|"cs"|"science"|"english"|"social"|"language"|"art"|"business"|"health"|"tech"|"other",
               "honors": true|false}]}
-Rules: college codes are 3 letters + 4 digits (optional L); high-school courses usually have no code (use null).
+Rules: college codes are 3 letters + 4 digits with an optional C or L suffix (e.g. CAI 1001C, PHY 2048L); keep the suffix.
+High-school courses usually have no code (use null).
 Set honors true for AP, IB, Honors or Dual Enrollment courses. Use null when a field is not visible.
 Do not include the student's name, ID, school name or any personal data."""
 
 # ---- high-school strengths -> MDC programs ----
 SUBJECT_RE = [
-    ("cs", r"computer|programming|coding|\bcs\b|robotics|python|java|web design|information tech|\bit\b"),
+    ("cs", r"computer|programming|coding|\bcs\b|robotics|python|java|web design|information tech|\bit\b|artificial intelligence|"
+           r"machine learning|natural language|database|cloud|cyber|data analytics|data structures"),
     ("math", r"algebra|geometry|calculus|statistic|trig|pre-?calc|math"),
     ("science", r"physics|chemistry|biology|anatomy|science|environmental|engineering"),
     ("english", r"english|literature|writing|composition|language arts|journalism"),
@@ -222,5 +224,18 @@ def read(*, data: bytes | None = None, mime: str | None = None, text: str | None
     # college transcripts get strengths too, using the catalog's course prefixes as subjects
     for m in matched + not_counted:
         m.setdefault("subject", _subject_of({"title": m.get("title")}))
+    st = strengths(matched + not_counted)
+    # real MDC course numbers (not the Z sample catalog): match them against MDC's official program sheets first
+    real = [m for m in matched if not cat[m["code"]].get("synthetic", True)]
+    if real:
+        fits = []
+        for code in ("AIBS", "AIAS"):
+            p = planner.get_program(code)
+            req = {c for g in p["requirement_groups"] for c in g["courses"]}
+            hit = [m["code"] for m in real if m["code"] in req]
+            if hit:
+                fits.append({"code": code, "name": planner.program_label(p), "score": round(len(hit) * 2.0, 2), "official": True,
+                             "why": f"{len(hit)} of your MDC courses count toward MDC's official {p.get('credential')} sheet ({p.get('sheet_code')})."})
+        st["suggestedPrograms"] = fits + [s for s in st["suggestedPrograms"] if s["code"] not in ("AI",)][: max(0, 3 - len(fits))]
     return {"engine": engine, "level": "college", "courses": matched, "completed": completed, "notCounted": not_counted,
-            "notInCatalog": not_in_catalog, "strengths": strengths(matched + not_counted), "synthetic": True}
+            "notInCatalog": not_in_catalog, "strengths": st, "realCourses": len(real), "synthetic": not real}

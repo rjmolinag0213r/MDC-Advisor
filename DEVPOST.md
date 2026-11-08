@@ -51,8 +51,13 @@ We built the guide we wish we'd had: one place that turns "I like fixing wifi" i
 ## What we learned
 Grounding beats prompting. Keeping facts in a curated catalog and letting AI *personalize* (instead of invent) made the answers trustworthy, and made it possible to test the advisor like software.
 
+## Real data
+- MDC's **Applied AI A.S. (25080) and B.S. (S9520)** are loaded straight from the official program sheets: every requirement group, credit total and prerequisite. A transcript with real MDC course numbers is planned against them.
+- **FIU, UM, UCF and USF** appear in the Transfer tab with tuition from each school's 2026-27 page (FIU $205.57, UCF $212.28 a credit) and course-by-course results. FIU's AI & IoT B.S., Biomedical Engineering M.S. and Civil Engineering Ph.D. come from FIU's program sheets; UM's course lists come from its bulletin.
+- New careers with BLS May 2025 pay: AI & IoT Engineer, Biomedical Engineer, Civil Engineer, Doctor.
+
 ## What's next
-- Load the real MDC catalog and FIU/UCF/UM articulation data in place of our synthetic catalog.
+- Load the rest of MDC's catalog and official FIU/UCF/UM articulation data in place of the synthetic catalog and modeled equivalencies.
 - Advisor dashboard: anonymized trends from TigerData so MDC sees which careers students are exploring.
 - Course-section scheduling (already in the API at `/api/schedule`) in the UI.
 

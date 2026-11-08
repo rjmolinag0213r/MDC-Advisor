@@ -1,7 +1,7 @@
 """Planner endpoints against the synthetic catalog's documented edge cases."""
 import pytest
 
-PROGRAMS = ["AI", "DATA", "CYBER", "SWE", "NET", "ECE"]
+PROGRAMS = ["AI", "DATA", "CYBER", "SWE", "NET", "ECE", "AIBS", "AIAS"]   # last two: real MDC program sheets
 
 
 def test_programs_and_terms(client):

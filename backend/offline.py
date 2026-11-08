@@ -20,6 +20,7 @@ PROGRAM_NAMES = {
 PROGRAM_CAREER = {
     "AI": "ai-engineer", "DATA": "data-analyst", "CYBER": "cybersecurity-specialist",
     "SWE": "software-developer", "NET": "network-engineer", "ECE": "electrical-engineer",
+    "AIBS": "ai-engineer", "AIAS": "ai-engineer",
 }
 
 # (regex, weight). Regexes are matched case-insensitively against one clause.

@@ -1,0 +1,869 @@
+{
+ "source": "University of Miami Academic Bulletin, Computer Science (CSC) course list (parsed from the PDF)",
+ "courses": [
+  {
+   "code": "CSC 110",
+   "title": "Social and Ethical Issues in Computing",
+   "credits": "3",
+   "description": "History, social context and methods and tools of analysis. Professional and ethical responsibilities. Intellectual property. Privacy and civil liberties.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 112",
+   "title": "AI-Assisted Data Science for Non-Scientists",
+   "credits": "3",
+   "description": "In today\u2019s digital era, data is omnipresent. Every day, we answer questions and make tough decisions based on data. Whether in business, healthcare, humanities, or any other domain, understanding data to draw insights and make informed decisions from data can be a game-changer. This course demysti\ufb01es data science by showing what data science can do for you. In the age of AI, that means putting the tools to actually do it within your reach without \ufb01rst learning to program or mastering the underlying mathematics. MTH 099.",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 113",
+   "title": "Data Science for the World",
+   "credits": "4",
+   "description": "Introduction to the concepts of data science. Basic data analysis skills. The programming language R. Lecture 3 hours, laboratory 2 hours.",
+   "requisites": "MTH 108 or higher.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 115",
+   "title": "Python Programming for Everyone",
+   "credits": "3",
+   "description": "Introduction to computing, programming, and Python. Data and variables. Control flow. Methods. Arrays and lists. Object oriented programming. Lecture 2 hours, laboratory 2 hours. Pre/Corequisite: MTH 107, or Math SAT score of 620, or ACT score of 27, or ALEKS score of 61.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 116",
+   "title": "Cybersecurity: An Introduction to Security in Cyberspace",
+   "credits": "3",
+   "description": "An introduction to cybersecurity. Recent incidents. The Internet. Types of attacks. Tools for defending against attacks on users and networks. Legal, moral, and social aspects.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 118",
+   "title": "Information Technology and Society",
+   "credits": "3",
+   "description": "A variety of topics on information technology and society through various course activities including research papers, experiments, and by reading articles. The topics covered include but are not limited to: history of computing, hardware mechanisms, algorithms design, software development principles, software tools, security, and arti\ufb01cial intelligence.",
+   "requisites": null,
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 119",
+   "title": "Computers and Society",
+   "credits": "3",
+   "description": "Basic concepts of computer systems. Installing, con\ufb01guring, and managing computer software. Internet information retrieval. Application software. HTML, programming for the www in JavaScript. E-commerce, cryptography, computer security. Social, legal, ethical issues and the future.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 120",
+   "title": "Computer Programming I",
+   "credits": "4",
+   "description": "History of computing. Fundamental programming constructs. Algorithms and problem solving. Object-oriented programming. Recursion. Lecture 2 hours, laboratory 2 hours.",
+   "requisites": "CSC115 or BTE320 or MTH141 or MTH151 or MTH161 or MTH171 or MAS110.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 145",
+   "title": "AI For Me: In School, In Work, In Life",
+   "credits": "3",
+   "description": "AI for Me is a hands-on, introductory course that explores how cutting-edge arti\ufb01cial intelligence tools can enhance your academic, professional, and personal life. You'll learn how AI works, where it came from, and why it matters. From using AI to write papers, build resumes, or prepare presentations, to analyzing data, creating digital art, or exploring hobbies, this course shows how AI can help you do things better, faster, and smarter. Whether you're looking to boost your grades, level up your LinkedIn, or just planning your Spring Break, AI for Me unleashes the power of AI in a practical ",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 198",
+   "title": "Introductory Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Freshman topics in Computer Science - Content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 210",
+   "title": "Computing for Scientists",
+   "credits": "3",
+   "description": "Introduction to computing. Computing applications in science. Tools for applications. Algorithms for applications. Implementation of algorithms. Data in science. Storage and retrieval of data. Analysis and visualization of data.",
+   "requisites": "MTH 141 or MTH 151 or MTH 161 or MTH 171.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 220",
+   "title": "Computer Programming II",
+   "credits": "4",
+   "description": "Common APIs including list, priority queue, set, and map, and their ef\ufb01cient implementations in an object-oriented language using fundamental data structures. Sorting and other applications of recursion. Combining asymptotic analysis and experiments to extrapolate running times. Using APIs in a software project. Lecture 3 hours, laboratory 2 hours.",
+   "requisites": "CSC 120 or BTE 324 or ECE 218 and MTH 108 or MTH 140 or MTH 141 or MTH 161 or MTH 162 or MTH 171 or MTH 172 or MAS 110.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 298",
+   "title": "Sophomore Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Sophomore Topics in Computer Science - Content varies by semester.",
+   "requisites": "6 credits of CSC courses.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 314",
+   "title": "Computer Organization and Architecture",
+   "credits": "3",
+   "description": "Digital logic and digital systems. Machine level representation of data. Assembly level machine organization. Memory system organization and architecture. Interfacing and communication. Functional organization. Multiprocessing and alternative architectures.",
+   "requisites": "CSC 120. or BTE 324. or ECE 218. and Corequisite: MTH 309 or MTH 230.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 315",
+   "title": "Introduction to Python for Scientists",
+   "credits": "3",
+   "description": "Python programming. Python packages for scienti\ufb01c applications. Data science and machine learning applications. Designed for students from the sciences.",
+   "requisites": "MTH 161 and (CSC113 or MTH224 or other approved statistics course).",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 317",
+   "title": "Data Structures and Algorithm Analysis",
+   "credits": "3",
+   "description": "Basic algorithmic analysis. Algorithmic strategies. Fundamental computing algorithms. Distributed algorithms. Cryptographic algorithms. Geometric algorithms.",
+   "requisites": "CSC 220 or ECE 318 , and MTH 309 or MTH 230.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 322",
+   "title": "System Programming",
+   "credits": "3",
+   "description": "Using UNIX: User environment, Shells, File system, Tools, Scripting. C programming: Core language elements, Pointers, Libraries, Tools, Programming for UNIX: System calls, System information, Processes and threads, File system, Signals, Interfaces to the internet.",
+   "requisites": "CSC 220 or ECE 218, and CSC 314.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 329",
+   "title": "Introduction to Game Programming",
+   "credits": "3",
+   "description": "Fundamental programming issues in game design: Software design; Version control; Basic graphics; GUI programming. Large-scale game project: Team development of a functional game; Graphics and GUI component; Networking component; Core game engine.",
+   "requisites": "CSC 220 or ECE 318.",
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 330",
+   "title": "Android Programming",
+   "credits": "3",
+   "description": "The Android Studio programming environment. The Android execution model. User interfaces. Media. Data storage areas. Sensors and actuators.",
+   "requisites": "\"A\" grade in CSC 220.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 345",
+   "title": "Introduction to Arti\ufb01cial Intelligence",
+   "credits": "3",
+   "description": "What is AI? Input. Knowledge representation. Learning. Reasoning. Output. Ethics. Future of AI. (CSC220 or ECE318), MTH161, (MTH309 or MTH230).",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 398",
+   "title": "Junior Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Junior Topics in Computer Science - Content varies by semester.",
+   "requisites": "9 credits of CSC courses.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 401",
+   "title": "Computer Science Practicum I",
+   "credits": "1",
+   "description": "Implementation of techniques, algorithms, and data structures being taught in a co-requisite computer science course.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 402",
+   "title": "Computer Science Practicum II",
+   "credits": "1",
+   "description": "Implementation of techniques, algorithms, and data structures being taught in a co-requisite computer science course.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 403",
+   "title": "Computer Science Practicum III",
+   "credits": "1-3",
+   "description": "Implementation of techniques, algorithms, and data structures being taught in a co-requisite computer science course.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 405",
+   "title": "Computer Science Seminars Reports",
+   "credits": "1",
+   "description": "A range of topics in Computer Science, as embodied in the seminars hosted by the Department. Students write reports about the seminars.",
+   "requisites": "At least 12 credits of CSC courses.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 410",
+   "title": "Computer Science Project Planning",
+   "credits": "1-3",
+   "description": "Planning for the implementation of a Computer Science project, including: Problem analysis, System architecture design, Algorithm and data structure selection, User interface design, Veri\ufb01cation and validation plan, and Prototyping.",
+   "requisites": "At least 12 credits of CSC courses.",
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 411",
+   "title": "Computer Science Project Implementation",
+   "credits": "1-3",
+   "description": "Implementation of a Computer Science project, including: Hardware preparation, Component implementation, System integration, Veri\ufb01cation and validation, and Documentation.",
+   "requisites": "At least 12 credits of CSC courses.",
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 412",
+   "title": "Computer Science Internship",
+   "credits": "1-3",
+   "description": "A commercial computing environment. Normally 50 internship hours are required per credit earned (the host company must supply documentary evidence of hours worked).",
+   "requisites": "At least 12 credits of CSC courses.",
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 419",
+   "title": "Programming Languages",
+   "credits": "3",
+   "description": "Overview of programming languages. Fundamental issues in language design. Virtual machines. Introduction to language translation. Models of execution control. Declaration, modularity, and storage management. Programming language semantics. Programming paradigms.",
+   "requisites": "CSC 317 or CSC 517.",
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 421",
+   "title": "Principles of Computer Operating Systems",
+   "credits": "3",
+   "description": "Process management. Scheduling and dispatch. Interprocess communication. Memory management. File systems. Device management. Security and protection. System programming for UNIX.",
+   "requisites": "CSC 314 and CSC 322.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 423",
+   "title": "Database Systems",
+   "credits": "3",
+   "description": "Information models and systems. Database systems. Data modeling. Relational databases. Relational database design. Database query languages, Data mining concepts, Web database programming.",
+   "requisites": "CSC 322 or ECE 322.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 424",
+   "title": "Computer Networks",
+   "credits": "3",
+   "description": "Introduction to computer networks and network applications. The protocol stack. Routing, switching and bridging technologies. Models of network computing. Internet standards and protocols.",
+   "requisites": "CSC 314 and CSC 322.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 427",
+   "title": "Theory of Computing",
+   "credits": "3",
+   "description": "Sets, relations, and languages. Automata theory. Basic computability theory. Turing machines. The complexity classes P and NP.",
+   "requisites": "CSC 220 or ECE 318 , and MTH 309 or MTH 230.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 431",
+   "title": "Introduction to Software Engineering",
+   "credits": "3",
+   "description": "Software processes, requirements and speci\ufb01cations, design, validation, evolution. Project management, tools and environments. Foundations of human-computer interaction. Risks and liabilities of computer-based systems. Intellectual property.",
+   "requisites": "CSC 317 or CSC 322 or CSC 517.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 481",
+   "title": "Teaching Assistant Training in Computer Science",
+   "credits": "1-3",
+   "description": "Training and teaching assistant for a speci\ufb01c course, in computer laboratories. May be taken multiple times, assisting maximally twice for a given course.",
+   "requisites": "At least 12 credits of CSC courses.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 498",
+   "title": "Senior Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Senior Topics in Computer Science - content varies by semester.",
+   "requisites": "At least 12 credits of CSC courses.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 506",
+   "title": "Logic and Automated Reasoning",
+   "credits": "3",
+   "description": "Propositional and \ufb01rst order logic. Reasoning and resolution. More complex inference rules. Proof search re\ufb01nements. G\u00f6del's incompleteness theorem. Using contemporary Automated Theorem Proving (ATP) systems. Applications of ATP in research and industry.",
+   "requisites": "CSC317 or CSC545 and MTH309 or MTH230.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 507",
+   "title": "Data Security and Cryptography",
+   "credits": "3",
+   "description": "Access, information flow, and inference controls. Network security and management. Encryption algorithms. Cryptographic techniques.",
+   "requisites": "CSC 317 or CSC 427.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 516",
+   "title": "Cybersecurity",
+   "credits": "3",
+   "description": "Introduction to Cyberspace. Foundations of Cybersecurity. Blockchain and its applications. Malware and counter measures against malware. Firewalls. Intrusion detection and prevention systems. Security for cloud computing and the Internet of Things. Design and implementation of secure software systems.",
+   "requisites": "CSC 317, MTH 224, MTH 309 or MTH 230.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 518",
+   "title": "Interpreters and Compiler Theory",
+   "credits": "3",
+   "description": "Translation of higher-level languages into machine language. Grammars, parsing, scanners, precedence relations. Run-time storage and symbol table organization. Semantic routines. Chaining and hashing. Code generation and optimization. Macro implementation.",
+   "requisites": "CSC 419.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 528",
+   "title": "Introduction to Parallel Computing",
+   "credits": "3",
+   "description": "Parallel computing systems. Shared-memory parallel programming, with Open-MP. Distributed-memory parallel programming, with Open-MPI. Applications: Vector and matrix operations, sorting, image processing.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 529",
+   "title": "Introduction to Computer Graphics",
+   "credits": "3",
+   "description": "Geometric objects and transformations. Lighting and shading. Texture mapping. Modeling and hierarchy. Advanced rendering techniques. Graphics card architecture, OpenGL, fragment shader and vertex shader language.",
+   "requisites": "CSC 220 or ECE 318 and MTH 210.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 540",
+   "title": "Algorithm Design and Analysis",
+   "credits": "3",
+   "description": "Design techniques, including divide-and-conquer, greedy method, dynamic programming, backtracking. Time and space complexity. Sorting and searching. Combinatorial and graph algorithms.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 542",
+   "title": "Statistical Learning with Applications",
+   "credits": "3",
+   "description": "Supervised and unsupervised learning. Regression and classi\ufb01cation. Statistical learning methods: K-Nearest Neighbors, linear models, tree-based methods, support vector machines. Dimensionality reduction and clustering. Applications of statistical learning methods using R.",
+   "requisites": "MTH 224.",
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 543",
+   "title": "Computer Vision with Deep Learning",
+   "credits": "3",
+   "description": "The purpose of this course is to learn about computer vision using Deep Learning. Deep Learning is the technology that powers the most recent generation of Arti\ufb01cial Intelligence systems including the recent large-scale generative models. In this course, we will use Deep Learning to process, analyze and generate images. This is a project-driven course. There will be two programming projects, and a semester long term project. Students will propose their own topic for the term project. All assignments will be completed using the Pytorch library.",
+   "requisites": "CSC 315 or CSC 546.",
+   "offered": "Fall Odd Years"
+  },
+  {
+   "code": "CSC 545",
+   "title": "Introduction to Arti\ufb01cial Intelligence",
+   "credits": "3",
+   "description": "Fundamental issues in intelligent systems. Search and constraint satisfaction. Knowledge representation and reasoning. Natural language processing. Machine learning and neural networks. Game theory. AI programming.",
+   "requisites": "CSC 317 or ECE 511, MTH 224 or ECE 310 or IEN 310.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 546",
+   "title": "Introduction to Machine Learning with Applications",
+   "credits": "3",
+   "description": "Python and probability, the Numpy package. K-means clustering. The Gaussian mixture model. Kernel density estimation. Dimensionality reduction. Classi\ufb01cation. Regression, SVM, and SVR. Ensemble learning. Cross validation for model selection. Signal encoding-decoding. Dictionary learning. Metrics for performance evaluation. Deep neural networks. Neural networks, the Pytorch and Keras packages. Computational graph and automatic differentiation. Convolutional neural networks. Autoencoders. Generative adversarial networks. Transfer learning.",
+   "requisites": "MTH 210 and MTH 224.",
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 547",
+   "title": "Computational Geometry",
+   "credits": "3",
+   "description": "Algorithms for solving geometric problems arising from application domains including graphics, robotics, and GIS.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 548",
+   "title": "Problem Solving for Bioinformatics",
+   "credits": "3",
+   "description": "Grand challenges, solutions, and emerging opportunities in bioinformatics. PERL programming from the most basic to advanced contents such as multidimensional array, regular expression, hash, and sorting. Theories and hands-on projects in 3D genome structure inference, protein secondary structure prediction, protein tertiary structure prediction, protein model quality assessment, protein function prediction, and biological network analysis. Analysis of real-world biomedical data. Applications of machine learning algorithms.",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 549",
+   "title": "Biomedical Data Science",
+   "credits": "3",
+   "description": "The computational skills needed for analysis of genomic and biomedical data sets, including: The basics of a command line interface; programming in (bio-)python; running programs on Pegasus2; writing scripts for downloading, manipulating, and analyzing data; \ufb01le sharing and version control using github; analyzing a Next Generation Sequencing data set, and interpreting the results; and responsible conduct of Research.",
+   "requisites": "CSC 120 and BIL 150.",
+   "offered": "Fall"
+  },
+  {
+   "code": "CSC 550",
+   "title": "Computational Neuroscience",
+   "credits": "3",
+   "description": "Introduction to computational neuroscience. Analysis and modeling of neural systems. Neurons, populations of neurons, perception, behavior. Connections to machine learning. Tutorials in Matlab.",
+   "requisites": "MTH 162 and MTH 224.",
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 552",
+   "title": "Bioinformatics Tools",
+   "credits": "3",
+   "description": "Databases and tools of bioinformatics, as relevant to research in genomics and molecular biology. Bioinformatics applications. Information retrieval, analytical tools, BLAST searches, promoter analysis, and protein structure- function analysis, and various applications.",
+   "requisites": "BIL 250 or BIL 150.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 555",
+   "title": "Multimedia Systems",
+   "credits": "3",
+   "description": "Speci\ufb01cation and requirements of a multimedia hardware system. Multimedia data technologies. Graphics \ufb01le formats. Compression and decompression. Multimedia application development.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 595",
+   "title": "Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Topics in Computer Science - content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 596",
+   "title": "Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Topics in Computer Science - content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 597",
+   "title": "Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Topics in Computer Science - content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 598",
+   "title": "Directed Study in Computer Science",
+   "credits": "1-3",
+   "description": "Directed Study in Computer Science. Study topic varies according to the student and supervising faculty.",
+   "requisites": "At least 12 credits of CSC courses.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 599",
+   "title": "Directed Research in Computer Science",
+   "credits": "1-3",
+   "description": "Directed Research in Computer Science. Research project varies according to the student and supervising faculty.",
+   "requisites": "At least 12 credits of CSC courses.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 607",
+   "title": "Logic",
+   "credits": "3",
+   "description": "Propositional and \ufb01rst order logic: completeness. Computational logic: Robinson's resolution. Formalized theories: arithmetic, Godel's incompleteness theorem, Tarski's theorem on unde\ufb01nability of truth.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 609",
+   "title": "Data Security and Cryptography",
+   "credits": "3",
+   "description": "Access, information flow, and inference controls. Network security and management. Encryption algorithms. Cryptographic techniques.",
+   "requisites": "CSC 317 or CSC 427.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 616",
+   "title": "Cybersecurity",
+   "credits": "3",
+   "description": "Introduction to Cyberspace. Foundations of Cybersecurity. Blockchain and its applications. Malware and counter measures against malware. Firewalls. Intrusion detection and prevention systems. Security for cloud computing and the Internet of Things. Design and implementation of secure software systems.",
+   "requisites": "CSC 317, MTH 224, MTH 309 or MTH 230.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 618",
+   "title": "Interpreters and Compiler Theory",
+   "credits": "3",
+   "description": "Translation of higher-level languages into machine language. Grammars, parsing, scanners, precedence relations. Run-time storage and symbol table organization. Semantic routines. Chaining and hashing. Code generation and optimization. Macro implementation.",
+   "requisites": "CSC 419.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 623",
+   "title": "Theory of Relational Databases",
+   "credits": "3",
+   "description": "Relational operators.Functional dependencies.Covers for functional dependencies. Multivalued dependencies. Joint dependencies. Normal Forms, Representation theory. Query systems. Acyclic database schemes.",
+   "requisites": "CSC 423.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 629",
+   "title": "Introduction to Computer Graphics",
+   "credits": "3",
+   "description": "Geometric objects and transformations. Lighting and shading. Texture mapping. Modeling and hierarchy. Advanced rendering techniques. Graphics card architecture, OpenGL, fragment shader and vertex shader language.",
+   "requisites": "CSC 220 or ECE 318 and MTH 210.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 631",
+   "title": "Introduction to Software Engineering",
+   "credits": "3",
+   "description": "Software processes, requirements and speci\ufb01cations, design, validation, evolution. Project management, tools and environments. Foundations of human-computer interaction. Risks and liabilities of computer-based systems. Intellectual property.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 632",
+   "title": "Introduction to Parallel Computing",
+   "credits": "3",
+   "description": "Parallel computing systems. Shared-memory parallel programming, with Open-MP. Distributed-memory parallel programming, with Open-MPI. Applications: Vector and matrix operations, sorting, image processing.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 640",
+   "title": "Algorithm Design and Analysis",
+   "credits": "3",
+   "description": "Design techniques, including divide-and-conquer, greedy method, dynamic programming, backtracking. Time and space complexity. Sorting and searching. Combinatorial and graph algorithms.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 642",
+   "title": "Statistical Learning with Applications",
+   "credits": "3",
+   "description": "Supervised and unsupervised learning. Regression and classi\ufb01cation. Model assessment and selection. Resampling methods. Statistical learning methods: K-Nearest Neighbors, linear models and regularization, non-linear regression models, tree-based and ensemble methods, kernels and support vector machines. Dimensionality reduction and clustering. Applications using R.",
+   "requisites": "MTH 224.",
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 643",
+   "title": "Computer Vision with Deep Learning",
+   "credits": "3",
+   "description": "The purpose of this course is to learn about computer vision using Deep Learning. Deep Learning is the technology that powers the most recent generation of Arti\ufb01cial Intelligence systems including the recent large-scale generative models. In this course, we will use Deep Learning to process, analyze and generate images. This is a project-driven course. There will be two programming projects, and a semester long term project. Students will propose their own topic for the term project. All assignments will be completed using the Pytorch library.",
+   "requisites": "CSC 315 or DSC 315 or CSC 546 or CSC 646.",
+   "offered": "Fall Odd Years"
+  },
+  {
+   "code": "CSC 645",
+   "title": "Introduction to Arti\ufb01cial Intelligence",
+   "credits": "3",
+   "description": "Fundamental issues in intelligent systems. Search and constraint satisfaction. Knowledge representation and reasoning. Natural language processing. Machine learning and neural networks. Game theory. AI programming.",
+   "requisites": "CSC 317 or ECE 511, MTH 224 or ECE 310 or IEN 310.",
+   "offered": "Fall"
+  },
+  {
+   "code": "CSC 646",
+   "title": "Introduction to Machine Learning with Applications",
+   "credits": "3",
+   "description": "Python and probability, the Numpy package. K-means clustering. The Gaussian mixture model. Kernel density estimation. Dimensionality reduction. Classi\ufb01cation. Regression, SVM, and SVR. Ensemble learning. Cross validation for model selection. Signal encoding-decoding. Dictionary learning. Metrics for performance evaluation. Deep neural networks. Neural networks, the Pytorch and Keras packages. Computational graph and automatic differentiation. Convolutional neural networks. Autoencoders. Generative adversarial networks. Transfer learning.",
+   "requisites": "MTH 210 and MTH 224.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 647",
+   "title": "Computational Geometry",
+   "credits": "3",
+   "description": "Algorithms for solving geometric problems arising from application domains including graphics, robotics, and GIS.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 648",
+   "title": "Problem Solving for Bioinformatics",
+   "credits": "3",
+   "description": "Grand challenges, solutions, and emerging opportunities in bioinformatics. PERL programming from the most basic to advanced contents such as multidimensional array, regular expression, hash, and sorting. Theories and hands-on projects in 3D genome structure inference, protein secondary structure prediction, protein tertiary structure prediction, protein model quality assessment, protein function prediction, and biological network analysis. Analysis of real-world biomedical data. Applications of machine learning algorithms.",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 649",
+   "title": "Biomedical Data Science",
+   "credits": "3",
+   "description": "The computational skills needed for analysis of genomic and biomedical data sets, including: The basics of a command line interface. Programming in (bio-)python. Running programs on Pegasus. Writing scripts for downloading, manipulating, and analyzing data. File sharing and version control using Github. Analyzing a Next Generation Sequencing data set, and Interpreting the results. Responsible Conduct of Research.",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 650",
+   "title": "Computational Neuroscience",
+   "credits": "3",
+   "description": "Introduction to computational neuroscience. Analysis and modeling of neural systems. Neurons, populations of neurons, perception, behavior. Connections to machine learning. Tutorials in Matlab.",
+   "requisites": "MTH 162 and MTH 224.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 656",
+   "title": "Multimedia Systems",
+   "credits": "3",
+   "description": "Speci\ufb01cation and requirements of a multimedia hardware system. Multimedia data technologies. Graphics \ufb01le formats. Compression and decompression. Multimedia application development.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 670",
+   "title": "Directed Reading",
+   "credits": "1-3",
+   "description": "Directed Reading of Research in Computer Science.",
+   "requisites": null,
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 685",
+   "title": "Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Topics in Computer Science - content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 686",
+   "title": "Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Topics in Computer Science - content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 687",
+   "title": "Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Topics in Computer Science - content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 688",
+   "title": "Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Topics in Computer Science - content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 689",
+   "title": "Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Topics in Computer Science - content varies by semester.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 690",
+   "title": "Seminar for Graduate Students I",
+   "credits": "1-3",
+   "description": "Flexible topics of interest to graduate students.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 692",
+   "title": "Seminar for Graduate Students II",
+   "credits": "1-3",
+   "description": "Flexible topics of interest to graduate students.",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 707",
+   "title": "Logic Programming",
+   "credits": "3",
+   "description": "Programming in Prolog, Fix-point semantics, Declarative semantics, Completeness of SLD-resolution, Negation, Implementation of logic programming languages. Deductive databases.",
+   "requisites": "MTH 506 and CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 710",
+   "title": "Computer Science Software Project Design",
+   "credits": "1-3",
+   "description": "Design of a Computer Science software project, including: Problem analysis. System architecture design. Algorithm and data structure selection. User interface design. Veri\ufb01cation and validation plan. Prototyping.",
+   "requisites": "Students must complete at least 18 credits prior to enrolling in the internship course.",
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 712",
+   "title": "Computer Science Graduate Internship",
+   "credits": "1-6",
+   "description": "This course monitors students doing an internship in a professional computer science environment. The exact nature of the course will be dependent on the nature of the internship and the requirements of the host organizations. Normally 50 internship hours are required per credit earned (the host organization must supply documentary evidence of hours worked).",
+   "requisites": "Students must complete at least 18 credits prior to enrolling in the internship course.",
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 713",
+   "title": "Computer Science Software Project Implementation",
+   "credits": "1-3",
+   "description": "Implementation of a Computer Science software project, including: Hardware preparation. Component implementation. System integration. Veri\ufb01cation and validation. Documentation.",
+   "requisites": "Students must complete at least 18 credits prior to enrolling in the internship course.",
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 724",
+   "title": "Mobile Wireless Systems",
+   "credits": "3",
+   "description": "Cellular Systems, multiple access techniques, wireless networking, mobile IP, power management, user location information management, TDMA, CDMA, and GSM systems, data broadcasting.",
+   "requisites": "CSC 424.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 727",
+   "title": "Theory of Computation",
+   "credits": "3",
+   "description": "Recursive functions, Markov algorithms, Turing machines. Unsolvability.",
+   "requisites": "CSC 317 or CSC 517.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 732",
+   "title": "Parallel Algorithms",
+   "credits": "3",
+   "description": "Parallel computation models. Sorting networks. Parallel algorithms for sorting, searching, graph problems, pre\ufb01x computation, pattern matching, and fast Fourier transforms. Theory of P-completeness. The class NC.",
+   "requisites": "CSC 317.",
+   "offered": "Fall"
+  },
+  {
+   "code": "CSC 746",
+   "title": "Neural Networks and Deep Learning",
+   "credits": "3",
+   "description": "Fundamentals of arti\ufb01cial neural networks: Perceptrons, Single-layer perceptron classi\ufb01ers, Multi-Layer feedforward networks, Error back-propagation training. Deep Feedforward Networks: Regularization for deep learning, Optimization for training deep models, Convolution networks. Applications: Computer vision, speech recognition, Natural language processing.",
+   "requisites": "CSC 317.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 747",
+   "title": "Complexity Theory",
+   "credits": "3",
+   "description": "Models of computations, Blum's axioms, intractability, NP-completeness.",
+   "requisites": "CSC 427.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 749",
+   "title": "Automated Reasoning",
+   "credits": "3",
+   "description": "Propositional and 1st order logic. Reasoning and resolution. More complex inference rules. Using contemporary ATP systems. Prolog as an ATP system and as a programming language. Applications of ATP in research and industry.",
+   "requisites": "CSC 317 or CSC 645.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 751",
+   "title": "Semantic Web",
+   "credits": "3",
+   "description": "An overview of the underlying semantic web technologies. Ontology construction and implementation using tools and APIs (logic, XML, RDF, RDFS). Theoretical and practical aspects of knowledge representation (description logic, RDF, RDFS, SPARQL, SROIQ(D)). Designing and debugging ontologies (ontology engineering, entailment tools, project).",
+   "requisites": "CSC 317, and MTH 309 or MTH 230.",
+   "offered": "Spring"
+  },
+  {
+   "code": "CSC 752",
+   "title": "Autonomous Robotic Systems",
+   "credits": "3",
+   "description": "Introduction: autonomous systems, autonomous robots, RoboCup, typical components of an autonomous robot. Modeling: perception, noise, modeling, recursive state estimation, Bayes' \ufb01lter, particle \ufb01lter, self-localization. Control and motion: PID-control, calibration of parameters, controlling a wheeled robot, controlling joints, walking motion. Learning (optional, if time permits): overview, different types of learning, reinforcement learning.",
+   "requisites": "CSC 317 and MTH 210.",
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 785",
+   "title": "Advanced Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Advanced Topics in Computer Science",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 786",
+   "title": "Advanced Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Advanced Topics in Computer Science",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 787",
+   "title": "Advanced Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Advanced Topics in Computer Science",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 788",
+   "title": "Advanced Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Advanced Topics in Computer Science",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 789",
+   "title": "Advanced Topics in Computer Science",
+   "credits": "1-3",
+   "description": "Advanced Topics in Computer Science",
+   "requisites": null,
+   "offered": "Offered by Announcement Only"
+  },
+  {
+   "code": "CSC 793",
+   "title": "Research Project",
+   "credits": "1-6",
+   "description": "Supervised research project preceding dissertation research for the Ph.D.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 794",
+   "title": "Research Project",
+   "credits": "1-6",
+   "description": "Supervised research project preceding dissertation research for the Ph.D.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 810",
+   "title": "Master's Thesis",
+   "credits": "1-6",
+   "description": "StudentS working on a master's thesis enroll for the number of credits as determined by their advisor. Credit is not awarded until the thesis has been accepted.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 825",
+   "title": "Continuous Registration--Master's Study",
+   "credits": "1",
+   "description": "To establish residence for non-thesis master's students who are preparing for major examinations. Credit not granted. Regarded as full time residence.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "CSC 830",
+   "title": "Pre-Candidacy DOCTORAL DISSERTATION",
+   "credits": "1-12",
+   "description": "Students working on a Ph.D. thesis enroll for the number of credits as determined by their advisor, but for not less than a total of 12 hours. Up to 12 hours may be taken in a regular semester, but not more than 6 hours in a summer session.",
+   "requisites": null,
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 840",
+   "title": "Post-Candidacy Doctoral Dissertation",
+   "credits": "1-12",
+   "description": "Students working on a Ph.D. thesis who have advanced to candidacy enroll for the number of credits as determined by their advisor, but for not less than a total of 12 hours. Up to 12 hours may be taken in a regular semester, but not more than 6 hours in a summer session.",
+   "requisites": null,
+   "offered": "Fall, Spring, & Summer"
+  },
+  {
+   "code": "CSC 850",
+   "title": "Research in Residence",
+   "credits": "1",
+   "description": "Used to establish research in residence for Ph.D. students after the student has enrolled for permissible cumulative total in appropriate doctoral research. Regarded as full-time residence.",
+   "requisites": null,
+   "offered": null
+  }
+ ]
+}

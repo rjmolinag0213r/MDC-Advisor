@@ -17,15 +17,15 @@ def test_hub_dataset_shape(client):
     assert {c["code"] for c in done} == set(SAMPLE)
     assert next(c for c in done if c["code"] == "ZEN 1101")["grade"] == "A"
     for c in d["courses"]:
-        assert len(c["t"]) == 3 and set(c["t"]) <= {"full", "elective", "none"} and c["why"]
-    assert len(d["dests"]) == 3 and all(x["rate"] > 0 for x in d["dests"])
+        assert len(c["t"]) == 7 and len(c["whyAt"]) == 4 and set(c["t"]) <= {"full", "elective", "none"} and c["why"]
+    assert len(d["dests"]) == 7 and all(x["rate"] > 0 for x in d["dests"])
     assert d["graduationTerm"] and d["synthetic"] is True
 
 
 def test_hub_gen_ed_transfers_everywhere(client):
     d = client.post("/api/hub", json={"program": "DATA", "completed": ["ZEN 1101"]}).get_json()
     eng = next(c for c in d["courses"] if c["code"] == "ZEN 1101")
-    assert eng["t"] == ["full", "full", "full"]
+    assert eng["t"] == ["full"] * 7
 
 
 def test_hub_strips_pii_from_name(client):
@@ -46,7 +46,7 @@ def test_hub_validation(client, payload, field):
 def test_config(client):
     c = client.get("/api/config").get_json()
     assert c["auth0"] is None and c["demoAuth"] is True      # tests run with Auth0 off
-    assert [p["code"] for p in c["programs"]] == ["AI", "DATA", "CYBER", "SWE", "NET", "ECE"]
+    assert [p["code"] for p in c["programs"]] == ["AI", "DATA", "CYBER", "SWE", "NET", "ECE", "AIBS", "AIAS"]
 
 
 def test_site_pages_served(client):

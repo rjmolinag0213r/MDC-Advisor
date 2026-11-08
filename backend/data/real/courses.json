@@ -1,0 +1,2181 @@
+{
+ "note": "REAL MDC program data (official program sheets, Spring 2026). terms_offered is assumed; see build_real_catalog.py.",
+ "courses": [
+  {
+   "code": "ENC 1101",
+   "title": "English Composition 1",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "ENC",
+   "description": "English Composition 1 (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "ENC 1102",
+   "title": "English Composition 2",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "ENC",
+   "description": "English Composition 2 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "ENC 1101"
+    ]
+   ],
+   "prerequisite_text": "ENC 1101",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "ENC 2300",
+   "title": "Advanced Composition & Communication",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "ENC",
+   "description": "Advanced Composition & Communication (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "ENC 1101"
+    ],
+    [
+     "ENC 1102"
+    ]
+   ],
+   "prerequisite_text": "ENC 1101 and ENC 1102",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "SPC 1017",
+   "title": "Introduction to Communications",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "SPC",
+   "description": "Introduction to Communications (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "SPC 2608",
+   "title": "Introduction to Public Speaking",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "SPC",
+   "description": "Introduction to Public Speaking (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "ARH 1000",
+   "title": "Art Appreciation",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "ARH",
+   "description": "Art Appreciation (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "HUM 1020",
+   "title": "Introduction to Humanities",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "HUM",
+   "description": "Introduction to Humanities (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "LIT 2000",
+   "title": "Introduction to Literature",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "LIT",
+   "description": "Introduction to Literature (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "ENC 1101"
+    ]
+   ],
+   "prerequisite_text": "ENC 1101",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "MUL 1010",
+   "title": "Music Appreciation",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MUL",
+   "description": "Music Appreciation (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "PHI 2010",
+   "title": "Introduction to Philosophy",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "PHI",
+   "description": "Introduction to Philosophy (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "THE 2000",
+   "title": "Theatre Appreciation",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "THE",
+   "description": "Theatre Appreciation (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "PHI 2600",
+   "title": "Introduction to Ethics",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "PHI",
+   "description": "Introduction to Ethics (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "ARH 2050",
+   "title": "Art History 1",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "ARH",
+   "description": "Art History 1 (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "AMH 2010",
+   "title": "History of the US to 1877",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "AMH",
+   "description": "History of the US to 1877 (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "AMH 2020",
+   "title": "History of the US Since 1877",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "AMH",
+   "description": "History of the US Since 1877 (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "POS 2041",
+   "title": "American Federal Government",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "POS",
+   "description": "American Federal Government (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "PSY 2012",
+   "title": "Introduction to Psychology",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "PSY",
+   "description": "Introduction to Psychology (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "ECO 2013",
+   "title": "Principles of Economics (Macro)",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "ECO",
+   "description": "Principles of Economics (Macro) (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "ANT 2000",
+   "title": "Introduction to Anthropology",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "ANT",
+   "description": "Introduction to Anthropology (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "SYG 2000",
+   "title": "Introduction to Sociology",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "SYG",
+   "description": "Introduction to Sociology (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "WOH 2012",
+   "title": "History of World Civilization to 1789",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "WOH",
+   "description": "History of World Civilization to 1789 (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "AST 1002",
+   "title": "Descriptive Astronomy",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "AST",
+   "description": "Descriptive Astronomy (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "BSC 1005",
+   "title": "General Education Biology",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "BSC",
+   "description": "General Education Biology (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CHM 1020",
+   "title": "General Education Chemistry",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "CHM",
+   "description": "General Education Chemistry (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "ESC 1000",
+   "title": "General Education Earth Science",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "ESC",
+   "description": "General Education Earth Science (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "EVR 1001",
+   "title": "Introduction to Environmental Science",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "EVR",
+   "description": "Introduction to Environmental Science (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "GLY 1010",
+   "title": "Physical Geology",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "GLY",
+   "description": "Physical Geology (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "OCE 1001",
+   "title": "Introduction to Oceanography",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "OCE",
+   "description": "Introduction to Oceanography (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "PHY 1020",
+   "title": "General Education Physics",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "PHY",
+   "description": "General Education Physics (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "HUN 1201",
+   "title": "Essentials of Human Nutrition",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "HUN",
+   "description": "Essentials of Human Nutrition (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "PHY 2053",
+   "title": "Physics (without Calculus) 1",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "PHY",
+   "description": "Physics (without Calculus) 1 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 1114",
+     "MAC 1147"
+    ]
+   ],
+   "prerequisite_text": "MAC 1114 or MAC 1147",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "PHY 2054",
+   "title": "Physics (without Calculus) 2",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "PHY",
+   "description": "Physics (without Calculus) 2 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "PHY 2053"
+    ]
+   ],
+   "prerequisite_text": "PHY 2053",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": []
+  },
+  {
+   "code": "PHY 2048",
+   "title": "Physics with Calculus 1",
+   "credits": 4,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "PHY",
+   "description": "Physics with Calculus 1 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 2311"
+    ]
+   ],
+   "prerequisite_text": "MAC 2311",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": []
+  },
+  {
+   "code": "PHY 2049",
+   "title": "Physics with Calculus 2",
+   "credits": 4,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "PHY",
+   "description": "Physics with Calculus 2 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "PHY 2048"
+    ]
+   ],
+   "prerequisite_text": "PHY 2048",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": []
+  },
+  {
+   "code": "MAC 1105",
+   "title": "College Algebra",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MAC",
+   "description": "College Algebra (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": "MAT 1033",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "STA 2023",
+   "title": "Statistical Methods",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "STA",
+   "description": "Statistical Methods (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": "MAT 1033 or MGF 1131",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "MAC 1114",
+   "title": "Trigonometry",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MAC",
+   "description": "Trigonometry (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 1105"
+    ]
+   ],
+   "prerequisite_text": "MAC 1105",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "MAC 1140",
+   "title": "Pre-Calculus Algebra",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MAC",
+   "description": "Pre-Calculus Algebra (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 1105"
+    ]
+   ],
+   "prerequisite_text": "MAC 1105",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "MAC 1147",
+   "title": "Pre-Calculus Algebra and Trigonometry",
+   "credits": 5,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MAC",
+   "description": "Pre-Calculus Algebra and Trigonometry (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 1105"
+    ]
+   ],
+   "prerequisite_text": "MAC 1105",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": []
+  },
+  {
+   "code": "MAC 2311",
+   "title": "Calculus and Analytical Geometry 1",
+   "credits": 5,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MAC",
+   "description": "Calculus and Analytical Geometry 1 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 1147",
+     "MAC 1140"
+    ]
+   ],
+   "prerequisite_text": "MAC 1147 or MAC 1140",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "MAC 2312",
+   "title": "Calculus and Analytical Geometry 2",
+   "credits": 4,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MAC",
+   "description": "Calculus and Analytical Geometry 2 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 2311"
+    ]
+   ],
+   "prerequisite_text": "MAC 2311",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": []
+  },
+  {
+   "code": "MAD 2104",
+   "title": "Discrete Mathematics",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MAD",
+   "description": "Discrete Mathematics (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 1140"
+    ]
+   ],
+   "prerequisite_text": "MAC 1140",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "MAS 2103",
+   "title": "Elementary Linear Algebra",
+   "credits": 3,
+   "level": "lower",
+   "category": "gen_ed",
+   "prefix": "MAS",
+   "description": "Elementary Linear Algebra (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "MAC 2311"
+    ]
+   ],
+   "prerequisite_text": "MAC 2311",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CGS 1060C",
+   "title": "Introduction to Computer Technology and Applications",
+   "credits": 4,
+   "level": "lower",
+   "category": "common_core",
+   "prefix": "CGS",
+   "description": "Introduction to Computer Technology and Applications (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 1001C",
+   "title": "Artificial Intelligence (AI) Thinking",
+   "credits": 3,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Artificial Intelligence (AI) Thinking (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "COP 1047C",
+   "title": "Introduction to Python Programming",
+   "credits": 4,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "COP",
+   "description": "Introduction to Python Programming (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 2100C",
+   "title": "Machine Learning Foundations",
+   "credits": 3,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Machine Learning Foundations (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 1001C"
+    ],
+    [
+     "COP 1047C"
+    ]
+   ],
+   "prerequisite_text": "CAI 1001C and COP 1047C",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 2300C",
+   "title": "Introduction to Natural Language Processing",
+   "credits": 3,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Introduction to Natural Language Processing (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 2100C"
+    ]
+   ],
+   "prerequisite_text": "CAI 2100C",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 2840C",
+   "title": "Introduction to Computer Vision",
+   "credits": 3,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Introduction to Computer Vision (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 2100C"
+    ]
+   ],
+   "prerequisite_text": "CAI 2100C",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 2820C",
+   "title": "Artificial Intelligence Application Solutions",
+   "credits": 3,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Artificial Intelligence Application Solutions (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 2300C"
+    ],
+    [
+     "CAI 2840C"
+    ]
+   ],
+   "prerequisite_text": "CAI 2300C and CAI 2840C",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "COP 2800",
+   "title": "Java Programming",
+   "credits": 4,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "COP",
+   "description": "Java Programming (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "COP 1047C"
+    ]
+   ],
+   "prerequisite_text": "COP 1047C or COP 1334 or COP 2270",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "PHI 2680",
+   "title": "Artificial Intelligence and Ethics",
+   "credits": 3,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "PHI",
+   "description": "Artificial Intelligence and Ethics (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CGS 1540C",
+   "title": "Database Concepts and Design",
+   "credits": 4,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "CGS",
+   "description": "Database Concepts and Design (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CTS 1145",
+   "title": "Cloud Essentials",
+   "credits": 4,
+   "level": "lower",
+   "category": "program_core",
+   "prefix": "CTS",
+   "description": "Cloud Essentials (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAP 1788",
+   "title": "Introduction to Data Analytics",
+   "credits": 4,
+   "level": "lower",
+   "category": "elective",
+   "prefix": "CAP",
+   "description": "Introduction to Data Analytics (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CTS 1120",
+   "title": "Cybersecurity Fundamentals",
+   "credits": 4,
+   "level": "lower",
+   "category": "elective",
+   "prefix": "CTS",
+   "description": "Cybersecurity Fundamentals (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "ETS 1603C",
+   "title": "Introduction to Robotics",
+   "credits": 4,
+   "level": "lower",
+   "category": "elective",
+   "prefix": "ETS",
+   "description": "Introduction to Robotics (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "GEB 1432",
+   "title": "Applied Artificial Intelligence (AI) in Business",
+   "credits": 3,
+   "level": "lower",
+   "category": "elective",
+   "prefix": "GEB",
+   "description": "Applied Artificial Intelligence (AI) in Business (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "HSC 2060",
+   "title": "Artificial Intelligence Applications in Healthcare",
+   "credits": 3,
+   "level": "lower",
+   "category": "elective",
+   "prefix": "HSC",
+   "description": "Artificial Intelligence Applications in Healthcare (from the MDC program sheet).",
+   "prerequisites": [],
+   "prerequisite_text": null,
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheets 25080 / S9520",
+   "used_by_programs": [
+    "MDC-25080",
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "COP 3530",
+   "title": "Data Structures",
+   "credits": 4,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "COP",
+   "description": "Data Structures (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "COP 2800"
+    ]
+   ],
+   "prerequisite_text": "COP 2800",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 3303C",
+   "title": "Natural Language Processing",
+   "credits": 3,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Natural Language Processing (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 2300C"
+    ]
+   ],
+   "prerequisite_text": "CAI 2300C",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 3821C",
+   "title": "Computational Methods and Applications for Artificial Intelligence 1",
+   "credits": 3,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Computational Methods and Applications for Artificial Intelligence 1 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 2100C"
+    ],
+    [
+     "COP 1047C"
+    ],
+    [
+     "MAC 1105"
+    ],
+    [
+     "STA 2023"
+    ]
+   ],
+   "prerequisite_text": "CAI 2100C and COP 1047C and MAC 1105 and STA 2023",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 3822C",
+   "title": "Computational Methods and Applications for Artificial Intelligence 2",
+   "credits": 3,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Computational Methods and Applications for Artificial Intelligence 2 (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 3821C"
+    ]
+   ],
+   "prerequisite_text": "CAI 3821C",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 4505C",
+   "title": "Artificial Intelligence",
+   "credits": 3,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Artificial Intelligence (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 3822C"
+    ],
+    [
+     "COP 3530"
+    ]
+   ],
+   "prerequisite_text": "CAI 3822C and COP 3530",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 4510C",
+   "title": "Machine Intelligence",
+   "credits": 3,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Machine Intelligence (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 3822C"
+    ],
+    [
+     "COP 3530"
+    ]
+   ],
+   "prerequisite_text": "CAI 3822C and COP 3530",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 4420C",
+   "title": "Applied Decision and Optimization Theory",
+   "credits": 3,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Applied Decision and Optimization Theory (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 4505C"
+    ]
+   ],
+   "prerequisite_text": "CAI 4505C",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 4525C",
+   "title": "Artificial Intelligence Systems Automation",
+   "credits": 3,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Artificial Intelligence Systems Automation (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 4505C"
+    ],
+    [
+     "CAI 4510C"
+    ]
+   ],
+   "prerequisite_text": "CAI 4505C and CAI 4510C",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 4830C",
+   "title": "Simulation for Applied Artificial Intelligence",
+   "credits": 3,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAI",
+   "description": "Simulation for Applied Artificial Intelligence (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 4505C"
+    ]
+   ],
+   "prerequisite_text": "CAI 4505C (pre/corequisite)",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAI 4950C",
+   "title": "Artificial Intelligence Capstone",
+   "credits": 3,
+   "level": "upper",
+   "category": "capstone",
+   "prefix": "CAI",
+   "description": "Artificial Intelligence Capstone (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "CAI 4510C"
+    ],
+    [
+     "CAI 4420C"
+    ],
+    [
+     "CAI 4830C"
+    ],
+    [
+     "CAI 4525C"
+    ]
+   ],
+   "prerequisite_text": "CAI 4510C and CAI 4420C and CAI 4830C and CAI 4525C (pre/corequisite)",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "CAP 3330",
+   "title": "Programming R for Statistics",
+   "credits": 4,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "CAP",
+   "description": "Programming R for Statistics (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "STA 2023"
+    ]
+   ],
+   "prerequisite_text": "STA 2023",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  },
+  {
+   "code": "STA 3164",
+   "title": "Statistical Methods II",
+   "credits": 4,
+   "level": "upper",
+   "category": "program_core",
+   "prefix": "STA",
+   "description": "Statistical Methods II (from the MDC program sheet).",
+   "prerequisites": [
+    [
+     "STA 2023"
+    ]
+   ],
+   "prerequisite_text": "STA 2023",
+   "corequisites": [],
+   "min_grade": "C",
+   "min_credits_completed": null,
+   "instructor_permission": false,
+   "terms_offered": [
+    "Fall",
+    "Spring",
+    "Summer"
+   ],
+   "terms_assumed": true,
+   "cross_listed_as": [],
+   "status": "active",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "used_by_programs": [
+    "MDC-S9520"
+   ]
+  }
+ ]
+}

@@ -19,9 +19,12 @@ import planner
 import roadmap
 import safety
 
-MDC_RATE = 120          # approx. MDC in-state cost per credit (USD), lower division; labeled as estimate
+# MDC's published Florida-resident rates per credit (nwsa.mdc.edu tuition page, 2025-26): lower 118.22, upper 186.08.
+# Plans mix both; a 120-credit B.S. is about half and half, so whole-plan estimates use the blend.
+MDC_RATE = round((planner.mdc_rates().get("lowerDivision", 118.22) + planner.mdc_rates().get("upperDivision", 186.08)) / 2)
 PROGRAM_CAREER = {"AI": "ai-engineer", "DATA": "data-analyst", "CYBER": "cybersecurity-specialist",
-                  "SWE": "software-developer", "NET": "network-engineer", "ECE": "electrical-engineer"}
+                  "SWE": "software-developer", "NET": "network-engineer", "ECE": "electrical-engineer",
+                  "AIBS": "ai-engineer", "AIAS": "ai-engineer"}
 
 
 def _ai_json(system: str, user: str, max_tokens: int = 700) -> tuple[dict | None, str | None, dict]:
@@ -197,6 +200,8 @@ def _program_from_text(target: str) -> str | None:
     if t in planner.catalog()["programs"]:
         return planner.get_program(t)["app_program_code"]
     low = target.lower()
+    if re.search(r"\b(a\.?s\.?|associate)\b", low) and re.search(r"\bai\b|artificial", low):
+        return "AIAS"
     for code, name in (("AI", "artificial intelligence|machine learning"), ("DATA", "data analytics|data science|analytics"),
                        ("CYBER", "cyber|security"), ("SWE", "software|programming|developer"),
                        ("NET", "network|cloud"), ("ECE", "electrical|electronics|computer engineering|hardware")):

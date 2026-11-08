@@ -6,12 +6,38 @@
     "url": "https://www.bls.gov/ooh/"
   },
   "programs": {
-    "AI": { "name": "Applied Artificial Intelligence", "code": "S9520" },
-    "DATA": { "name": "Data Analytics", "code": "S9510" },
-    "CYBER": { "name": "Cybersecurity", "code": "S9515" },
-    "SWE": { "name": "Software Engineering", "code": "S9501" },
-    "NET": { "name": "Networking", "code": "S9500" },
-    "ECE": { "name": "Electrical & Computer Engineering", "code": "S9100" }
+    "AI": {
+      "name": "Applied Artificial Intelligence",
+      "code": "S9520"
+    },
+    "DATA": {
+      "name": "Data Analytics",
+      "code": "S9510"
+    },
+    "CYBER": {
+      "name": "Cybersecurity",
+      "code": "S9515"
+    },
+    "SWE": {
+      "name": "Software Engineering",
+      "code": "S9501"
+    },
+    "NET": {
+      "name": "Networking",
+      "code": "S9500"
+    },
+    "ECE": {
+      "name": "Electrical & Computer Engineering",
+      "code": "S9100"
+    },
+    "AIBS": {
+      "name": "Applied Artificial Intelligence B.S. (official sheet)",
+      "code": "S9520"
+    },
+    "AIAS": {
+      "name": "Applied Artificial Intelligence A.S. (official sheet)",
+      "code": "25080"
+    }
   },
   "careers": [
     {
@@ -21,20 +47,59 @@
       "cluster": "Design & Construction",
       "tagline": "Design the buildings and spaces people live and work in.",
       "program": null,
-      "keywords": ["architect", "architecture", "buildings", "design houses", "arquitecto", "arquitectura"],
-      "salary": { "median": 93310, "occupation": "Architects" },
-      "highSchool": ["Geometry and Pre-Calculus", "Physics", "Art or drafting electives", "Start a sketch and model portfolio"],
+      "keywords": [
+        "architect",
+        "architecture",
+        "buildings",
+        "design houses",
+        "arquitecto",
+        "arquitectura"
+      ],
+      "salary": {
+        "median": 93310,
+        "occupation": "Architects"
+      },
+      "highSchool": [
+        "Geometry and Pre-Calculus",
+        "Physics",
+        "Art or drafting electives",
+        "Start a sketch and model portfolio"
+      ],
       "mdc": {
         "credential": "Associate in Arts (AA) on a pre-architecture transfer track",
         "notes": "Most architects need a NAAB-accredited professional degree (B.Arch or M.Arch). Start at MDC, then transfer.",
-        "courses": ["ENC 1101 English Composition I", "MAC 1105 College Algebra", "MAC 2311 Calculus I", "PHY 2053 College Physics I", "Architectural design studio sequence", "Architectural history", "Digital drafting (CAD / Revit)", "POS 2041 American Government (civic literacy)"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "MAC 1105 College Algebra",
+          "MAC 2311 Calculus I",
+          "PHY 2053 College Physics I",
+          "Architectural design studio sequence",
+          "Architectural history",
+          "Digital drafting (CAD / Revit)",
+          "POS 2041 American Government (civic literacy)"
+        ]
       },
-      "certifications": ["Autodesk Revit Certified User", "NCARB Architectural Experience Program (AXP), started while in school"],
-      "transfer": [
-        { "name": "FIU", "program": "Master of Architecture track (College of Communication, Architecture + The Arts)", "note": "Connect4Success guarantees MDC AA graduates admission to FIU; studio portfolio review still applies." },
-        { "name": "University of Miami", "program": "Bachelor of Architecture (B.Arch)", "note": "Check the UM articulation agreement for which MDC credits transfer." }
+      "certifications": [
+        "Autodesk Revit Certified User",
+        "NCARB Architectural Experience Program (AXP), started while in school"
       ],
-      "career": ["Architectural intern / designer", "Licensed architect (after AXP + ARE exams)", "Urban designer"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "Master of Architecture track (College of Communication, Architecture + The Arts)",
+          "note": "Connect4Success guarantees MDC AA graduates admission to FIU; studio portfolio review still applies."
+        },
+        {
+          "name": "University of Miami",
+          "program": "Bachelor of Architecture (B.Arch)",
+          "note": "Check the UM articulation agreement for which MDC credits transfer."
+        }
+      ],
+      "career": [
+        "Architectural intern / designer",
+        "Licensed architect (after AXP + ARE exams)",
+        "Urban designer"
+      ],
       "license": "Florida architect license: accredited degree + AXP experience hours + the 6-part Architect Registration Examination (ARE)."
     },
     {
@@ -44,20 +109,62 @@
       "cluster": "Engineering",
       "tagline": "Design engines, machines, robots and anything that moves.",
       "program": null,
-      "keywords": ["mechanical", "machines", "engines", "cars", "aerospace", "ingeniero mecanico", "mecanica"],
-      "salary": { "median": 99510, "occupation": "Mechanical engineers" },
-      "highSchool": ["Calculus (AP if offered)", "Physics (AP Physics C if offered)", "Chemistry", "Robotics or engineering club"],
+      "keywords": [
+        "mechanical",
+        "machines",
+        "engines",
+        "cars",
+        "aerospace",
+        "ingeniero mecanico",
+        "mecanica"
+      ],
+      "salary": {
+        "median": 99510,
+        "occupation": "Mechanical engineers"
+      },
+      "highSchool": [
+        "Calculus (AP if offered)",
+        "Physics (AP Physics C if offered)",
+        "Chemistry",
+        "Robotics or engineering club"
+      ],
       "mdc": {
         "credential": "Associate in Arts (AA) on the engineering transfer pathway",
         "notes": "Finish calculus, physics and chemistry at MDC so you arrive at the university ready for upper-division engineering.",
-        "courses": ["ENC 1101 English Composition I", "MAC 2311 Calculus I", "MAC 2312 Calculus II", "MAC 2313 Calculus III", "MAP 2302 Differential Equations", "PHY 2048 Physics with Calculus I", "PHY 2049 Physics with Calculus II", "CHM 1045 General Chemistry I", "EGS 1006 Intro to Engineering"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "MAC 2311 Calculus I",
+          "MAC 2312 Calculus II",
+          "MAC 2313 Calculus III",
+          "MAP 2302 Differential Equations",
+          "PHY 2048 Physics with Calculus I",
+          "PHY 2049 Physics with Calculus II",
+          "CHM 1045 General Chemistry I",
+          "EGS 1006 Intro to Engineering"
+        ]
       },
-      "certifications": ["SolidWorks CSWA (Certified SolidWorks Associate)", "Fundamentals of Engineering (FE) exam near graduation"],
-      "transfer": [
-        { "name": "FIU", "program": "B.S. Mechanical Engineering (College of Engineering & Computing)", "note": "Connect4Success pathway for MDC AA graduates." },
-        { "name": "University of Miami", "program": "B.S. Mechanical Engineering", "note": "Review the UM articulation agreement for calculus and physics equivalents." }
+      "certifications": [
+        "SolidWorks CSWA (Certified SolidWorks Associate)",
+        "Fundamentals of Engineering (FE) exam near graduation"
       ],
-      "career": ["Design engineer", "Manufacturing engineer", "HVAC / energy systems engineer", "Professional Engineer (PE)"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Mechanical Engineering (College of Engineering & Computing)",
+          "note": "Connect4Success pathway for MDC AA graduates."
+        },
+        {
+          "name": "University of Miami",
+          "program": "B.S. Mechanical Engineering",
+          "note": "Review the UM articulation agreement for calculus and physics equivalents."
+        }
+      ],
+      "career": [
+        "Design engineer",
+        "Manufacturing engineer",
+        "HVAC / energy systems engineer",
+        "Professional Engineer (PE)"
+      ],
       "license": "Professional Engineer (PE): ABET-accredited degree, pass FE, about 4 years of experience, then pass the PE exam."
     },
     {
@@ -67,19 +174,57 @@
       "cluster": "Hospitality & Culinary",
       "tagline": "Run a kitchen, create menus, maybe open your own restaurant.",
       "program": null,
-      "keywords": ["chef", "cook", "cooking", "culinary", "kitchen", "restaurant", "baking", "cocinero", "cocina"],
-      "salary": { "median": 58920, "occupation": "Chefs and head cooks" },
-      "highSchool": ["Culinary or ProStart classes if offered", "Business or accounting basics", "A part-time job in a restaurant kitchen", "Food Handler card"],
+      "keywords": [
+        "chef",
+        "cook",
+        "cooking",
+        "culinary",
+        "kitchen",
+        "restaurant",
+        "baking",
+        "cocinero",
+        "cocina"
+      ],
+      "salary": {
+        "median": 58920,
+        "occupation": "Chefs and head cooks"
+      },
+      "highSchool": [
+        "Culinary or ProStart classes if offered",
+        "Business or accounting basics",
+        "A part-time job in a restaurant kitchen",
+        "Food Handler card"
+      ],
       "mdc": {
         "credential": "Culinary Arts program at the Miami Culinary Institute (MDC Wolfson Campus)",
         "notes": "Hands-on kitchen labs plus food safety, cost control and management.",
-        "courses": ["Culinary fundamentals and knife skills", "Baking and pastry fundamentals", "Food safety and sanitation", "Menu planning and food cost control", "International cuisine", "Kitchen and restaurant management", "Culinary internship"]
+        "courses": [
+          "Culinary fundamentals and knife skills",
+          "Baking and pastry fundamentals",
+          "Food safety and sanitation",
+          "Menu planning and food cost control",
+          "International cuisine",
+          "Kitchen and restaurant management",
+          "Culinary internship"
+        ]
       },
-      "certifications": ["ServSafe Food Protection Manager", "American Culinary Federation (ACF) Certified Culinarian"],
-      "transfer": [
-        { "name": "FIU", "program": "Chaplin School of Hospitality & Tourism Management", "note": "Optional bachelor's path if you want restaurant or hotel management." }
+      "certifications": [
+        "ServSafe Food Protection Manager",
+        "American Culinary Federation (ACF) Certified Culinarian"
       ],
-      "career": ["Line cook", "Sous chef", "Executive chef", "Restaurant owner / caterer"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "Chaplin School of Hospitality & Tourism Management",
+          "note": "Optional bachelor's path if you want restaurant or hotel management."
+        }
+      ],
+      "career": [
+        "Line cook",
+        "Sous chef",
+        "Executive chef",
+        "Restaurant owner / caterer"
+      ],
       "license": null
     },
     {
@@ -89,20 +234,62 @@
       "cluster": "Technology",
       "tagline": "Defend people and companies from hackers and scams.",
       "program": "CYBER",
-      "keywords": ["cybersecurity", "cyber", "security", "hacker", "ethical hacking", "ciberseguridad"],
-      "salary": { "median": 120360, "occupation": "Information security analysts" },
-      "highSchool": ["Computer science or AP CSP", "Algebra II", "Practice CTFs on picoCTF", "CyberPatriot competition"],
+      "keywords": [
+        "cybersecurity",
+        "cyber",
+        "security",
+        "hacker",
+        "ethical hacking",
+        "ciberseguridad"
+      ],
+      "salary": {
+        "median": 120360,
+        "occupation": "Information security analysts"
+      },
+      "highSchool": [
+        "Computer science or AP CSP",
+        "Algebra II",
+        "Practice CTFs on picoCTF",
+        "CyberPatriot competition"
+      ],
       "mdc": {
         "credential": "MDC Cybersecurity program (S9515)",
         "notes": "Labs cover network defense, ethical hacking and digital forensics.",
-        "courses": ["ENC 1101 English Composition I", "MAC 1105 College Algebra", "Introduction to programming", "Networking fundamentals", "Operating systems and Linux", "Network security", "Ethical hacking", "Digital forensics", "Security policy and risk management"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "MAC 1105 College Algebra",
+          "Introduction to programming",
+          "Networking fundamentals",
+          "Operating systems and Linux",
+          "Network security",
+          "Ethical hacking",
+          "Digital forensics",
+          "Security policy and risk management"
+        ]
       },
-      "certifications": ["CompTIA Security+", "CompTIA CySA+", "EC-Council Certified Ethical Hacker (CEH)"],
-      "transfer": [
-        { "name": "FIU", "program": "B.S. Cybersecurity (Knight Foundation School of Computing & Information Sciences)", "note": "Connect4Success pathway." },
-        { "name": "University of Miami", "program": "Computer science / cybersecurity", "note": "See the UM articulation agreement." }
+      "certifications": [
+        "CompTIA Security+",
+        "CompTIA CySA+",
+        "EC-Council Certified Ethical Hacker (CEH)"
       ],
-      "career": ["SOC analyst", "Penetration tester", "Security engineer", "Incident responder"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Cybersecurity (Knight Foundation School of Computing & Information Sciences)",
+          "note": "Connect4Success pathway."
+        },
+        {
+          "name": "University of Miami",
+          "program": "Computer science / cybersecurity",
+          "note": "See the UM articulation agreement."
+        }
+      ],
+      "career": [
+        "SOC analyst",
+        "Penetration tester",
+        "Security engineer",
+        "Incident responder"
+      ],
       "license": null
     },
     {
@@ -112,19 +299,57 @@
       "cluster": "Technology",
       "tagline": "Help businesses pick and fix the technology they run on.",
       "program": "NET",
-      "keywords": ["it consultant", "consultant", "consulting", "information technology", "tech support", "help desk", "consultor"],
-      "salary": { "median": 103800, "occupation": "Computer systems analysts" },
-      "highSchool": ["Computer science", "Business or economics", "Speech or debate for client communication", "Help with tech at school or home"],
+      "keywords": [
+        "it consultant",
+        "consultant",
+        "consulting",
+        "information technology",
+        "tech support",
+        "help desk",
+        "consultor"
+      ],
+      "salary": {
+        "median": 103800,
+        "occupation": "Computer systems analysts"
+      },
+      "highSchool": [
+        "Computer science",
+        "Business or economics",
+        "Speech or debate for client communication",
+        "Help with tech at school or home"
+      ],
       "mdc": {
         "credential": "MDC Networking program (S9500), with business electives",
         "notes": "Consultants need both technical depth and the ability to explain it to clients.",
-        "courses": ["ENC 1101 English Composition I", "SPC 1017 Interpersonal Communication", "Networking fundamentals", "Cloud computing", "Systems administration (Windows and Linux)", "Database fundamentals", "Project management", "Business principles"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "SPC 1017 Interpersonal Communication",
+          "Networking fundamentals",
+          "Cloud computing",
+          "Systems administration (Windows and Linux)",
+          "Database fundamentals",
+          "Project management",
+          "Business principles"
+        ]
       },
-      "certifications": ["CompTIA A+", "ITIL 4 Foundation", "AWS Certified Cloud Practitioner"],
-      "transfer": [
-        { "name": "FIU", "program": "B.S. Information Technology", "note": "Connect4Success pathway." }
+      "certifications": [
+        "CompTIA A+",
+        "ITIL 4 Foundation",
+        "AWS Certified Cloud Practitioner"
       ],
-      "career": ["IT support specialist", "Systems analyst", "IT consultant", "Solutions architect"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Information Technology",
+          "note": "Connect4Success pathway."
+        }
+      ],
+      "career": [
+        "IT support specialist",
+        "Systems analyst",
+        "IT consultant",
+        "Solutions architect"
+      ],
       "license": null
     },
     {
@@ -134,20 +359,63 @@
       "cluster": "Technology",
       "tagline": "Build the apps, games and websites people use every day.",
       "program": "SWE",
-      "keywords": ["software", "developer", "programmer", "apps", "web developer", "game developer", "desarrollador", "programador"],
-      "salary": { "median": 132270, "occupation": "Software developers" },
-      "highSchool": ["AP Computer Science A", "Algebra II and Pre-Calculus", "Build and publish a small app or game", "Hackathons and coding clubs"],
+      "keywords": [
+        "software",
+        "developer",
+        "programmer",
+        "apps",
+        "web developer",
+        "game developer",
+        "desarrollador",
+        "programador"
+      ],
+      "salary": {
+        "median": 132270,
+        "occupation": "Software developers"
+      },
+      "highSchool": [
+        "AP Computer Science A",
+        "Algebra II and Pre-Calculus",
+        "Build and publish a small app or game",
+        "Hackathons and coding clubs"
+      ],
       "mdc": {
         "credential": "MDC Software Engineering program (S9501)",
         "notes": "Expect a lot of coding projects; your portfolio matters as much as your GPA.",
-        "courses": ["ENC 1101 English Composition I", "MAC 1105 College Algebra", "Programming fundamentals", "Object-oriented programming", "Data structures", "Web development", "Mobile app development", "Databases and SQL", "Software engineering capstone"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "MAC 1105 College Algebra",
+          "Programming fundamentals",
+          "Object-oriented programming",
+          "Data structures",
+          "Web development",
+          "Mobile app development",
+          "Databases and SQL",
+          "Software engineering capstone"
+        ]
       },
-      "certifications": ["AWS Certified Developer - Associate", "GitHub portfolio with 3+ projects"],
-      "transfer": [
-        { "name": "FIU", "program": "B.S. Computer Science", "note": "Connect4Success pathway." },
-        { "name": "University of Miami", "program": "B.S. Computer Science", "note": "See the UM articulation agreement." }
+      "certifications": [
+        "AWS Certified Developer - Associate",
+        "GitHub portfolio with 3+ projects"
       ],
-      "career": ["Junior developer", "Full-stack engineer", "Mobile developer", "Game developer"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Computer Science",
+          "note": "Connect4Success pathway."
+        },
+        {
+          "name": "University of Miami",
+          "program": "B.S. Computer Science",
+          "note": "See the UM articulation agreement."
+        }
+      ],
+      "career": [
+        "Junior developer",
+        "Full-stack engineer",
+        "Mobile developer",
+        "Game developer"
+      ],
       "license": null
     },
     {
@@ -157,19 +425,58 @@
       "cluster": "Technology",
       "tagline": "Turn numbers into decisions for businesses and teams.",
       "program": "DATA",
-      "keywords": ["data analyst", "data", "analytics", "statistics", "spreadsheets", "excel", "analista de datos", "datos"],
-      "salary": { "median": 108020, "occupation": "Data scientists" },
-      "highSchool": ["AP Statistics", "Algebra II", "Learn spreadsheets (Excel or Google Sheets)", "Do a data project on a topic you love"],
+      "keywords": [
+        "data analyst",
+        "data",
+        "analytics",
+        "statistics",
+        "spreadsheets",
+        "excel",
+        "analista de datos",
+        "datos"
+      ],
+      "salary": {
+        "median": 108020,
+        "occupation": "Data scientists"
+      },
+      "highSchool": [
+        "AP Statistics",
+        "Algebra II",
+        "Learn spreadsheets (Excel or Google Sheets)",
+        "Do a data project on a topic you love"
+      ],
       "mdc": {
         "credential": "MDC Data Analytics program (S9510)",
         "notes": "You learn to clean data, analyze it and present it clearly.",
-        "courses": ["ENC 1101 English Composition I", "STA 2023 Statistical Methods", "MAC 1105 College Algebra", "Programming with Python", "Databases and SQL", "Data visualization (Tableau / Power BI)", "Business intelligence", "Big data fundamentals"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "STA 2023 Statistical Methods",
+          "MAC 1105 College Algebra",
+          "Programming with Python",
+          "Databases and SQL",
+          "Data visualization (Tableau / Power BI)",
+          "Business intelligence",
+          "Big data fundamentals"
+        ]
       },
-      "certifications": ["Google Data Analytics Certificate", "Microsoft Power BI Data Analyst (PL-300)", "Tableau Desktop Specialist"],
-      "transfer": [
-        { "name": "FIU", "program": "B.S. Data Science / Business Analytics", "note": "Connect4Success pathway." }
+      "certifications": [
+        "Google Data Analytics Certificate",
+        "Microsoft Power BI Data Analyst (PL-300)",
+        "Tableau Desktop Specialist"
       ],
-      "career": ["Data analyst", "Business intelligence analyst", "Sports or marketing analyst", "Data scientist"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Data Science / Business Analytics",
+          "note": "Connect4Success pathway."
+        }
+      ],
+      "career": [
+        "Data analyst",
+        "Business intelligence analyst",
+        "Sports or marketing analyst",
+        "Data scientist"
+      ],
       "license": null
     },
     {
@@ -179,20 +486,60 @@
       "cluster": "Technology",
       "tagline": "Teach computers to see, talk and learn.",
       "program": "AI",
-      "keywords": ["ai", "artificial intelligence", "machine learning", "chatbot", "inteligencia artificial"],
-      "salary": { "median": 108020, "occupation": "Data scientists (closest BLS category)" },
-      "highSchool": ["Calculus and AP Statistics", "AP Computer Science A", "Build a small Python ML project", "Kaggle beginner competitions"],
+      "keywords": [
+        "ai",
+        "artificial intelligence",
+        "machine learning",
+        "chatbot",
+        "inteligencia artificial"
+      ],
+      "salary": {
+        "median": 108020,
+        "occupation": "Data scientists (closest BLS category)"
+      },
+      "highSchool": [
+        "Calculus and AP Statistics",
+        "AP Computer Science A",
+        "Build a small Python ML project",
+        "Kaggle beginner competitions"
+      ],
       "mdc": {
         "credential": "MDC Applied Artificial Intelligence program (S9520)",
         "notes": "Combines programming, math and hands-on machine learning projects.",
-        "courses": ["ENC 1101 English Composition I", "MAC 2311 Calculus I", "STA 2023 Statistical Methods", "Programming with Python", "Linear algebra for AI", "Machine learning", "Natural language processing", "Computer vision", "AI ethics"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "MAC 2311 Calculus I",
+          "STA 2023 Statistical Methods",
+          "Programming with Python",
+          "Linear algebra for AI",
+          "Machine learning",
+          "Natural language processing",
+          "Computer vision",
+          "AI ethics"
+        ]
       },
-      "certifications": ["Microsoft Azure AI Fundamentals (AI-900)", "Google Cloud Machine Learning Engineer"],
-      "transfer": [
-        { "name": "FIU", "program": "B.S. Computer Science (AI focus)", "note": "Connect4Success pathway." },
-        { "name": "University of Miami", "program": "B.S. Computer Science / Data Science & AI", "note": "See the UM articulation agreement." }
+      "certifications": [
+        "Microsoft Azure AI Fundamentals (AI-900)",
+        "Google Cloud Machine Learning Engineer"
       ],
-      "career": ["ML engineer", "AI application developer", "Computer vision engineer", "Research assistant"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Computer Science (AI focus)",
+          "note": "Connect4Success pathway."
+        },
+        {
+          "name": "University of Miami",
+          "program": "B.S. Computer Science / Data Science & AI",
+          "note": "See the UM articulation agreement."
+        }
+      ],
+      "career": [
+        "ML engineer",
+        "AI application developer",
+        "Computer vision engineer",
+        "Research assistant"
+      ],
       "license": null
     },
     {
@@ -202,19 +549,56 @@
       "cluster": "Technology",
       "tagline": "Keep the internet, wifi and cloud systems running.",
       "program": "NET",
-      "keywords": ["network", "networking", "cloud", "wifi", "servers", "redes"],
-      "salary": { "median": 95360, "occupation": "Network and computer systems administrators" },
-      "highSchool": ["Computer science", "Physics", "Set up a home lab or game server", "Cisco Networking Academy intro course"],
+      "keywords": [
+        "network",
+        "networking",
+        "cloud",
+        "wifi",
+        "servers",
+        "redes"
+      ],
+      "salary": {
+        "median": 95360,
+        "occupation": "Network and computer systems administrators"
+      },
+      "highSchool": [
+        "Computer science",
+        "Physics",
+        "Set up a home lab or game server",
+        "Cisco Networking Academy intro course"
+      ],
       "mdc": {
         "credential": "MDC Networking program (S9500)",
         "notes": "Hands-on labs with routers, switches and cloud platforms.",
-        "courses": ["ENC 1101 English Composition I", "MAC 1105 College Algebra", "Networking fundamentals", "Routing and switching", "Linux administration", "Cloud computing (AWS / Azure)", "Network security", "Wireless networks"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "MAC 1105 College Algebra",
+          "Networking fundamentals",
+          "Routing and switching",
+          "Linux administration",
+          "Cloud computing (AWS / Azure)",
+          "Network security",
+          "Wireless networks"
+        ]
       },
-      "certifications": ["CompTIA Network+", "Cisco CCNA", "AWS Certified Solutions Architect - Associate"],
-      "transfer": [
-        { "name": "FIU", "program": "B.S. Information Technology", "note": "Connect4Success pathway." }
+      "certifications": [
+        "CompTIA Network+",
+        "Cisco CCNA",
+        "AWS Certified Solutions Architect - Associate"
       ],
-      "career": ["Network technician", "Network administrator", "Cloud engineer", "Network architect"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Information Technology",
+          "note": "Connect4Success pathway."
+        }
+      ],
+      "career": [
+        "Network technician",
+        "Network administrator",
+        "Cloud engineer",
+        "Network architect"
+      ],
       "license": null
     },
     {
@@ -224,20 +608,63 @@
       "cluster": "Engineering",
       "tagline": "Design circuits, chips, robots and electronics.",
       "program": "ECE",
-      "keywords": ["electrical", "electronics", "circuits", "hardware", "chips", "robots", "arduino", "ingeniero electrico", "circuitos"],
-      "salary": { "median": 109010, "occupation": "Electrical and electronics engineers (approx.)" },
-      "highSchool": ["Calculus", "Physics", "Arduino or robotics projects", "Learn to solder"],
+      "keywords": [
+        "electrical",
+        "electronics",
+        "circuits",
+        "hardware",
+        "chips",
+        "robots",
+        "arduino",
+        "ingeniero electrico",
+        "circuitos"
+      ],
+      "salary": {
+        "median": 109010,
+        "occupation": "Electrical and electronics engineers (approx.)"
+      },
+      "highSchool": [
+        "Calculus",
+        "Physics",
+        "Arduino or robotics projects",
+        "Learn to solder"
+      ],
       "mdc": {
         "credential": "MDC Electrical & Computer Engineering program (S9100)",
         "notes": "Math-heavy, with lab work on circuits and embedded systems.",
-        "courses": ["ENC 1101 English Composition I", "MAC 2311 Calculus I", "MAC 2312 Calculus II", "PHY 2048 Physics with Calculus I", "PHY 2049 Physics with Calculus II", "Circuit analysis", "Digital logic", "Embedded systems / microcontrollers"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "MAC 2311 Calculus I",
+          "MAC 2312 Calculus II",
+          "PHY 2048 Physics with Calculus I",
+          "PHY 2049 Physics with Calculus II",
+          "Circuit analysis",
+          "Digital logic",
+          "Embedded systems / microcontrollers"
+        ]
       },
-      "certifications": ["IPC J-STD-001 soldering certification", "Fundamentals of Engineering (FE) exam"],
-      "transfer": [
-        { "name": "FIU", "program": "B.S. Electrical or Computer Engineering", "note": "Connect4Success pathway." },
-        { "name": "University of Miami", "program": "B.S. Electrical & Computer Engineering", "note": "See the UM articulation agreement." }
+      "certifications": [
+        "IPC J-STD-001 soldering certification",
+        "Fundamentals of Engineering (FE) exam"
       ],
-      "career": ["Electronics technician", "Hardware engineer", "Embedded systems engineer", "Robotics engineer"],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Electrical or Computer Engineering",
+          "note": "Connect4Success pathway."
+        },
+        {
+          "name": "University of Miami",
+          "program": "B.S. Electrical & Computer Engineering",
+          "note": "See the UM articulation agreement."
+        }
+      ],
+      "career": [
+        "Electronics technician",
+        "Hardware engineer",
+        "Embedded systems engineer",
+        "Robotics engineer"
+      ],
       "license": "Optional Professional Engineer (PE) license via FE exam, experience and the PE exam."
     },
     {
@@ -247,21 +674,306 @@
       "cluster": "Health Sciences",
       "tagline": "Care for patients in hospitals, clinics and schools.",
       "program": null,
-      "keywords": ["nurse", "nursing", "hospital", "healthcare", "enfermera", "enfermero", "enfermeria"],
-      "salary": { "median": 86070, "occupation": "Registered nurses" },
-      "highSchool": ["Biology and Chemistry", "Anatomy or health science electives", "Volunteer at a hospital or clinic", "CPR / BLS certification"],
+      "keywords": [
+        "nurse",
+        "nursing",
+        "hospital",
+        "healthcare",
+        "enfermera",
+        "enfermero",
+        "enfermeria"
+      ],
+      "salary": {
+        "median": 86070,
+        "occupation": "Registered nurses"
+      },
+      "highSchool": [
+        "Biology and Chemistry",
+        "Anatomy or health science electives",
+        "Volunteer at a hospital or clinic",
+        "CPR / BLS certification"
+      ],
       "mdc": {
         "credential": "Nursing at MDC's Benjamin Leon School of Nursing (Medical Campus)",
         "notes": "Nursing is a limited-access program: finish the prerequisites with strong grades before applying.",
-        "courses": ["ENC 1101 English Composition I", "BSC 2085 Anatomy & Physiology I", "BSC 2086 Anatomy & Physiology II", "MCB 2010 Microbiology", "CHM 1033 Chemistry for Health Sciences", "DEP 2004 Human Growth & Development", "Nursing clinical sequence"]
+        "courses": [
+          "ENC 1101 English Composition I",
+          "BSC 2085 Anatomy & Physiology I",
+          "BSC 2086 Anatomy & Physiology II",
+          "MCB 2010 Microbiology",
+          "CHM 1033 Chemistry for Health Sciences",
+          "DEP 2004 Human Growth & Development",
+          "Nursing clinical sequence"
+        ]
       },
-      "certifications": ["Basic Life Support (BLS)", "NCLEX-RN licensing exam"],
-      "transfer": [
-        { "name": "MDC", "program": "RN to BSN (bachelor's) at MDC", "note": "Many hospitals prefer or require a BSN." },
-        { "name": "FIU", "program": "B.S. Nursing (Nicole Wertheim College of Nursing)", "note": "Alternative BSN path." }
+      "certifications": [
+        "Basic Life Support (BLS)",
+        "NCLEX-RN licensing exam"
       ],
-      "career": ["Registered nurse", "ER / ICU nurse", "Nurse practitioner (with a graduate degree)"],
+      "transfer": [
+        {
+          "name": "MDC",
+          "program": "RN to BSN (bachelor's) at MDC",
+          "note": "Many hospitals prefer or require a BSN."
+        },
+        {
+          "name": "FIU",
+          "program": "B.S. Nursing (Nicole Wertheim College of Nursing)",
+          "note": "Alternative BSN path."
+        }
+      ],
+      "career": [
+        "Registered nurse",
+        "ER / ICU nurse",
+        "Nurse practitioner (with a graduate degree)"
+      ],
       "license": "Florida RN license: graduate from an approved program and pass the NCLEX-RN."
+    },
+    {
+      "id": "iot-engineer",
+      "title": "AI & IoT Engineer",
+      "icon": "chip",
+      "cluster": "Engineering",
+      "tagline": "Put AI inside smart homes, cars, medical devices and cities.",
+      "program": "AIBS",
+      "keywords": [
+        "iot",
+        "internet of things",
+        "smart devices",
+        "embedded",
+        "sensors",
+        "arduino",
+        "raspberry pi",
+        "smart home",
+        "drones",
+        "internet de las cosas"
+      ],
+      "salary": {
+        "median": 161740,
+        "occupation": "Computer hardware engineers (closest BLS category), May 2025",
+        "source": "https://www.bls.gov/ooh/architecture-and-engineering/computer-hardware-engineers.htm"
+      },
+      "highSchool": [
+        "Pre-Calculus and Trigonometry",
+        "Physics",
+        "AP Computer Science Principles",
+        "Build an Arduino or Raspberry Pi project"
+      ],
+      "mdc": {
+        "credential": "MDC Applied Artificial Intelligence A.S. (25080) or B.S. (S9520), official program sheets",
+        "notes": "Take MAC 1114 or MAC 1147 early: FIU's AI & IoT degree requires it within three terms.",
+        "courses": [
+          "CAI 1001C Artificial Intelligence (AI) Thinking",
+          "COP 1047C Introduction to Python Programming",
+          "CAI 2100C Machine Learning Foundations",
+          "CAI 2840C Introduction to Computer Vision",
+          "CTS 1120 Cybersecurity Fundamentals",
+          "MAC 1147 Pre-Calculus Algebra and Trigonometry",
+          "PHY 2053 / PHY 2054 Physics without Calculus 1 and 2",
+          "ETS 1603C Introduction to Robotics"
+        ]
+      },
+      "certifications": [
+        "Cisco IoT fundamentals (CCST)",
+        "CompTIA Security+",
+        "AWS Certified AI Practitioner"
+      ],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Applied AI & Internet of Things (IOTAI:BS, 120 credits)",
+          "note": "Same-number MDC courses transfer directly: MAC 1105, MAC 1114/1147, PHY 2053, PHY 2054 and CTS 1120 are on FIU's sheet."
+        }
+      ],
+      "career": [
+        "IoT developer",
+        "Embedded AI engineer",
+        "Smart-city systems engineer",
+        "IoT security analyst"
+      ],
+      "license": null,
+      "realData": true
+    },
+    {
+      "id": "biomedical-engineer",
+      "title": "Biomedical Engineer",
+      "icon": "heart",
+      "cluster": "Health Sciences",
+      "tagline": "Design medical devices, implants and imaging tools that help patients.",
+      "program": null,
+      "keywords": [
+        "biomedical",
+        "medical devices",
+        "prosthetics",
+        "bioengineering",
+        "implants",
+        "ingeniero biomedico"
+      ],
+      "salary": {
+        "median": 109370,
+        "occupation": "Bioengineers and biomedical engineers, May 2025",
+        "source": "https://www.bls.gov/ooh/architecture-and-engineering/biomedical-engineers.htm"
+      },
+      "highSchool": [
+        "Biology and Chemistry (AP if you can)",
+        "Calculus",
+        "Physics",
+        "Science fair or robotics team"
+      ],
+      "mdc": {
+        "credential": "Associate in Arts (AA) on an engineering transfer track",
+        "notes": "Engineering bachelor's first; FIU's M.S. in Biomedical Engineering accepts engineering, science, CS or math graduates.",
+        "courses": [
+          "MAC 2311 / MAC 2312 Calculus 1 and 2",
+          "PHY 2048 / PHY 2049 Physics with Calculus",
+          "CHM 1045 General Chemistry",
+          "BSC 2010 Principles of Biology",
+          "COP 1047C Introduction to Python Programming"
+        ]
+      },
+      "certifications": [
+        "Fundamentals of Engineering (FE) exam",
+        "FDA regulatory affairs coursework (RAC) later in career"
+      ],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Biomedical Engineering, then M.S. Biomedical Engineering (BIOMEG:MS, 30 credits)",
+          "note": "Accelerated BS-to-MS pathway: 75 FIU credits and a 3.25 GPA."
+        }
+      ],
+      "career": [
+        "Medical device engineer",
+        "Quality and regulatory engineer (FDA)",
+        "Biomedical R&D engineer",
+        "Clinical engineer"
+      ],
+      "license": null,
+      "realData": true
+    },
+    {
+      "id": "civil-engineer",
+      "title": "Civil Engineer",
+      "icon": "building",
+      "cluster": "Engineering",
+      "tagline": "Design the roads, bridges, water systems and buildings a city runs on.",
+      "program": null,
+      "keywords": [
+        "civil engineering",
+        "bridges",
+        "roads",
+        "construction",
+        "infrastructure",
+        "water",
+        "ingeniero civil"
+      ],
+      "salary": {
+        "median": 100840,
+        "occupation": "Civil engineers, May 2025",
+        "source": "https://www.bls.gov/ooh/architecture-and-engineering/civil-engineers.htm"
+      },
+      "highSchool": [
+        "Calculus",
+        "Physics",
+        "Drafting or CAD class",
+        "Bridge-building or engineering club"
+      ],
+      "mdc": {
+        "credential": "Associate in Arts (AA) on an engineering transfer track",
+        "notes": "Florida common prerequisites: Calculus 1-3, differential equations, Physics with Calculus 1-2, General Chemistry.",
+        "courses": [
+          "MAC 2311 / MAC 2312 Calculus 1 and 2",
+          "PHY 2048 / PHY 2049 Physics with Calculus",
+          "CHM 1045 General Chemistry",
+          "ENC 1101 English Composition 1"
+        ]
+      },
+      "certifications": [
+        "Fundamentals of Engineering (FE) exam",
+        "Professional Engineer (PE) license after 4 years of experience"
+      ],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Civil Engineering; research path: Ph.D. Civil Engineering (CIVLEG:PHD, 75 credits)",
+          "note": "Ph.D. areas: structural/geotechnical/construction, environmental and water, transportation."
+        }
+      ],
+      "career": [
+        "Structural engineer",
+        "Transportation engineer",
+        "Water resources engineer",
+        "Construction project engineer"
+      ],
+      "license": "Florida PE license: accredited degree, FE exam, 4 years of experience, then the PE exam.",
+      "realData": true
+    },
+    {
+      "id": "physician",
+      "title": "Doctor (Physician)",
+      "icon": "heart",
+      "cluster": "Health Sciences",
+      "tagline": "Diagnose and treat patients, from the clinic to the operating room.",
+      "program": null,
+      "keywords": [
+        "doctor",
+        "physician",
+        "medicine",
+        "medical school",
+        "pre-med",
+        "premed",
+        "surgeon",
+        "medico",
+        "doctora"
+      ],
+      "salary": {
+        "median": 275930,
+        "occupation": "Physicians and surgeons, May 2025",
+        "source": "https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm"
+      },
+      "highSchool": [
+        "AP Biology and AP Chemistry",
+        "Calculus or Statistics",
+        "Hospital or clinic volunteering",
+        "Spanish or Haitian Creole helps in Miami"
+      ],
+      "mdc": {
+        "credential": "Associate in Arts (AA) with pre-med science courses",
+        "notes": "About 11+ years after high school: bachelor's (4), medical school (4), residency (3-7).",
+        "courses": [
+          "BSC 2010 / BSC 2011 Principles of Biology",
+          "CHM 1045 / CHM 1046 General Chemistry",
+          "CHM 2210 / CHM 2211 Organic Chemistry",
+          "PHY 2053 / PHY 2054 Physics",
+          "STA 2023 Statistical Methods",
+          "PSY 2012 Introduction to Psychology (on the MCAT)"
+        ]
+      },
+      "certifications": [
+        "MCAT",
+        "USMLE Steps 1-3 during and after medical school",
+        "Board certification after residency"
+      ],
+      "transfer": [
+        {
+          "name": "FIU",
+          "program": "B.S. Biology or Biomedical Engineering, then the Herbert Wertheim College of Medicine (M.D.)",
+          "note": "Keep a strong science GPA."
+        },
+        {
+          "name": "University of Miami",
+          "program": "Bachelor's, then the Miller School of Medicine (M.D.)",
+          "note": "Clinical years include clerkships such as the Public Health Clerkship and the Pediatric Mobile Clinic."
+        }
+      ],
+      "career": [
+        "Resident physician",
+        "Family or pediatric doctor",
+        "Surgeon",
+        "Public health physician"
+      ],
+      "license": "Florida medical license: M.D./D.O., USMLE or COMLEX exams, and at least one year of residency.",
+      "realData": true
     }
   ]
 }

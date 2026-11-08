@@ -841,7 +841,8 @@ def public_config():
         "auth0": ({"domain": auth.AUTH0_DOMAIN, "clientId": client_id, "audience": auth.AUTH0_AUDIENCE}
                   if auth.configured() and client_id else None),
         "demoAuth": not auth.configured() and auth.DEMO_MODE,
-        "programs": [{"code": p["code"], "name": p["name"]} for p in planner.program_summary()] if planner.available() else [],
+        "programs": [{"code": p["code"], "name": p["label"], "synthetic": p["synthetic"]} for p in planner.program_summary()]
+                    if planner.available() else [],
     })
 
 

@@ -20,6 +20,9 @@ from itertools import product
 from pathlib import Path
 
 DATA_DIR = Path(os.getenv("CATALOG_DIR", str(Path(__file__).parent / "data" / "synthetic")))
+# Real MDC programs (official program sheets) load next to the synthetic ones; their codes never collide (no Z prefix).
+REAL_DIR = Path(os.getenv("REAL_CATALOG_DIR", str(Path(__file__).parent / "data" / "real")))
+CODE_RE = re.compile(r"([A-Z]{3})\s?-?(\d{4}[CL]?|\d{3})")
 SEASONS = ("Fall", "Spring", "Summer")
 
 
@@ -33,6 +36,10 @@ class PlannerError(ValueError):
 def catalog() -> dict:
     load = lambda name: json.loads((DATA_DIR / name).read_text(encoding="utf-8"))
     programs, courses, sections = load("programs.json"), load("courses.json"), load("sections.json")
+    if (REAL_DIR / "programs.json").is_file():
+        real_load = lambda name: json.loads((REAL_DIR / name).read_text(encoding="utf-8"))
+        programs = {**programs, "programs": programs["programs"] + real_load("programs.json")["programs"]}
+        courses = {**courses, "courses": courses["courses"] + real_load("courses.json")["courses"]}
     by_code = {c["code"]: c for c in courses["courses"]}
     alias = {}
     for c in courses["courses"]:
@@ -59,7 +66,7 @@ def available() -> bool:
 
 def canon(code: str) -> str:
     code = re.sub(r"\s+", " ", str(code).strip().upper())
-    m = re.fullmatch(r"([A-Z]{3})\s?(\d{4}L?)", code)
+    m = re.fullmatch(r"([A-Z]{3})\s?-?(\d{4}[CL]?|\d{3})", code)
     if m:
         code = f"{m.group(1)} {m.group(2)}"
     return catalog()["alias"].get(code, code)
@@ -481,8 +488,17 @@ def schedule(courses, term: str, preferences=None) -> dict:
     }
 
 
+def program_label(p: dict) -> str:
+    """Dropdown label: real MDC programs say which official sheet they come from."""
+    if p.get("synthetic", True):
+        return p["name"]
+    return f"{p['name']} {p.get('credential', '')} · official MDC sheet {p.get('sheet_code', '')}".replace("  ", " ")
+
+
 def program_summary() -> list[dict]:
     return [{"code": p["app_program_code"], "id": p["id"], "name": p["name"], "degree": p["degree"],
+             "label": program_label(p), "credential": p.get("credential", "B.S."), "synthetic": p.get("synthetic", True),
+             "source": p.get("source"),
              "totalCredits": p["total_credits"], "groups": [{"group": g["group"], "rule": g["rule"], "credits": g["credits"],
                                                               "courses": len(g["courses"])} for g in p["requirement_groups"]]}
             for p in catalog()["program_list"]]
@@ -545,6 +561,43 @@ def transfer_rule(course: dict) -> tuple[list[str], str]:
     return ["full", "elective", "elective"], REASONS["lower"]
 
 
+@lru_cache(maxsize=1)
+def universities() -> list[dict]:
+    f = REAL_DIR / "universities.json"
+    return json.loads(f.read_text(encoding="utf-8"))["universities"] if f.is_file() else []
+
+
+def mdc_rates() -> dict:
+    f = REAL_DIR / "universities.json"
+    return json.loads(f.read_text(encoding="utf-8")).get("mdcRates", {}) if f.is_file() else {}
+
+
+def _school_courses(u: dict) -> set[str]:
+    return {canon(o) for p in u["programs"] for g in p.get("requirements", []) for opts in g["courses"] for o in opts}
+
+
+def university_rule(course: dict, u: dict, fallback: list[str]) -> tuple[str, str]:
+    """How one MDC course lands at a real university: full / elective / none, with the reason."""
+    code, cat = course["code"], course.get("category")
+    if course.get("synthetic", True):          # Z sample courses: reuse the rule for this type of school
+        r = fallback[u["typeIndex"]]
+        return r, "Sample course: estimated with the rule for this type of school"
+    if u["type"] == "florida_public":
+        if code in _school_courses(u):
+            return "full", f"Same course number on {u['short']}'s program sheet (Florida common course numbering)"
+        if cat == "gen_ed":
+            return "full", "General education transfers between Florida public schools"
+        return "elective", f"Same number transfers to {u['short']}, but this major doesn't require it"
+    eq = (u.get("equivalencies") or {}).get(code)
+    if eq:
+        return "full", f"Estimated equivalent: {eq} at {u['short']} (UM decides course by course)"
+    if cat == "gen_ed":
+        return "full", "General education usually transfers to private universities"
+    if course.get("level") == "upper":
+        return "none", f"Upper-level college courses rarely transfer to {u['short']}"
+    return "elective", f"Likely accepted as an elective; ask {u['short']} for a credit evaluation"
+
+
 GROUP_IDS = {"General Education": "gen", "Common Technology Core": "common", "Program Foundations": "found",
              "Program Core": "core", "Capstone and Internship": "cap", "Electives": "elect"}
 
@@ -568,7 +621,7 @@ def hub(program_code: str, completed=None, in_progress=None, grades=None, terms=
     group_of: dict[str, str] = {}
     groups = []
     for g in p["requirement_groups"]:
-        gid = GROUP_IDS.get(g["group"], re.sub(r"[^a-z]", "", g["group"].lower())[:8])
+        gid = GROUP_IDS.get(g["group"], re.sub(r"[^a-z]", "", g["group"].lower()))
         groups.append({"id": gid, "label": g["group"], "need": g["credits"]})
         for c in g["courses"]:
             group_of.setdefault(canon(c), gid)
@@ -587,12 +640,16 @@ def hub(program_code: str, completed=None, in_progress=None, grades=None, terms=
     the_plan = plan(p["app_program_code"], sorted(done_set | now_set), f"{nxt_season} {nxt_year}", load, 0, False)
 
     courses = []
+    unis = universities()
 
     def add(code, st, term):
         info = cs[code]
         t, why = transfer_rule(info)
+        # t[3:] = one result per real university (FIU, UM, UCF, USF); whyAt holds the matching reasons
+        per = [university_rule(info, u, t) for u in unis]
         courses.append({"code": code, "title": info["title"], "cr": info["credits"], "g": group_of.get(code, "elect"),
-                        "st": st, "term": term, "grade": grades.get(code) if st == "done" else None, "t": t, "why": why})
+                        "st": st, "term": term, "grade": grades.get(code) if st == "done" else None,
+                        "t": t + [r for r, _ in per], "why": why, "whyAt": [w for _, w in per]})
 
     for code in sorted(done_set, key=lambda c: (terms.get(c, "zz"), c)):
         add(code, "done", terms.get(code, "Completed"))
@@ -603,15 +660,23 @@ def hub(program_code: str, completed=None, in_progress=None, grades=None, terms=
             add(c["code"], "next", term["term"])
 
     return {
-        "student": {"name": (name or "You")[:60], "program": p["name"], "credential": "B.S.",
+        "student": {"name": (name or "You")[:60], "program": p["name"], "credential": p.get("credential", "B.S."),
                     "programCode": p["app_program_code"], "required": p["total_credits"],
                     "currentTerm": current_term, "startTerm": None},
         "groups": groups,
         "courses": courses,
-        "dests": [{**d, "degree": f"B.S. {p['name']}", "total": p["total_credits"]} for d in DESTS],
+        "dests": [{**d, "degree": f"B.S. {p['name']}", "total": p["total_credits"]} for d in DESTS] + [
+            {"id": len(DESTS) + i, "ti": len(DESTS) + i, "name": u["name"], "short": u["short"], "real": True,
+             "degree": f"{u['programs'][0]['degree']} {u['programs'][0]['name']}", "total": u["programs"][0].get("credits") or 120,
+             "rate": round(u["rate"]), "note": f"<b>{u['short']}:</b> {u['tuitionNote']} " + " ".join(u["transferNotes"]) +
+             f' <a href="{u["tuitionSource"]}" target="_blank" rel="noopener" style="color:inherit">Tuition source</a>',
+             "programs": [{"name": f"{x['degree']} {x['name']}", "official": x.get("official", False), "source": x.get("source")}
+                          for x in u["programs"]]}
+            for i, u in enumerate(unis)],
         "reasons": {"full": "Matches a required course", "elective": "Accepted, but no matching course in the major",
                     "none": "No equivalent course; not accepted"},
         "graduationTerm": the_plan["graduationTerm"],
         "unknownCourses": unknown + unknown2,
-        "synthetic": True,
+        "official": not p.get("synthetic", True), "source": p.get("source"),
+        "synthetic": p.get("synthetic", True),
     }

@@ -1,0 +1,1437 @@
+{
+ "source": "University of Miami Academic Bulletin, Medicine (MDR) course list (parsed from the PDF)",
+ "courses": [
+  {
+   "code": "MDR 1003",
+   "title": "Public Health Clerkship",
+   "credits": "2",
+   "description": "This is a 2-week required rotation for students in the M.D./MPH track. This rotation will expose them to the professional responsibilities and workflow of a physician trained and practicing public health. Each block the student will be rotating through various clinics within the health department. They will also have weekly interaction with the Department of Health preventive medicine residents.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1009",
+   "title": "Medical Education Elective",
+   "credits": "2",
+   "description": "This elective offers students who are interested in medical education the opportunity to become familiar with what is required to build and maintain a medical curriculum as well as hone their educational skills in the classroom and clinical setting. This elective will allow senior students the opportunity to gain further insight into the overall goals of medical education and receive a well-rounded immersion in the areas of teaching and curriculum development.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1013",
+   "title": "Med-Peds",
+   "credits": "2",
+   "description": "Combined Internal Medicine and Pediatrics is a unique specialty that trains physicians in the care of patients of all ages. The elective aims to give students interested in our specialty exposure to Med/Peds in an urban primary care practice setting. Students will see routine care of newborns, infants, children, adolescents and adults, as well as care of patients with complex pediatric diseases as they transition into adulthood. Students interested in Med/Peds as a career are preferred between June and January and other students will be scheduled thereafter.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1018",
+   "title": "Pediatric Mobile Clinic",
+   "credits": "2",
+   "description": "This is an outpatient rotation on the University of Miami Pediatric Mobile Clinic (PMC). The PMC is a clinic on wheels that delivers comprehensive pediatric primary care primarily to uninsured children from birth to 21 years of age throughout Miami Dade County free of charge. The PMC provides care for some of the neediest children in communities including Little Havana, Hialeah, Homestead, Florida City, Little Haiti/North Miami, Doral, Kendall. Patients encountered reflect the diverse population of Miami-Dade County. Many are new immigrants and non-English speaking patients accessing medical c",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1019",
+   "title": "Senior Boot Camp: Transition to Residency",
+   "credits": "4",
+   "description": "The Senior Boot Camp offers fourth-year medical students an opportunity to review and hone core concepts, diagnostic/therapeutic algorithms, procedural skills, and communication tools in preparation for the internship year.",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 1024",
+   "title": "ACE: Forensic Psychiatry",
+   "credits": "4",
+   "description": "This is a 4-week advanced clinical elective intended to expose the senior medical student to a spectrum of experiences in forensic psychiatry. The student will spend a portion of each week in various hospital and community settings that involve the clinical practice of aspects of forensic psychiatry.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1031",
+   "title": "Minimally Invasive Gynecologic Surgery",
+   "credits": "2",
+   "description": "This rotation is an intensive experience with the faculty dedicated to Minimally Invasive Gynecologic Surgery (MIGS) in the Department of Obstetrics and Gynecology. It is geared for students interested in Obstetrics, Gynecology and/or General Surgery. The emphasis of the rotation is surgical and will provide the senior medical student with exposure to laparoscopic and robotic procedures in benign gynecology. The student will observe, and depending on their competence and interest, participate in robotic and laparoscopic procedures. This will be complemented by time in the outpatient clinics. S",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1032",
+   "title": "Pediatric Palliative Care",
+   "credits": "2",
+   "description": "This is a 2 week elective intended to expose the senior medical student to a spectrum of life-threatening and complex medical illnesses in pediatrics. The student will work directly with a faculty physician and the Palliative Care Nurse Coordinator and interface with a broad spectrum of pediatric sub- specialties.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1035",
+   "title": "ACE: Maternal/Child Health: Research, Advocacy, and Leadership",
+   "credits": "4",
+   "description": "This is a 4-week elective to expose the medical student to a variety of clinical and didactic experiences in maternal and child health, with a focus on developmental and behavioral pediatrics. The student will join pediatric residents and other interdisciplinary trainees in the Leadership Education in Neurodevelopmental Disabilities (LEND) curriculum at the Mailman Center for Child Development, rotate through different clinic/community settings in child and maternal health, and participate in didactic sessions speci\ufb01cally designed to enhance skills in research, advocacy, and leadership in mate",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1036",
+   "title": "Medicine as a Profession 301",
+   "credits": "1",
+   "description": "Medicine as a Profession 301 is part of a course series which expands on the knowledge, skills, and attitudes that are essential to the practice of clinical medicine and to becoming transformative leaders in education, research, and policy/health systems. The MAP course touches on the fundamental aspects of being a physician\u2014the knowledge, skills, and attitudes that are the basis for practicing medicine. With time, you will learn what it means to be a doctor, to live a doctor\u2019s life, to do a doctor\u2019s work. Our goal is to help you become an altruistic, dutiful, culturally humble, and ethical ph",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 1037",
+   "title": "Medicine as a Profession 302",
+   "credits": "1",
+   "description": "Medicine as a Profession 302 is part of a course series which expands on the knowledge, skills, and attitudes that are essential to the practice of clinical medicine and to becoming transformative leaders in education, research, and policy/health systems. The MAP course touches on the fundamental aspects of being a physician\u2014the knowledge, skills, and attitudes that are the basis for practicing medicine. With time, you will learn what it means to be a doctor, to live a doctor\u2019s life, to do a doctor\u2019s work. Our goal is to help you become an altruistic, dutiful, culturally humble, and ethical ph",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 1038",
+   "title": "Scholarly Concentration II",
+   "credits": "3",
+   "description": "The Final Capstone Project course in the Scholarly Concentration component of NextGenMD provides students time to complete their mentored scholarly project in the area of interest within the Pathway of Emphasis in which they are enrolled. Students will complete and \ufb01nalize the project proposed in Phase 1, MDR 535 (Introduction to Pathway of Emphasis) and submit a log of activities to their mentor and pathway director by the end of the course period along with all \ufb01nal results or products. During the dedicated afternoon for Scholarly Concentration work in Phase 3, they will continue the work st",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 520",
+   "title": "Symptoms, Signs, and Disease 1",
+   "credits": "5",
+   "description": "The Symptoms, Signs, and Disease course series (SSD 1-5) provides a symptom-oriented and case-based approach to the pathophysiology of diseases frequently seen in patients by the generalist physician. This is accomplished through active learning that develops clinical knowledge organized into discrete units, integrating normal physiology and pathophysiology together with clinical correlates in the arenas of anatomy, radiology, pharmacology, diagnostic testing, pathology and exposure to patient panels. Students learn clinical reasoning skills incorporating common symptoms, clinical signs, diagn",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 521",
+   "title": "Symptoms, Signs, and Disease 2",
+   "credits": "7",
+   "description": "The Symptoms, Signs, and Disease course series (SSD 1-5) provides a symptom-oriented and case-based approach to the pathophysiology of diseases frequently seen in patients by the generalist physician. This is accomplished through active learning that develops clinical knowledge organized into discrete units, integrating normal physiology and pathophysiology together with clinical correlates in the arenas of anatomy, radiology, pharmacology, diagnostic testing, pathology and exposure to patient panels. Students learn clinical reasoning skills incorporating common symptoms, clinical signs, diagn",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 522",
+   "title": "Symptoms, Signs, and Disease 3",
+   "credits": "5",
+   "description": "The Symptoms, Signs, and Disease course series (SSD 1-5) provides a symptom-oriented and case-based approach to the pathophysiology of diseases frequently seen in patients by the generalist physician. This is accomplished through active learning that develops clinical knowledge organized into discrete units, integrating normal physiology and pathophysiology together with clinical correlates in the arenas of anatomy, radiology, pharmacology, diagnostic testing, pathology and exposure to patient panels. Students learn clinical reasoning skills incorporating common symptoms, clinical signs, diagn",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 523",
+   "title": "Symptoms, Signs, and Disease 4",
+   "credits": "5",
+   "description": "The Symptoms, Signs, and Disease course series (SSD 1-5) provides a symptom-oriented and case-based approach to the pathophysiology of diseases frequently seen in patients by the generalist physician. This is accomplished through active learning that develops clinical knowledge organized into discrete units, integrating normal physiology and pathophysiology together with clinical correlates in the arenas of anatomy, radiology, pharmacology, diagnostic testing, pathology and exposure to patient panels. Students learn clinical reasoning skills incorporating common symptoms, clinical signs, diagn",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 524",
+   "title": "Symptoms, Signs, and Disease 5",
+   "credits": "5",
+   "description": "The Symptoms, Signs, and Disease course series (SSD 1-5) provides a symptom-oriented and case-based approach to the pathophysiology of diseases frequently seen in patients by the generalist physician. This is accomplished through active learning that develops clinical knowledge organized into discrete units, integrating normal physiology and pathophysiology together with clinical correlates in the arenas of anatomy, radiology, pharmacology, diagnostic testing, pathology and exposure to patient panels. Students learn clinical reasoning skills incorporating common symptoms, clinical signs, diagn",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 526",
+   "title": "Biomedical Principles of Health",
+   "credits": "10",
+   "description": "Biomedical Principles of Health is an active learning-centered course designed to provide an interdisciplinary foundation for the basic biomedical science disciplines relevant to clinical medicine. Students participate in self-regulated learning as preparation for in-class small group discussions. This course includes foundational genetics, cell physiology, pharmacology, pathology, immunology and microbiology.",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 531",
+   "title": "Medicine as a Profession 101",
+   "credits": "4",
+   "description": "Medicine as a Profession is a series of courses throughout medical school that focus on the broad themes introduced during the Introduction to the Medical Profession (IMP) course. The MAP courses encompass a wide variety of knowledge, skills, and attitudes that are essential to the practice of clinical medicine and to becoming transformative leaders in education, research, and policy/health systems. MAP content into divided into 7 key themes. Most MAP learning will occur in a Learning Community of 8-9 students that meets the same afternoon, once per week, with a clinical faculty member (Longit",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 532",
+   "title": "Medicine as a Profession 102",
+   "credits": "4",
+   "description": "MAP 102 occurs in the afternoons during spring semester of the \ufb01rst year of medicine school. As in MAP 101, most learning will occur in your Learning Community with peers and your LCE (Longitudinal Clinical Educator). You will continue to complete independent work each week to review with your peers and your LCE. Some key learning objectives for MAP 102 include the ability to tailor the patient interview and physical exam to the patient\u2019s presenting concern; to develop a plan to improve health/prevent disease for one of Miami\u2019s communities; and to help a person navigate the health care system ",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 533",
+   "title": "Medicine as a Profession 103",
+   "credits": "1",
+   "description": "MAP 103 occurs in the afternoons during the two months of fall semester before beginning clinical clerkships in September/October. You will continue training in the basic knowledge and skills necessary to be an emergency medical technician (EMT), including ride-alongs with \ufb01re-rescue personnel in the community. You will also have the opportunity to review and to teach key clinical skills. MAP 103 provides opportunities to deepen your understanding of the 7 key MAP themes.",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 535",
+   "title": "Introduction to Scholarly Concentration",
+   "credits": "2",
+   "description": "A key element in preparing for a career in medicine is developing the skills needed to develop a research question and evaluate the evidence generated from systematic scholarly inquiry into that topic. The Pathways of Emphasis within the Scholarly Concentration component of the NextGenMD curriculum provide students a structured framework for more deeply developing knowledge in an area of interest, conducting a research project under the mentorship of a faculty mentor, and presenting the results of this inquiry to the research community. The Introduction to Pathways of Emphasis course provides ",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 536",
+   "title": "Scholarly Concentration I",
+   "credits": "1",
+   "description": "A key element in preparing for a career in medicine is developing the skills needed to develop a research question and evaluate the evidence generated from systematic scholarly inquiry into that topic. The Pathways of Emphasis within the Scholarly Concentration component of the NextGenMD curriculum provide students a structured framework for more deeply developing knowledge in an area of interest, conducting a research project under the mentorship of a faculty mentor, and presenting the results of this inquiry to the research community. The Introduction to Pathways of Emphasis course provides ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 537",
+   "title": "Scholarly Concentration for Accelerated Pathway to Residency",
+   "credits": "8",
+   "description": "For all accelerated pathway students, the course, Clinical Immersion and Professionalism, has the following objectives. As a future resident at the UM/Jackson Health System, the summer course has been developed to provide in depth clinical experience in the student\u2019s chosen \ufb01eld. In addition, there will be opportunities for continued work on the student\u2019s scholarly project. Due to the variety of future specialties, each student will have a tailored clinical experience. All students will have 4-hour mandatory weekly group sessions aimed at the development of clinical skills, leadership, communi",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 550",
+   "title": "Introduction to the Medical Profession",
+   "credits": "3",
+   "description": "The IMP course is the \ufb01rst introduction to the fundamental aspects of being a physician - the knowledge, skills, and attitudes that are the basis for practicing medicine. Our goal is to help you become an altruistic, dutiful, culturally humble, and ethical physician, one who is committed to compassionate, respectful patient care and dedicated to excellence and life-long learning. During IMP, you will learn some basics of clinical skills such as communication, interviewing techniques, and physical examination, and we will introduce broad themes about community health, ethics, and systems of car",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 702",
+   "title": "Transition to Clinical Rotations",
+   "credits": "1",
+   "description": "Students will take part in mandatory activities, including didactic, experiential and independent activities to prepare them to take part in clinical rotations. This experience is required for all students prior to participating in Phase 2 Clinical Rotations.",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 708",
+   "title": "Obstetrics and Gynecology Clerkship",
+   "credits": "6",
+   "description": "The Ob/Gyn clerkship offers clinical and didactic learning opportunities in the varied settings of ob/gyn practice - the operating room, inpatient wards, the clinic, labor and delivery, and the ultrasound suite. Students are assigned to JMH, community hospital and private practice sites to varying degrees to meet learning requirements. Students learn the clinical presentations and differential diagnosis of the conditions comprising the majority women's reproductive health care - with nearly even distribution of obstetrics and gynecology topics. On site clinical learning is supplemented with ca",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 709",
+   "title": "Pediatrics Clerkship",
+   "credits": "6",
+   "description": "The Pediatrics Clerkship exposes the student to the spectrum of the pediatric population from the neonatal period to adolescence. Students will be exposed to inpatient pediatrics, ambulatory clinic, emergency department, and inpatient neonatal care. Students are expected to become competent in the examination of the child and in the diagnosis and management of common pediatric diseases. Teaching is performed at the bedside as well as weekly didactic sessions. Students are assessed on their knowledge of pediatrics, their interpersonal skills, and their professionalism.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 710",
+   "title": "Psychiatry Clerkship",
+   "credits": "6",
+   "description": "During the Psychiatry Clerkship, students experience clinical and didactic learning opportunities across the specialty of Psychiatry. Student are assigned to participate in two different clinical setting through rotations on units such as inpatient/outpatient child and adolescent psychiatry, consultation-liaison psychiatry, the adult outpatient psychiatry clinic, the forensic unit, the addiction psychiatry unit, one of the adult inpatient psychiatry units at the Jackson Behavioral Health Hospital, the inpatient units at the Veterans Administration Medical Center, or the consultation liaison se",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 716",
+   "title": "From the Emergency Department to the Operating Room Clerkship",
+   "credits": "12",
+   "description": "The From the ER to the OR Clerkship gives Phase 2 medical students the opportunity to actively expand their knowledge, develop clinical skills, and initiate collaborative relationships across the Surgery, Emergency Medicine, and Anesthesia disciplines. Every student will spend clinical time in each of the three disciplines. The Surgery rotation provides the medical student with the knowledge to recognize basic surgical disease, introduce clerkship students to the world of general surgery, and show students how surgeons play an important role in patient management across all medical disciplines",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 717",
+   "title": "Practice of Medicine Clerkship",
+   "credits": "12",
+   "description": "The Practice of Medicine Clerkship includes the disciplines of Internal Medicine, Family Medicine, Palliative Medicine, and elements of foundational sciences and longitudinal themes over the 12-week period. Over the course of the clerkship, every student will spend clinical time in each of these disciplines. Didactic sessions will be provided for each of the disciplines and will include conferences that are interdisciplinary in nature. The University of Miami Miller School of Medicine places a priority on active, collaborative, learner-centered methodologies to prioritize the knowledge, skills",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 720",
+   "title": "Medicine as a Profession 201",
+   "credits": "1",
+   "description": "Medicine as a Profession 201 (MAP 201) is the \ufb01rst in a series of 3 MAP 200 courses that coincide with the 3 academic semesters of Phase 2. The 200-level MAP courses continue what you started to learn in Phase 1: the knowledge, skills, and attitudes that are essential to practicing clinical medicine and to becoming transformative leaders in education, research, and policy/health systems. MAP 200s sessions will exclusively occur in your Learning Community on the same House afternoon as during Phase 1. You will meet with your peers and your Longitudinal Clinical Educator (LCE) for two hours once",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 721",
+   "title": "Medicine as a Profession 202",
+   "credits": "2",
+   "description": "Medicine as a Profession 202 (MAP 202) is the second in a series of 3 MAP 200 courses that coincide with the 3 academic semesters of Phase 2. The 200-level MAP courses continue what you started to learn in Phase 1: the knowledge, skills, and attitudes that are essential to practicing clinical medicine and to becoming transformative leaders in education, research, and policy/health systems. MAP 200s sessions will exclusively occur in your Learning Community on the same House afternoon as during Phase 1. You will meet with your peers and your Longitudinal Clinical Educator (LCE) for two hours on",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 722",
+   "title": "Medicine as a Profession 203",
+   "credits": "1",
+   "description": "Medicine as a Profession 201 (MAP 201) is the third in a series of 3 MAP 200 courses that coincide with the 3 academic semesters of Phase 2. The 200-level MAP courses continue what you started to learn in Phase 1: the knowledge, skills, and attitudes that are essential to practicing clinical medicine and to becoming transformative leaders in education, research, and policy/health systems. MAP 200s sessions will exclusively occur in your Learning Community on the same House afternoon as during Phase 1. You will meet with your peers and your Longitudinal Clinical Educator (LCE) for two hours onc",
+   "requisites": null,
+   "offered": "Fall"
+  },
+  {
+   "code": "MDR 757",
+   "title": "Neurology Clerkship",
+   "credits": "6",
+   "description": "The Neurology Clerkship is a comprehensive 6-credit hour course designed to provide medical students with hands-on clinical experience in Neurology, Ophthalmology, and Physical Medicine and Rehabilitation. Over the span of six weeks, students will engage in a 4-week clinical rotation in Neurology, a 1-week rotation in Ophthalmology, and a 1-week rotation in Physical Medicine and Rehabilitation. The course includes weekly integrated didactics and feedback sessions, emphasizing the development of competencies in history-taking, physical examinations, differential diagnoses, and patient managemen",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 800",
+   "title": "Ultrasound in Gynecology and Obstetrics",
+   "credits": "2",
+   "description": "This rotation is an intensive experience with the faculty of the Division of Ultrasound in the Department of Obstetrics and Gynecology. It is geared for students interested in the \ufb01elds of Obstetrics and Gynecology. The emphasis of the rotation is on the use of ultrasound as a diagnostic and therapeutic tool in women\u2019s health. The student will observe and participate in diagnostic ultrasound for gynecologic problems, routine and complicated obstetrics, and ultrasound guided procedures for gynecologic and obstetrical indications. This will be complemented by time in the operating room for gener",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 801",
+   "title": "Pediatric Adolescent Gynecology",
+   "credits": "2",
+   "description": "The pediatric and adolescent gynecology elective provides experience in the evaluation and management of young patients presenting for gynecologic care. Students will gain experience in taking a detailed gyn and psychosocial history in pediatric adolescent patients, evaluating and managing menstrual and endocrine disorders, chronic pelvic pain, and differences of sexual differentiation. Provision of contraception for adolescents and transgender care will be covered. A trauma informed approach to care will be emphasized. Students will participate in surgical treatment of endometriosis and ovari",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 802",
+   "title": "Ophthalmology @ BPEI Naples FL",
+   "credits": "2",
+   "description": "The primary goal of this elective is to provide medical students with a basic understanding of fundamental ophthalmology. Aspects of Ophthalmology that are pertinent to the practice of Internal Medicine, Neurology, Family Practice, and other primary care specialties will also be taught. Emphasis is placed on the ocular exam and \ufb01ndings related to common eye pathology such as conjunctivitis, cataracts, glaucoma, macular degeneration, retinal vascular occlusion, and diabetic retinopathy. Some exposure to more unusual cases in ophthalmology as a subspecialty will be obtained in clinics. Didactic ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 805",
+   "title": "Inpatient Dermatology",
+   "credits": "2",
+   "description": "This 2-week inpatient dermatology elective provides inpatient primary team and consult-based experience in medical dermatology at the largest inpatient dermatology service in the United States. Students will function at the level of an intern under direct supervision of resident and attending physicians, participating in the evaluation and management of hospitalized patients with complex and often severe dermatologic disease.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 806",
+   "title": "Wound Healing",
+   "credits": "2",
+   "description": "The student will have the opportunity to participate in the management of a multitude of dif\ufb01cult-to- heal wounds including common wounds such as diabetic foot ulcers, venous ulcers, pressure ulcers), as well as atypical wounds such as wounds due to connective tissue disease and pyoderma gangrenosum. Students will interview patients and identify critical pathways that will lead to the diagnosis, etiology, pathophysiology and treatment of these dif\ufb01cult-to-heal wounds. Students will learn to care for these wounds by designing treatment plans as part of a multidisciplinary team.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 807",
+   "title": "Advanced Gross Anatomy",
+   "credits": "2",
+   "description": "This elective provides the ability to study advanced regional anatomy with opportunities for students to develop teaching and presentation skills.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 808",
+   "title": "ACE: Neurosurgery",
+   "credits": "4",
+   "description": "The neurosurgery service covers virtually the entire gamut of modern neurosurgical practice. The clinical service is divided into teams that focus primarily on speci\ufb01c subspecialty areas. The JMH spine team cares for patients with tumors, trauma, degenerative disease, and other disorders. The JMH general cranial team deals with cerebrovascular disease, tumors, epilepsy, movement disorders, and other pathology. A separate team cares for patients with head injuries. The pediatric division cares for patients at both Jackson Memorial Hospital and Nicklaus Children\u2019s Hospital. A separate team cares",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 809",
+   "title": "ACE: Advanced Anesthesiology",
+   "credits": "4",
+   "description": "The Senior Elective rotation program is consistent with the guidelines of the American Society of Anesthesiology. However, a few additions and modi\ufb01cations are included in order to make this rotation a more meaningful one for a student who has been exposed to anesthesiology during the core rotation. By the end of the rotation, the student is expected to be pro\ufb01cient in airway management, pharmacology of general and local anesthetics, drug interactions, and the medical evaluation of surgical patients as it pertains to anesthesia.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 810",
+   "title": "ACE: Gynecologic Oncology",
+   "credits": "4",
+   "description": "The objective is for the student to gain experience in the diagnostic and therapeutic approaches for various gynecologic cancers through participating in direct patient care and Resident/Fellow didactic activities. Students will enhance interpersonal skills and professional conduct in the female patient encounter setting. After completing the rotation, students should feel comfortable with both pre- and postoperative management of women having complex gynecologic procedures and understand the postoperative and medical management of women with gynecologic malignancies.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 811",
+   "title": "Dermatology",
+   "credits": "2",
+   "description": "The student will attend 7 clinics per week, weekly management conferences and grand rounds, the Miami Dermatology Society meetings (which are held 6 times a year), journal club, and slide conferences. The student will participate in outpatient dermatologic care, under supervision of the Chief Resident and a member of the faculty, at Jackson Memorial Hospital and the University of Miami Hospital. Development of history taking, diagnostic skills, and ambulatory management of dermatological diseases will be emphasized in this elective program. Basic diagnostic procedures, including punch and shav",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 813",
+   "title": "AISS Dermatology and Skin Pathobiology",
+   "credits": "4",
+   "description": "The 4 week selective of Advanced Science Selective in Dermatology is to foster future generations and leaders of physician scientists in medicine, skin related \ufb01elds such as dermatology, wound healing, plastic surgery, and otolaryngology, among others. The program is to train medical students in a focused knowledge area of Skin Science. Through the integration of fundamental basic science and clinical dermatology rotations, students will become familiar with common skin disorders and potential underlined mechanisms and unmet challenges.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 814",
+   "title": "NextGenU.org Virtual Externship",
+   "credits": "2",
+   "description": "Nextgenu.org is a compilation of online modules designed to expose the student to different aspects of medical care. Students sign up through nextgenu.org and may choose any combination of courses.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 815",
+   "title": "Externship not at University of Miami",
+   "credits": "2-8",
+   "description": "A maximum of 12 weeks may be spent in elective time away from UMMSM. Externship time in excess of the allowable 12 weeks will be counted for credit but will not count towards ful\ufb01llment of the required 14 weeks of Electives, unless a student obtains prior written approval from the Senior Associate Dean for Undergraduate Medical Education. In other words, at least two weeks of Electives must be taken at your home school. Externship experiences must be described in the course catalog of the host institution. No externships with physicians in private practice will be approved.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 817",
+   "title": "Family Medicine Preceptorship",
+   "credits": "2",
+   "description": "Students taking this elective will have the opportunity to experience the true essence and diversity of the practice of Family Medicine in an ambulatory setting and develop knowledge of the specialty. We aim to immerse students in the real-life daily workings of primary care in the community, exposing learners to a myriad of acute and chronic illnesses, as well as the art of practicing medicine tailored to an individual patient's needs. Students are expected to participate with their family physician preceptor in all health care related activities. These may include but are not limited to: man",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 818",
+   "title": "ACE: Maternal Fetal Medicine",
+   "credits": "4",
+   "description": "The objective is for the student to get exposure to common antepartum complications involving the mother and/or the fetus and gain experience/ knowledge in the diagnostic and therapeutic approaches for various obstetrical scenarios through participating in direct patient care. Students will enhance interpersonal skills and professional conduct in the pregnant person/patient encounter setting. After completing the rotation, students should be able to evaluate and work up common obstetrical complications that happen antepartum, intrapartum, or postpartum and have insights into the management of ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 819",
+   "title": "Obstetric Anesthesiology Night Rotation",
+   "credits": "2",
+   "description": "This is a 2-week night shift elective intended to further increase the Phase 3 students\u2019 exposure to a spectrum of experiences in Obstetric Anesthesiology. The student is permitted to schedule this course after successfully completing the Advanced Anesthesiology ACE (which includes a week of obstetric anesthesiology day shifts). This rotation will include topics related to the \ufb01eld including the principles and the practice of obstetric anesthesia, maternal/fetal physiology, and pharmacology. Each week, the student will work with faculty, fellows, and residents delivering anesthetic care to obs",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 820",
+   "title": "Ambulatory Internal Medicine",
+   "credits": "2",
+   "description": "The ambulatory block rotation serves to enhance the medical student\u2019s knowledge and skills in caring for the ambulatory medical patient. Students will primarily be seeing patients which are new to the outpatient clinic, addressing preventive screening as well as care of chronic conditions such as diabetes, hypertension, cardiomyopathy, and chronic obstructive pulmonary disease. In addition, they will be exposed to patients with the following characteristics: - Ambulatory patients with acute complaints - Gender-speci\ufb01c medical care - Patients recently discharged from the inpatient setting or fr",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 821",
+   "title": "Arthritis",
+   "credits": "2",
+   "description": "This elective will teach the student an approach to the diagnosis, management and therapy of common rheumatic disease including rheumatoid arthritis, gout and osteoarthritis. In addition, unusual diseases such as systemic sclerosis, polymyositis, and vasculitis are seen. Students will become pro\ufb01cient in the examination of joints and interpretation of joint fluid \ufb01ndings.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 822",
+   "title": "UMH CARDIAC ICU & CONSULTS",
+   "credits": "2",
+   "description": "This elective is intended to provide the senior medical student with a variety of cardiac critical care experiences, including acute myocardial infarction, cardiogenic shock, heart failure, valvular heart disease, post cardiac surgery, and arrhythmias. The student will also be exposed to clinical research ranging from valvular heart disease to stem cell transplantation. Three-to-four cardiology conferences will be offered each week, supplementing the daily teaching rounds, which include didactic presentations. An opportunity for procedures experience, including central line placement, will als",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 824",
+   "title": "JMH Cardiology Consult",
+   "credits": "2",
+   "description": "This rotation includes consultative diagnosis, electrocardiography, and intensive medical and surgical cardiac care at either JMH or VAMC.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 825",
+   "title": "ACE: Integrative Medicine",
+   "credits": "4",
+   "description": "Students will be immersed in the emerging \ufb01eld of Integrative Medicine and Health through direct experience of philosophy and therapies, didactic sessions, inquiry, observation, and self-reflection.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 826",
+   "title": "ACE: Endocrinology, Diabetes and Metabolism",
+   "credits": "4",
+   "description": "This is a 4-week elective intended to expose the senior medical student to a spectrum of experiences in Endocrinology and Diabetes. Students must reach out to Dr. Soliman at least one week prior to the start of the rotation for their schedule and instructions on where to report.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 827",
+   "title": "Advanced Geriatrics",
+   "credits": "2",
+   "description": "This advanced geriatrics elective allows students to gain additional experience evaluating older patients in a variety of care settings under the supervision of attendings physicians and fellows in geriatric medicine. It can also be designed to give students a clinical or research experience in a specialized area of geriatrics tailored to their interests. Students will be assigned to a primary clinical venue and will have opportunities to rotate through other care settings (inpatient consultation, outpatient, long-term care, specialty clinic, spinal cord service). As most of our clinical venue",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 828",
+   "title": "Neurology Subspecialties Elective",
+   "credits": "2",
+   "description": "Medical students who have completed the Neurology Clerkship may perform a sub-specialty rotation at an array of sub-specialties neurology outpatient clinics. Outpatient rotations include Epilepsy, General Neurology, Neuromuscular, Stroke, Pediatric Neurology, Cognitive Disorders, Neuro-immunology, Movement Disorders, Neuro-Oncology, Sleep disorder, Sports/neurology medicine and Headache. Experience in EMG and Neurophysiology/EEG can be arranged based on director approval and availability.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 829",
+   "title": "JMH Coronary Care Unit",
+   "credits": "2",
+   "description": "This elective presents students with the opportunity to follow patients with life endangering cardiac problems from the moment of admission to the hospital to discharge from the Unit. Emphasis is placed on clinical aspects of diagnosis and management of these patients. Participation in the insertion of Swann-Ganz and pacemaker catheters shall be allowed for students who show exceptional interest. The rotation will, in addition, provide experience in computerized monitoring of arrhythmias, EKG and echocardiographic interpretations, and experience in interpreting cardiac catheterization data.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 830",
+   "title": "ACE: Gastroenterology",
+   "credits": "4",
+   "description": "This is a 4-week clinical elective intended to expose the medical students to a wide spectrum of experiences in gastroenterology. Generally, each two weeks, the students will rotate through a different clinical setting and see patients/procedures based on the emphasis at that location.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 831",
+   "title": "Obstetrics and Gynecology Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum, is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. The primary objective of this rotation is to emphasize mastery of clinical core obstetric and gynecologic competencies, to develop skills in inpatient management of obstetric and gynecologic patients, including laboring and surgical patients, as well as outpatient management in prenatal care and gynecologic care. Additionally, the goal o",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 833",
+   "title": "Hematology",
+   "credits": "2",
+   "description": "The Hematology consult service at JMH is responsible for the initial evaluation and ongoing management of patients admitted to JMH in which a hematology consult is requested. These requests can include consultations for malignant hematology conditions, benign hematology conditions and coagulopathies.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 834",
+   "title": "Hepatology",
+   "credits": "2",
+   "description": "This is a two-week clinical elective to expose medical students to a wide spectrum of experiences in General as well as Transplant Hepatology.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 835",
+   "title": "Applied Procedural Medicine",
+   "credits": "2",
+   "description": "This two-week medical school course offers students structured, hands-on exposure to common bedside procedures and multidisciplinary care in a hospital setting. Students will gain comfort in working in sterile environments while maximizing patient safety and comfort. This course emphasizes both procedural observation/participation and interdisciplinary collaboration, providing students with a well-rounded clinical experience in invasive bedside care and specialized support teams. Students will complete the two-day hands-on training period with residents coming onto their month- long procedural",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 836",
+   "title": "ACE: Infectious Diseases",
+   "credits": "4",
+   "description": "This elective provides a learning experience in the clinical discipline of Infectious Diseases, a discipline that stresses accurate de\ufb01nition of disease and establishment of an etiologic diagnosis through clinical assessment and microbiologic testing. Treatment can be rationally selected when the etiologic diagnosis is correctly identi\ufb01ed. Appropriate initiation and discontinuation of antimicrobials are key activities on the ID service. Performing these steps under guidance of a physician with ID specialty training provides the essence of this clinical experience. This elective provides a uniq",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 837",
+   "title": "Hospital, Health Care Services, and Access: An Interdisciplinary Inquiry",
+   "credits": "2",
+   "description": "The healthcare services landscape is shifting. Hospitals, which were the foundation of American healthcare, are having to recon\ufb01gure their organizations and services. Satellite of\ufb01ces, acute care locations, and even pharmacies are offering more services to increasingly strati\ufb01ed patient consumers. This interdisciplinary course offers graduate students across the University the opportunity to examine closely the complexity of today's health care services and the necessarily multiple perspectives from which we view, think, and work in healthcare settings.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 839",
+   "title": "CCS: Medical Intensive Care Unit",
+   "credits": "2",
+   "description": "The Critical care selective is mandatory for Phase 3 students who have successfully completed their clerkships. The purpose of this selective is to provide the student a robust exposure of critical care concepts, aligned with their career of choice. This selective focuses on developing skills to recognize early signs of a critically ill patient who would bene\ufb01t from specialized intensive care and to implement interventions to stabilize a patient during the initial critical phase of their illness. The course will build on core physiological concepts students were introduced to previously. There",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 840",
+   "title": "ACE: Dade County Street Response - Street Classroom",
+   "credits": "4",
+   "description": "The Street Classroom elective, hosted by the Dade County Street Response, will provide a unique experience for University of Miami Miller students in the care of our unhoused patient population. There will be opportunities to develop medical skills used in atypical social and environmental situations. Students will have the chance to identify barriers and coordinate outreach strategies. Additionally, students will manage problems related to mental health and substance use. They will work closely with the Dade County Street Response student staff, case managers, and other members of a multi- di",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 841",
+   "title": "CCS: Pediatric Intensive Care Unit",
+   "credits": "2",
+   "description": "The Critical care selective is mandatory for Phase 3 students who have successfully completed their clerkships. The purpose of this selective is to provide the student with a robust and educational introduction to critical care concepts; aligned with their career of choice. This selective is designed to allow students to recognize the early signs of a critically ill patient who would bene\ufb01t from specialized care and learn the necessary interventions to stabilize a patient during the initial critical phase of their illness. Advanced physiological concepts will be introduced in a critical care s",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 842",
+   "title": "ACE: Nephrology",
+   "credits": "4",
+   "description": "The clinical and teaching activities focus on the provision of consultative and direct medical care for patients with renal disease, hypertension, disorders of water, electrolyte and acid-base balance, and related metabolic and immunologic disease. Contemporary technologies used in diagnosis and treatment include renal biopsy, acute and chronic hemo- and peritoneal-dialysis, renal transplantation, plasmapharesis, evaluation of nuclear flow studies, and interventional nephrology.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 843",
+   "title": "Cancer Psychiatry",
+   "credits": "2",
+   "description": "The Psych-Oncology Service at the Sylvester Comprehensive Cancer Center provides comprehensive psychiatric evaluation and treatment for individuals with cancer across all phases of illness, including initial diagnosis, active treatment, recurrence, survivorship, advanced disease, and end- of-life care. Services are delivered in both ambulatory oncology clinics and inpatient settings, including the acute oncology units and the bone marrow transplant unit at Sylvester.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 844",
+   "title": "Physical Medicine and Rehabilitation",
+   "credits": "2",
+   "description": "This elective provides a variety of settings to experience and learn about the \ufb01eld of physical medicine and rehabilitation.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 845",
+   "title": "Pediatric Orthopedics Elective",
+   "credits": "2",
+   "description": "The student will participate in the comprehensive management of musculoskeletal conditions and traumatic injuries in the pediatric population. Clinical responsibilities will include obtaining an age-appropriate, condition-speci\ufb01c history; performing a focused pediatric orthopedic physical examination; and contributing to the management of trauma and deformities through both conservative and surgical approaches. In the operating room, the student will assist in surgical procedures relevant to pediatric orthopedics, including fracture \ufb01xation, guided growth procedures, deformity correction, and ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 846",
+   "title": "Vascular Surgery ACE",
+   "credits": "4",
+   "description": "This rotation is a busy service treating the complete spectrum of vascular diseases including aneurysmal disease, cerebrovascular disease, mesenteric vascular disease, renovascular disease, and peripheral vascular disease. Students will get intensive exposure to both open surgeries and endovascular procedures treating a variety of vascular diseases under the direct supervision of vascular surgery attendings and fellows. Students will learn and actively participate in (a) performing a comprehensive vascular history and physical exam, (b) seeing and evaluating vascular consults in the emergency ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 848",
+   "title": "Brain Injury Neurorehab",
+   "credits": "2",
+   "description": "This elective is intended for medical students who have completed the neurology core clerkship rotation. During the elective, the medical student will spend time on the Lynnn Rehabilitation Center (LRC) Neurorehab service, shadowing the Rehab attending on daily rounds. Students will also have the opportunity to become familiar with Botulinum toxin injections and participate of Brain Injury Medicine Clinic on the 2nd and 4th Thursday of the month. There is an opportunity to get involved in clinical research activities that are ongoing in the division.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 849",
+   "title": "ACE: Neurology Consultation",
+   "credits": "4",
+   "description": "Students in their third or fourth year who have successfully completed the neurology clinical clerkship have the option to undertake an elective rotation on the General Neurology inpatient service at Jackson Memorial Hospital, (JMH) University Medical Hospital (UMH), or the Veterans Administration Medical Center.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 850",
+   "title": "ACE: Advanced Neurology",
+   "credits": "4",
+   "description": "Third- or fourth-year students who have completed the Neurology Clerkship may perform an elective rotation on the General Neurology service at Jackson Memorial Hospital, University Medical Hospital, or the Veterans Administration Medical Center with an array of outpatient and inpatient experiences. Outpatient rotations include Epilepsy, General Neurology, Neuro-ICU, Neuromuscular, Stroke, Pediatric Neurology, Cognitive Disorders, Neuro-immunology, Interventional Neuroendovascular, Movement Disorders, Neuro- Oncology, Sleep and Headache. Experience in EMG and Neurophysiology/EEG can be arranged",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 851",
+   "title": "Neurology Sub-I",
+   "credits": "4",
+   "description": "The Neurology Sub-I on the inpatient neurology stroke service will provide 4th year medical students with the opportunity to serve as competent interns and effective members of an interdisciplinary team. Students will be able to learn and practice clinical skills and enhance their knowledge of clinical neurology and neuroanatomy with a focus on vascular neurology, as well as vascular and general neurology diagnostics and therapeutics. The course will consolidate and expand upon knowledge, attitudes and skills learned in the Neurology Clerkship and pertinent selectives.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 853",
+   "title": "UMH Cardiac Catheterization",
+   "credits": "2",
+   "description": "This is a 2-week elective intended to expose the senior medical student to the procedures performed in interventional cardiology. During the rotation, the student will have the opportunity to interact with multiple specialists who have expertise in various areas of interventional cardiology and attend cardiology conferences.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 855",
+   "title": "AISS: Clinical Anatomy and Surgery - Thorax",
+   "credits": "4",
+   "description": "This advanced anatomy selective course is offered to the NextGen Phase 3 Miller School of Medicine students who have a strong interest in deepening their knowledge of surgical anatomy and developing their surgical dissecting skills. Learning will be accomplished through self-directed on-demand lectures (\u201cflipped classroom\u201d), practical demonstrations by Anatomy faculty, proctored dissection of human donors, and real-time, hands- on exposure in the operating rooms. In addition, workshops designed to teach the students the foundational skills of surgical knot tying, instrument handling and suturi",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 858",
+   "title": "Complex Family Planning and Preventive Health",
+   "credits": "2",
+   "description": "The objectives are for the student to improve knowledge and skills in managing both routine/complex contraceptive cases, learn about reproductive options including surgical/medical abortion and the surgical/medical management of miscarriage. The student should become pro\ufb01cient in counseling patients on contraceptive and abortion methods. During the two-week selective course, students will learn to incorporate preventative medicine, public health, and other issues in reproductive health into their daily clinical practice.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 860",
+   "title": "ACE Ophthalmology",
+   "credits": "4",
+   "description": "This Ophthalmology clerkship is a four-week Advanced Clinical Elective in ophthalmology geared toward medical students with a particular interest in obtaining an in depth understanding of fundamental ophthalmology (open to any student regardless of specialty interest, but particularly for students interested in pursuing residency in ophthalmology). Aspects of ophthalmology that are pertinent to the practice of internal medicine, neurology, pediatrics, family practice and other primary care specialties will also be taught. Students will rotate through the emergency room, operating room, and var",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 861",
+   "title": "MIA VAMC Ophthalmology",
+   "credits": "2",
+   "description": "This course will provide medical students with the opportunity to shadow residents and attendings in the clinic and emergency room setting and thereby become familiar with instrumentation utilized in standard eye examinations. It will also provide medical students with the opportunity to watch ophthalmic surgery (cataract surgery, glaucoma surgery, retinal surgery) to provide initial exposure to microsurgical techniques.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 862",
+   "title": "Orthopedic Trauma Elective",
+   "credits": "2",
+   "description": "The student will participate in the management of traumatic injuries of the musculoskeletal system, excluding hand, and spine. The participation will be directed to acquiring an adequate history and physical examination and management of trauma through conservative and surgical approaches. The student will be asked to assist in the operating room to learn surgical skills, how to set up traction and to do closed reductions with cast applications.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 865",
+   "title": "Adult Reconstruction & Joint Replacement",
+   "credits": "2",
+   "description": "This is a two-week elective rotation intended to expose the senior medical student to spectrum of experiences in Joint Replacement and Orthopedic surgery. Each week, the student will rotate through a different hospital/clinic setting and see patients / procedures-based Rockwell the emphasis at that location.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 866",
+   "title": "Hand Surgery",
+   "credits": "2",
+   "description": "The student will be provided with the opportunity to become familiar with acute injuries, chronic conditions and congenital deformities of the hand. They will learn to take a history and do a physical examination of the hand, as well as assist in the conservative and surgical management of hand problems. The student will be expected to attend rounds, clinics, surgery and conferences, both hand and general orthopedic conferences. All Students will be required to take 2 nights of Ortho E.R. call with the PGY2 orthopedic residents over the 2 week rotation.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 867",
+   "title": "Musculoskeletal Oncology",
+   "credits": "2",
+   "description": "Students on the orthopedic oncology service are expected to become familiar with the differential diagnoses of bone and soft tissue tumors and the principles of staging for orthopedic neoplasms. The student will evaluate patients in the outpatient and inpatient setting and be responsible for the management of these patients pre- and post-operatively with close resident, fellow and attending supervision. The student will develop history and physical examination skills, as they pertain to oncologic patients, as well as actively participate in their non-operative and operative management. The stu",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 868",
+   "title": "ACE Thoracic Surgery",
+   "credits": "4",
+   "description": "Phase 3 students will have the opportunity to gain in-depth experience in thoracic physiology, pathophysiology, and the surgical treatments for such conditions.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 870",
+   "title": "Orthopedic Spine",
+   "credits": "2",
+   "description": "This rotation provides exposure to traumatic and degenerative affections of the spine. Students will participate in all rounds, clinics, and conferences.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 871",
+   "title": "ACE: Otology",
+   "credits": "4",
+   "description": "Otology is the surgical sub-specialty of hearing, balance, skull base and cochlear implant surgery, and facial nerve dysfunction.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 872",
+   "title": "Introduction to Geriatric Psychiatry",
+   "credits": "2",
+   "description": "The Department of Psychiatry offers an elective in Geriatric Psychiatry. The elective can be tailored to the student\u2019s special needs. Clinical experiences focus on diseases that are more prevalent in the geriatric population such as psychoses in the elderly, mood disorders in the elderly, delirium and cognitive disorders.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 873",
+   "title": "Otolaryngology Elective",
+   "credits": "2",
+   "description": "This rotation gives an overview of the scope of activities covered by Otolaryngology. Students are expected to get exposed to both clinical and surgical aspects of Otolaryngology and explore the variety of different subspecialties within this \ufb01eld. Students are encouraged to start if possible with this course before taking MDR875.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 874",
+   "title": "Introduction to Inpatient Psychiatry",
+   "credits": "2",
+   "description": "This elective allows students to diagnose and manage a variety of psychiatric disorders. This includes patients with mood disorders, psychotic disorders and other conditions that require psychiatric hospitalization. Under the supervision of attending physicians, students will manage patients with a variety of therapeutic techniques available for their treatment.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 875",
+   "title": "Otolaryngology Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. Students will be exposed to the breadth of the \ufb01eld, including Head and Neck Surgery, Otology/Neurotology, Rhinology, Laryngology, Pediatric Otolaryngology, Facial Plastic Reconstructive Surgery, and Sleep Apnea Surgery. Students will learn to recognize, diagnose, and treat a wide variety of conditions within Otolaryngology, with special ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 877",
+   "title": "AISS: Immunology, Allergy, Microbiology, and Transplant",
+   "credits": "4",
+   "description": "Immunology is increasingly important in understanding the pathophysiology of disease and in the diagnosis and treatment of disease. In this Immunology Advanced Integrated Science Selective, students will engage in self-directed learning of advanced immunological topics and experience clinical applications. In a series of clinical rotations, students will spend 1 week each with faculty in Pediatric Allergy/Immunology, Pediatric Infectious Disease, Pediatric Bone Marrow Transplant, and Adult Solid Organ Transplant. Additionally, throughout the rotation, there will be opportunities for additional",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 878",
+   "title": "Software as Medicine Elective",
+   "credits": "2",
+   "description": "This elective offers students who are interested in keeping up with digital healthcare innovations, and, more speci\ufb01cally, the emerging \ufb01eld of Prescription Digital Therapeutics (PDTx) or Software as Medicine, the opportunity to become familiar with the new space, the different companies that have played a role in shaping the new category and to appreciate what it usually takes to go from idea to market impact with a new digital software therapeutic as well as fostering and developing an entrepreneurial mind and attitude to succeed in this fast evolving and super promising space. This elective",
+   "requisites": null,
+   "offered": "Spring"
+  },
+  {
+   "code": "MDR 879",
+   "title": "ACE: Pathology",
+   "credits": "4",
+   "description": "This elective is geared towards students who wish to explore Pathology as a career option or who seek to better understand and utilize laboratory medicine pathology services in their clinical practice. Students attend all Pathology Teaching Conferences and clinical pathology rounds.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 880",
+   "title": "Adolescent Medicine",
+   "credits": "2",
+   "description": "The goals of this elective clinical rotation are to broaden the student\u2019s general knowledge of Adolescent Medicine, with emphasis on learning diagnosis and treatments of unique physical, developmental, and psychosocial problems of patients ages 10 \u2013 25 years. The student will participate in the multidisciplinary team approach to adolescent health care, gain experience in communicating and interacting with a wide variety of inpatient and outpatient adolescents, and attend all aspects of the Adolescent Medicine teaching program.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 881",
+   "title": "Child Protection Team",
+   "credits": "2",
+   "description": "The Child Protection Team elective is designed to familiarize the students to all aspects of child abuse. The students will learn to assess and document physical abuse and neglect, attend court hearings and participate in case staf\ufb01ng. This elective is geared to meet the needs of all medical students (independent of their career goals) and introduce them to the community resources available for children and their families.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 882",
+   "title": "AISS: Neuroscience and Neurology",
+   "credits": "4",
+   "description": "This Selective shall aim to introduce NextGenMD students to key and specialty areas of clinical neurology while ensuring that the students have a strong foundation in basic cellular, molecular and systems neuroscience needed for deeper understanding of the clinical \ufb01eld. Thus, there will be active review and learning of fundamental neuroscience linked to clinical experiences in the following areas: general neurology, epilepsy, stroke, neurocritical care, movement disorders, neuromuscular, dementia, neuro-oncology, neuro-pediatrics, genetics, interventional endovascular and sleep disorders. The",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 883",
+   "title": "ACE: Neonatology",
+   "credits": "4",
+   "description": "The student will be part of the team headed by an attending, and will follow and manage one or two patients together with one of the residents on the team. Teaching rounds will be conducted 5 times a week, work rounds 7 days a week. During the \ufb01rst 2 weeks of the rotation the student will refresh and re\ufb01ne his/her physical examination skills. He/she will become familiar with the nutritional needs of neonates and infants and with how these needs can be met by feedings and parental alimentation. How to prevent and correct imbalances in body water and electrolytes will be stressed. Problems with ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 884",
+   "title": "AISS: Pharmacology and Pharmacy",
+   "credits": "4",
+   "description": "The Pharmacology and Pharmacy Selective will provide those who enroll with a detailed overview and understanding of basic pharmacology and drug development concepts, including, but not limited to drug-receptor interaction, elucidation of the mechanism of action, pharmacokinetic and drug metabolism concepts, active/toxic metabolites, role of pharmacogenomics and drug-drug interactions, the drug discovery and development process, overview of regulatory requirements and the FDA approval process, and clinical trials (phases 0 to 4). Students will be expected to learn what are the requirements of a",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 885",
+   "title": "Pediatric Cardiology",
+   "credits": "2",
+   "description": "The student is exposed to the physiology, clinical and laboratory diagnosis, and management of the infant and child with congenital and acquired heart disease. Physical examination skills are emphasized during participation in the out-patient clinics at Jackson Memorial Hospital. Cardiology ward rounds are conducted daily providing the opportunity to follow hospitalized patients from clinical diagnosis to cardiac catheterization to cardiac surgery. Interpretation of pediatric electrocardiograms and echocardiograms are included the individual patient's evaluation. Fundamentals of cardiac electr",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 886",
+   "title": "Pediatric Dermatology",
+   "credits": "2",
+   "description": "The understanding of mechanisms of pathophysiology and effective therapy in pediatric dermatological diseases is stressed in this elective. The students will participate in management of in-patient and out-patient dermatological and connective tissue problems. Diagnostic techniques by light microscopy and immunologic techniques and standard dermatologic laboratory techniques will be emphasized. The student will attend approximately 7 clinics per week, weekly management conferences and grand rounds, the Miami Dermatology Society meetings (which are held 6 times a year), journal club, and slide ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 887",
+   "title": "Pediatric Emergency Medicine",
+   "credits": "2",
+   "description": "The student will be the primary physician for pediatric patients presenting with acute problems in the emergency facility of Jackson Memorial Hospital. The student will evaluate and treat patients with an extensive variety of acute illnesses under supervision of pediatric faculty and house staff.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 889",
+   "title": "ACE: Pediatric Gastroenterology, Hepatology, and Nutrition",
+   "credits": "4",
+   "description": "The student will be able to participate in the care for inpatients and outpatients; to participate in daily rounds on inpatients as well as consults with the attending physician, fellow and pediatric resident team. Opportunities to conduct patient interviews and examinations as well as to observe/ participate in GI procedures will be an integral part of the elective. The student will review indications/risks for particular procedures and surgeries as they relate to pediatric gastroenterology. Students will also participate in weekly outpatient clinics. Students will also learn care of gastrost",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 890",
+   "title": "Genetics and Metabolic Diseases",
+   "credits": "2",
+   "description": "This elective exposes students to diagnosis and management of a variety of genetic syndromes, inheritable metabolic diseases, hereditary cancer syndromes, and other heritable disorders.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 891",
+   "title": "Pediatric Infectious Diseases and Immunology",
+   "credits": "2",
+   "description": "The 2-week rotation in Pediatric Immunology and Infectious Disease is designed to give the student a broad experience in the immunological and infectious disease problems of children. The student will participate in both the inpatient and outpatient care of children with such problems by rounding daily with the attending fellow and the clinical pediatric infectious disease faculty. The student will also have the opportunity to assist in the care of children with HIV-1 infection as well as other immunode\ufb01ciency diseases.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 892",
+   "title": "Family Medicine Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. The primary objective of this rotation is to emphasize mastery of clinical core Family Medicine inpatient medicine competencies, to develop skills in inpatient management of common medical illnesses, and to prepare Phase 3 medical students for internship. This rotation will promote the expansion of the clinical knowledge base and emphasiz",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 893",
+   "title": "ACE Pediatric Surgery",
+   "credits": "4",
+   "description": "This busy surgical service will allow the medical student the opportunity to care for surgical problems in the pediatric population.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 894",
+   "title": "ACE Pediatric Nephrology",
+   "credits": "4",
+   "description": "This course will emphasize the clinical approach to health maintenance and diseased states of the renal and urologic systems. We aim to provide a review of renal pathophysiology through representative outpatient and consultative clinical encounters, as well as educational conferences. By the end of the course, you should have an understanding of the abnormal \ufb01ndings, diagnostic evaluation and therapeutic approach for a given disease process. In addition, we hope that you will develop an appreciation for the scienti\ufb01c evidence behind current clinical practice in pediatric nephrology.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 895",
+   "title": "ACE: Pediatric Pulmonary",
+   "credits": "4",
+   "description": "The objective of this rotation is to provide the students with the clinical exposure to acute and chronic, acquired and congenital, respiratory diseases from infancy to adolescence in both in-patient and out-patient venues. These conditions include but are not limited to asthma, chronic cough, chronic lung disease of infancy, cystic \ufb01brosis, congenital lung abnormalities, recurrent and complicated pneumonia. The student will participate in the in- patient rounds or activities, ambulatory clinics and didactic conferences.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 896",
+   "title": "Poison Center Toxicology",
+   "credits": "2",
+   "description": "The senior student will be given the opportunity to assist the Poison Information Specialists and Toxicologists at the Florida Poison Information Center with the diagnosis, triage, treatment and follow-up of patients exposed to toxins. The high volume of cases (over 170 patients per day) will allow the student to learn about a wide variety of toxins in both pediatric and adult patients. The clinical experience at the Poison Center will be supplemented with didactic lectures and bedside consultations for both adult and pediatric patients hospitalized at Jackson Memorial Hospital.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 897",
+   "title": "Pediatrics Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum, will provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. Students will be assigned to one of two general inpatient pediatric ward teams (Red or Purple). The senior student will be placed in the regular PGY1 rotation functioning as part of the ward team and directly supervised by the pediatric residents and attending physicians.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 898",
+   "title": "Ophthalmology @ Palm Beach Gardens",
+   "credits": "2",
+   "description": "The primary goal of this elective is to familiarize the student with general concepts of Ophthalmology, and how to conduct a basic eye examination. Aspects of Ophthalmology that are pertinent to the practice of Internal Medicine, Neurology, Family Practice, and other primary care specialties will also be taught. Emphasis is placed on the ocular exam and \ufb01ndings related to common eye pathology such as cataracts, glaucoma, macular degeneration, diabetic retinopathy, and conjunctivitis. Some exposure to more unusual cases to ophthalmology as a subspecialty will be obtained in clinics. Didactic se",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 900",
+   "title": "Physical Medicine and Rehabilitation Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. The student with participate as an intern on the service. This will include performing Histories and Physicals and Writing admission orders to the service. These documents will be reviewed and supervised by the attendings and residents. In addition, the student will follow these patients through their rehabilitation stay and participate i",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 901",
+   "title": "Child and Adolescent Psychiatry",
+   "credits": "2",
+   "description": "Various clinical services are utilized for undergraduate and post-graduate training in Child & Adolescent Psychiatry: the Children\u2019s Inpatient Unit and the Child & Adolescent Outpatient Clinic. Students may be assigned to one or a combination of these services where they will have a supervised experience.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 902",
+   "title": "Consultation-Liaison Psychiatry",
+   "credits": "2",
+   "description": "The JMH CL Psychiatry service is responsible for psychiatric consultations to medical and surgical inpatients, as well as liaison support to various clinical services and units within the general hospital. Under supervision, students will respond to psychiatric consultation requests by assessing patients and offering recommendations to the referring physicians. They will work alongside residents and faculty in liaison activities and will regularly participate in clinical rounds and educational sessions.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 904",
+   "title": "ACE Inpatient Psychiatry",
+   "credits": "4",
+   "description": "This elective allows students to diagnose and manage a variety of psychiatric disorders. While the focus relies on substance use disorders, senior medical students will also be exposed to a wealth of co-occurring psychiatric diagnosis including mood, psychotic, anxiety disorders and other conditions that require psychiatric hospitalization. Under the supervision of attending physicians, students will manage patients with a variety of therapeutic techniques available for their treatment including pharmacotherapy and basic psychotherapy.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 905",
+   "title": "Surgical Skills Elective",
+   "credits": "2",
+   "description": "This elective offers the opportunity to learn and practice operative techniques in the Minimally Invasive Surgical Training and Education (MISTE) Center. Students will review assignments from classic texts in surgical technique as well as operative videos prior to performing the same skills in high-\ufb01delity simulation. Emphasis will be placed on open surgical skills and emergency procedures. The goal of this elective is for students to arrive in surgical residency with operative skills, experience, and con\ufb01dence that exceeds expectations for their level of training.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 906",
+   "title": "Ambulatory Psychiatry",
+   "credits": "2",
+   "description": "This course provides students with the opportunity to be involved in the evaluation, diagnosis and treatment of selected patients presenting to the outpatient clinics at the Jackson Behavioral Health Hospital. Individual supervision will be aimed at exposing the student to the range of psychiatric disorders that can be managed in an outpatient basis such as anxiety disorders, depression, psychosis, ADHD, etc. The students will be exposed to different therapeutic modalities used to treat these problems including psychopharmacologic treatments, and supportive psychotherapy.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 907",
+   "title": "Research Experience",
+   "credits": "0",
+   "description": "",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 908",
+   "title": "Flourishing Healers Program: Harnessing Mind-Body and Lifestyle Factors in Medicine",
+   "credits": "2",
+   "description": "Stress, burnout, and suicide are devastating factors that are being increasingly experienced by physicians. Therefore, it is crucial for us to offer medical education and training programs that enhance the overall health, happiness, and well-being of our medical students while also teaching them to apply that training to enhance the health and well-being of their patients. This two-week experiential elective will focus on flourishing as physicians, because healthy and happy doctors are likely to be the most effective healers.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 910",
+   "title": "ACE Advanced Radiology",
+   "credits": "4",
+   "description": "Advanced Radiology consists of a focused immersion and exposure to one or two subspecialty areas in clinical Diagnostic Radiology. The student will participate as a member of the clinical team in Radiology.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 911",
+   "title": "Nuclear Medicine",
+   "credits": "2",
+   "description": "The Nuclear Medicine elective allows the student to interact with the clinical and research activities of Nuclear Medicine as it relates to diagnostic imaging and therapy with this modality. Students are trained under the direct supervision of our faculty members with guidance from our residents. Learning Techniques include: daily work, teaching \ufb01le, and conference attendance. Reading sessions start at 8:30 a.m. daily. While patients are injected for studies during the morning, the students observe the technical aspect of this procedure prior to interpreting the studies with residents and atte",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 912",
+   "title": "AISS: Clinical Anatomy and Surgery - Urogential/Gynecology",
+   "credits": "4",
+   "description": "This advanced anatomy selective course is offered to the NextGen Phase 3 Miller School of Medicine students who have a strong interest in deepening their knowledge of surgical anatomy and developing their surgical dissecting skills. Learning will be accomplished through self-directed on-demand lectures (\u201cflipped classroom\u201d), practical demonstrations by Anatomy faculty, proctored dissection of human donors, and real-time, hands- on exposure in the operating rooms. In addition, workshops that are designed to teach the students the foundational skills of surgical knot tying, instrument handling a",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 914",
+   "title": "AISS: Clinical Anatomy and Surgery - Extremities",
+   "credits": "4",
+   "description": "This advanced anatomy selective course is offered to the NextGen Phase 3 Miller School of Medicine students who have a strong interest in deepening their knowledge of surgical anatomy and developing their surgical dissecting skills. Learning will be accomplished through self-directed on-demand lectures (\u201cflipped classroom\u201d), practical demonstrations by Anatomy faculty, proctored dissection of human donors, and real-time, hands- on exposure in the operating rooms. In addition, workshops that are designed to teach the students the foundational skills of surgical knot tying, instrument handling a",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 915",
+   "title": "ACE: Radiation Oncology",
+   "credits": "4",
+   "description": "The objective of the Radiation Oncology elective is to familiarize the student with the treatment of neoplastic disease in general, and speci\ufb01cally with the role of ionizing radiation in treating cancer and related disorders.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 917",
+   "title": "Burn Unit Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. The burn service offers a complete approach to the care of thermally injured patients. The team cares for patients from the acute resuscitative phase to outpatient follow-up, including reconstruction. As such, clinical encounters include intensive care unit, operating room, medical-surgical floor, and clinic. Principles of critical care, ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 918",
+   "title": "Diagnostic Radiology Elective",
+   "credits": "2",
+   "description": "Radiology two-week observational elective consists of a rotation in all subspecialties in Diagnostic Radiology. The student will participate as an observer during read out sessions and interventional procedures. This is designed for the student who wants to learn more about each subspecialty in Radiology and or potentially thinking about a career in Radiology. For those who desire to do a Radiology Residency, we recommend taking our Advanced Clinical Experience Elective (4 weeks).",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 924",
+   "title": "Introduction to Neurosurgery",
+   "credits": "2",
+   "description": "This 2 week elective is intended to give the third year or fourth year medical student an initial acquaintance to neurosurgery including the pathophysiology, evaluation, and management of the spectrum of disorders that confront the modern neurosurgeon. The UM neurosurgery service covers virtually the entire gamut of neurosurgical practice. The clinical service is divided into teams that focus primarily on speci\ufb01c subspecialty areas. The spine team cares for patients with tumors, trauma, degenerative disease, and other disorders. The general cranial team deals with cerebrovascular disease, tumo",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 926",
+   "title": "Oral and Maxillofacial Surgery",
+   "credits": "2",
+   "description": "The Department of Surgery\u2019s Division of Oral and Maxillofacial Surgery offers the student an intense experience in Head and Neck Reconstructive Surgery, Oral and Maxillofacial Pathology, Facial Trauma and Head and Neck Anatomy. The attending and resident staff is committed to providing the student with a valuable educational experience. This is the only exposure the medical student receives regarding the problems related to the oral cavity and to oral and maxillofacial surgery, which may confront him/her at a later date in his/her career. This is an advantageous rotation for those interested i",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 928",
+   "title": "Plastic Surgery",
+   "credits": "2",
+   "description": "This rotation provides comprehensive exposure to all facets of aesthetic plastic and reconstructive surgery at UM af\ufb01liated clinical institutions and educational venues.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 929",
+   "title": "CCS: Surgical Intensive Care Unit",
+   "credits": "2",
+   "description": "The Critical care selective is mandatory for Phase 3 students who have successfully completed their clerkships. The purpose of this selective is to provide the student with a robust and educational introduction to critical care concepts; aligned with their career of choice. This selective is designed to allow students to recognize the early signs of a critically ill patient who would bene\ufb01t from specialized care and learn the necessary interventions to stabilize a patient during the initial critical phase of their illness. Advanced physiological concepts will be introduced in a critical care s",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 930",
+   "title": "Transplant Surgery",
+   "credits": "2",
+   "description": "The student will have responsibilities similar to a junior house of\ufb01cer, under strict supervision of the Transplant Team because of the critical care of these patients. The student will be present at the operation for vascular access surgery, general surgery on transplantation patients and chronic renal failure patients, which would include bilateral native nephrectomies (usually for dif\ufb01cult to control hypertension), kidney, liver, pancreas, and pancreatic islet transplants, and related surgery. In addition, issues related to native organ disease \u2013 kidney, pancreas, liver, leading to need for",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 931",
+   "title": "Trauma Surgery Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. This 4-week rotation will expose the Next Gen phase 3 student to the comprehensive world of trauma that will include exposure to patients in all areas of trauma care. These areas will include the trauma resuscitation bays, the trauma operating rooms, the trauma floors, clinics and ICU. Students will develop an understanding of the complex",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 932",
+   "title": "CCS: Trauma Intensive Care Unit",
+   "credits": "2",
+   "description": "The critical care selective is mandatory for Phase 3 students who have successfully completed their clerkships. The purpose of this selective is to provide the student with a robust and educational introduction to critical care concepts; aligned with their career of choice. This selective is designed to allow students to recognize the early signs of a critically ill patient who would bene\ufb01t from specialized care and learn the necessary interventions to stabilize a patient during the initial critical phase of their illness. Advanced physiological concepts will be introduced in a critical care s",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 934",
+   "title": "AISS: Clinical Anatomy and Surgery - Head and Neck, Brain and Spinal Cord",
+   "credits": "4",
+   "description": "This advanced anatomy selective course is offered to the NextGen Phase 3 Miller School of Medicine students who have a strong interest in deepening their knowledge of surgical anatomy and developing their surgical dissecting skills. Learning will be accomplished through self-directed on-demand lectures (\u201cflipped classroom\u201d), practical demonstrations by Anatomy faculty, proctored dissection of human donors, and real-time, hands- on exposure in the operating rooms. In addition, workshops that are designed to teach the students the foundational skills of surgical knot tying, instrument handling a",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 935",
+   "title": "AISS: Clinical Anatomy and Surgery - Brain and Spinal Cord",
+   "credits": "4",
+   "description": "This advanced anatomy selective course is offered to the NextGen Phase 3 Miller School of Medicine students who have a strong interest in deepening their knowledge of surgical anatomy and developing their surgical dissecting skills. Learning will be accomplished through self-directed on-demand lectures (\u201cflipped classroom\u201d), practical demonstrations by Anatomy faculty, proctored dissection of human donors, and real-time, hands- on exposure in the operating rooms. In addition, workshops that are designed to teach the students the foundational skills of surgical knot tying, instrument handling a",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 936",
+   "title": "AISS: Clinical Anatomy and Surgery - Abdomen",
+   "credits": "4",
+   "description": "This anatomy integrated science selective (AISS) course is offered to the NextGen Phase 3 Miller School of Medicine students who have a strong interest in deepening their knowledge of surgical anatomy and developing their surgical dissecting skills. Learning will be accomplished through self- directed on-demand lectures (\u201cflipped classroom\u201d), practical demonstrations by Anatomy faculty, Surgery Faculty and Surgery residents in proctored dissection of human donors, and real-time, hands- on exposure in the operating rooms. In addition, workshops that are designed to teach the students the founda",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 938",
+   "title": "Urology Elective",
+   "credits": "2",
+   "description": "This elective is designed for students who are interested in learning more about urologic chief complaints and patient presentations, and gaining exposure to both the of\ufb01ce-based and surgical management of urologic disease. Students interested in Urology as a career choice should consider the Urology Sub-I (course MDR 937).",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 940",
+   "title": "Public Health Elective",
+   "credits": "2-4",
+   "description": "The Public Health elective will be offered to senior MD/MPH medical students if approved by the course director for time spent on a 2- or 4-week public health externship. MD students who have completed public health coursework will also be considered. The consideration of elective credit includes the content and quality of the program/ project and its relevance to the dual degree curriculum. In addition, the dates of the program must mesh with the schedule of the UMMSM MD/MPH medical school curriculum and academic calendar. Each application will be considered on an individual basis with consid",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 942",
+   "title": "ACE: Interventional Radiology at VA",
+   "credits": "4",
+   "description": "MDR 942 is an Advanced Clinical Experience (ACE) designed as a rigorous sub-internship for Phase 3 students. Building upon the foundational clerkship (MDR 969), this course utilizes a Junior Resident model to transition learners from observers to active clinical participants. The curriculum focuses on the longitudinal care of the IR patient, emphasizing pre-procedural clinical decision-making, high-\ufb01delity simulation training, and graduated procedural autonomy within the unique environment of the Miami Veterans Affairs (VA) Medical Center.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 944",
+   "title": "MIA VAMC General Surgery Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. This 4-week rotation will expose the NextGen Phase 3 student to the comprehensive world of General and Vascular Surgery that will include exposure to patients in all areas of the various hospital services from medical to surgical. Students will develop a comprehensive understanding of the complexities of managing patients that present wit",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 945",
+   "title": "Taylor Breast Health Center",
+   "credits": "2",
+   "description": "This elective will consist of a 2 week or a 4 week block at the Taylor Breast Health Center. During this time, the student will have the opportunity to participate in the diagnosis and follow-up of patients with the full spectrum of breast diseases, most importantly breast cancer.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 946",
+   "title": "ACE: Plastic Surgery",
+   "credits": "4",
+   "description": "The primary objective of this rotation is to promote the development of clinical core plastic, aesthetic, and reconstructive competencies and to review common reconstructive and cosmetic conditions. The practice of evidence-based medicine is promoted by encouraging students to conduct literature search for current guidelines and accepted practices.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 949",
+   "title": "Caring for the Community: Free Clinics Elective",
+   "credits": "2",
+   "description": "This elective provides an opportunity for Phase 2 and Phase 3 medical students to provide clinical care at studentrun free clinics and health fairs while advancing their knowledge of the social determinants of health and the barriers that underinsured patients encounter in obtaining preventive, primary, and specialty medical care. This elective will provide medical students with an engaging clinical experience that will prepare them to more effectively advocate and care for underinsured patients. In addition to their clinical roles, students will be actively involved as both teachers and learn",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 951",
+   "title": "Cardiology Teaching Lab: Harvey 2-week Program",
+   "credits": "2",
+   "description": "This rotation consists of a focused review of clinical cardiology with an emphasis on skills related to 12-lead ECG and arrythmia interpretation and cardiac beside examination.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 952",
+   "title": "Reproductive Endocrinology and Infertility",
+   "credits": "2",
+   "description": "This rotation will provide you with the unique opportunity to learn about the subspecialty of reproductive endocrinology and infertility. During this rotation student will learn the basics of menstrual cycle, hormonal regulation and different causes of infertility. Students will be exposed to a wide variety of endocrinological disorders such as amenorrhea, polycystic ovarian syndromes, thyroid dysfunction, and hyperprolactinemia. Opportunity will be given to attend and observe the different techniques of advanced reproductive technology, including in vitro fertilization, intracytoplasmic sperm",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 953",
+   "title": "ACE: Cardiac Anesthesiology",
+   "credits": "4",
+   "description": "During this rotation, the student will be exposed to the principles and the practice of cardiothoracic anesthesia, applied cardiovascular physiology and pharmacology. The course will provide an opportunity for the student to perform preoperative assessment and exposure to intraoperative management of cardiothoracic surgical patients from the perspective of the cardiac anesthesiologist. The student will work with faculty, fellows, and residents delivering anesthetic care to adult patients undergoing cardiac, thoracic, and vascular procedures \u2013 which includes coronary artery bypass graft, valve ",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 954",
+   "title": "Pediatric Anesthesiology",
+   "credits": "2",
+   "description": "This elective introduces medical students to the subspecialty of pediatric anesthesiology through direct participation in the perioperative care of neonates, infants, children, and adolescents undergoing a wide range of surgical and diagnostic procedures. During this two-week rotation, students will gain exposure to ambulatory and inpatient pediatric anesthesia, regional anesthesia techniques, and congenital cardiac anesthesia. Clinical experiences may include the operating room, NICU and PICU bedside procedures, pediatric sedation and imaging suites, and the Bascom Palmer ambulatory surgery c",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 956",
+   "title": "ACE: Urology",
+   "credits": "4",
+   "description": "This elective is designed for those students considering Urology as a career choice, and for those interested in learning more about the University of Miami urology residency program. Students will participate in inpatient and outpatient urology at both the University of Miami and the Jackson Healthcare System. Sub-interns will participate as members of the resident team on both the UM and Jackson rotations, and will accept responsibilities and perform duties commensurate with their ability.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 962",
+   "title": "Internal Medicine SUB-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 963",
+   "title": "ACE Obstetric Anesthesiology",
+   "credits": "4",
+   "description": "During this rotation, the student will be exposed to the principles and the practice of obstetric anesthesia, maternal/fetal physiology, and pharmacology. The course will provide the student exposure to, and experience performing, the preoperative assessment of obstetric patients and gain a basic understanding of neuraxial labor analgesia techniques. The student will work with faculty, fellows, and residents delivering anesthetic care to obstetric patients in the Labor & Delivery unit and obstetric operating rooms.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 964",
+   "title": "AISS: Oncology and Cancer Biology",
+   "credits": "4",
+   "description": "Cancer is the second leading cause of death in the United States. Each year over 1.3 million Americans are diagnosed with cancer and over 660, 000 die. By the time a male is 65 they will have a 1 in 2 chance of getting cancer and a female 1 in 3 chance. Cure rates are improving with earlier detection and improved treatments. There have also been major advances in treatments that can signi\ufb01cantly prolong life in those patients that are incurable. It is of upmost importance for the medical students to learn as much as possible about cancer. Suboptimal clinical outcomes for cancer patients are fr",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 969",
+   "title": "ACE: Interventional Radiology",
+   "credits": "4",
+   "description": "The course is an introduction to Vascular/Interventional Radiology and consists of intensive exposure to Vascular and Interventional Radiology procedures under the direct supervision of interventional radiologists. Students will learn and participate in (a) the use of various radiological imaging to guide procedures in different organ systems, (b) the evaluation and pre and post procedural management of patients requiring interventional radiology procedures, and (c) participate in and learn various interventional procedures such as arterial and venous access, angiography, angioplasty, stenting",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 970",
+   "title": "Ophthalmology for the Non-Ophthalmologist",
+   "credits": "2",
+   "description": "The two-week clinical elective in ophthalmology is geared toward fourth year medical students NOT pursuing a career in ophthalmology with an interest in obtaining a basic understanding of fundamental ophthalmology for students. Students will rotate through the emergency room, operating room, and various subspecialty clinics at the Bascom Palmer Eye Institute where they will shadow attendings and house staff. Students will be required to keep a patient log and will be expected to complete an online course. Students will also be required to submit a case presentation power point based on a patie",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 971",
+   "title": "Ophthalmic Pathology",
+   "credits": "2",
+   "description": "Students will review cases received in the lab, participate in daily teaching sessions and sign out at the multi- headed microscope and participate in the complete work-up of these pathologic specimens. The observer will learn how ocular structure and function are affected by the major ocular diseases through the study of current and teaching slide sets of pathologic specimens. The students will learn how to examine ocular specimens using a microscope and learn the value of ancillary techniques to include immunohistochemistry and molecular studies. It is expected that they will have a function",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 972",
+   "title": "Ophthalmology in the Emergency Department",
+   "credits": "2",
+   "description": "The two-week clinical elective in ophthalmology is geared toward 4th year/Phase 3 medical students with an interest in pursuing a career in ophthalmology to further their knowledge of the assessment and management of patients presenting acutely for eye care. Students will rotate through the emergency department at Bascom Palmer Eye Institute where they will shadow attendings and house staff. During the rotation, students are also welcome to attend weekly grand rounds and fluorescein conferences as well as daily resident lectures.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 973",
+   "title": "Pediatric Allergy and Immunology",
+   "credits": "2",
+   "description": "The pediatric allergy and immunology elective is designed to give senior medical students exposure to the spectrum of diseases seen in the \ufb01eld of Allergy and Immunology. The student will predominantly rotate through the outpatient clinic and inpatient consults, and see patients and procedures based on the emphasis of that location.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 974",
+   "title": "AISS: Cardiac Physiology and Advanced Heart Disease",
+   "credits": "4",
+   "description": "This is a 4 week selective intended to expose the senior medical student to the clinical practice of cardiology. During the rotation, the student will have the opportunity to interact with multiple specialists who have expertise in various areas of cardiology and attend cardiac conferences. outcomes.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 975",
+   "title": "Labor and Delivery Night Rotation",
+   "credits": "2",
+   "description": "This is a 2-week elective intended to expose the Phase 3 student to a spectrum of experiences in Obstetrics. Each week, the student will rotate through Labor and Delivery and gain experience in the care of pregnant patients, including vaginal delivery, cesarean delivery, triaging gravid patients, and obstetrical emergencies.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 976",
+   "title": "Acute Care Surgery Sub-I",
+   "credits": "4",
+   "description": "The sub-internship (Sub-I), a 4-week experience, offered during Phase 3 of the NextGen curriculum is intended to provide a learning experience for the student that prepares them to serve as competent interns and effective members of an interdisciplinary team. This 4-week rotation will expose the Next Gen phase 3 student to the comprehensive world of Acute Care Surgery (ACS) that will include exposure to patients in all areas of the various hospital services from medical to surgical. Students will develop a comprehensive understanding of the complexities of managing acutely ill patients that pr",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 979",
+   "title": "AISS: Pulmonary and Pulmonary Physiology",
+   "credits": "4",
+   "description": "Students will integrate physiology and pathophysiology of pulmonary processes into their clinical encounters both inpatient and outpatient. Students will see patients in the mornings and present them to the attending during rounds. They will have opportunities to observe procedures such as bronchoscopies and thoracenteses, and participate in hands-on workshops involving pulmonary functional tests, sleep studies and mechanical ventilator simulations.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 981",
+   "title": "General Surgery EI",
+   "credits": "2",
+   "description": "This 2-week rotation will expose the Phase 3 student to a wide array of cancer problems and teach an integrated interdisciplinary approach to their management. Esophageal, hepatic, breast, and gastric carcinomas will be seen and treated in addition to melanomas and soft tissue sarcomas.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 982",
+   "title": "General Surgery EII",
+   "credits": "2",
+   "description": "This elective surgery service predominantly treats and cares for patients with endocrine diseases. Patients predominantly with thyroid, parathyroid and adrenal tumors, both benign and malignant conditions are seen and treated. Advanced laparoscopic skills can also be seen treating a whole spectrum of surgical problems.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 983",
+   "title": "ACE: General Surgery EIII",
+   "credits": "4",
+   "description": "This elective service deals primarily with diseases of the colon, rectum, and anus. Benign disease, such as hemorrhoids, anal \ufb01stulae, anal \ufb01ssures, diverticulitis, gastrointestinal bleeding and inflammatory bowel disease among others, will be seen and thoroughly discussed and learned. In addition, the entire spectrum of colon and rectal cancer will be seen and treated.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 984",
+   "title": "General Surgery EIV",
+   "credits": "2",
+   "description": "This 2-week rotation will expose the 4th year student to several unique, yet related, surgical disciplines: laparoscopic surgery, surgical endoscopy, and the surgical management of morbid obesity.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 985",
+   "title": "CCS: JMH Neuroscience Intensive Care Unit",
+   "credits": "2",
+   "description": "The Critical Care Selective is mandatory for Phase 3 students who have successfully completed their clerkships. The purpose of this selective is to provide the student a robust and educational introduction to critical care concepts; aligned with their career of choice. This selective is designed to allow students to recognize the early signs of a critically ill patient who would bene\ufb01t from specialized care and learn the necessary interventions to stabilize a patient during the initial critical phase of their illness. Advanced physiological concepts will be introduced in a critical care settin",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 987",
+   "title": "SOAR Fellowship Research Course",
+   "credits": "0",
+   "description": "SOAR Fellows are instructed in the principles of research and manuscript writing by working closely with the physicians of The Balkan Center and Bascom Palmer Eye Institute\u2019s career researchers. Our established national and international programs and initiatives (blindness prevention, pediatric eye diseases and ocular genetics) provide a structure from which Fellows can choose an area of focused study. SOAR Fellow research opportunities include telehealth in ophthalmology, developmental and quality of life issues in children with vision loss and their families, and genetic and environmental fa",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 989",
+   "title": "ACE: Emergency Medicine",
+   "credits": "4",
+   "description": "The goal of this elective is to provide students who are pursuing careers in emergency medicine an opportunity to experience the care of patients in the emergency room setting and provide suf\ufb01cient exposure to the Emergency Medicine Residency Faculty so that they can provide a useful Standardized Letter of Evaluation (SLOE).",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 993",
+   "title": "Medical Spanish for Health Care Professionals",
+   "credits": "0",
+   "description": "The principal aim of this course is to provide health care professionals with effective communication skills in Medical Spanish. This course is designed to build medical Spanish pro\ufb01ciency for healthcare professionals by developing the linguistic and cultural skills necessary to communicate directly with Spanish-speaking patients. Students will learn to take patient histories, explain diagnoses and treatment plans, give instructions, and engage in culturally sensitive interactions in Spanish. The goal is to enhance the necessary language skills required to work in Spanish-speaking communities,",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 994",
+   "title": "Dean's Research Excellence Award in Medicine Program",
+   "credits": "0",
+   "description": "The DREAM research scholarship program is designed for medical students who are interested in pursuing a physician-scientist career in academic medicine. The DREAM program integrates Miller School of Medicine\u2019s outstanding preclinical and clinical training, rigorous research training, and professional development elements speci\ufb01cally designed to enhance the physician-scientist training experience. Through engaged mentoring, this research scholarship provides medical students a valuable education and training opportunity in basic and translational science. Students will join a research lab at t",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 995",
+   "title": "WPB VAMC Physical Medicine and Rehabilitation",
+   "credits": "2",
+   "description": "The purpose of this rotation is to provide the medical student with an introduction to the \ufb01eld of PM&R with emphasis on basic assessment and management options for common musculoskeletal disorders and neurological conditions affecting physical function. The rotation takes place mostly in the outpatient clinic setting with opportunities to also learn in other settings such as a nursing home or acute general hospital. There is also exposure to electrodiagnostic medicine and pain management.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 996",
+   "title": "International Study Abroad",
+   "credits": "0-8",
+   "description": "All students going abroad on international programs (ie, medical mission trips and others), regardless if UM or non-UM sponsored/related, must obtain proper approval from the Of\ufb01ce of Student Affairs. Required forms can be found on the MedEd website under Important Documents for Students \u2013 \u201cAdministrative Requirements for International Study\u201d. MDR 996 \u201cInternational Study Abroad\u201d \u2013 Senior medical students may obtain academic credit for selected international clinical experiences. Only senior students are allowed to receive credit for such experiences. Credit is counted towards their Elective r",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 997",
+   "title": "Research Md/Phd Program",
+   "credits": "0-8",
+   "description": "Students must have defended their thesis for Graduate School and also \ufb01nished their 3rd year MD clerkships student will be granted 8 credits.",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 998",
+   "title": "John T. and Winifred Hayward Foundation Genomic Medicine Fellowship Research Course",
+   "credits": "0",
+   "description": "The John T. and Winifred Hayward Foundation Genomic Medicine Fellowship is awarded to one student per year to support work on a mentored research project in genomics and genomic medicine. The fellowship provides a stipend (awarded through the Medical Education Financial Aid Of\ufb01ce) and support for research supplies and travel to a scienti\ufb01c meeting to present results. The research proposal submitted in the fellowship application outlines the activities to be completed in the fellowship year, under the guidance of a UM faculty mentor. Speci\ufb01c learning objectives and milestones are outlined below",
+   "requisites": null,
+   "offered": "Fall & Spring"
+  },
+  {
+   "code": "MDR 999",
+   "title": "ACE Orthopedic Trauma",
+   "credits": "4",
+   "description": "The student will participate in the management of traumatic injuries of the musculoskeletal system, excluding hand, and spine. The participation will be directed to acquiring an adequate history and physical examination and management of trauma through conservative and surgical approaches. The student will be asked to assist in the operating room to learn surgical skills, how to set up traction and to do closed reductions with cast applications.",
+   "requisites": null,
+   "offered": null
+  }
+ ]
+}

@@ -12,19 +12,21 @@
 
   // Interest chips (same labels as before) mapped to career ids from the backend catalog.
   var INTERESTS = [
-    { id: "build", label: "Build things", careers: ["architect", "mechanical-engineer", "electrical-engineer"] },
+    { id: "build", label: "Build things", careers: ["architect", "mechanical-engineer", "electrical-engineer", "civil-engineer", "iot-engineer"] },
     { id: "solve", label: "Solve puzzles", careers: ["cybersecurity-specialist", "data-analyst", "ai-engineer", "it-consultant"] },
-    { id: "create", label: "Create with your hands", careers: ["chef", "architect", "software-developer"] },
-    { id: "help", label: "Help people", careers: ["registered-nurse", "it-consultant", "cybersecurity-specialist"] },
-    { id: "tech", label: "Technology", careers: ["software-developer", "ai-engineer", "network-engineer", "cybersecurity-specialist", "data-analyst", "it-consultant"] },
+    { id: "create", label: "Create with your hands", careers: ["chef", "architect", "software-developer", "iot-engineer"] },
+    { id: "help", label: "Help people", careers: ["registered-nurse", "physician", "biomedical-engineer", "it-consultant", "cybersecurity-specialist"] },
+    { id: "tech", label: "Technology", careers: ["software-developer", "ai-engineer", "iot-engineer", "network-engineer", "cybersecurity-specialist", "data-analyst", "it-consultant"] },
     { id: "business", label: "Business and money", careers: ["data-analyst", "it-consultant", "chef"] },
     { id: "arts", label: "Art and media", careers: ["architect", "software-developer", "chef"] },
-    { id: "health", label: "Health and science", careers: ["registered-nurse", "electrical-engineer"] }
+    { id: "health", label: "Health and science", careers: ["registered-nurse", "physician", "biomedical-engineer", "electrical-engineer"] }
   ];
   var SYN = { computer: "tech software it", computers: "tech software it", coding: "software", code: "software",
     hacking: "cyber", hacker: "cyber", security: "cyber", cooking: "chef culinary", cook: "chef", food: "chef",
     buildings: "architect", houses: "architect", machines: "mechanical", cars: "mechanical", robots: "electrical",
-    hospital: "nurse", doctor: "nurse", money: "data business", games: "software", wifi: "network", internet: "network" };
+    hospital: "nurse physician", doctor: "physician", medicine: "physician", bridges: "civil", roads: "civil",
+    devices: "iot biomedical", sensors: "iot", smart: "iot", prosthetics: "biomedical",
+    money: "data business", games: "software", wifi: "network", internet: "network" };
 
   var careers = [];
   var state = { q: "", interest: "" };
@@ -70,7 +72,7 @@
 
   function careerCard(c) {
     return '<li class="card glass">' +
-      '<div class="meta"><span class="badge badge--cred">' + esc(c.program ? "MDC " + c.program : c.cluster) + "</span>" +
+      '<div class="meta"><span class="badge badge--cred">' + esc(c.program ? "MDC " + ({ AIBS: "Applied AI B.S. (official)", AIAS: "Applied AI A.S. (official)" }[c.program] || c.program) : c.cluster) + "</span>" +
       (c.salary && c.salary.median ? '<span class="badge salary">' + NS.money(c.salary.median) + "/yr median</span>" : "") + "</div>" +
       "<h2>" + esc(c.title) + "</h2><p>" + esc(c.tagline) + "</p>" +
       "<strong>Starts at MDC with:</strong><p>" + esc(c.credential) + "</p>" +

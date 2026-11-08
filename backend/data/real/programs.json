@@ -1,0 +1,285 @@
+{
+ "note": "REAL MDC program data (official program sheets, Spring 2026). terms_offered is assumed; see build_real_catalog.py.",
+ "programs": [
+  {
+   "id": "MDC-S9520",
+   "app_program_code": "AIBS",
+   "name": "Applied Artificial Intelligence",
+   "credential": "B.S.",
+   "degree": "Bachelor of Science (MDC official program sheet)",
+   "sheet_code": "S9520",
+   "total_credits": 120,
+   "min_gpa": 2.0,
+   "min_grade_in_major": "C",
+   "synthetic": false,
+   "source": "MDC program sheet S9520, Applied Artificial Intelligence B.S., effective Spring 2026 (2263)",
+   "notes": [
+    "Civic literacy: one social science must be AMH 2010, AMH 2020 or POS 2041, plus an approved assessment.",
+    "Computer competency: CGS 1060C or MDC's competency test by the 31st credit.",
+    "Foreign language: two years in high school, an elementary 2 course, or an exam."
+   ],
+   "requirement_groups": [
+    {
+     "group": "Communications",
+     "rule": "all",
+     "courses": [
+      "ENC 1101",
+      "ENC 1102"
+     ],
+     "credits": 6
+    },
+    {
+     "group": "Oral Communications",
+     "rule": "choose_credits",
+     "courses": [
+      "SPC 1017",
+      "SPC 2608",
+      "ENC 2300"
+     ],
+     "credits": 3
+    },
+    {
+     "group": "Humanities",
+     "rule": "choose_credits",
+     "courses": [
+      "ARH 1000",
+      "HUM 1020",
+      "LIT 2000",
+      "MUL 1010",
+      "PHI 2010",
+      "THE 2000",
+      "PHI 2600",
+      "ARH 2050"
+     ],
+     "credits": 6
+    },
+    {
+     "group": "Social Sciences",
+     "rule": "choose_credits",
+     "courses": [
+      "AMH 2010",
+      "AMH 2020",
+      "POS 2041",
+      "PSY 2012",
+      "ECO 2013",
+      "ANT 2000",
+      "SYG 2000",
+      "WOH 2012"
+     ],
+     "credits": 6
+    },
+    {
+     "group": "Natural Sciences",
+     "rule": "choose_credits",
+     "courses": [
+      "AST 1002",
+      "BSC 1005",
+      "CHM 1020",
+      "ESC 1000",
+      "EVR 1001",
+      "GLY 1010",
+      "OCE 1001",
+      "PHY 1020",
+      "HUN 1201"
+     ],
+     "credits": 6
+    },
+    {
+     "group": "Mathematics",
+     "rule": "all",
+     "courses": [
+      "MAC 1105",
+      "STA 2023"
+     ],
+     "credits": 6
+    },
+    {
+     "group": "General Education Elective",
+     "rule": "choose_credits",
+     "courses": [
+      "MAC 1114",
+      "MAC 1140",
+      "MAC 2311",
+      "MAD 2104",
+      "MAS 2103",
+      "PHY 2053"
+     ],
+     "credits": 3
+    },
+    {
+     "group": "Lower Division Technology A",
+     "rule": "all",
+     "courses": [
+      "CAI 1001C",
+      "COP 1047C",
+      "CAI 2100C",
+      "CAI 2300C"
+     ],
+     "credits": 13
+    },
+    {
+     "group": "Lower Division Technology B",
+     "rule": "all",
+     "courses": [
+      "CAI 2840C",
+      "COP 2800",
+      "PHI 2680"
+     ],
+     "credits": 10
+    },
+    {
+     "group": "Lower Division Technology C",
+     "rule": "choose_credits",
+     "courses": [
+      "CGS 1060C",
+      "CGS 1540C",
+      "CTS 1145"
+     ],
+     "credits": 8
+    },
+    {
+     "group": "Upper Division Core",
+     "rule": "all",
+     "credits": 31,
+     "courses": [
+      "COP 3530",
+      "CAI 3303C",
+      "CAI 3821C",
+      "CAI 3822C",
+      "CAI 4505C",
+      "CAI 4510C",
+      "CAI 4420C",
+      "CAI 4525C",
+      "CAI 4830C",
+      "CAI 4950C"
+     ]
+    },
+    {
+     "group": "Upper Division Statistics",
+     "rule": "choose_credits",
+     "courses": [
+      "CAP 3330",
+      "STA 3164"
+     ],
+     "credits": 4
+    },
+    {
+     "group": "Program Electives",
+     "rule": "choose_credits",
+     "credits": 18,
+     "courses": [
+      "CAI 2820C",
+      "CAP 1788",
+      "CTS 1120",
+      "ETS 1603C",
+      "GEB 1432",
+      "HSC 2060"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "MDC-25080",
+   "app_program_code": "AIAS",
+   "name": "Applied Artificial Intelligence",
+   "credential": "A.S.",
+   "degree": "Associate in Science (MDC official program sheet)",
+   "sheet_code": "25080",
+   "total_credits": 60,
+   "min_gpa": 2.0,
+   "min_grade_in_major": "C",
+   "synthetic": false,
+   "source": "MDC program sheet 25080, Applied Artificial Intelligence A.S., effective Spring 2026 (2263)",
+   "notes": [
+    "Leads to jobs as an AI developer or AI specialist, and stacks into the B.S. (S9520)."
+   ],
+   "requirement_groups": [
+    {
+     "group": "Communications",
+     "rule": "all",
+     "courses": [
+      "ENC 1101"
+     ],
+     "credits": 3
+    },
+    {
+     "group": "Humanities",
+     "rule": "choose_credits",
+     "courses": [
+      "ARH 1000",
+      "HUM 1020",
+      "LIT 2000",
+      "MUL 1010",
+      "PHI 2010",
+      "THE 2000"
+     ],
+     "credits": 3
+    },
+    {
+     "group": "Mathematics",
+     "rule": "all",
+     "courses": [
+      "MAC 1105"
+     ],
+     "credits": 3
+    },
+    {
+     "group": "Natural Sciences",
+     "rule": "choose_credits",
+     "courses": [
+      "AST 1002",
+      "BSC 1005",
+      "CHM 1020",
+      "ESC 1000",
+      "EVR 1001",
+      "GLY 1010",
+      "OCE 1001",
+      "PHY 1020"
+     ],
+     "credits": 3
+    },
+    {
+     "group": "Social Sciences",
+     "rule": "choose_credits",
+     "courses": [
+      "AMH 2010",
+      "AMH 2020",
+      "POS 2041"
+     ],
+     "credits": 3
+    },
+    {
+     "group": "Major Courses",
+     "rule": "all",
+     "credits": 37,
+     "courses": [
+      "CAI 1001C",
+      "CAI 2100C",
+      "CAI 2300C",
+      "CAI 2820C",
+      "CAI 2840C",
+      "CGS 1060C",
+      "CGS 1540C",
+      "COP 1047C",
+      "CTS 1145",
+      "PHI 2680",
+      "STA 2023"
+     ]
+    },
+    {
+     "group": "Program Electives",
+     "rule": "choose_credits",
+     "credits": 8,
+     "courses": [
+      "CAP 1788",
+      "COP 2800",
+      "CTS 1120",
+      "ETS 1603C",
+      "GEB 1432",
+      "HSC 2060"
+     ]
+    }
+   ]
+  }
+ ]
+}

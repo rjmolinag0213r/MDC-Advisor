@@ -1,0 +1,447 @@
+{
+ "note": "Tuition from each school's official 2026-27 page. Program sheets for FIU are official; UM structure and equivalencies, and UCF/USF requirement lists, are modeled and marked synthetic.",
+ "mdcRates": {
+  "lowerDivision": 118.22,
+  "upperDivision": 186.08,
+  "lowerOutOfState": 402.51,
+  "upperOutOfState": 1002.9,
+  "source": "https://nwsa.mdc.edu/apply/college/tuition/",
+  "year": "2025-26"
+ },
+ "universities": [
+  {
+   "id": "fiu",
+   "name": "Florida International University",
+   "short": "FIU",
+   "type": "florida_public",
+   "typeIndex": 0,
+   "rate": 205.57,
+   "rateOutOfState": 660.19,
+   "rateGraduate": 455.64,
+   "tuitionNote": "Undergraduate tuition and fees per credit for Florida residents ($660.19 out of state).",
+   "tuitionSource": "https://costcalculator.fiu.edu/",
+   "url": "https://www.fiu.edu",
+   "transferNotes": [
+    "Same course number as MDC = same course (Florida Statewide Course Numbering System).",
+    "Connect4Success: MDC associate graduates get guaranteed admission pathways to FIU."
+   ],
+   "programs": [
+    {
+     "code": "IOTAI:BS",
+     "name": "Applied AI & Internet of Things",
+     "degree": "B.S.",
+     "credits": 120,
+     "years": 4,
+     "college": "College of Engineering and Computing",
+     "official": true,
+     "source": "FIU program sheet IOTAI:BS (catalog 2026-08-01)",
+     "progression": "Finish MAC 1147 (or MAC 1114 Trigonometry) within three terms of enrolling.",
+     "requirements": [
+      {
+       "group": "Common prerequisites",
+       "official": true,
+       "courses": [
+        [
+         "MAC 1105"
+        ],
+        [
+         "MAC 1114",
+         "MAC 1147"
+        ],
+        [
+         "PHY 2053"
+        ],
+        [
+         "PHY 2054"
+        ]
+       ]
+      },
+      {
+       "group": "Applied AI & IoT core (45 credits)",
+       "official": true,
+       "courses": [
+        [
+         "TCN 2720"
+        ],
+        [
+         "CTS 1120"
+        ],
+        [
+         "EGN 2271"
+        ],
+        [
+         "CDA 3104"
+        ],
+        [
+         "EEL 2880"
+        ],
+        [
+         "EEL 4730"
+        ],
+        [
+         "TCN 4940"
+        ],
+        [
+         "EEL 4806"
+        ],
+        [
+         "EEL 4802",
+         "EEL 4804"
+        ],
+        [
+         "CNT 3143"
+        ],
+        [
+         "CNT 4149"
+        ],
+        [
+         "CNT 4153"
+        ],
+        [
+         "CNT 4155"
+        ],
+        [
+         "CAI 3864"
+        ],
+        [
+         "CAI 4863"
+        ]
+       ]
+      },
+      {
+       "group": "ECE electives (9 credits)",
+       "official": true,
+       "chooseCredits": 9,
+       "courses": [
+        [
+         "TCN 4211"
+        ],
+        [
+         "TCN 4081"
+        ],
+        [
+         "CNT 4147"
+        ],
+        [
+         "CNT 4151"
+        ],
+        [
+         "CNT 3142"
+        ],
+        [
+         "EEE 4717"
+        ],
+        [
+         "CAI 4854"
+        ]
+       ]
+      }
+     ],
+     "titles": {
+      "TCN 2720": "Introduction to Internet of Things",
+      "CTS 1120": "Fundamentals of Cybersecurity",
+      "EGN 2271": "Introduction to Circuits and Electronic Hardware",
+      "CDA 3104": "Introduction to Computer Design",
+      "EEL 2880": "C Programming for Embedded Systems",
+      "EEL 4730": "Programming Embedded Systems",
+      "TCN 4940": "Senior Project",
+      "EEL 4806": "Ethical Hacking and Countermeasures",
+      "EEL 4802": "Introduction to Digital Forensics Engineering",
+      "EEL 4804": "Introduction to Malware Reverse Engineering",
+      "CNT 3143": "Analytics with Cloud Services in ECE",
+      "CNT 4149": "Deep Learning in ECE",
+      "CNT 4153": "Machine Learning in ECE",
+      "CNT 4155": "Python Programming in ECE",
+      "CAI 3864": "Data Engineering in ECE",
+      "CAI 4863": "Generative AI Fundamentals in ECE",
+      "CAI 4854": "Embedded AI",
+      "MAC 1105": "College Algebra",
+      "MAC 1114": "Trigonometry",
+      "MAC 1147": "Pre-Calculus Algebra and Trigonometry",
+      "PHY 2053": "Physics without Calculus I",
+      "PHY 2054": "Physics without Calculus II"
+     }
+    },
+    {
+     "code": "BIOMEG:MS",
+     "name": "Biomedical Engineering",
+     "degree": "M.S.",
+     "credits": 30,
+     "years": 1,
+     "college": "College of Engineering and Computing",
+     "official": true,
+     "graduate": true,
+     "source": "FIU program sheet BIOMEG:MS (catalog 2026-08-01)",
+     "summary": "Research or Professional track. Professional track: 27 credits of coursework plus a 3-credit industry project, in life sciences, math, BME core, professional development and electives.",
+     "admission": [
+      "Bachelor's in engineering, physical/life sciences, computer science or math",
+      "B average in upper-level undergraduate work",
+      "Graduate GPA of 3.0 to stay in good standing"
+     ],
+     "careers": [
+      "biomedical-engineer"
+     ]
+    },
+    {
+     "code": "CIVLEG:PHD",
+     "name": "Civil Engineering",
+     "degree": "Ph.D.",
+     "credits": 75,
+     "years": 5,
+     "college": "College of Engineering and Computing",
+     "official": true,
+     "graduate": true,
+     "source": "FIU program sheet CIVLEG:PHD (catalog 2026-08-01)",
+     "summary": "75 credits beyond the bachelor's: 54 of coursework (3+ in math/statistics, 18+ in the major area) and 15 of dissertation. Up to 30 credits transfer in with a civil or environmental M.S.",
+     "admission": [
+      "M.S. in civil or environmental engineering with a 3.3 GPA (others reviewed case by case)",
+      "Three recommendation letters, a statement naming the research area, and a resume",
+      "A professor must agree to supervise the dissertation within 15 months"
+     ],
+     "areas": [
+      "Structural, geotechnical and construction",
+      "Environmental and water resources",
+      "Transportation"
+     ],
+     "careers": [
+      "civil-engineer"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "um",
+   "name": "University of Miami",
+   "short": "UM",
+   "type": "private",
+   "typeIndex": 1,
+   "rate": 2210.4,
+   "rateOutOfState": null,
+   "tuitionNote": "$66,312 a year flat tuition for 12-20 credits a term (2026-27), about $2,210 a credit at 30 credits a year.",
+   "tuitionSource": "https://admissions.miami.edu/undergraduate/financial-aid/cost-of-attendance/index.html",
+   "url": "https://www.miami.edu",
+   "transferNotes": [
+    "Private: UM evaluates each course; equivalencies shown here are estimates.",
+    "Courses use 3-digit numbers (e.g. CSC 120), so nothing matches MDC numbers automatically."
+   ],
+   "equivalencies": {
+    "COP 1047C": "CSC 115",
+    "CAI 1001C": "CSC 145",
+    "PHI 2680": "CSC 110",
+    "COP 2800": "CSC 120",
+    "COP 3530": "CSC 317",
+    "CAI 4505C": "CSC 345",
+    "CGS 1060C": "CSC 118",
+    "CTS 1120": "CSC 116",
+    "CAP 1788": "CSC 113"
+   },
+   "programs": [
+    {
+     "code": "UM-BS-CS",
+     "name": "Computer Science",
+     "degree": "B.S.",
+     "credits": 120,
+     "years": 4,
+     "college": "College of Arts and Sciences",
+     "official": false,
+     "synthetic": true,
+     "source": "Course numbers and titles from the UM Academic Bulletin (CSC). Degree structure is modeled, not UM's official plan.",
+     "requirements": [
+      {
+       "group": "Programming sequence",
+       "courses": [
+        [
+         "CSC 120"
+        ],
+        [
+         "CSC 220"
+        ]
+       ]
+      },
+      {
+       "group": "Systems and theory core",
+       "courses": [
+        [
+         "CSC 314"
+        ],
+        [
+         "CSC 317"
+        ],
+        [
+         "CSC 322"
+        ],
+        [
+         "CSC 419",
+         "CSC 427"
+        ]
+       ]
+      },
+      {
+       "group": "Upper-division core",
+       "courses": [
+        [
+         "CSC 421"
+        ],
+        [
+         "CSC 423"
+        ],
+        [
+         "CSC 424"
+        ],
+        [
+         "CSC 431"
+        ]
+       ]
+      },
+      {
+       "group": "AI and electives",
+       "courses": [
+        [
+         "CSC 345"
+        ],
+        [
+         "CSC 329",
+         "CSC 330"
+        ]
+       ]
+      },
+      {
+       "group": "Senior project",
+       "courses": [
+        [
+         "CSC 410"
+        ],
+        [
+         "CSC 411"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "code": "UM-MD",
+     "name": "Doctor of Medicine (Miller School of Medicine)",
+     "degree": "M.D.",
+     "credits": null,
+     "years": 4,
+     "college": "Leonard M. Miller School of Medicine",
+     "official": false,
+     "graduate": true,
+     "source": "Clerkship and elective names from the UM Academic Bulletin (MDR). Admission steps are the typical U.S. M.D. path.",
+     "summary": "Four years after a bachelor's: two of medical science, then clinical clerkships and electives (for example Public Health Clerkship, Pediatric Mobile Clinic, Med-Peds), then residency.",
+     "admission": [
+      "Any bachelor's degree with pre-med science courses (biology, general and organic chemistry, physics with labs)",
+      "MCAT exam",
+      "Clinical, volunteer and research experience"
+     ],
+     "careers": [
+      "physician"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ucf",
+   "name": "University of Central Florida",
+   "short": "UCF",
+   "type": "florida_public",
+   "typeIndex": 0,
+   "rate": 212.28,
+   "rateOutOfState": 891.07,
+   "tuitionNote": "Undergraduate tuition and fees for 1 credit hour, 2026-27 ($891.07 out of state).",
+   "tuitionSource": "https://studentaccounts.ucf.edu/tf-tuitionratescurrent/",
+   "url": "https://www.ucf.edu",
+   "transferNotes": [
+    "Same course number as MDC = same course (Florida Statewide Course Numbering System).",
+    "DirectConnect to UCF guarantees admission for Florida College System associate graduates."
+   ],
+   "programs": [
+    {
+     "code": "UCF-BS-CS",
+     "name": "Computer Science",
+     "degree": "B.S.",
+     "credits": 120,
+     "years": 4,
+     "official": false,
+     "synthetic": true,
+     "requirements": [
+      {
+       "group": "Florida common prerequisites for computer science (check cpm.flvc.org)",
+       "official": false,
+       "courses": [
+        [
+         "MAC 2311"
+        ],
+        [
+         "MAC 2312"
+        ],
+        [
+         "PHY 2048"
+        ],
+        [
+         "PHY 2049"
+        ],
+        [
+         "COP 1047C",
+         "COP 2800"
+        ]
+       ]
+      }
+     ],
+     "source": "Requirements modeled on Florida's common prerequisites; confirm in UCF's catalog."
+    }
+   ]
+  },
+  {
+   "id": "usf",
+   "name": "University of South Florida",
+   "short": "USF",
+   "type": "florida_public",
+   "typeIndex": 0,
+   "rate": 198.67,
+   "rateOutOfState": 628.2,
+   "tuitionNote": "$5,960 a year for a full-time Florida resident (2026-27), about $199 a credit at 30 credits a year.",
+   "tuitionSource": "https://www.stpetersburg.usf.edu/about/at-a-glance.aspx",
+   "url": "https://www.usf.edu",
+   "transferNotes": [
+    "Same course number as MDC = same course (Florida Statewide Course Numbering System)."
+   ],
+   "programs": [
+    {
+     "code": "USF-BS-CS",
+     "name": "Computer Science",
+     "degree": "B.S.",
+     "credits": 120,
+     "years": 4,
+     "official": false,
+     "synthetic": true,
+     "requirements": [
+      {
+       "group": "Florida common prerequisites for computer science (check cpm.flvc.org)",
+       "official": false,
+       "courses": [
+        [
+         "MAC 2311"
+        ],
+        [
+         "MAC 2312"
+        ],
+        [
+         "PHY 2048"
+        ],
+        [
+         "PHY 2049"
+        ],
+        [
+         "COP 1047C",
+         "COP 2800"
+        ]
+       ]
+      }
+     ],
+     "source": "Requirements modeled on Florida's common prerequisites; confirm in USF's catalog."
+    }
+   ]
+  }
+ ]
+}

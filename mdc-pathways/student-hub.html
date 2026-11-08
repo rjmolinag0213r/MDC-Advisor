@@ -795,6 +795,7 @@
               <button class="btn btn--go chrome" type="button" id="tread">Read my transcript</button>
               <button class="btn chrome" type="button" id="tsample-hs">Try a sample high-school transcript</button>
               <button class="btn chrome" type="button" id="tsample">Try a sample college transcript</button>
+              <button class="btn chrome" type="button" id="tsample-mdc">Try a sample MDC transcript (real course numbers)</button>
             </div>
           </div>
 
@@ -1324,11 +1325,12 @@ function renderImpact() {
 
   const order = { none: 0, elective: 1, full: 2 };
   document.getElementById("ctable").innerHTML = [...transferable].sort((a, b) => order[a.t[tIdx(destId)]] - order[b.t[tIdx(destId)]]).map((c) => {
-    const r = c.t[tIdx(destId)];
+    const ti = tIdx(destId), r = c.t[ti];
+    const why = ti >= 3 && c.whyAt && c.whyAt[ti - 3] ? c.whyAt[ti - 3] : c.why;   // real universities have their own reason
     return `<tr><td><span class="code">${c.code}</span><br>${c.title}${c.st === "now" ? ' <span class="pill s-now">In progress</span>' : ""}</td>
       <td class="num">${c.cr}</td>
       <td><span class="pill t-${r}">${{ full: "Counts", elective: "Elective only", none: "Not accepted" }[r]}</span></td>
-      <td class="why">${REASONS[r]}${c.why ? `<br><small>${c.why}</small>` : ""}</td></tr>`;
+      <td class="why">${REASONS[r]}${why ? `<br><small>${NS.esc(why)}</small>` : ""}</td></tr>`;
   }).join("");
 }
 function renderTransfer() { renderDests(); renderImpact(); }
@@ -1434,7 +1436,7 @@ function renderAISnap() {
     <p class="note inset"><b>Heads up:</b> transferring to a ${worst.dest.name.toLowerCase()} right now would leave ${worst.lost} of your credits behind. Ask about it before you register for next term.</p>`;
 }
 /* ---------------- advisor memory (signed-in students) ---------------- */
-const PROGRAM_LABEL = { AI: "Applied AI", DATA: "Data Analytics", CYBER: "Cybersecurity", SWE: "Software Engineering",
+const PROGRAM_LABEL = { AIBS: "Applied AI B.S. (official)", AIAS: "Applied AI A.S. (official)", AI: "Applied AI", DATA: "Data Analytics", CYBER: "Cybersecurity", SWE: "Software Engineering",
   NET: "Networking", ECE: "Electrical & Computer Engineering" };
 const CAREER_LABEL = { "architect": "Architect", "mechanical-engineer": "Mechanical Engineer", "chef": "Chef",
   "cybersecurity-specialist": "Cybersecurity Specialist", "it-consultant": "IT Consultant", "software-developer": "Software Developer",
@@ -1550,12 +1552,18 @@ async function loadHub(rec) {
   applyHub(d);
   renderPlanBar(); renderSchools();
   const sample = document.getElementById("sample");
+  hubOfficial = !!d.official;
+  if (d.official) {   // real MDC program sheet: say so instead of the sample-catalog note
+    sample.innerHTML = `<b>Official MDC program.</b> Requirements from ${NS.esc(d.source || "MDC's program sheet")}. ` +
+      `Class terms are estimated, and FIU/UCF/USF tuition comes from each school's 2026-27 page. Confirm with an MDC advisor.`;
+    return;
+  }
   sample.innerHTML = rec.isSample
     ? `<b>Sample student.</b> Synthetic courses (codes start with Z), graduating ${NS.esc(d.graduationTerm || "on the planned path")}. Drop your own transcript in the AI Advisor tab.`
     : `<b>Your record.</b> Built from your transcript with sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
 }
 
-let lastSaved = null;
+let lastSaved = null, hubOfficial = false;
 async function saveRecord() {
   if (!signedIn || !record || record.isSample) return;
   try {
@@ -1791,6 +1799,7 @@ async function readSample(name) {
 }
 $("tsample").addEventListener("click", () => readSample("sample_transcript.png"));
 $("tsample-hs").addEventListener("click", () => readSample("sample_hs_transcript.png"));
+$("tsample-mdc").addEventListener("click", () => readSample("sample_mdc_transcript.png"));
 
 /* manage the approved plan: by clicking courses in Progress, or by telling the advisor */
 async function setCourseStatus(codes, st) {
@@ -2008,8 +2017,10 @@ initAuth().then(async (auth) => {
     showWelcome(first, !!rec.isNew);
     renderAccountStatus();
     document.getElementById("sample").innerHTML = rec.isNew
-      ? `Course data is a sample catalog (codes start with Z) while we connect MDC's real catalog.`
-      : `<span class="saved-flag">✓ Saved to your account</span> · Sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
+      ? `Applied AI uses MDC's official program sheets (A.S. 25080, B.S. S9520); other programs use a sample catalog (codes start with Z).`
+      : `<span class="saved-flag">✓ Saved to your account</span> · ` + (hubOfficial
+        ? `Official MDC program sheet. Check transfer equivalencies with an MDC advisor.`
+        : `Sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`);
     if (rec.isNew && (!pendingGo || pendingGo === "progress")) pendingGo = "ai";   // new students start with their transcript
     document.getElementById("program").value = rec.program;
     document.body.classList.remove("hub-locked");
