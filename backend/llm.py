@@ -153,8 +153,10 @@ def _complete_prune(p: Provider, messages: list[dict], temperature: float, max_t
 
 def complete(messages: list[dict], *, json_mode: bool = True, temperature: float = 0.5,
              max_tokens: int = 1200, timeout: float = 25, budget: float | None = None,
-             meta_out: dict | None = None) -> tuple[str, str]:
+             meta_out: dict | None = None, skip: tuple[str, ...] = ()) -> tuple[str, str]:
     """Return (content, "provider/model"). Raises LLMUnavailable if every provider fails.
+
+    skip names providers to leave out of the chain (e.g. ("prune",) to get a fresh, uncached answer).
 
     budget caps the TOTAL seconds spent across the whole fallback chain (default LLM_BUDGET_SECONDS
     or 30), so a caller never waits for three full timeouts back to back.
@@ -164,7 +166,7 @@ def complete(messages: list[dict], *, json_mode: bool = True, temperature: float
     deadline = time.monotonic() + budget
     errors = []
     for p in provider_order():
-        if not p.api_key:
+        if not p.api_key or p.name in skip:
             continue
         remaining = deadline - time.monotonic()
         if remaining < 3:

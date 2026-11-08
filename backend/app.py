@@ -24,6 +24,10 @@ from werkzeug.exceptions import HTTPException
 
 load_dotenv(Path(__file__).parent / ".env")
 
+import requests  # noqa: E402
+requests_exc = requests.RequestException
+
+import advisor_tools  # noqa: E402
 import auth  # noqa: E402  (needs env loaded first)
 import llm  # noqa: E402
 import offline  # noqa: E402
@@ -551,17 +555,40 @@ def _clean_memory_update(update: dict) -> dict:
     return out
 
 
+def _context_block(ctx) -> str:
+    """Transcript strengths / plan preview the page passes along, so the advisor can coach around them."""
+    if not isinstance(ctx, dict):
+        return ""
+    parts = []
+    st = ctx.get("strengths") if isinstance(ctx.get("strengths"), dict) else {}
+    if st.get("strong"):
+        parts.append("Strongest subjects from their transcript: " + ", ".join(map(str, st["strong"][:4])))
+    if st.get("gpa"):
+        parts.append(f"Transcript GPA: {st['gpa']}")
+    if st.get("suggestedPrograms"):
+        parts.append("Programs their grades point to: " + ", ".join(f"{p.get('name')}" for p in st["suggestedPrograms"][:3]))
+    if ctx.get("level"):
+        parts.append(f"Transcript level: {ctx['level']}")
+    if ctx.get("previewProgram"):
+        parts.append(f"They're previewing a plan for: {ctx['previewProgram']} (not approved yet)")
+    if not parts:
+        return ""
+    return ("\n\nContext from the page (use it to coach: ask 1-2 questions at a time about what they enjoy, help them see how "
+            "their strong subjects become career skills, and when they seem ready suggest they preview and approve a plan):\n- "
+            + "\n- ".join(str(p)[:300] for p in parts))
+
+
 @app.post("/api/chat")
 def chat():
     body = _json_body()
     history = _validate_history(body.get("chatHistory"))
     _rate_limit()
     user = _optional_user()
-    memory, memory_text = {}, ""
+    memory, memory_text = {}, _context_block(body.get("context"))
     if user:
         try:
             memory = store.get_memory(user["id"])
-            memory_text = _memory_block(memory, _record_summary(user["id"]))
+            memory_text = _memory_block(memory, _record_summary(user["id"])) + memory_text
         except Exception as e:
             print(f"[memory] load failed: {type(e).__name__}: {e}")
     out = advise(history, memory_text)
@@ -759,6 +786,50 @@ def student_hub():
                       body.get("terms"), safety.redact_pii(str(body.get("name") or ""))[0] or None,
                       str(body.get("currentTerm") or "Fall 2026"), load)
     store.log_event("hub", program=out["student"]["programCode"], latency_ms=_elapsed_ms())
+    return jsonify(out)
+
+
+@app.post("/api/plan/preview")
+def plan_preview():
+    """Proposed plan the student can approve: program, why it fits, first two terms, finish line, cost."""
+    _need_catalog()
+    body = _json_body()
+    strengths = body.get("strengths") if isinstance(body.get("strengths"), dict) else None
+    user = _optional_user()
+    memory = store.get_memory(user["id"]) if user else {}
+    _rate_limit()
+    return jsonify(advisor_tools.plan_preview(body.get("program", ""), body.get("completed"), strengths, memory,
+                                              str(body.get("startTerm") or "Fall 2026"), int(body.get("load") or 15)))
+
+
+@app.post("/api/schools/lookup")
+def school_lookup():
+    """Read a transfer school's web page: cost per credit, programs, transfer notes."""
+    body = _json_body()
+    url = body.get("url")
+    if not isinstance(url, str) or not url.strip() or len(url) > 300:
+        raise ApiError(400, "invalid_request", "Send the school's website address as url.", field="url")
+    _rate_limit()
+    try:
+        return jsonify(advisor_tools.school_info(url, body.get("program")))
+    except advisor_tools.FetchError as e:
+        raise ApiError(422, "school_unreadable", str(e), field="url")
+    except requests_exc as e:
+        raise ApiError(422, "school_unreadable", f"Couldn't reach that site ({type(e).__name__}).", field="url")
+
+
+@app.post("/api/whatif")
+def what_if():
+    """Compare staying on the current path with switching to another program or career."""
+    _need_catalog()
+    body = _json_body()
+    target = body.get("target")
+    if not isinstance(target, str) or not target.strip() or len(target) > 80:
+        raise ApiError(400, "invalid_request", "Send the program or career you're considering as target.", field="target")
+    _rate_limit()
+    out = advisor_tools.whatif(body.get("program", ""), body.get("completed"), safety.redact_pii(target)[0],
+                               int(body.get("load") or 15))
+    store.log_event("whatif", program=out["current"]["code"], latency_ms=_elapsed_ms())
     return jsonify(out)
 
 

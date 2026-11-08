@@ -129,7 +129,18 @@ Flask serves Cris's site from `mdc-pathways/` at `/`: `index.html`, `explore.htm
 |---|---|
 | `GET /api/config` | Public settings for the frontend: Auth0 domain, client ID and audience, plus the program list |
 | `POST /api/hub` | `{ program, completed[], inProgress[], grades{}, terms{}, name, currentTerm, load }` returns the Student Hub's data: `student`, `groups`, `courses[]` (`code, title, cr, g, st: done/now/next, term, grade, t: [FL public, private, out-of-state] = full/elective/none, why`), `dests` and `graduationTerm`. Transfer results come from rules based on course type (synthetic) |
-| `GET /samples/sample_transcript.png` | Demo transcript for the "Use the sample transcript" button |
+| `GET /samples/sample_transcript.png` | Demo college transcript (synthetic Z courses) |
+| `GET /samples/sample_hs_transcript.png` | Demo high-school transcript (fictional student) |
+
+## Plan preview, school lookup, what-if
+
+| Route | Body → response |
+|---|---|
+| `POST /api/plan/preview` | `{ program, completed[], strengths?, startTerm?, load? }` → `program {code,name,totalCredits}`, `career {id,title,salary}`, `why`, `skills[]`, `firstSteps[]` (AI-written), `firstTerms[]` (first two planned terms), `graduationTerm`, `termCount`, `creditsLeft`, `estimatedCost` (at `ratePerCredit`, an estimate of $120/credit), `warnings[]`, `engine`. Nothing is saved: the page saves the plan via `PUT /api/me/plans/<program>` when the student approves it. |
+| `POST /api/schools/lookup` | `{ url, program? }` → reads the school's public web page: `name`, `type` (`florida_public` / `private` / `out_of_state_public` / `unknown`), `typeIndex` (which transfer rules to reuse), `rate` (cost per credit, `null` if the page doesn't say), `rateOutOfState`, `tuitionNote`, `programs[]`, `transferNotes[]`, `deadline`, `sourceUrl`, `aiExtracted`. Only public http(s) addresses on ports 80/443 are fetched (every redirect is re-checked). Unreadable or blocked pages return `422 school_unreadable`. |
+| `POST /api/whatif` | `{ program, completed[], target, load? }` where `target` is a program name or any career ("doctor") → `current {program, percent, creditsEarned, termsLeft, costLeft, graduationTerm, career, medianSalary, yearsToCareer}`, `target {kind: catalog/career, title, creditsCarryOver, creditsLost, yearsToCareer, costLeft, medianSalary, outlook, steps[], estimate}`, `extraYears`, `timing` (early/middle/late), `verdict` (stay/switch/finish_then_pivot/explore_first), `headline`, `advice`, `nextSteps[]`. Careers outside the catalog are AI estimates (`target.estimate: true`); only gen-ed credits carry over to them. |
+
+`/api/transcript` also returns `level` (`high_school` or `college`) and `strengths`: `subjects[]` (average grade per subject), `strong[]`, `gpa`, `suggestedPrograms[] {code, name, score, why}` and `otherCareers[]`. High-school transcripts return `completed: []`. `/api/chat` accepts an optional `context: { strengths, level, previewProgram }` so the advisor coaches around the transcript.
 
 ## Transcript reading (Gemini multimodal)
 

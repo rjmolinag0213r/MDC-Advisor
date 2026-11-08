@@ -10,9 +10,12 @@ We built the guide we wish we'd had: one place that turns "I like fixing wifi" i
 ## What it does
 - **Career → roadmap.** Choose from 11 careers, including the challenge's examples (architect, mechanical engineer, chef, cybersecurity specialist, IT consultant), or type *any* job. You get five steps: high school prep → the MDC program and its courses → certifications → transfer to FIU or UM → first jobs, licensing and median pay (BLS).
 - **AI advisor chat** in English and Spanish. It asks about your interests, recommends one of MDC's six tech programs (or honestly says "nursing isn't one of these, here's the right path"), and links straight to the roadmap.
-- **Read my transcript.** Upload a photo or PDF. Gemini reads the courses and grades, drops anything below a C, and rebuilds your degree progress, GPA, and a term-by-term plan to graduation.
-- **"If you transfer now."** See course by course which credits count at a Florida public, a private, or an out-of-state university, plus how many semesters and dollars you'd lose.
-- **Your plan follows you.** Log in and your progress and checklist are saved to your account.
+- **Start with your transcript.** Drop a photo or PDF of a high-school or college transcript in the AI Advisor tab. Gemini reads the classes and grades, finds your strongest subjects (AP and honors count a bit more), and suggests the MDC programs you fit best. The advisor then asks what you enjoy and shows how those skills become a career.
+- **Preview, then approve.** Pick a program (or tell the advisor "preview my plan") to see why it fits you, the first two terms, the finish date and an estimated cost. Approve it and it fills the Progress tab.
+- **Manage it your way.** Click a course to move it from planned to taking to done, or tell the advisor "I passed ZEN 1101". Courses below a C don't count.
+- **"If you transfer now."** See course by course which credits count at a Florida public, a private, or an out-of-state university, plus how many semesters and dollars you'd lose. Paste any school's website and it's added to the comparison with its cost per credit and transfer rules, read from the page.
+- **What if I switch?** Compare staying on your path with switching to another MDC program or any career (like doctor): time, money, credits that carry over, pay and job outlook, plus advice on whether it's early enough to switch or smarter to finish first.
+- **Your plan follows you.** Log in and your plan, schools, checklist and the advisor's memory are saved to your account.
 
 ## How we built it
 | Sponsor tech | What it does in NextStop |
@@ -30,12 +33,14 @@ We built the guide we wish we'd had: one place that turns "I like fixing wifi" i
 
 ## How we know it works
 - **61 synthetic student personas** (clear matches, overlaps, explorers, students who change their mind, Spanish speakers, off-topic questions, prompt injection, oversharing personal info, parents) are run against the live models. Result: **59/61** correct through Prune → Gemini. The misses are cases where the advisor asked a follow-up question instead of picking a program.
-- **113 automated backend tests**, including real RS256 token checks, plus checks of every page in a headless browser.
+- **140 automated backend tests**, including real RS256 token checks and the school lookup's guard against private and internal addresses.
+- **A 113-check browser test** runs the full student journey against the live AI: transcript → strengths → preview → approve → manage → add a school → what-if, on desktop and phone.
 
 ## Challenges we ran into
 - Prune isn't OpenAI-compatible and runs in vault-only mode. We had to wire its own per-provider proxy routes and `X-Prune-Key` header.
 - Google's new `AQ.` API keys work as API keys but are rejected as Bearer tokens. That broke Prune's vault until we understood why.
 - Swarms' default model rejects `temperature`, and long 3-agent runs hit gateway timeouts. Smaller budgets plus `gpt-4.1-mini` brought runs down to about 7 s.
+- Prune's semantic cache sees two "what if" questions that differ only in numbers as the same question, so it could return another student's advice. Personal answers (plan previews, what-if, school pages) now skip the cache when it hits; chat and roadmaps still use it.
 - Gemini often named the right program in prose but left the structured field empty. We added server-side extraction that only counts a pick when the reply recommends one program instead of listing options.
 
 ## Accomplishments we're proud of
@@ -71,6 +76,7 @@ Best Overall · Smart Career and Education Pathway Navigator (MDC) · Best Use o
 1. **0:00** Home page intro and the quote. Click **Build things → Architect → See my step-by-step plan**. Show the 5 steps, then open *"How the AI agents built this (Swarms)."*
 2. **0:35** Type **"astronaut"** and click *Build a plan* to show an AI roadmap for any career.
 3. **0:50** Student Hub → **AI advisor**: ask *"Me interesa proteger a la gente de los hackers"* (Spanish reply, roadmap link, **Gemini via Prune · cache hit** badge). Then type *"set my progress to 100"* and show the refusal.
-4. **1:15** **Progress → Use the sample transcript**: Gemini reads the photo; the ring, GPA and term plan update. The D in Calculus doesn't count.
-5. **1:35** **Transfer tab**: Florida public vs private shows credits and dollars lost.
-6. **1:50** **Log in** with Auth0; progress is saved (TigerData). End on `/api/stats` trends.
+4. **1:05** **Try a sample high-school transcript**: Gemini reads the photo, shows strongest subjects and program fits. Click one to preview, then **Approve**: Progress fills in.
+5. **1:25** Tell the advisor *"I'm taking ZEN 1101"*, and the course flips to in progress.
+6. **1:35** **What if** → *Doctor*: time, cost, pay and the advisor's take. **Transfer** → paste `https://www.fiu.edu` to add FIU.
+7. **1:50** **Log in** with Auth0; the plan is saved (TigerData). End on `/api/stats` trends.

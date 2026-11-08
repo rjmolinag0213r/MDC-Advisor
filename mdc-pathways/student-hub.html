@@ -568,6 +568,59 @@
   .welcome p { margin: 0; color: rgba(255,255,255,.85); }
   .welcome[hidden] { display: none; }
   .saved-flag { color: var(--mint, #6fd3ab); font-size: .85rem; font-weight: 600; }
+  /* your-plan box */
+  .steps-mini { display: flex; gap: .35rem; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+  .steps-mini span { flex: 1; padding-top: .45rem; border-top: 2px solid rgba(255,255,255,.18); opacity: .6; }
+  .steps-mini span.on { border-color: var(--lx-accent, #f0a874); opacity: 1; }
+  .steps-mini span.done { border-color: var(--mint, #6fd3ab); opacity: .9; }
+  .drop { display: grid; place-items: center; gap: .25rem; text-align: center; padding: 1.6rem 1rem; cursor: pointer;
+    border: 1px dashed rgba(255,255,255,.55); transition: background-color .2s, border-color .2s; }
+  .drop:hover, .drop.over { background: rgba(255,255,255,.07); border-color: #fff; }
+  .drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+  .drop span { font-size: .9rem; opacity: .8; }
+  .drop.has-file b::before { content: "✓ "; color: var(--mint, #6fd3ab); }
+  .fit-list { display: grid; gap: .5rem; }
+  .fit { font: inherit; color: var(--fg); text-align: left; cursor: pointer; background: transparent; padding: .8rem 1rem;
+    border: 1px solid rgba(255,255,255,.35); display: grid; gap: .15rem; }
+  .fit:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+  .fit b { font-family: var(--f-lux-display, sans-serif); font-weight: 500; }
+  .fit small { opacity: .8; }
+  .fit .go { justify-self: start; margin-top: .3rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--lx-accent, #f0a874); }
+  .pv-term { padding: .6rem .2rem; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .pv-term b { font-family: var(--f-lux-display, sans-serif); font-weight: 500; }
+  .try summary { cursor: pointer; min-height: 40px; display: flex; align-items: center; }
+  .try .chips { margin-top: .5rem; }
+  .plan-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem; }
+  .plan-bar h2 { font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
+  #terms .row { cursor: pointer; }
+  #terms .row:hover { background: rgba(255,255,255,.05); }
+  /* add a school */
+  .addschool { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .addschool input { flex: 1; min-width: 14rem; font: inherit; color: var(--fg); background: transparent; border: 1px solid rgba(255,255,255,.45); padding: .7rem .9rem; min-height: 48px; }
+  .school-facts { font-size: .9rem; }
+  .school-facts li { margin: .15rem 0; }
+  /* what-if */
+  .wi-form { display: flex; flex-wrap: wrap; gap: .6rem; align-items: end; }
+  .wi-form label { display: grid; gap: .3rem; font-size: .85rem; flex: 1; min-width: 16rem; }
+  .wi-form input { font: inherit; color: var(--fg); background: transparent; border: 1px solid rgba(255,255,255,.45); padding: .7rem .9rem; min-height: 48px; }
+  .wi-cols { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+  .wi-col h3 { margin: 0 0 .2rem; }
+  .wi-col dl { display: grid; grid-template-columns: 1fr auto; gap: .45rem 1rem; margin: .6rem 0 0; }
+  .wi-col dt { opacity: .85; } .wi-col dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+  .verdict { padding: 1rem 1.2rem; border-left: 3px solid var(--lx-accent, #f0a874); background: rgba(255,255,255,.06); }
+  .verdict.stay, .verdict.finish_then_pivot { border-left-color: var(--mint, #6fd3ab); }
+  .verdict.switch { border-left-color: var(--lx-accent, #f0a874); }
+  .verdict h3 { margin: 0 0 .4rem; }
+  .bars { display: grid; gap: .5rem; }
+  .bar-row { display: grid; grid-template-columns: 8rem 1fr 4.5rem; gap: .7rem; align-items: center; font-size: .9rem; }
+  .bar-row .track { height: 10px; }
+  .bar-group { display: grid; gap: .3rem; padding: .4rem 0; }
+  .bar-group > b { font-family: var(--f-lux-display, sans-serif); font-weight: 500; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
+  #terms .row[data-code] { cursor: pointer; }
+  #terms .row[data-code]:hover, #terms .row[data-code]:focus-visible { outline: 1px solid rgba(255,255,255,.6); }
+  .school-card { padding: .9rem 1rem; display: grid; gap: .35rem; }
+  .bar-row span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .est { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--amber, #e8c170); }
   .mem-row { display: grid; gap: .3rem; }
   .mem-row b { font-family: var(--f-lux-display, sans-serif); font-weight: 500; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
   .mem-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
@@ -672,6 +725,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>AI advisor</button>
         <button class="tab" role="tab" id="tab-progress" aria-controls="panel-progress" data-view="progress">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 20V12M12 20V5M19 20v-5"/></svg>Progress</button>
+        <button class="tab" role="tab" id="tab-whatif" aria-controls="panel-whatif" data-view="whatif">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v12M18 9v12M6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 9c0 4-12 2-12 6"/></svg>What if</button>
         <button class="tab" role="tab" id="tab-transfer" aria-controls="panel-transfer" data-view="transfer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>Transfer</button>
       </div>
@@ -718,9 +773,50 @@
         </form>
       </div>
       <div class="stack">
-        <div class="glass panel stack">
-          <span class="eyebrow">Try asking</span>
-          <div class="chips" id="chips"></div>
+        <!-- YOUR PLAN: 1 drop transcript -> 2 strengths + programs -> 3 preview -> approve (fills Progress) -->
+        <div class="glass panel stack" id="plan-box">
+          <div class="steps-mini" aria-hidden="true"><span data-s="1">1 · Transcript</span><span data-s="2">2 · Your strengths</span><span data-s="3">3 · Approve plan</span></div>
+
+          <div id="ps-drop" class="stack">
+            <span class="eyebrow">Start here</span>
+            <h2>Drop your transcript</h2>
+            <p class="lede" style="margin:0">High school or college. Gemini reads your classes and grades, finds your strongest subjects and shows the MDC programs you fit best. The file isn't stored.</p>
+            <label class="drop" id="drop" for="tfile">
+              <input id="tfile" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,application/pdf,image/*">
+              <b>Drag your transcript here</b><span>or click to choose a PDF or photo</span>
+            </label>
+            <div class="controls">
+              <button class="btn btn--go chrome" type="button" id="tread">Read my transcript</button>
+              <button class="btn chrome" type="button" id="tsample-hs">Try a sample high-school transcript</button>
+              <button class="btn chrome" type="button" id="tsample">Try a sample college transcript</button>
+            </div>
+          </div>
+
+          <div id="ps-strengths" class="stack" hidden>
+            <span class="eyebrow" id="ps-level"></span>
+            <h2>Your strongest subjects</h2>
+            <div class="mem-tags" id="ps-strong"></div>
+            <p class="lede" style="margin:0" id="ps-gpa"></p>
+            <span class="eyebrow">Programs that fit you</span>
+            <div class="fit-list" id="ps-fits"></div>
+            <p class="code" style="margin:0">Tell the advisor what you enjoy. It will help you match your skills to careers, then preview a plan.</p>
+          </div>
+
+          <div id="ps-preview" class="stack" hidden>
+            <span class="eyebrow">Plan preview · not approved yet</span>
+            <h2 id="pv-title"></h2>
+            <p class="lede" style="margin:0" id="pv-why"></p>
+            <div class="impact" id="pv-numbers"></div>
+            <div id="pv-skills"></div>
+            <div id="pv-terms" class="stack"></div>
+            <div class="controls">
+              <button class="btn btn--go chrome" type="button" id="pv-approve">Approve this plan</button>
+              <button class="btn chrome" type="button" id="pv-back">Pick another program</button>
+            </div>
+          </div>
+
+          <p class="code" id="tstatus" role="status" aria-live="polite"></p>
+          <details class="try"><summary class="eyebrow">Try asking</summary><div class="chips" id="chips"></div></details>
         </div>
         <div class="glass panel stack" id="ai-snap"></div>
         <div class="glass panel stack" id="ai-memory" hidden>
@@ -736,16 +832,14 @@
   <!-- PROGRESS -->
   <section role="tabpanel" id="panel-progress" aria-labelledby="tab-progress" hidden>
     <div class="glass panel stack" id="record">
-      <span class="eyebrow">Your record</span>
-      <h2>Load your transcript</h2>
-      <p class="lede" style="margin:0">Upload a photo or PDF of your unofficial transcript. Gemini reads the courses and grades, then we rebuild your progress, plan and transfer options. The file isn't stored.</p>
-      <div class="controls">
-        <label for="program">Program<select id="program"></select></label>
-        <label for="tfile">Transcript (PDF, PNG, JPG)<input id="tfile" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,application/pdf,image/*"></label>
-        <button class="btn btn--go chrome" type="button" id="tread">Read my transcript</button>
-        <button class="btn chrome" type="button" id="tsample">Use the sample transcript</button>
+      <div class="plan-bar">
+        <div><span class="eyebrow" id="plan-state">Your plan</span><h2 id="plan-name" style="margin-top:.2rem"></h2></div>
+        <div class="controls">
+          <label for="program">Program<select id="program"></select></label>
+          <button class="btn chrome" type="button" id="to-ai">Load a new transcript</button>
+        </div>
       </div>
-      <p class="code" id="tstatus" role="status" aria-live="polite"></p>
+      <p class="code" style="margin:0">Click any course to change it: planned → taking now → done. Or just tell the advisor, e.g. "I passed ZEN 1101" or "I'm taking ZMA 1105".</p>
     </div>
     <div class="glass panel hero-prog">
       <div class="ring" id="ring"></div>
@@ -802,6 +896,19 @@
     </div>
 
     <div class="glass panel stack">
+      <span class="eyebrow">Add the school you want</span>
+      <h2>Compare a real school</h2>
+      <p class="lede" style="margin:0">Paste the school's tuition or transfer page. We read it for cost per credit, programs and transfer rules, then add it to your comparison.</p>
+      <form class="addschool" id="addschool">
+        <label for="school-url" class="sr">School website</label>
+        <input id="school-url" type="url" inputmode="url" placeholder="https://admissions.fiu.edu/apply/transfer/index.html" autocomplete="off">
+        <button class="btn btn--go chrome" type="submit">Add school</button>
+      </form>
+      <p class="code" id="school-status" role="status" aria-live="polite"></p>
+      <div id="school-facts"></div>
+    </div>
+
+    <div class="glass panel stack">
       <h2 id="impact-title"></h2>
       <div class="impact" id="impact"></div>
       <div class="legend"><span><i style="background:var(--mint)"></i>Counts toward the degree</span><span><i style="background:var(--amber)"></i>Accepted as elective only</span><span><i style="background:var(--rose)"></i>Not accepted</span></div>
@@ -815,6 +922,34 @@
         <thead><tr><th>Course</th><th>Credits</th><th>Result</th><th>Why</th></tr></thead>
         <tbody id="ctable"></tbody>
       </table></div>
+    </div>
+  </section>
+
+  <!-- WHAT IF -->
+  <section role="tabpanel" id="panel-whatif" aria-labelledby="tab-whatif" hidden>
+    <div class="glass panel stack">
+      <span class="eyebrow">What if I switch?</span>
+      <h2 class="h1">Thinking about another major?</h2>
+      <p class="lede" style="margin:0">Compare staying on your path with switching: time, money, credits that carry over, and the job market, plus an honest recommendation.</p>
+      <form class="wi-form" id="wi-form">
+        <label for="wi-target">Switch to
+          <input id="wi-target" list="wi-options" placeholder="Cybersecurity, Data Analytics, doctor, nurse, lawyer…" autocomplete="off" maxlength="80"></label>
+        <datalist id="wi-options">
+          <option value="Applied Artificial Intelligence"><option value="Data Analytics"><option value="Cybersecurity">
+          <option value="Software Engineering"><option value="Networking"><option value="Electrical & Computer Engineering">
+          <option value="Doctor"><option value="Registered nurse"><option value="Lawyer"><option value="Architect"><option value="Teacher"><option value="Pharmacist">
+        </datalist>
+        <button class="btn btn--go chrome" type="submit">Compare</button>
+      </form>
+      <p class="code" id="wi-status" role="status" aria-live="polite"></p>
+    </div>
+    <div id="wi-result" class="stack" hidden>
+      <div class="glass panel stack verdict" id="wi-verdict"></div>
+      <div class="wi-cols" id="wi-cols"></div>
+      <div class="glass panel stack">
+        <h2>Side by side</h2>
+        <div class="bars" id="wi-bars"></div>
+      </div>
     </div>
   </section>
 </main>
@@ -904,9 +1039,11 @@ function finishTerm(load) {
   const terms = Math.ceil(remaining / load);
   return { terms, term: termAfter(STUDENT.currentTerm, terms) };
 }
+// schools added by URL reuse the transfer rules of their type (0 FL public, 1 private, 2 out-of-state)
+const tIdx = (id) => (DESTS[id] && DESTS[id].ti != null ? DESTS[id].ti : Math.min(id, 2));
 function transferImpact(destId) {
   const d = DESTS[destId], out = { full: 0, elective: 0, none: 0 };
-  transferable.forEach((c) => { out[c.t[destId]] += c.cr; });
+  transferable.forEach((c) => { out[c.t[tIdx(destId)]] += c.cr; });
   out.earned = earnedDone + earnedNow;
   out.lost = out.elective + out.none;
   out.dest = d;
@@ -997,7 +1134,7 @@ if ("IntersectionObserver" in window) {
 
 
 /* ---------------- tabs ---------------- */
-const VIEWS = ["ai", "progress", "transfer"];
+const VIEWS = ["ai", "progress", "whatif", "transfer"];
 let current = null;
 function moveThumb() {
   const t = document.getElementById("tab-" + current), th = document.getElementById("thumb");
@@ -1102,7 +1239,8 @@ function renderProgress() {
   document.getElementById("terms").innerHTML = terms.map((t) => {
     const cs = COURSES.filter((c) => (c.term || "Still to take") === t);
     return `<div class="stack" style="gap:.5rem"><h3>${t} <span class="code">· ${sum(cs)} cr</span></h3><div class="term-list">${cs.map((c) => `
-      <div class="row inset"><span class="code">${c.code}</span><span class="t">${c.title}</span>
+      <div class="row inset" role="button" tabindex="0" data-code="${NS.esc(c.code)}" title="Click to change: planned → taking now → done"
+        aria-label="${NS.esc(c.code)} ${NS.esc(c.title)}: ${{ done: "completed", now: "in progress", next: "planned" }[c.st]}. Activate to change."><span class="code">${c.code}</span><span class="t">${c.title}</span>
         <span class="code num">${c.cr} cr${c.grade ? " · " + c.grade : ""}</span>
         <span class="pill s-${c.st}">${{ done: "Completed", now: "In progress", next: "Planned" }[c.st]}</span></div>`).join("")}</div></div>`;
   }).join("");
@@ -1179,8 +1317,8 @@ function renderImpact() {
   document.getElementById("dest-note").innerHTML = d.note;
 
   const order = { none: 0, elective: 1, full: 2 };
-  document.getElementById("ctable").innerHTML = [...transferable].sort((a, b) => order[a.t[destId]] - order[b.t[destId]]).map((c) => {
-    const r = c.t[destId];
+  document.getElementById("ctable").innerHTML = [...transferable].sort((a, b) => order[a.t[tIdx(destId)]] - order[b.t[tIdx(destId)]]).map((c) => {
+    const r = c.t[tIdx(destId)];
     return `<tr><td><span class="code">${c.code}</span><br>${c.title}${c.st === "now" ? ' <span class="pill s-now">In progress</span>' : ""}</td>
       <td class="num">${c.cr}</td>
       <td><span class="pill t-${r}">${{ full: "Counts", elective: "Elective only", none: "Not accepted" }[r]}</span></td>
@@ -1214,7 +1352,7 @@ function answerTransfer(id) {
       return `<li><b>${d.name}</b>: ${im.full} count, ${im.lost} don't (about ${(im.lost / 15).toFixed(1)} semesters, ${fmt$(im.lost * d.rate)})</li>`;
     }).join("")}</ul><p>The Transfer tab shows the course-by-course detail.</p>`;
   }
-  const im = transferImpact(id), lostCourses = transferable.filter((c) => c.t[id] !== "full");
+  const im = transferImpact(id), lostCourses = transferable.filter((c) => c.t[tIdx(id)] !== "full");
   return `<p>At a <b>${im.dest.name.toLowerCase()}</b>, ${im.full} of your ${im.earned} credits would count toward the degree. <b>${im.lost} credits</b> wouldn't, which sets you back about <b>${(im.lost / 15).toFixed(1)} semesters</b> and roughly <b>${fmt$(im.lost * im.dest.rate)}</b>.</p>
     <p>The ones that don't count: ${lostCourses.map((c) => `<span class="code">${c.code}</span>`).join(", ")}.</p>`;
 }
@@ -1245,6 +1383,8 @@ const chatHistory = [];
 async function ask(q) {
   if (!q.trim()) return;
   say(NS.esc(q), "me");
+  const cmd = planCommand(q);
+  if (cmd) { cmd(); return; }
   const local = route(q);
   if (local) { setTimeout(() => say(local + `<span class="engine">From your record</span>`), 200); return; }
   chatHistory.push({ sender: "user", text: q.slice(0, 2000) });
@@ -1252,20 +1392,24 @@ async function ask(q) {
   typing.className = "msg bot typing"; typing.textContent = "Thinking…"; log.appendChild(typing); log.scrollTop = log.scrollHeight;
   try {
     // signed-in: send credentials so the advisor remembers this conversation and what it learned about you
-    const r = await NS.api("/api/chat", { chatHistory: chatHistory.slice(-20) }, { auth: signedIn });
+    const r = await NS.api("/api/chat", { chatHistory: chatHistory.slice(-20), context: chatContext() }, { auth: signedIn });
     typing.remove();
     chatHistory.push({ sender: "bot", text: r.chatResponse });
     if (r.memory) renderMemory(r.memory);
+    if (r.memory && r.memory.programLeaning) leaning = r.memory.programLeaning;
     const paras = NS.esc(r.chatResponse).split(/\n{2,}/).map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
     const link = r.careerId ? `<a class="open-rm" href="explore.html?career=${encodeURIComponent(r.careerId)}">See the step-by-step plan →</a>` : "";
-    say(paras + link + `<span class="engine">${NS.esc(NS.engineBadge(r.engine))}</span>`);
+    // once the advisor knows which program they lean toward, offer the plan preview right in the chat
+    const offer = draft && leaning && PROGRAM_LABEL[leaning] && !(preview && preview.program.code === leaning)
+      ? `<button class="chip chrome" type="button" data-preview="${NS.esc(leaning)}">Preview my ${NS.esc(PROGRAM_LABEL[leaning])} plan</button>` : "";
+    say(paras + link + offer + `<span class="engine">${NS.esc(NS.engineBadge(r.engine))}</span>`);
   } catch (err) {
     typing.remove();
     chatHistory.pop();
     say(`<p>${err.status === 429 ? "Lots of questions right now. Give me a minute and try again." : "I couldn't reach the advisor. Please try again."}</p>`);
   }
 }
-const PROMPTS = ["Am I on track to graduate?", "What should I take next term?", "What happens to my credits if I transfer?",
+const PROMPTS = ["Preview my plan", "Am I on track to graduate?", "What should I take next term?", "What happens to my credits if I transfer?",
   "What if I go to a private school?", "How's my GPA?", "I like video games and math, what career fits me?",
   "¿Qué programa es para ciberseguridad?"];
 document.getElementById("chips").innerHTML = PROMPTS.map((p) => `<button class="chip chrome" type="button">${p}</button>`).join("");
@@ -1350,7 +1494,11 @@ function greet() {
   const back = signedIn && (pastMessages.length || lean)
     ? `<p>Welcome back, ${first}.${lean ? ` Last time we were looking at <b>${NS.esc(lean)}</b>.` : ""}${memory.interests && memory.interests.length ? ` I remember you're into ${NS.esc(memory.interests.slice(-3).join(", "))}.` : ""}</p>`
     : `<p>Hi ${first}.</p>`;
-  say(`${back}<p>I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term or transferring, or about any career you're curious about.</p>`);
+  if (record && record.isNew) {
+    say(`${back}<p>Let's start your plan. Drop your transcript in the box on the right, high school or college. I'll find your strongest subjects, show the MDC programs that fit you, and help you see how your skills turn into a career.</p><p>Or just tell me what you enjoy.</p>`);
+  } else {
+    say(`${back}<p>I've looked at your record: ${earnedDone} credits done, ${earnedNow} in progress, and you're in the <b>${phase().name.toLowerCase()}</b> phase.</p><p>Ask me about graduating, next term or transferring, or about any career you're curious about. You can also tell me "I passed ZEN 1101" and I'll update your plan.</p>`);
+  }
   showPastChat();
 }
 
@@ -1368,14 +1516,22 @@ const SAMPLE = {
 let record = null, signedIn = false, gradTerm = null;
 
 function applyHub(d) {
-  STUDENT = d.student; GROUPS = d.groups; COURSES = d.courses; DESTS = d.dests; REASONS = d.reasons;
+  STUDENT = d.student; GROUPS = d.groups; COURSES = d.courses; REASONS = d.reasons;
+  // the three school types, plus any real schools the student added by URL
+  DESTS = d.dests.concat((record && record.schools || []).map((s, i) => ({
+    id: d.dests.length + i, ti: s.typeIndex, name: s.name, degree: s.programs && s.programs[0] ? s.programs[0] : d.dests[0].degree,
+    total: d.dests[0].total, rate: s.rate || d.dests[s.typeIndex || 0].rate,
+    note: `<b>${NS.esc(s.name)}</b>${s.tuitionNote ? ": " + NS.esc(s.tuitionNote) : ""}${(s.transferNotes || []).length ? "<br>" + s.transferNotes.map(NS.esc).join("<br>") : ""}<br><a href="${NS.esc(s.sourceUrl)}" target="_blank" rel="noopener" style="color:inherit">Source</a>`
+  })));
   rates = DESTS.map((x) => x.rate);
   destId = Math.min(destId, DESTS.length - 1);
   derive();
   document.getElementById("who").textContent = `${STUDENT.name} · ${STUDENT.credential} ${STUDENT.program}`;
   document.getElementById("rate").value = rates[destId];
-  renderProgress(); renderPhase(); renderChecklist(); renderTransfer(); renderAISnap(); greet();
+  renderProgress(); renderPhase(); renderChecklist(); renderTransfer(); renderAISnap();
+  if (!greeted) { greeted = true; greet(); }   // later reloads (course updates, approvals) keep the conversation
 }
+let greeted = false;
 
 async function loadHub(rec) {
   const d = await NS.api("/api/hub", {
@@ -1386,9 +1542,10 @@ async function loadHub(rec) {
   record = rec;
   gradTerm = d.graduationTerm;
   applyHub(d);
+  renderPlanBar(); renderSchools();
   const sample = document.getElementById("sample");
   sample.innerHTML = rec.isSample
-    ? `<b>Sample student.</b> Synthetic courses (codes start with Z), graduating ${NS.esc(d.graduationTerm || "on the planned path")}. Load your own transcript in the Progress tab.`
+    ? `<b>Sample student.</b> Synthetic courses (codes start with Z), graduating ${NS.esc(d.graduationTerm || "on the planned path")}. Drop your own transcript in the AI Advisor tab.`
     : `<b>Your record.</b> Built from your transcript with sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
 }
 
@@ -1444,9 +1601,9 @@ function showAccount(user) {
     document.getElementById("ai-memory").scrollIntoView({ behavior: "smooth", block: "center" });
   });
   document.getElementById("acct-transcript").addEventListener("click", () => {
-    setOpen(false); show("progress");
-    document.getElementById("record").scrollIntoView({ behavior: "smooth", block: "start" });
-    document.getElementById("tfile").focus();
+    setOpen(false); startOver(); show("ai");
+    document.getElementById("plan-box").scrollIntoView({ behavior: "smooth", block: "center" });
+    document.getElementById("tread").focus({ preventScroll: true });
   });
   return first;
 }
@@ -1456,47 +1613,335 @@ function showWelcome(first, isNew) {
   const hello = h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
   document.getElementById("welcome-title").textContent = `${hello}, ${first}.`;
   document.getElementById("welcome-sub").textContent = isNew
-    ? "Your hub is ready. Load your transcript in Progress and we'll build your plan."
+    ? "Your hub is ready. Drop your transcript in the AI Advisor tab and we'll build your plan together."
     : `You're ${pct}% of the way to your ${STUDENT.credential} in ${STUDENT.program}. Projected finish: ${gradTerm || "on track"}.`;
   w.hidden = false;
 }
 
-/* transcript upload (Gemini reads images/PDFs) */
+/* ---------------- your plan: transcript -> strengths -> preview -> approve (AI tab) ---------------- */
+// draft = what the transcript said (not saved yet); preview = the proposed plan; leaning = program the advisor thinks fits
 const tstatus = document.getElementById("tstatus");
+let draft = null, preview = null, leaning = null;
+const $ = (id) => document.getElementById(id);
+function setStep(n) {
+  $("ps-drop").hidden = n !== 1; $("ps-strengths").hidden = n !== 2; $("ps-preview").hidden = n !== 3;
+  document.querySelectorAll(".steps-mini span").forEach((s) => {
+    const k = +s.dataset.s; s.classList.toggle("on", k === n); s.classList.toggle("done", k < n);
+  });
+}
+function chatContext() {
+  const st = (draft && draft.strengths) || (record && record.strengths);
+  const level = (draft && draft.level) || (record && record.level);
+  return st || preview ? { strengths: st || undefined, level: level || undefined,
+                           previewProgram: preview ? preview.program.name : undefined } : undefined;
+}
+function programFromText(s) {
+  const t = s.toLowerCase();
+  const map = [["AI", /artificial intelligence|\bai\b|machine learning/], ["DATA", /data/], ["CYBER", /cyber|security/],
+               ["SWE", /software|programming|developer/], ["NET", /network|cloud/], ["ECE", /electrical|electronics|computer engineering|hardware/]];
+  const hit = map.find(([, re]) => re.test(t));
+  return hit ? hit[0] : null;
+}
+
 async function readTranscript(form) {
-  const program = document.getElementById("program").value;
-  form.append("program", program);
   tstatus.textContent = "Reading your transcript…";
   try {
     const t = await NS.api("/api/transcript", form);
     const grades = {}, terms = {};
-    t.courses.forEach((c) => { if (c.grade && c.grade !== "IP") grades[c.code] = c.grade; if (c.term) terms[c.code] = c.term; });
-    const inProgress = t.courses.filter((c) => c.grade === "IP").map((c) => c.code);
-    const user = await NS.auth.user();
-    await loadHub({ name: (user && (user.given_name || user.name)) || "You", program, completed: t.completed, inProgress, grades, terms,
-                    currentTerm: STUDENT.currentTerm, isSample: false });
-    if (signedIn) {
-      showWelcome((document.getElementById("acct-name").textContent || "there"), false);
-      document.getElementById("sample").innerHTML = `<span class="saved-flag">✓ Saved to your account</span> · Sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
-    }
-    tstatus.textContent = `Read ${t.courses.length + t.notCounted.length} courses with ${NS.engineBadge(t.engine)}. ` +
-      `${t.completed.length} count` + (t.notCounted.length ? `, ${t.notCounted.length} don't (${t.notCounted.map((c) => c.code + " " + (c.grade || "")).join(", ")})` : "") +
-      (t.notInCatalog.length ? `, ${t.notInCatalog.length} not in the catalog` : "") + "." + (signedIn ? " Saved to your account." : " Log in to save it.");
-    saveRecord();
+    const inProgress = t.level === "college" ? t.courses.filter((c) => c.grade === "IP").map((c) => c.code) : [];
+    if (t.level === "college") t.courses.forEach((c) => { if (c.grade && c.grade !== "IP") grades[c.code] = c.grade; if (c.term) terms[c.code] = c.term; });
+    draft = { level: t.level, strengths: t.strengths, completed: t.completed || [], inProgress, grades, terms };
+    preview = null;
+    leaning = (t.strengths && t.strengths.suggestedPrograms[0] || {}).code || null;
+    renderStrengths(t);
+    const n = t.courses.length + (t.notCounted || []).length;
+    tstatus.textContent = `Read ${n} ${t.level === "high_school" ? "classes" : "courses"} with ${NS.engineBadge(t.engine)}.` +
+      (t.level === "college" ? ` ${t.completed.length} count toward MDC programs` +
+        ((t.notCounted || []).length ? `, ${t.notCounted.length} don't (${t.notCounted.map((c) => c.code + " " + (c.grade || "")).join(", ")})` : "") +
+        ((t.notInCatalog || []).length ? `, ${t.notInCatalog.length} not in the catalog` : "") + "." : "") +
+      " Nothing is saved until you approve a plan.";
+    coachAfterTranscript(t);
   } catch (err) {
     tstatus.textContent = err.status === 503 ? "Reading images needs the Gemini key on the server. Try a text PDF." : (err.message || "Couldn't read that file.");
   }
 }
-document.getElementById("tread").addEventListener("click", () => {
-  const f = document.getElementById("tfile").files[0];
-  if (!f) { tstatus.textContent = "Choose a PDF or photo of your transcript first."; return; }
+function renderStrengths(t) {
+  const s = t.strengths || { strong: [], suggestedPrograms: [], otherCareers: [] };
+  const n = t.courses.length + (t.notCounted || []).length;
+  $("ps-level").textContent = t.level === "high_school" ? `High-school transcript · ${n} classes` : `College transcript · ${n} courses`;
+  $("ps-strong").innerHTML = s.strong.length ? s.strong.map((x) => `<span>${NS.esc(x)}</span>`).join("")
+    : `<span>No standout subject yet</span>`;
+  $("ps-gpa").textContent = s.gpa ? `Average grade ${s.gpa.toFixed(2)} on a 4.0 scale${t.level === "college" ? `, ${t.completed.length} courses that count at MDC` : ""}.` : "";
+  const other = (s.otherCareers || []).map((c) => `<a href="explore.html?career=${encodeURIComponent(c.careerId)}" style="color:inherit">${NS.esc(careerLabel(c.careerId))}</a>`);
+  $("ps-fits").innerHTML = s.suggestedPrograms.map((p) => `
+    <button class="fit chrome inset" type="button" data-preview="${NS.esc(p.code)}" style="display:grid;gap:.2rem">
+      <b>${NS.esc(p.name)}</b><small>${NS.esc(p.why || "")}</small><span class="go">Preview this plan →</span></button>`).join("") +
+    (other.length ? `<p class="code" style="margin:0">Also worth a look: ${other.join(", ")}</p>` : "");
+  setStep(2);
+}
+function coachAfterTranscript(t) {
+  const s = t.strengths || {}, fits = (s.suggestedPrograms || []).map((p) => p.name);
+  const strong = (s.strong || []).slice(0, 2).map((x) => x.toLowerCase());
+  const msg = `I read your ${t.level === "high_school" ? "high-school " : ""}transcript.` +
+    (strong.length ? ` Your strongest subjects are <b>${NS.esc(strong.join(" and "))}</b>.` : "") +
+    (fits.length ? ` That points to <b>${NS.esc(fits.slice(0, 2).join("</b> or <b>"))}</b>.` : "");
+  say(`<p>${msg}</p><p>What do you enjoy most in those classes: solving puzzles, building things, helping people, or working with data? Tell me and I'll show you how those skills turn into a career. When you're ready, pick a program on the right, or say "preview my plan".</p>`);
+  chatHistory.push({ sender: "bot", text: msg.replace(/<[^>]+>/g, "") + " What do you enjoy most in those classes?" });
+}
+
+async function previewPlan(code) {
+  if (!code) return;
+  const base = draft || record || {};
+  tstatus.textContent = `Building a preview for ${PROGRAM_LABEL[code] || code}…`;
+  try {
+    preview = await NS.api("/api/plan/preview", { program: code, completed: base.completed || [], strengths: base.strengths || undefined,
+      startTerm: (record && !record.isNew && !record.isSample && record.currentTerm) || "Fall 2026", load: +$("load").value || 12 }, { auth: signedIn });
+    leaning = code;
+    renderPreview(preview);
+    tstatus.textContent = "This is a preview. Approve it to put it in Progress, or ask the advisor about it.";
+    say(`<p>Here's a preview of the <b>${NS.esc(preview.program.name)}</b> plan: finish around <b>${NS.esc(preview.graduationTerm || "—")}</b>, ${preview.creditsLeft} credits to go. Ask me anything about it, then approve it when it feels right.</p>
+      <button class="chip chrome" type="button" data-approve="1">Approve this plan</button>`);
+  } catch (err) { tstatus.textContent = err.message || "Couldn't build that preview. Try again."; }
+}
+function renderPreview(p) {
+  $("pv-title").textContent = p.program.name + (p.career && p.career.title ? ` → ${p.career.title}` : "");
+  $("pv-why").textContent = p.why || "";
+  const sal = p.career && p.career.salary && p.career.salary.median;
+  $("pv-numbers").innerHTML = `
+    <div class="big ok"><b>${NS.esc(p.graduationTerm || "—")}</b><span>projected finish</span></div>
+    <div class="big"><b class="num">${p.termCount}</b><span>terms · ${p.creditsLeft} credits to go</span></div>
+    <div class="big warn"><b class="num">${fmt$(p.estimatedCost)}</b><span>tuition estimate at about ${fmt$(p.ratePerCredit)} a credit</span></div>` +
+    (sal ? `<div class="big"><b class="num">${fmt$(sal)}</b><span>median pay as a ${NS.esc(p.career.title)}</span></div>` : "");
+  $("pv-skills").innerHTML = (p.skills.length ? `<span class="eyebrow">Skills you already bring</span><div class="mem-tags" style="margin:.4rem 0 .6rem">${p.skills.map((x) => `<span>${NS.esc(x)}</span>`).join("")}</div>` : "") +
+    (p.firstSteps.length ? `<span class="eyebrow">First semester</span><ul style="margin:.4rem 0 0">${p.firstSteps.map((x) => `<li>${NS.esc(x)}</li>`).join("")}</ul>` : "");
+  $("pv-terms").innerHTML = `<span class="eyebrow">First two terms</span>` + p.firstTerms.map((t) => `
+    <div class="pv-term"><b>${NS.esc(t.term)}</b> <span class="code">· ${t.courses.reduce((n, c) => n + c.credits, 0)} cr</span><br>
+      ${t.courses.map((c) => `<span class="code">${NS.esc(c.code)}</span> ${NS.esc(c.title)}`).join(" · ")}</div>`).join("") +
+    (p.warnings && p.warnings.length ? `<p class="code" style="margin:0">${p.warnings.map(NS.esc).join(" ")}</p>` : "");
+  setStep(3);
+}
+async function approvePlan() {
+  if (!preview) { say("<p>Pick a program to preview first, then you can approve it.</p>"); return; }
+  const base = draft || record || {};
+  const user = signedIn ? await NS.auth.user() : null;
+  const keepName = record && !record.isSample && record.name;
+  const rec = {
+    name: keepName || (user && (user.given_name || user.name)) || "You", program: preview.program.code,
+    completed: base.completed || [], inProgress: base.inProgress || [], grades: base.grades || {}, terms: base.terms || {},
+    currentTerm: (record && !record.isNew && !record.isSample && record.currentTerm) || "Fall 2026", isSample: false,
+    approved: true, approvedAt: new Date().toISOString(), schools: (record && record.schools) || [],
+    strengths: base.strengths || null, level: base.level || null
+  };
+  tstatus.textContent = "Saving your plan…";
+  try {
+    await loadHub(rec);
+    $("program").value = rec.program;
+    await saveRecord();
+    const name = preview.program.name;
+    draft = null; preview = null;
+    setStep(1);
+    tstatus.textContent = `Approved: ${name}. ${signedIn ? "Saved to your account." : "Log in to keep it."} Manage it in Progress, or tell me "I passed …".`;
+    say(`<p>Done. Your <b>${NS.esc(name)}</b> plan is in Progress. Click any course there to mark it taking or done, or just tell me, like "I passed ZEN 1101".</p>`);
+    if (signedIn) showWelcome($("acct-name").textContent || "there", false);
+    show("progress");
+    $("hub").scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (err) { tstatus.textContent = "Couldn't save the plan. Try again."; }
+}
+function startOver() {
+  draft = null; preview = null; setStep(1);
+  const d = $("drop"); d.classList.remove("has-file"); d.querySelector("b").textContent = "Drag your transcript here";
+  $("tfile").value = "";
+}
+// plan buttons inside the chat and the plan box
+document.addEventListener("click", (e) => {
+  const p = e.target.closest("[data-preview]"); if (p) { previewPlan(p.dataset.preview); return; }
+  if (e.target.closest("[data-approve]")) approvePlan();
+});
+$("pv-approve").addEventListener("click", approvePlan);
+$("pv-back").addEventListener("click", () => { preview = null; if (draft) setStep(2); else startOver(); });
+$("to-ai").addEventListener("click", () => { startOver(); goHub("ai"); setTimeout(() => $("plan-box").scrollIntoView({ behavior: "smooth", block: "center" }), 300); });
+
+// drop zone: drag a file in, or click to choose one; either starts reading right away
+const drop = $("drop");
+function readFile(f) {
+  drop.classList.add("has-file"); drop.querySelector("b").textContent = f.name;
   const form = new FormData(); form.append("file", f); readTranscript(form);
+}
+["dragenter", "dragover"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach((ev) => drop.addEventListener(ev, () => drop.classList.remove("over")));
+drop.addEventListener("drop", (e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) readFile(f); });
+addEventListener("dragover", (e) => e.preventDefault());     // a file dropped next to the box shouldn't open in the tab
+addEventListener("drop", (e) => e.preventDefault());
+$("tfile").addEventListener("change", () => { const f = $("tfile").files[0]; if (f) readFile(f); });
+$("tread").addEventListener("click", () => {
+  const f = $("tfile").files[0];
+  if (!f) { tstatus.textContent = "Choose a PDF or photo of your transcript first."; $("tfile").click(); return; }
+  readFile(f);
 });
-document.getElementById("tsample").addEventListener("click", async () => {
+async function readSample(name) {
   tstatus.textContent = "Fetching the sample transcript…";
-  const blob = await fetch("/samples/sample_transcript.png").then((r) => r.blob());
-  const form = new FormData(); form.append("file", blob, "sample_transcript.png"); readTranscript(form);
+  const blob = await fetch("/samples/" + name).then((r) => r.blob());
+  const form = new FormData(); form.append("file", blob, name); readTranscript(form);
+}
+$("tsample").addEventListener("click", () => readSample("sample_transcript.png"));
+$("tsample-hs").addEventListener("click", () => readSample("sample_hs_transcript.png"));
+
+/* manage the approved plan: by clicking courses in Progress, or by telling the advisor */
+async function setCourseStatus(codes, st) {
+  if (!record) return;
+  const comp = new Set(record.completed || []), ip = new Set(record.inProgress || []);
+  const grades = { ...(record.grades || {}) }, terms = { ...(record.terms || {}) };
+  codes.forEach((c) => {
+    comp.delete(c); ip.delete(c);
+    if (st === "done") { comp.add(c); terms[c] = terms[c] || STUDENT.currentTerm; }
+    else if (st === "now") { ip.add(c); terms[c] = STUDENT.currentTerm; }
+    else delete terms[c];
+    if (st !== "done") delete grades[c];
+  });
+  await loadHub({ ...record, completed: [...comp], inProgress: [...ip], grades, terms, isNew: false });
+  saveRecord();
+}
+const NEXT_ST = { next: "now", now: "done", done: "next" };
+async function onRow(e) {
+  const row = e.target.closest(".row[data-code]"); if (!row) return;
+  if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ") return;
+  e.preventDefault();
+  const code = row.dataset.code, c = COURSES.find((x) => x.code === code); if (!c) return;
+  try {
+    await setCourseStatus([code], NEXT_ST[c.st]);
+    const again = document.querySelector(`#terms .row[data-code="${CSS.escape(code)}"]`); if (again) again.focus();
+  } catch (err) { console.warn("[hub] update failed", err.message); }
+}
+$("terms").addEventListener("click", onRow);
+$("terms").addEventListener("keydown", onRow);
+// chat commands handled on the page: "I passed ZEN 1101", "I'm taking ZMA 1105", "preview my plan", "approve"
+function planCommand(q) {
+  const s = q.trim(), low = s.toLowerCase();
+  const codes = [...new Set((s.toUpperCase().match(/\b[A-Z]{3}\s?-?\d{4}L?\b/g) || []).map((c) => c.replace(/^([A-Z]{3})\s?-?/, "$1 ")))];
+  if (codes.length && s.length < 160) {
+    const st = /\b(passed|finished|completed|done with|got an? [abc][+-]?)\b/i.test(s) ? "done"
+      : /\b(dropped|withdrew|not taking|remove|failed)\b/i.test(s) ? "next"
+      : /\b(taking|enrolled|registered|signed up|currently in|started)\b/i.test(s) ? "now" : null;
+    if (st) return async () => {
+      if (!record || record.isNew) { say("<p>Approve a plan first, then I can keep it up to date for you.</p>"); return; }
+      const known = codes.filter((c) => COURSES.some((x) => x.code === c)), unknown = codes.filter((c) => !known.includes(c));
+      if (known.length) await setCourseStatus(known, st);
+      const verb = { done: "marked done", now: "marked as taking now", next: "moved back to planned" }[st];
+      say(`<p>${known.length ? `Got it: ${known.map((c) => `<span class="code">${NS.esc(c)}</span>`).join(", ")} ${verb}. You're at <b>${earnedDone} of ${STUDENT.required}</b> credits, finishing around <b>${NS.esc(gradTerm || "—")}</b>.` : ""}` +
+        `${unknown.length ? ` ${unknown.map((c) => `<span class="code">${NS.esc(c)}</span>`).join(", ")} ${unknown.length === 1 ? "isn't" : "aren't"} in your ${NS.esc(STUDENT.program)} plan.` : ""}</p><span class="engine">Updated your plan</span>`);
+    };
+  }
+  if (s.length < 90 && /\b(approve|looks good|lock it in)\b/i.test(s) && preview) return approvePlan;
+  if (s.length < 90 && /\b(preview|build|make|create|show)\b.*\bplan\b|^plan preview/i.test(low)) return () => {
+    const code = programFromText(s) || leaning || (record && !record.isNew && record.program);
+    if (!draft && (!record || record.isNew)) { say(`<p>Drop your transcript on the right first (high school or college), and I'll suggest the programs that fit you.</p>`); return; }
+    previewPlan(code || "AI");
+  };
+  return null;
+}
+
+/* plan bar in Progress */
+function renderPlanBar() {
+  const state = $("plan-state"), name = $("plan-name");
+  if (!record || record.isNew) {
+    state.textContent = "No plan yet";
+    name.textContent = "Start in the AI Advisor tab with your transcript";
+    $("to-ai").textContent = "Start with my transcript";
+  } else {
+    state.textContent = record.isSample ? "Sample plan" : record.approved
+      ? `Approved plan${record.approvedAt ? " · " + new Date(record.approvedAt).toLocaleDateString() : ""}` : "Your plan";
+    name.textContent = `${STUDENT.credential} ${STUDENT.program}`;
+    $("to-ai").textContent = "Load a new transcript";
+  }
+}
+
+/* transfer: add a real school by its web page */
+function renderSchools() {
+  const list = (record && record.schools) || [];
+  const typeName = { florida_public: "Florida public", private: "Private", out_of_state_public: "Out-of-state public", unknown: "School type not stated" };
+  $("school-facts").innerHTML = list.map((s, i) => `
+    <div class="inset school-card">
+      <b>${NS.esc(s.name)}</b>
+      <span class="code">${NS.esc(typeName[s.type] || s.type || "")} · ${s.rate ? fmt$(s.rate) + " a credit" + (s.rateOutOfState ? `, ${fmt$(s.rateOutOfState)} out of state` : "") : "cost per credit not on this page (using a typical rate)"}${s.deadline ? " · deadline " + NS.esc(s.deadline) : ""}</span>
+      ${s.tuitionNote ? `<small>${NS.esc(s.tuitionNote)}</small>` : ""}
+      ${(s.programs || []).length ? `<small>Programs: ${s.programs.map(NS.esc).join(", ")}</small>` : ""}
+      ${(s.transferNotes || []).length ? `<ul style="margin:0">${s.transferNotes.map((n) => `<li><small>${NS.esc(n)}</small></li>`).join("")}</ul>` : ""}
+      <small>${s.aiExtracted ? "AI read this page; confirm with the school." : "Read from the page text."} <a href="${NS.esc(s.sourceUrl)}" target="_blank" rel="noopener" style="color:inherit">Source</a>
+        · <button class="btn chrome" type="button" data-remove-school="${i}" style="min-height:auto;padding:.15rem .6rem">Remove</button></small>
+    </div>`).join("");
+}
+$("addschool").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const url = $("school-url").value.trim(), status = $("school-status");
+  if (!url) { status.textContent = "Paste the school's tuition or transfer page address."; return; }
+  if (!record) { status.textContent = "Load your plan first."; return; }
+  status.textContent = "Reading the school's page…";
+  try {
+    const s = await NS.api("/api/schools/lookup", { url, program: record.program });
+    const schools = ((record.schools || []).filter((x) => x.sourceUrl !== s.sourceUrl)).concat(s).slice(-4);
+    await loadHub({ ...record, schools });
+    destId = DESTS.length - schools.length + schools.findIndex((x) => x.sourceUrl === s.sourceUrl);
+    $("rate").value = rates[destId]; renderTransfer();
+    saveRecord();
+    $("school-url").value = "";
+    status.textContent = `Added ${s.name}${s.rate ? ` at ${fmt$(s.rate)} a credit` : ""}. It's selected in the comparison above.`;
+  } catch (err) { status.textContent = err.message || "Couldn't read that page."; }
 });
+$("school-facts").addEventListener("click", async (e) => {
+  const b = e.target.closest("[data-remove-school]"); if (!b || !record) return;
+  const schools = (record.schools || []).filter((_, i) => i !== +b.dataset.removeSchool);
+  destId = 0;
+  await loadHub({ ...record, schools });
+  saveRecord();
+});
+
+/* what if: compare staying with switching */
+$("wi-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const target = $("wi-target").value.trim(), status = $("wi-status");
+  if (!target) { status.textContent = "Type a program or career, like Cybersecurity or doctor."; return; }
+  if (!record) { status.textContent = "Load your plan first."; return; }
+  status.textContent = `Comparing ${STUDENT.program} with ${target}…`;
+  $("wi-result").hidden = true;
+  try {
+    const w = await NS.api("/api/whatif", { program: record.program, completed: record.completed || [], target, load: +$("load").value || 12 });
+    renderWhatIf(w);
+    status.textContent = w.target.estimate ? "The switch side is an AI estimate for a career outside MDC's catalog. Costs use typical US public tuition." : "Both sides are computed from the program catalog.";
+  } catch (err) { status.textContent = err.message || "Couldn't compare right now. Try again."; }
+});
+function renderWhatIf(w) {
+  const c = w.current, t = w.target, money = (n) => (n == null ? "—" : fmt$(n)), yrs = (n) => (n == null ? "—" : `${n} yr`);
+  const timing = { early: "Early in your path", middle: "Midway through", late: "Late in your path" }[w.timing] || "";
+  $("wi-verdict").className = "glass panel stack verdict " + (w.verdict || "");
+  $("wi-verdict").innerHTML = `<span class="eyebrow">${NS.esc(timing)} · ${c.percent}% done · advisor's take</span>
+    <h3>${NS.esc(w.headline)}</h3><p style="margin:0">${NS.esc(w.advice)}</p>
+    ${w.nextSteps.length ? `<ul style="margin:.3rem 0 0">${w.nextSteps.map((x) => `<li>${NS.esc(x)}</li>`).join("")}</ul>` : ""}
+    <span class="engine">${NS.esc(NS.engineBadge(w.engine))}</span>`;
+  const row = (k, v) => `<dt>${k}</dt><dd>${v}</dd>`;
+  $("wi-cols").innerHTML = `
+    <div class="glass panel wi-col"><span class="eyebrow">Stay on your path</span><h3>${NS.esc(c.program)}</h3><dl>
+      ${row("Done so far", c.percent + "%")}${row("Credits earned", c.creditsEarned)}${row("Terms left", c.termsLeft)}
+      ${row("Finish", NS.esc(c.graduationTerm || "—"))}${row("Years to the job", yrs(c.yearsToCareer))}${row("Tuition left", money(c.costLeft))}
+      ${c.career ? row("Career", NS.esc(c.career)) : ""}${row("Median pay", money(c.medianSalary))}</dl></div>
+    <div class="glass panel wi-col"><span class="eyebrow">Switch to ${t.estimate ? '<span class="est">· AI estimate</span>' : ""}</span><h3>${NS.esc(t.title)}</h3><dl>
+      ${row("Credits that carry over", t.creditsCarryOver)}${row("Credits that won't count", t.creditsLost)}
+      ${t.termsLeft != null ? row("Terms left", t.termsLeft) : ""}${t.graduationTerm ? row("Finish", NS.esc(t.graduationTerm)) : ""}
+      ${row("Years to the job", yrs(t.yearsToCareer))}${row(t.estimate ? "Schooling cost (typical)" : "Tuition left", money(t.costLeft))}
+      ${t.career ? row("Career", NS.esc(t.career)) : ""}${row("Median pay", money(t.medianSalary))}
+      ${t.outlook ? row("Job market", NS.esc(t.outlook)) : ""}</dl>
+      ${(t.steps || []).length ? `<p class="code" style="margin:.6rem 0 0">Path: ${t.steps.map(NS.esc).join(" → ")}</p>` : ""}
+      ${t.prereqNotes ? `<p class="code" style="margin:.3rem 0 0">${NS.esc(t.prereqNotes)}</p>` : ""}</div>`;
+  const metrics = [["Years to the job", c.yearsToCareer, t.yearsToCareer, yrs], ["Cost to finish", c.costLeft, t.costLeft, money],
+                   ["Median pay", c.medianSalary, t.medianSalary, money], ["Credits that count", c.creditsEarned, t.creditsCarryOver, String]]
+    .filter(([, a, b]) => a != null && b != null);
+  $("wi-bars").innerHTML = metrics.map(([label, a, b, f]) => {
+    const max = Math.max(a, b, 1), W = (v) => (v / max * 100).toFixed(1) + "%";
+    return `<div class="bar-group"><b>${label}</b>
+      <div class="bar-row"><span>Stay</span><div class="track"><i class="a" style="width:${W(a)}"></i></div><span>${f(a)}</span></div>
+      <div class="bar-row"><span>Switch</span><div class="track"><i class="b" style="width:${W(b)}"></i></div><span>${f(b)}</span></div></div>`;
+  }).join("");
+  $("wi-result").hidden = false;
+}
 document.getElementById("load").addEventListener("change", () => { if (record) loadHub(record).catch(() => {}); });
 // switching program re-plans the same courses against the new degree (and saves it for signed-in students)
 document.getElementById("program").addEventListener("change", async (e) => {
@@ -1559,7 +2004,7 @@ initAuth().then(async (auth) => {
     document.getElementById("sample").innerHTML = rec.isNew
       ? `Course data is a sample catalog (codes start with Z) while we connect MDC's real catalog.`
       : `<span class="saved-flag">✓ Saved to your account</span> · Sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
-    if (rec.isNew && !pendingGo) pendingGo = "progress";
+    if (rec.isNew && (!pendingGo || pendingGo === "progress")) pendingGo = "ai";   // new students start with their transcript
     document.getElementById("program").value = rec.program;
     document.body.classList.remove("hub-locked");
     show(pendingGo || "progress");

@@ -5,7 +5,8 @@ import re
 
 _PHONE = re.compile(r"(?<!\d)(?:\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}(?!\d)")
 _EMAIL = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
-_STUDENT_ID = re.compile(r"(?i)(?:student\s*(?:id|number|#)\s*(?:is|:)?\s*)?(?<!\d)\d{6,10}(?!\d)")
+# 6-10 digit runs look like student IDs, but not dollar amounts ("$108020", "108020 dollars", "108020 USD")
+_STUDENT_ID = re.compile(r"(?i)(?:student\s*(?:id|number|#)\s*(?:is|:)?\s*)?(?<![\d$])\d{6,10}(?!\d)(?!\s*(?:dollars|usd)\b)")
 _ADDRESS = re.compile(
     r"(?i)\b\d{1,6}\s+(?:[A-Z][\w.]*\s){0,4}?(?:way|st|street|ave|avenue|rd|road|blvd|boulevard|dr|drive|"
     r"ln|lane|ct|court|ter|terrace|pl|place|hwy|highway|cir|circle)\b\.?(?:,?\s*(?:apt|apartment|unit|suite|#)\s*[\w-]+)?"
