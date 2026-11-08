@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Create your account · MDC Student Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Jost:wght@300;400;500&display=swap">
+<style>
+  /* Create account page for the hub's "Ask the AI advisor" button (logging in is login.html).
+     UI ONLY: no accounts are created yet. The form checks what's typed, then sends the student
+     back to the hub. When the Flask backend is ready, replace fakeSubmit() in the script with
+     a call to /api/signup. Same look as the hub's square "lux" boxes. */
+  :root {
+    color-scheme: dark;
+    --dusk: #241040;
+    --fg: #ffffff;
+    --soft: rgba(255, 255, 255, .78);
+    --focus: #ffe45c;
+    --accent: #f0a874;            /* sunset sand, same accent as the hub */
+    --error: #ffb3c0;             /* readable pink on the dark panel */
+    --ok: #8fe3c3;
+    --panel: rgba(20, 6, 30, .58);
+    --line: rgba(255, 255, 255, .22);
+    --line-strong: rgba(255, 255, 255, .5);
+    --edge: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .4) 30%, rgba(255, 255, 255, 0) 100%);
+    --glow: 0 -8px 30px -8px rgba(255, 255, 255, .38), 0 0 60px -12px rgba(255, 255, 255, .22);
+    --f-display: "Jost", "Futura", "Helvetica Neue", Arial, sans-serif;
+    --f-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --berry: 137, 40, 88; --crimson: 157, 30, 67; --ember: 179, 73, 61; --sand: 224, 145, 92;
+  }
+  * { box-sizing: border-box; }
+  /* only the page root gets a color, so the fixed background picture shows behind everything */
+  html { min-height: 100%; background: #1a1f5c; color: var(--fg); }
+  body { margin: 0; min-height: 100%; background: transparent; color: var(--fg); }
+  body { font-family: var(--f-body); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+    padding: 0 max(16px, env(safe-area-inset-right, 0px)) 3rem max(16px, env(safe-area-inset-left, 0px)); }
+
+  .sky { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    /* tech circuit background for the account pages */
+    background: url("images/account-bg.jpg") center / cover no-repeat #1a1f5c; }
+
+  :is(a, button, input, label):focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  a { color: var(--fg); }
+
+  /* ---------- top bar ---------- */
+  .top { width: min(28rem, 100%); margin: 0 auto; padding: 1.25rem 0 .5rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .top a { text-decoration: none; font-weight: 500; min-height: 44px; display: inline-flex; align-items: center; }
+  .top a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .brand { font-family: var(--f-display); text-transform: uppercase; letter-spacing: .18em; font-size: .85rem; }
+
+  /* ---------- the card ---------- */
+  .card { position: relative; width: min(28rem, 100%); margin: 1.5rem auto 0; padding: 2rem 1.75rem;
+    background: var(--panel); box-shadow: var(--glow); }
+  /* white edge fading down, like the hub boxes */
+  .card::before { content: ""; position: absolute; inset: 0; padding: 1px; pointer-events: none; background: var(--edge);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; }
+  @media (max-width: 30rem) { .card { padding: 1.5rem 1.15rem; } }
+
+  /* Create account / Log in switch: same look as the hub tabs (white words, sand underline) */
+  .switch { display: flex; gap: .4rem; margin: -.5rem 0 1.5rem; border-bottom: 1px solid var(--line); }
+  .switch button { flex: 1; font: inherit; font-family: var(--f-display); text-transform: uppercase;
+    letter-spacing: .18em; font-size: .8rem; font-weight: 500; color: #fff; background: none; border: 0;
+    min-height: 48px; cursor: pointer; position: relative; opacity: .72; }
+  .switch button[aria-selected="true"] { opacity: 1; }
+  .switch button[aria-selected="true"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
+    height: 2px; background: var(--accent); }
+  .switch button:hover { opacity: 1; }
+
+  h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(1.7rem, 6vw, 2.1rem);
+    line-height: 1.1; letter-spacing: -.01em; margin: 0 0 .4rem; }
+  .why { margin: 0 0 1.5rem; color: var(--soft); }
+
+  /* ---------- fields ---------- */
+  form { display: grid; gap: 1.1rem; }
+  .field { display: grid; gap: .35rem; }
+  .field label { font-weight: 600; font-size: .95rem; }
+  .hint { font-size: .85rem; color: var(--soft); margin: 0; }
+  .input-wrap { position: relative; display: flex; }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%; min-height: 48px; padding: .7rem .9rem; font: inherit; font-size: 1rem; color: #fff;
+    background: rgba(255, 255, 255, .07); border: 1px solid var(--line-strong); border-radius: 0; }
+  input::placeholder { color: rgba(255, 255, 255, .5); }
+  input:hover { border-color: rgba(255, 255, 255, .75); }
+  input:focus-visible { outline-offset: 0; }
+  input[aria-invalid="true"] { border-color: var(--error); }
+  .has-toggle input { padding-right: 4.5rem; }
+  .show-pw { position: absolute; right: 0; top: 0; bottom: 0; min-width: 4.25rem; font: inherit; font-size: .85rem;
+    font-weight: 600; color: #fff; background: none; border: 0; border-left: 1px solid var(--line); cursor: pointer; }
+  .show-pw:hover { background: rgba(255, 255, 255, .08); }
+  .error { margin: 0; font-size: .88rem; color: var(--error); font-weight: 500; }
+  .error:empty { display: none; }
+  .error::before { content: "⚠ "; }
+
+  /* password rules tick off as you type */
+  .rules { list-style: none; margin: .15rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1rem;
+    font-size: .85rem; color: var(--soft); }
+  .rules li::before { content: "○ "; }
+  .rules li.met { color: var(--ok); }
+  .rules li.met::before { content: "✓ "; }
+
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: .92rem; }
+  .check { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; cursor: pointer; }
+  .check input { width: 18px; height: 18px; accent-color: var(--accent); }
+
+  /* ---------- buttons ---------- */
+  .btn { font: inherit; font-family: var(--f-display); text-transform: uppercase; letter-spacing: .18em;
+    font-size: .85rem; font-weight: 500; min-height: 52px; padding: .8rem 1.2rem; width: 100%; cursor: pointer;
+    border: 0; color: #1a0822; background: #fff; transition: transform .3s cubic-bezier(.32, 1.25, .45, 1), filter .2s; }
+  .btn:hover { filter: brightness(.94); transform: translateY(-1px); }
+  .btn:active { transform: scale(.98); }
+  .btn[aria-busy="true"] { cursor: progress; opacity: .75; }
+
+  .alt { margin: 1.4rem 0 0; text-align: center; color: var(--soft); font-size: .95rem; }
+  .linkish { font: inherit; color: #fff; background: none; border: 0; padding: 0; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px; font-weight: 600; min-height: 44px; }
+
+  .form-status { margin: 0; padding: .75rem .9rem; border: 1px solid var(--error); color: var(--error); font-size: .92rem; }
+  .form-status:empty { display: none; }
+
+  .fine { width: min(28rem, 100%); margin: 1rem auto 0; font-size: .82rem; color: var(--soft); text-align: center; }
+
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  [hidden] { display: none !important; }
+
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+
+<header class="top">
+  <a href="student-hub.html" id="back">← Back</a>
+  <span class="brand" aria-hidden="true">MDC Student Hub</span>
+</header>
+
+<main class="card">
+  <!-- ===== Create account (logging in has its own page: login.html) ===== -->
+  <section id="view-signup">
+    <h1>Create your account</h1>
+    <p class="why" id="why-signup">Save your plan and pick up where you left off.</p>
+
+    <form id="signup" novalidate>
+      <p class="form-status" role="alert" id="signup-status"></p>
+
+      <div class="field">
+        <label for="su-name">Full name</label>
+        <input type="text" id="su-name" name="name" autocomplete="name" required aria-describedby="su-name-err">
+        <p class="error" id="su-name-err"></p>
+      </div>
+
+      <div class="field">
+        <label for="su-email">MDC email</label>
+        <input type="email" id="su-email" name="email" autocomplete="email" inputmode="email" required
+          placeholder="you@mymdc.net" aria-describedby="su-email-hint su-email-err">
+        <p class="hint" id="su-email-hint">Use your @mymdc.net student email.</p>
+        <p class="error" id="su-email-err"></p>
+      </div>
+
+      <div class="field">
+        <label for="su-pw">Password</label>
+        <div class="input-wrap has-toggle">
+          <input type="password" id="su-pw" name="password" autocomplete="new-password" required
+            aria-describedby="su-pw-rules su-pw-err">
+          <button type="button" class="show-pw" aria-controls="su-pw" aria-pressed="false">Show</button>
+        </div>
+        <ul class="rules" id="su-pw-rules" aria-label="Password needs">
+          <li data-rule="len">8+ characters</li>
+          <li data-rule="num">a number</li>
+          <li data-rule="letter">a letter</li>
+        </ul>
+        <p class="error" id="su-pw-err"></p>
+      </div>
+
+      <div class="field">
+        <label for="su-pw2">Confirm password</label>
+        <input type="password" id="su-pw2" name="password2" autocomplete="new-password" required aria-describedby="su-pw2-err">
+        <p class="error" id="su-pw2-err"></p>
+      </div>
+
+      <button class="btn" type="submit">Create account</button>
+    </form>
+
+    <p class="alt">Already have an account? <a id="to-login" href="login.html" style="font-weight:600">Log in</a></p>
+  </section>
+</main>
+
+<p class="fine">This app makes its own account. Never enter your MDC portal password here.</p>
+
+<script>
+(() => {
+  /* Where to go after: account.html?next=ai or ?next=progress, sent by the hub's buttons. */
+  const params = new URLSearchParams(location.search);
+  const NEXT = ["ai", "progress", "transfer"].includes(params.get("next")) ? params.get("next") : "";
+  const backTo = "student-hub.html" + (NEXT ? "?go=" + NEXT : "");
+  document.getElementById("back").href = "student-hub.html";
+
+  const WHY = {
+    ai: "Create an account to ask the AI advisor.",
+    progress: "Create an account to see your progress.",
+  };
+  if (WHY[NEXT]) document.getElementById("why-signup").textContent = WHY[NEXT];
+  // "Already have an account? Log in" goes to the separate log-in page, keeping where to return to
+  document.getElementById("to-login").href = "login.html" + (NEXT ? "?next=" + NEXT : "");
+
+  /* ---------- show / hide password ---------- */
+  document.querySelectorAll(".show-pw").forEach((b) => b.addEventListener("click", () => {
+    const input = document.getElementById(b.getAttribute("aria-controls"));
+    const show = input.type === "password";
+    input.type = show ? "text" : "password";
+    b.textContent = show ? "Hide" : "Show";
+    b.setAttribute("aria-pressed", String(show));
+    b.setAttribute("aria-label", (show ? "Hide" : "Show") + " password");
+  }));
+
+  /* ---------- password rules tick off live ---------- */
+  const RULES = { len: (v) => v.length >= 8, num: (v) => /\d/.test(v), letter: (v) => /[a-z]/i.test(v) };
+  const suPw = document.getElementById("su-pw");
+  suPw.addEventListener("input", () => {
+    document.querySelectorAll("#su-pw-rules li").forEach((li) =>
+      li.classList.toggle("met", RULES[li.dataset.rule](suPw.value)));
+  });
+
+  /* ---------- validation ---------- */
+  const MDC_EMAIL = /^[^\s@]+@mymdc\.net$/i;
+  function setError(id, msg) {
+    const input = document.getElementById(id);
+    document.getElementById(id + "-err").textContent = msg || "";
+    input.setAttribute("aria-invalid", msg ? "true" : "false");
+    return !msg;
+  }
+  function checkEmail(id) {
+    const v = document.getElementById(id).value.trim();
+    if (!v) return setError(id, "Enter your MDC email.");
+    if (!MDC_EMAIL.test(v)) return setError(id, "Use your @mymdc.net email, like jdoe001@mymdc.net.");
+    return setError(id, "");
+  }
+  const checks = {
+    "su-name": () => setError("su-name", document.getElementById("su-name").value.trim() ? "" : "Enter your name."),
+    "su-email": () => checkEmail("su-email"),
+    "su-pw": () => {
+      const v = suPw.value;
+      if (!v) return setError("su-pw", "Create a password.");
+      return setError("su-pw", Object.values(RULES).every((r) => r(v)) ? "" : "Use 8 or more characters with a letter and a number.");
+    },
+    "su-pw2": () => {
+      const v = document.getElementById("su-pw2").value;
+      if (!v) return setError("su-pw2", "Type your password again.");
+      return setError("su-pw2", v === suPw.value ? "" : "Passwords don't match.");
+    },
+  };
+  // Check a field when you leave it, and re-check as you fix it, so errors don't shout while you type.
+  Object.keys(checks).forEach((id) => {
+    const input = document.getElementById(id);
+    input.addEventListener("blur", () => { if (input.value) checks[id](); });
+    input.addEventListener("input", () => { if (input.getAttribute("aria-invalid") === "true") checks[id](); });
+  });
+
+  function validate(ids) {
+    let firstBad = null;
+    ids.forEach((id) => { if (!checks[id]() && !firstBad) firstBad = id; });
+    if (firstBad) document.getElementById(firstBad).focus();
+    return !firstBad;
+  }
+
+  /* ---------- submit (UI only) ---------- */
+  // Stand-in for the backend. Later: fetch("/api/signup", { method: "POST", ... }),
+  // show the server's error in the form's status line, and only redirect on success.
+  function fakeSubmit(form, label) {
+    const btn = form.querySelector(".btn");
+    btn.setAttribute("aria-busy", "true");
+    btn.textContent = label;
+    setTimeout(() => {
+      location.href = backTo;
+    }, 700);
+  }
+
+  document.getElementById("signup").addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (validate(["su-name", "su-email", "su-pw", "su-pw2"])) fakeSubmit(e.target, "Creating account…");
+  });
+})();
+</script>
+</body>
+</html>

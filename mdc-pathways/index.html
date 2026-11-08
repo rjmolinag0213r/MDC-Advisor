@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MDC Pathways</title>
+<style>
+  :root {
+    --bg: #12082b;
+    --ink: #ffffff;
+    --accent: #ff7a59;
+    --focus: #ffe45c;
+
+    /* Glass look: change these to make the panels clearer or frostier */
+    --glass-bg: rgba(255, 255, 255, .08);
+    --glass-bg-hover: rgba(255, 255, 255, .14);
+    --glass-border: rgba(255, 255, 255, .22);
+    --glass-blur: 16px;
+
+    /* Intro timing */
+    --rise-ms: 1600ms;     /* how long the logo photo takes to rise and fade in */
+    --rise-from: 60px;     /* how far below its spot the photo starts */
+
+    /* Scroll reveal: the quote, then the headline + buttons, fade up as they scroll into view */
+    --reveal-ms: 1100ms;   /* how long each fade-up takes */
+    --reveal-from: 40px;   /* how far below its spot each one starts */
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+
+  /* ---------- PAGE BACKDROP ----------
+     A blurred, darkened copy of the photo behind everything,
+     so the glass panels have color to frost. */
+  body::before {
+    content: ""; position: fixed; inset: -10%; z-index: -1;
+    background: url("images/mdc-hero.png") center / cover no-repeat;
+    filter: blur(60px) saturate(130%) brightness(.45);
+  }
+
+  /* ---------- GLASS (shared style) ---------- */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    box-shadow: 0 8px 32px rgba(8, 2, 24, .35), inset 0 1px 0 rgba(255, 255, 255, .15);
+  }
+  /* Browsers without blur support get a solid-enough panel so text stays readable */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass { background: rgba(29, 16, 64, .92); }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; text-align: center; padding-bottom: 2rem; }
+
+  /* The photo with the MDC logo. It sits on its own, so text never covers the logo. */
+  .hero__banner {
+    position: relative;
+    height: clamp(46svh, 53.9vw, 78svh);   /* 53.9vw = the photo's natural shape */
+    opacity: 0;
+    transform: translateY(var(--rise-from));
+    animation: riseIn var(--rise-ms) cubic-bezier(.22, .61, .36, 1) 200ms forwards;
+    /* soft fade at the bottom edge so the photo melts into the page */
+    -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 82%, transparent 100%);
+  }
+  .hero__banner img { display: block; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; }
+
+  @keyframes riseIn { to { opacity: 1; transform: none; } }
+
+  /* Small "scroll" cue at the bottom of the photo */
+  .scroll-cue { position: absolute; left: 50%; bottom: 20%; z-index: 1; /* above the faded bottom edge */
+    width: 26px; height: 42px; margin-left: -13px; border-radius: 13px;
+    border: 2px solid rgba(255, 255, 255, .7); opacity: 0;
+    animation: textIn 800ms ease-out calc(var(--rise-ms) + 200ms) forwards; }
+  .scroll-cue::after { content: ""; position: absolute; left: 50%; top: 8px;
+    width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #fff;
+    animation: cue 1.8s ease-in-out infinite; }
+  @keyframes cue { 0% { opacity: 0; transform: none; } 30% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(14px); } }
+
+  /* The quote gets its own screen below the photo, centered */
+  .hero__quote {
+    margin: 0; min-height: 100svh;
+    display: grid; place-items: center; padding: 1.5rem;
+  }
+  .hero__quote blockquote {
+    margin: 0; max-width: 22ch; text-wrap: balance;
+    font-family: Georgia, "Times New Roman", serif; font-style: italic;
+    font-size: clamp(1.6rem, 5vw, 3.5rem); line-height: 1.15;
+    text-shadow: 0 2px 24px rgba(8, 2, 24, .6);
+  }
+  .hero__quote p { margin: 0; }
+
+  /* Headline panel: comes after the quote as you keep scrolling */
+  .hero__content {
+    position: relative; z-index: 1;
+    width: min(44rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+  @keyframes textIn { to { opacity: 1; transform: none; } }
+
+  /* Scroll reveal. Only hidden when the script is running ("js" class),
+     so without JavaScript everything simply shows. */
+  .js .reveal { opacity: 0; transform: translateY(var(--reveal-from));
+    transition: opacity var(--reveal-ms) ease-out, transform var(--reveal-ms) cubic-bezier(.22, .61, .36, 1); }
+  .js .reveal.is-in { opacity: 1; transform: none; }
+
+  h1 { font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1.1; margin: 0 0 .75rem; }
+  .lede { font-size: clamp(1rem, 2.4vw, 1.2rem); margin: 0 0 1.5rem; opacity: .95; }
+
+  /* ---------- BUTTONS (glass) ---------- */
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+  .btn { font: inherit; font-weight: 600; color: #fff; text-decoration: none; cursor: pointer;
+    padding: .9rem 1.4rem; border-radius: .9rem; min-height: 44px;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background-color .2s, border-color .2s, transform .2s; }
+  .btn:hover { background: var(--glass-bg-hover); transform: translateY(-1px); }
+  .btn--primary { background: rgba(255, 122, 89, .32); border-color: rgba(255, 150, 120, .75); }
+  .btn--primary:hover { background: rgba(255, 122, 89, .45); }
+  .btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+  .skip { position: fixed; top: .75rem; right: .75rem; z-index: 5;
+    padding: .5rem 1rem; font-size: .95rem;
+    opacity: 0; animation: textIn 600ms ease-out 500ms forwards; }
+
+  /* ---------- EXPLORE SECTION ---------- */
+  .explore { width: min(60rem, calc(100% - 2rem)); margin: 1rem auto 4rem;
+    padding: 2rem 1.5rem; border-radius: 1.5rem; }
+  .explore h2 { font-size: 1.75rem; margin: 0 0 1rem; }
+  .tiles { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .tile { border-radius: 1rem; padding: 1.25rem; text-align: left; color: #fff;
+    font: inherit; cursor: pointer; min-height: 44px;
+    transition: background-color .2s, border-color .2s, transform .2s; }
+  .tile:hover { background: var(--glass-bg-hover); border-color: rgba(255, 150, 120, .75);
+    transform: translateY(-2px); }
+  .tile:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .tile b { display: block; font-size: 1.1rem; margin-bottom: .25rem; }
+
+  /* ---------- CAREER SEARCH ---------- */
+  .search { margin-top: 2rem; }
+  .search label { display: block; font-weight: 700; margin-bottom: .5rem; }
+  .search input { width: 100%; max-width: 28rem; padding: .85rem 1rem; border-radius: .9rem;
+    color: #fff; font: inherit; }
+  .search input::placeholder { color: #d6cbef; }
+  .search input:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+  /* ---------- ACCESSIBILITY: reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__banner, .skip, .scroll-cue, .js .reveal { animation: none; transition: none; opacity: 1; transform: none; }
+    .scroll-cue::after { animation: none; opacity: 1; }
+    .btn, .tile { transition: none; }
+  }
+  /* Skip the animation for returning visitors in this tab, or after "Skip intro" */
+  .no-intro .hero__banner, .no-intro .skip, .no-intro .scroll-cue, .no-intro .reveal {
+    animation: none; transition: none; opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<a class="btn glass skip" id="skip-intro" href="#explore">Skip intro</a>
+
+<header class="hero" aria-labelledby="hero-title">
+  <div class="hero__banner">
+    <img src="images/mdc-hero.png" width="2762" height="1488"
+      alt="Miami Dade College logo over a pixel-art Miami skyline at sunset">
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </div>
+
+  <figure class="hero__quote">
+    <blockquote class="reveal"><p>“Creativity is intelligence having fun.”</p></blockquote>
+  </figure>
+
+  <div class="hero__content glass reveal">
+    <h1 id="hero-title">Find the future you want.</h1>
+    <p class="lede">Tell us what you like. We'll show you careers, and a step-by-step plan that starts at MDC.</p>
+    <div class="actions">
+      <a class="btn btn--primary glass" href="#explore">Show me what I might love</a>
+      <a class="btn glass" href="#search">I already know my career</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="explore glass" id="explore" aria-labelledby="explore-title">
+    <h2 id="explore-title">What do you enjoy?</h2>
+    <!-- TODO: wire each tile to its career list / quiz once routes exist -->
+    <div class="tiles">
+      <button class="tile glass" type="button"><b>Build things</b>Architect, mechanical engineer</button>
+      <button class="tile glass" type="button"><b>Solve puzzles</b>Cybersecurity specialist, IT consultant</button>
+      <button class="tile glass" type="button"><b>Create with your hands</b>Chef</button>
+      <button class="tile glass" type="button"><b>Not sure yet</b>Take the 3-minute quiz</button>
+    </div>
+
+    <div class="search" id="search">
+      <label for="q">Or search a career:</label>
+      <input class="glass" id="q" type="search" placeholder="What do you want to be?" autocomplete="off">
+    </div>
+  </section>
+</main>
+
+<script>
+  var root = document.documentElement;
+
+  // While building, the intro plays on every reload.
+  // Set this to true before launch so it plays only once per browser tab.
+  var PLAY_ONCE_PER_TAB = false;
+  if (PLAY_ONCE_PER_TAB) {
+    try {
+      if (sessionStorage.getItem("introSeen")) root.classList.add("no-intro");
+      sessionStorage.setItem("introSeen", "1");
+    } catch (e) { /* storage unavailable: just play the intro */ }
+  }
+
+  // Scroll reveal: fade each .reveal element up once it's well into view.
+  // Browsers without IntersectionObserver just show everything.
+  if ("IntersectionObserver" in window) {
+    root.classList.add("js");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  }
+
+  // "Skip intro" finishes the animation instantly, then jumps to the tiles.
+  document.getElementById("skip-intro").addEventListener("click", function () {
+    root.classList.add("no-intro");
+  });
+</script>
+</body>
+</html>
