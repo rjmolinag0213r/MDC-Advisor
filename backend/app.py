@@ -675,6 +675,8 @@ def samples(name: str):
 @app.get("/")
 @app.get("/<path:path>")
 def frontend(path: str = ""):
+    if not path and (DIST / "student-hub.html").exists():
+        return send_from_directory(DIST, "student-hub.html")   # the Student Hub is the main page
     if path.startswith("api/"):
         adapter = app.url_map.bind("")
         for method in ("POST", "PUT", "DELETE"):

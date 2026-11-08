@@ -525,6 +525,49 @@
   /* live-data additions */
   /* hub is hidden until log in (or a sample session); the intro ends at "Find the future you want." */
   .hub-locked .band--hub, .hub-locked #skip { display: none; }
+  [hidden] { display: none !important; }   /* .btn's display rule must not override the hidden attribute */
+  /* signed in: the intro is for visitors. Students land straight in their hub. */
+  .signed-in .intro, .signed-in #skip { display: none; }
+  .signed-in .band--hub { min-height: 100svh; padding-top: .25rem; }
+  /* the scroll fly-ins belong to the intro; in the signed-in app everything is simply there */
+  .signed-in .reveal, .signed-in .reveal.from-above { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .signed-in .bar { flex-wrap: nowrap; }
+  .signed-in .brand { min-width: 0; }
+  @media (max-width: 640px) {
+    .signed-in .bar { flex-wrap: wrap; }
+    .signed-in .acct { order: 1; margin-left: auto; }
+    .signed-in .acct-name { display: none; }
+    .signed-in .acct-btn { padding: .25rem; gap: .35rem; }
+  }
+
+  /* account chip + menu */
+  .acct { position: relative; }
+  .acct-btn { display: inline-flex; align-items: center; gap: .6rem; font: inherit; color: var(--fg); cursor: pointer;
+    background: transparent; border: 1px solid var(--lx-line-strong, rgba(255,255,255,.45)); min-height: 44px; padding: .3rem .8rem .3rem .3rem; }
+  .acct-btn:hover { border-color: #fff; }
+  .avatar { width: 34px; height: 34px; flex: none; display: grid; place-items: center; overflow: hidden;
+    background: var(--lx-accent, #f0a874); color: #1a0822; font-family: var(--f-lux-display, sans-serif); font-weight: 500; letter-spacing: .04em; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .acct-name { font-family: var(--f-lux-display, sans-serif); text-transform: uppercase; letter-spacing: .14em; font-size: .74rem; }
+  .acct-dot { width: 7px; height: 7px; background: var(--mint, #6fd3ab); box-shadow: 0 0 8px var(--mint, #6fd3ab); }
+  .acct-menu { position: absolute; right: 0; top: calc(100% + .5rem); z-index: 30; width: min(20rem, 86vw); padding: 1.1rem;
+    background: rgba(26, 8, 36, .97); border: 1px solid rgba(255,255,255,.3); box-shadow: 0 24px 50px -12px rgba(0,0,0,.6);
+    display: grid; gap: .8rem; }
+  .acct-menu[hidden] { display: none; }
+  .acct-menu .who { display: flex; gap: .75rem; align-items: center; }
+  .acct-menu .who .avatar { width: 44px; height: 44px; font-size: 1.1rem; }
+  .acct-menu .who b { display: block; font-family: var(--f-lux-display, sans-serif); font-weight: 500; font-size: 1.1rem; }
+  .acct-menu .who small { color: rgba(255,255,255,.75); word-break: break-all; }
+  .acct-menu .status { font-size: .88rem; padding: .6rem .7rem; border: 1px solid rgba(255,255,255,.16); }
+  .acct-menu .status b { color: var(--mint, #6fd3ab); font-weight: 600; }
+  .acct-menu button, .acct-menu a { font: inherit; color: #fff; text-align: left; background: none; border: 0; cursor: pointer;
+    padding: .55rem .2rem; border-top: 1px solid rgba(255,255,255,.12); text-decoration: none; min-height: 44px; }
+  .acct-menu button:hover, .acct-menu a:hover { color: var(--lx-accent, #f0a874); }
+  .welcome { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1.5rem; padding: .4rem .2rem 0; }
+  .welcome h1 { margin: 0; font-family: var(--f-lux-display, sans-serif); font-weight: 400; font-size: clamp(1.8rem, 4.5vw, 2.8rem); }
+  .welcome p { margin: 0; color: rgba(255,255,255,.85); }
+  .welcome[hidden] { display: none; }
+  .saved-flag { color: var(--mint, #6fd3ab); font-size: .85rem; font-weight: 600; }
   .auth-btn { min-height: 44px !important; padding: .55rem 1.1rem !important; font-size: .72rem !important; }
   @media (max-width: 640px) {
     /* phones: Log in sits on the brand row, tabs get the full second row */
@@ -623,7 +666,27 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>Transfer</button>
       </div>
       <button class="btn chrome auth-btn" type="button" id="auth-btn">Log in</button>
+      <div class="acct" id="acct" hidden>
+        <button class="acct-btn" type="button" id="acct-btn" aria-haspopup="true" aria-expanded="false" aria-controls="acct-menu">
+          <span class="avatar" id="acct-avatar" aria-hidden="true"></span>
+          <span class="acct-name" id="acct-name"></span>
+          <span class="acct-dot" title="Signed in" aria-hidden="true"></span>
+        </button>
+        <div class="acct-menu" id="acct-menu" role="menu" hidden>
+          <div class="who"><span class="avatar" id="acct-avatar-lg" aria-hidden="true"></span>
+            <div><b id="acct-fullname"></b><small id="acct-email"></small></div></div>
+          <div class="status" id="acct-status">Your plan is saved to your account.</div>
+          <button type="button" role="menuitem" id="acct-transcript">Load a new transcript</button>
+          <a role="menuitem" href="explore.html">Explore careers</a>
+          <button type="button" role="menuitem" id="acct-logout">Log out</button>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="welcome" id="welcome" hidden>
+    <h1 id="welcome-title"></h1>
+    <p id="welcome-sub"></p>
   </div>
 
   <p class="sample" id="sample"><b>Sample student.</b> Loading the sample record…</p>
@@ -1213,7 +1276,7 @@ const SAMPLE = {
            "ZEN 1102": "Spring 2027", "ZCP 2006": "Spring 2027", "ZNT 1110": "Spring 2027" },
   currentTerm: "Summer 2027"
 };
-let record = null, signedIn = false;
+let record = null, signedIn = false, gradTerm = null;
 
 function applyHub(d) {
   STUDENT = d.student; GROUPS = d.groups; COURSES = d.courses; DESTS = d.dests; REASONS = d.reasons;
@@ -1232,6 +1295,7 @@ async function loadHub(rec) {
     load: +document.getElementById("load").value || 15
   });
   record = rec;
+  gradTerm = d.graduationTerm;
   applyHub(d);
   const sample = document.getElementById("sample");
   sample.innerHTML = rec.isSample
@@ -1239,10 +1303,69 @@ async function loadHub(rec) {
     : `<b>Your record.</b> Built from your transcript with sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
 }
 
+let lastSaved = null;
 async function saveRecord() {
   if (!signedIn || !record || record.isSample) return;
-  try { await NS.api(`/api/me/plans/${record.program}`, { plan: { ...record, checks: checked } }, { method: "PUT" }); }
-  catch (e) { console.warn("[hub] save failed", e.message); }
+  try {
+    const { isNew, ...plan } = record;
+    await NS.api(`/api/me/plans/${record.program}`, { plan: { ...plan, checks: checked, savedAt: new Date().toISOString() } }, { method: "PUT" });
+    record.isNew = false;
+    lastSaved = new Date();
+    renderAccountStatus();
+  } catch (e) {
+    console.warn("[hub] save failed", e.message);
+    document.getElementById("acct-status").innerHTML = "Couldn't save just now. We'll try again on your next change.";
+  }
+}
+
+/* ---------------- account chip (signed-in students) ---------------- */
+function initials(name) {
+  return String(name || "?").trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase() || "?";
+}
+function timeAgo(d) {
+  const s = Math.round((Date.now() - d.getTime()) / 1000);
+  return s < 60 ? "just now" : s < 3600 ? `${Math.round(s / 60)} min ago` : d.toLocaleString();
+}
+function renderAccountStatus() {
+  const el = document.getElementById("acct-status");
+  if (!record || record.isNew) { el.innerHTML = "Nothing saved yet. Load your transcript to start your plan."; return; }
+  el.innerHTML = `<b>✓ Saved to your account</b><br>${NS.esc(STUDENT.program)}, ${earnedDone} credits` +
+    (lastSaved ? ` · ${timeAgo(lastSaved)}` : "");
+}
+function showAccount(user) {
+  const name = (user && (user.name || user.nickname || user.email)) || "Student";
+  const first = (user && (user.given_name || user.nickname)) || name.split(/[\s@]/)[0];
+  const avatarHtml = user && user.picture
+    ? `<img src="${NS.esc(user.picture)}" alt="" referrerpolicy="no-referrer">` : NS.esc(initials(name));
+  document.getElementById("acct-avatar").innerHTML = avatarHtml;
+  document.getElementById("acct-avatar-lg").innerHTML = avatarHtml;
+  document.getElementById("acct-name").textContent = first;
+  document.getElementById("acct-fullname").textContent = name;
+  document.getElementById("acct-email").textContent = (user && user.email) || "";
+  document.getElementById("auth-btn").remove();      // the account chip replaces the Log in / Log out button
+  document.getElementById("acct").hidden = false;
+  const btn = document.getElementById("acct-btn"), menu = document.getElementById("acct-menu");
+  const setOpen = (open) => { menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); };
+  btn.addEventListener("click", (e) => { e.stopPropagation(); setOpen(menu.hidden); });
+  document.addEventListener("click", (e) => { if (!menu.hidden && !menu.contains(e.target)) setOpen(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) { setOpen(false); btn.focus(); } });
+  document.getElementById("acct-logout").addEventListener("click", () => NS.auth.logout());
+  document.getElementById("acct-transcript").addEventListener("click", () => {
+    setOpen(false); show("progress");
+    document.getElementById("record").scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("tfile").focus();
+  });
+  return first;
+}
+function showWelcome(first, isNew) {
+  const w = document.getElementById("welcome");
+  const h = new Date().getHours();
+  const hello = h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
+  document.getElementById("welcome-title").textContent = `${hello}, ${first}.`;
+  document.getElementById("welcome-sub").textContent = isNew
+    ? "Your hub is ready. Load your transcript in Progress and we'll build your plan."
+    : `You're ${pct}% of the way to your ${STUDENT.credential} in ${STUDENT.program}. Projected finish: ${gradTerm || "on track"}.`;
+  w.hidden = false;
 }
 
 /* transcript upload (Gemini reads images/PDFs) */
@@ -1259,6 +1382,10 @@ async function readTranscript(form) {
     const user = await NS.auth.user();
     await loadHub({ name: (user && (user.given_name || user.name)) || "You", program, completed: t.completed, inProgress, grades, terms,
                     currentTerm: STUDENT.currentTerm, isSample: false });
+    if (signedIn) {
+      showWelcome((document.getElementById("acct-name").textContent || "there"), false);
+      document.getElementById("sample").innerHTML = `<span class="saved-flag">✓ Saved to your account</span> · Sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
+    }
     tstatus.textContent = `Read ${t.courses.length + t.notCounted.length} courses with ${NS.engineBadge(t.engine)}. ` +
       `${t.completed.length} count` + (t.notCounted.length ? `, ${t.notCounted.length} don't (${t.notCounted.map((c) => c.code + " " + (c.grade || "")).join(", ")})` : "") +
       (t.notInCatalog.length ? `, ${t.notInCatalog.length} not in the catalog` : "") + "." + (signedIn ? " Saved to your account." : " Log in to save it.");
@@ -1281,7 +1408,7 @@ document.getElementById("load").addEventListener("change", () => { if (record) l
 
 /* sign-in state: returns { user, saved } for a signed-in student, or null */
 async function initAuth() {
-  const btn = document.getElementById("auth-btn");
+  const btn = document.getElementById("auth-btn") || document.createElement("button");
   signedIn = await NS.auth.isAuthenticated();
   btn.textContent = signedIn ? "Log out" : "Log in";
   btn.onclick = () => {
@@ -1316,13 +1443,21 @@ initAuth().then(async (auth) => {
     const firstName = (auth.user && (auth.user.given_name || auth.user.nickname || auth.user.name)) || "there";
     const rec = auth.saved ? { ...auth.saved, isSample: false }
       : { name: firstName, program: "AI", completed: [], inProgress: [], grades: {}, terms: {}, currentTerm: "Fall 2026", isSample: false, isNew: true };
+    // Signed-in students skip the intro: the page opens straight on their hub.
+    document.body.classList.add("signed-in");
+    const first = showAccount(auth.user);
+    if (auth.saved && auth.saved.savedAt) lastSaved = new Date(auth.saved.savedAt);
     await loadHub(rec);
-    if (rec.isNew) {
-      document.getElementById("sample").innerHTML = `<b>Welcome, ${NS.esc(firstName)}.</b> Your hub is empty: load your transcript in the Progress tab and we'll build your plan.`;
-      if (!pendingGo || pendingGo === "progress") pendingGo = "progress";
-    }
+    showWelcome(first, !!rec.isNew);
+    renderAccountStatus();
+    document.getElementById("sample").innerHTML = rec.isNew
+      ? `Course data is a sample catalog (codes start with Z) while we connect MDC's real catalog.`
+      : `<span class="saved-flag">✓ Saved to your account</span> · Sample catalog data (codes start with Z). Check real equivalencies with an MDC advisor.`;
+    if (rec.isNew && !pendingGo) pendingGo = "progress";
     document.getElementById("program").value = rec.program;
-    unlock();
+    document.body.classList.remove("hub-locked");
+    show(pendingGo || "progress");
+    requestAnimationFrame(() => { moveThumb(); scrollTo({ top: 0, behavior: "instant" }); });
   } else if (sampleSession()) {
     await loadHub({ ...SAMPLE, isSample: true });
     document.getElementById("sample").innerHTML += ` <a href="login.html?next=progress" style="color:inherit;font-weight:600">Log in to use your own record.</a>`;

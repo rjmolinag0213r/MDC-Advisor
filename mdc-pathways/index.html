@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The Student Hub (/) is now the main page; this older landing page forwards there. -->
+<meta http-equiv="refresh" content="0; url=/">
+<script>location.replace("/" + location.search + location.hash);</script>
 <title>MDC Pathways</title>
 <style>
   :root {

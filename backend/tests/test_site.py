@@ -53,7 +53,8 @@ def test_site_pages_served(client):
     for path in ("/", "/index.html", "/explore.html", "/student-hub.html", "/login.html", "/account.html",
                  "/js/nextstop.js", "/js/explore.js", "/images/mdc-hero.png"):
         assert client.get(path).status_code == 200, path
-    assert b"MDC Pathways" in client.get("/").data
+    assert b"MDC Student Hub" in client.get("/").data              # the hub is the main page
+    assert b'url=/' in client.get("/index.html").data              # old landing page forwards to it
     assert client.get("/some/deep/link").status_code == 200       # falls back to index.html
 
 
