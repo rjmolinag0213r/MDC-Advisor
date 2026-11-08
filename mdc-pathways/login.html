@@ -30,14 +30,14 @@
   }
   * { box-sizing: border-box; }
   /* only the page root gets a color, so the fixed background picture shows behind everything */
-  html { min-height: 100%; background: #1a1f5c; color: var(--fg); }
+  html { min-height: 100%; background: #2a0a3a; color: var(--fg); }
   body { margin: 0; min-height: 100%; background: transparent; color: var(--fg); }
   body { font-family: var(--f-body); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased;
     padding: 0 max(16px, env(safe-area-inset-right, 0px)) 3rem max(16px, env(safe-area-inset-left, 0px)); }
 
   .sky { position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    /* tech circuit background for the account pages */
-    background: url("images/account-bg.jpg") center / cover no-repeat #1a1f5c; }
+    /* synthwave sunset + neon grid background for the account pages */
+    background: url("images/account-bg-synthwave.jpg") center / cover no-repeat #2a0a3a; }
 
   :is(a, button, input, label):focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
   a { color: var(--fg); }
