@@ -1289,6 +1289,7 @@ function renderProgress() {
       <div class="big ok"><b>${f.term}</b><span>projected graduation</span></div>
       <div class="big"><b class="num">${f.terms}</b><span>more term${f.terms === 1 ? "" : "s"} after ${STUDENT.currentTerm}</span></div>
     </div>
+    ${remaining <= 9 ? `<p class="note inset" style="margin:.4rem 0">Only <b>${remaining}</b> credit${remaining === 1 ? "" : "s"} left after this term, so any number of credits per term finishes on the same date. This setting matters when more is left.</p>` : ""}
     <p class="lede">Left to take: ${next.map((c) => `<span class="code">${c.code}</span>`).join(", ")}.</p>`;
 
   const terms = [...new Set(COURSES.map((c) => c.term || "Still to take"))];
@@ -1370,7 +1371,8 @@ function renderImpact() {
     <div class="tl-row"><span>Bachelor's, best case</span><div class="track"><i class="a" style="width:${W(im.earned, bachOf)}"></i></div></div>
     <div class="tl-row"><span>Bachelor's, transferring now</span><div class="track"><i class="a" style="width:${W(im.full, bachOf)}"></i><i class="c" style="width:${W(im.elective, bachOf)}"></i><i class="d" style="width:${W(im.none, bachOf)}"></i></div></div>
     <p class="code" style="margin:.2rem 0 0">Bars show credits out of ${bachOf} for the bachelor's. "Best case" assumes every credit you've earned counts.</p>`;
-  document.getElementById("dest-note").innerHTML = d.note;
+  document.getElementById("dest-note").innerHTML = (im.lost === 0
+    ? `<b>Nothing to make up here:</b> every credit you've earned counts, so cost per credit and credits per term don't change the result. Pick another school to compare.<br><br>` : "") + d.note;
 
   const order = { none: 0, elective: 1, full: 2 };
   document.getElementById("ctable").innerHTML = [...transferable].sort((a, b) => order[a.t[tIdx(destId)]] - order[b.t[tIdx(destId)]]).map((c) => {
