@@ -1617,7 +1617,7 @@ async function loadHub(rec) {
   record = rec;
   gradTerm = d.graduationTerm;
   applyHub(d);
-  renderPlanBar(); renderSchools(); renderLocked();
+  renderPlanBar(); renderSchools(); renderLocked(); refreshWhatIf();
   if (!isLocked() && $("ps-locked") && !$("ps-locked").hidden) setStep(1);
   const sample = document.getElementById("sample");
   hubOfficial = !!d.official;
@@ -2070,11 +2070,29 @@ $("wi-form").addEventListener("submit", async (e) => {
   working(status, "weaving", `Comparing ${STUDENT.program} with ${target}…`);
   $("wi-result").hidden = true;
   try {
-    const w = await NS.api("/api/whatif", { program: record.program, completed: record.completed || [], target, load: +$("load").value || 12 });
+    const w = await runWhatIf(target);
     renderWhatIf(w);
     status.textContent = w.target.estimate ? "The switch side is an AI estimate for a career outside MDC's catalog. Costs use typical US public tuition." : "Both sides are computed from the program catalog.";
   } catch (err) { status.textContent = err.message || "Couldn't compare right now. Try again."; }
 });
+// same inputs as the Progress tab (loadHub): completed + in-progress classes, current term, credits per term
+let wiTarget = null;
+function runWhatIf(target) {
+  wiTarget = target;
+  return NS.api("/api/whatif", { program: record.program, completed: record.completed || [], inProgress: record.inProgress || [],
+    currentTerm: record.currentTerm || "Fall 2026", target, load: +$("load").value || 15 });
+}
+// when classes, program or load change, refresh an open comparison so it matches the Progress tab
+let wiTimer = null;
+function refreshWhatIf() {
+  if (!wiTarget || !record || $("wi-result").hidden) return;
+  clearTimeout(wiTimer);
+  $("wi-status").textContent = "Your classes changed. Updating the comparison…";
+  wiTimer = setTimeout(async () => {
+    try { renderWhatIf(await runWhatIf(wiTarget)); $("wi-status").textContent = "Updated with your latest classes."; }
+    catch { $("wi-status").textContent = "Couldn't update the comparison. Press Compare to try again."; }
+  }, 400);
+}
 function renderWhatIf(w) {
   const c = w.current, t = w.target, money = (n) => (n == null ? "—" : fmt$(n)), yrs = (n) => (n == null ? "—" : `${n} yr`);
   const timing = { early: "Early in your path", middle: "Midway through", late: "Late in your path" }[w.timing] || "";

@@ -215,15 +215,21 @@ def _gen_ed_credits(done: list[str]) -> int:
     return sum(cs[c]["credits"] for c in done if c in cs and cs[c]["category"] in ("gen_ed",))
 
 
-def whatif(current: str, completed, target: str, load: int = 15) -> dict:
+def whatif(current: str, completed, target: str, load: int = 15, in_progress=None, current_term: str = "Fall 2026") -> dict:
+    """Stay vs switch, planned exactly like the Student Hub: completed + in-progress classes, from the term after now."""
     cur = planner.get_program(current)
     done, _ = planner._completed_set(completed)
+    now, _ = planner._completed_set(in_progress)
     done = {c for c in done if planner.same_catalog(cur, c)}
-    cur_plan = planner.plan(cur["app_program_code"], sorted(done), "Fall 2026", load, 6, True)
+    now = {c for c in now - done if planner.same_catalog(cur, c)}
+    taken = sorted(done | now)   # in-progress classes count once they finish, as on the Progress tab
+    start = planner.next_term(current_term)
+    cur_plan = planner.plan(cur["app_program_code"], taken, start, load, 0, False)
     earned = planner._credits(done)
     pct = round(100 * earned / cur["total_credits"])
     cur_career = roadmap.CAREERS.get(PROGRAM_CAREER.get(cur["app_program_code"], ""), {})
     current_side = {"program": cur["name"], "code": cur["app_program_code"], "percent": pct, "creditsEarned": earned,
+                    "creditsInProgress": planner._credits(now), "startTerm": start,
                     "termsLeft": cur_plan["termCount"], "creditsLeft": cur_plan["creditsPlanned"],
                     "costLeft": cur_plan["creditsPlanned"] * MDC_RATE, "graduationTerm": cur_plan["graduationTerm"],
                     "career": cur_career.get("title"), "medianSalary": (cur_career.get("salary") or {}).get("median")}
@@ -232,7 +238,7 @@ def whatif(current: str, completed, target: str, load: int = 15) -> dict:
     if code and code != cur["app_program_code"]:
         tgt = planner.get_program(code)
         audit = planner.audit(code, sorted(done))
-        tplan = planner.plan(code, sorted(done), "Fall 2026", load, 6, True)
+        tplan = planner.plan(code, taken, start, load, 0, False)
         car = roadmap.CAREERS.get(PROGRAM_CAREER.get(code, ""), {})
         target_side = {"kind": "catalog", "title": tgt["name"], "code": code, "creditsCarryOver": audit["creditsEarned"],
                        "creditsLost": max(0, earned - audit["creditsEarned"]), "termsLeft": tplan["termCount"],

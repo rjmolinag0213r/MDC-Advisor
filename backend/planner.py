@@ -649,6 +649,18 @@ GROUP_IDS = {"General Education": "gen", "Common Technology Core": "common", "Pr
              "Program Core": "core", "Capstone and Internship": "cap", "Electives": "elect"}
 
 
+def next_term(current_term: str) -> str:
+    """The first fall or spring term after the current one (Summer 2027 -> Fall 2027, Fall 2026 -> Spring 2027)."""
+    m = re.fullmatch(r"(Fall|Spring|Summer)\s+(\d{4})", str(current_term or ""))
+    season, year = (m.group(1), int(m.group(2))) if m else ("Fall", 2026)
+    season = SEASONS[(SEASONS.index(season) + 1) % 3]
+    if season == "Spring":
+        year += 1
+    if season == "Summer":
+        season = "Fall"
+    return f"{season} {year}"
+
+
 def hub(program_code: str, completed=None, in_progress=None, grades=None, terms=None, name: str | None = None,
         current_term: str = "Fall 2026", load: int = 15) -> dict:
     """Everything the Student Hub page renders, computed from the synthetic catalog."""
@@ -681,14 +693,7 @@ def hub(program_code: str, completed=None, in_progress=None, grades=None, terms=
             group_of.setdefault(canon(co), group_of[c])
 
     # planned remaining courses, term by term, starting after the current term
-    m = re.fullmatch(r"(Fall|Spring|Summer)\s+(\d{4})", current_term)
-    nxt_season, nxt_year = (m.group(1), int(m.group(2))) if m else ("Fall", 2026)
-    nxt_season = SEASONS[(SEASONS.index(nxt_season) + 1) % 3]
-    if nxt_season == "Spring":
-        nxt_year += 1
-    if nxt_season == "Summer":
-        nxt_season, nxt_year = "Fall", nxt_year
-    the_plan = plan(p["app_program_code"], sorted(done_set | now_set), f"{nxt_season} {nxt_year}", load, 0, False)
+    the_plan = plan(p["app_program_code"], sorted(done_set | now_set), next_term(current_term), load, 0, False)
 
     courses = []
     unis = universities()

@@ -849,7 +849,8 @@ def what_if():
         raise ApiError(400, "invalid_request", "Send the program or career you're considering as target.", field="target")
     _rate_limit()
     out = advisor_tools.whatif(body.get("program", ""), body.get("completed"), safety.redact_pii(target)[0],
-                               int(body.get("load") or 15))
+                               int(body.get("load") or 15), body.get("inProgress"),
+                               str(body.get("currentTerm") or "Fall 2026"))
     store.log_event("whatif", program=out["current"]["code"], latency_ms=_elapsed_ms())
     return jsonify(out)
 
